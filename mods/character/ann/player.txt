@@ -1,0 +1,294 @@
+[ann]
+name=Ann
+
+icon speed=6
+icon loop=yes
+animation speed=1.0
+multiple box sizes=false
+center x=24
+center y=28
+box width=48
+box height=48
+
+pitch spindash=yes
+jump ball animation=no
+fire duration=2.75
+victory duration=50
+time until wait=300
+pipe squish=20
+pole center offset=8
+
+use paletting=true
+defaultspray 1=9
+defaultspray 2=6
+defaultspray 3=5
+defaultspray 4=0
+
+size reroute fire=big
+size reroute feather=big
+size reroute extra=big
+
+total palettes=13
+
+custom sprite list=stand,wait,lookup,pose,crouch,knock,dead,walk,run,maxrun,brake,spring,springfall,jump,bonk,ball,spindash,spincharge,stomp,push,balance,fire,dropkick,dropkick2,specfall,climbing,flagslide,hanging,hangmove,grinding,piping,pipingup,sidepiping,doorenter,doorexit
+
+reroute fall=jump
+
+single sheet=false
+
+stand frames=3
+stand loop=1
+stand speed=0.2
+stand frametimes=32,1,1
+stand offset x=0
+stand offset y=0
+
+wait frames=6
+wait loop=4
+wait speed=0.15
+wait frametimes=1,1,5,1.15,1.15,1.15,1.15,3
+wait offset x=0
+wait offset y=0
+wait connect=false
+wait reroute=0
+
+lookup frames=4
+lookup loop=2
+lookup speed=0.22
+lookup frametimes=1,32,1,1
+lookup offset x=0
+lookup offset y=0
+lookup connect=false
+lookup reroute=0
+
+pose frames=5
+pose loop=2
+pose speed=0.2
+pose frametimes=1.5,1,1,1,1
+pose offset x=0
+pose offset y=0
+
+crouch frames=2
+crouch loop=2
+crouch speed=0.10
+crouch frametimes=0
+crouch offset x=0
+crouch offset y=0
+
+knock frames=1
+knock loop=1
+knock speed=0.25
+knock frametimes=0
+knock offset x=0
+knock offset y=0
+
+dead frames=1,7,7,7,1
+dead loop=4
+dead speed=0.2
+dead frametimes=1.35,4,1.35,1,1,1,1
+dead offset x=0
+dead offset y=0
+
+walk frames=8
+walk loop=1
+walk speed=0.5
+walk frametimes=0
+walk offset x=0
+walk offset y=0
+
+run frames=8
+run loop=1
+run speed=0.5
+run frametimes=0
+run offset x=0
+run offset y=0
+
+maxrun frames=5
+maxrun loop=2
+maxrun speed=0.5
+maxrun frametimes=3,1,1,1,1
+maxrun offset x=0
+maxrun offset y=0
+
+brake frames=4
+brake loop=4
+brake speed=0.3
+brake frametimes= 1,1,2,10
+brake offset x=0
+brake offset y=0
+
+spring frames=2
+spring loop=1
+spring speed=0.35
+spring frametimes=0
+spring offset x=0
+spring offset y=0
+
+springfall frames=8
+springfall loop=1
+springfall speed=0.5
+springfall frametimes=0
+springfall offset x=0
+springfall offset y=0
+
+jump frames=8
+jump loop=1
+jump speed=0.5
+jump frametimes=0
+jump offset x=0
+jump offset y=0
+
+bonk frames=2
+bonk loop=2
+bonk speed=0.25
+bonk frametimes=0
+bonk offset x=0
+bonk offset y=0
+
+ball frames=8
+ball loop=1
+ball speed=0.5
+ball frametimes=0
+ball offset x=0
+ball offset y=0
+
+spindash frames=6
+spindash loop=1
+spindash speed=0.5
+spindash frametimes=0
+spindash offset x=0
+spindash offset y=0
+
+spincharge frames=8
+spincharge loop=1
+spincharge speed=0.5
+spincharge frametimes=0
+spincharge offset x=0
+spincharge offset y=0
+
+stomp frames=8
+stomp loop=1
+stomp speed=0.5
+stomp frametimes=0
+stomp offset x=0
+stomp offset y=0
+
+push frames=6
+push loop=1
+push speed=0.1
+push frametimes=2,1,1,2,1,1
+push offset x=0
+push offset y=0
+
+balance frames=6
+balance loop=1
+balance speed=0.2
+balance frametimes=0
+balance offset x=0
+balance offset y=0
+
+fire frames=4
+fire loop=4
+fire speed=0.35
+fire frametimes=1,1,3,1
+fire offset x=0
+fire offset y=0
+
+dash frames=6
+dash loop=3
+dash speed=0.5
+dash frametimes=0
+dash offset x=0
+dash offset y=0
+
+specfall frames=6
+specfall loop=4
+specfall speed=0.125
+specfall frametimes=0
+specfall offset x=0
+specfall offset y=0
+
+climbing frames=4
+climbing loop=1
+climbing speed=0.125
+climbing frametimes=0
+climbing offset x=0
+climbing offset y=0
+
+flagslide frames=1
+flagslide loop=1
+flagslide speed=0.125
+flagslide frametimes=0
+flagslide offset x=0
+flagslide offset y=0
+
+hanging frames=1
+hanging loop=1
+hanging speed=0.125
+hanging frametimes=0
+hanging offset x=0
+hanging offset y=0
+
+hangmove frames=1
+hangmove loop=1
+hangmove speed=0.125
+hangmove frametimes=0
+hangmove offset x=0
+hangmove offset y=0
+
+grinding frames=1,4,4,4,1
+grinding loop=1
+grinding speed=0.5
+grinding frametimes=0
+grinding offset x=0
+grinding offset y=0
+
+piping frames=8
+piping loop=1
+piping speed=0.5
+piping frametimes=0
+piping offset x=0
+piping offset y=0
+
+pipingup frames=5
+pipingup loop=1
+pipingup speed=0.5
+pipingup frametimes=0
+pipingup offset x=0
+pipingup offset y=0
+
+sidepiping frames=8
+sidepiping loop=1
+sidepiping speed=0.5
+sidepiping frametimes=0
+sidepiping offset x=0
+sidepiping offset y=0
+
+doorenter frames=4
+doorenter loop=4
+doorenter speed=0.20
+doorenter frametimes=0
+doorenter offset x=0
+doorenter offset y=0
+
+doorexit frames=1,2,2,2,1
+doorexit loop=2
+doorexit speed=0.20
+doorexit frametimes=1,1
+doorexit offset x=0
+doorexit offset y=0
+
+boll top=#0077FF
+boll mid=#000000
+boll bot=#ff0000
+
+[lang]
+winspecial=Sonic got a Chaos Emerald
+allspecial=Sonic got all Chaos Emeralds
+princess=our Princess
+savetext1=Peace is Paved
+savetext2=With Kingdom Saved
+savetext3=Hurrah to Sonic
+savetext4=Our Only Hero 
+savetext5=This Ends Your Trip
+savetext6=Of a Long Friendship

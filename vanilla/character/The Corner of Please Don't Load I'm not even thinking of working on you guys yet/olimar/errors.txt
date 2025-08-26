@@ -1,0 +1,2 @@
+COMPILATION ERROR in string to be executedError in code at line 1116:   
+  show_messsage(coll.type)     ^at position 4: Unknown function or script: show_messsage

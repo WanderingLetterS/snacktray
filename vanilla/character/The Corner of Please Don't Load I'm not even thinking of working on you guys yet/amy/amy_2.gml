@@ -1,0 +1,1286 @@
+#define spritelist
+stand,wait,lookup,pose,crouch,knock,dead,walk,run,brake,jump,fall,bonk,hammerspin,ball,skip,push,hang,piko,twirl,trip,flip,climb,flagslide,grind,piping,pipingup,sidepiping,doorenter,doorexit
+
+#define soundlist
+release,skid,spin,spindash,insta,dash,boom,firedash
+
+
+#define movelist
+Amy
+#
+[a]:I have
+[b]:No Idea
+
+
+#define rosterorder
+7
+
+
+#define start
+mask_set(12,12)
+cantwirl=0
+
+#define stop
+if (skidding) {soundstop(name+"skid") skidding=0}
+star=0
+grow=0
+hurt=0
+braking=0
+spindash=0
+spin=0
+push=0
+super=0
+boost=0
+firedash=0
+insta=0
+
+
+#define itemget
+if (type="jumprefresh") {
+	insted=0
+	mc=0
+}
+if (type="mushroom") {
+	if (!piped && !hurt && !(global.mplay>1 && flash)) {
+		coll=other.id
+		if (p2!=other.p2) {
+			itemc+=1
+			doscore_p(1000,1)
+		}
+		playgrowsfx("")
+		if (skidding) {soundstop(name+"skid") skidding=0}
+		
+		if (size=0) grow=1
+		oldsize=size
+		size=max(size,1)
+	
+		itemget=1
+	}   
+}
+if (type="fflower") {
+	if (!piped && !hurt && !(global.mplay>1 && flash)) {
+		coll=other.id
+		if (p2!=other.p2) {
+			itemc+=1
+			doscore_p(1000,1)
+		}
+		playgrowsfx("2")
+		if (skidding) {soundstop(name+"skid") skidding=0}		
+		if (!super && size!=2) grow=1
+		oldsize=size
+		size=2		
+		itemget=1
+	}                
+}
+if (type="bfeather") {
+	if (!piped && !hurt && !(global.mplay>1 && flash)) {
+		coll=other.id
+		if (p2!=other.p2) {
+			itemc+=1
+			doscore_p(1000,1)
+		}
+		playgrowsfx("3")
+		if (skidding) {soundstop(name+"skid") skidding=0}		
+		if (!super && size!=3) grow=1
+		oldsize=size
+		size=3
+		itemget=1
+	}                
+}
+
+
+if (type="star") {
+	if (!piped && !hurt && !(global.mplay>1 && flash)) {
+		coll=other.id
+		doscore_p(1000)
+		sound("itemstar")
+		itemc+=1
+		if (!super) {
+			star=1
+			alarm[2]+=other.fuel+2
+			alarm[3]=-1
+			kek=0 with (player) if (super) other.kek=1
+			if (!kek) {
+				mus_play("starman",1)
+				global.music="star"
+			}                      
+		}
+		if (skindat("growsfx3"+string(p2))) playsfx("growsfx3") 
+		else playgrowsfx("3")
+		itemget=1
+	}            
+} 
+if (type="1up") {
+    sound("item1up")
+    itemc+=1	
+	global.lifes+=1
+	deaths=max(0,deaths-1)
+	if (super) superpower=6000
+	else energy=maxe
+	itemget=1	
+}
+if (type="shield") {
+    if (!piped && !hurt && !(global.mplay>1 && flash)) {
+        coll=other.id
+        if (p2!=other.p2) {
+            itemc+=1
+            doscore_p(1000,1)
+        }
+        sound("itemshield")
+        shielded=1
+        itemget=1
+    }   
+}
+if (type="poison") {
+    if ((!piped && !hurt && !(global.mplay>1 && flash))) {
+        coll=other.id
+         if !invincible() hurtplayer("enemy")
+		 if (insta && insta<14 &&!star) hurtplayer("enemy")
+        itemget=1
+    }   
+}
+if (type="coin") {
+		sound("itemcoin")
+		if (other.fresh) global.scor[p2]+=100
+		global.coins[p2]+=1
+		coint+=1
+		if (name="robo") energy+=1
+		hit=1
+		itemget=1
+}
+
+#define effectsfront
+if (firedash && !piped) {
+    draw_sprite_part_ext(sheets[2],0,227+40*(firedash mod 4),46,39,39,round(x-19.5*xsc),round(y-19.5+dy)+4,xsc,1,$ffffff,alpha)
+}
+if (insta && insta<14) {
+    draw_sprite_part_ext(sheets[size],0,64+(floor((insta-1)/2) mod 4)*40,46,39,39,round(x-19.5*xsc),round(y-19.5+dy+4*!size)+4,xsc,1,$ffffff,alpha)
+}
+
+#define grabflagpole
+grabflagpole=1
+hsp=0
+vsp=0
+
+
+#define endofstage
+right=1
+grabflagpole=0
+if (hsp>=3 || push) {
+	akey=1
+	bkey=(jump && vsp>-3)
+}
+
+
+#define damager
+if (owner.instashieldin){
+if alarm0=0 {alarm0=14}
+alarm0-=1
+if alarm0=0 {owner.instashieldin=0 owner.fall=1}
+x=owner.x+owner.hsp y=owner.y+4+4*!owner.size sprite_index=spr_round32 mask_index=spr_round32 image_yscale=1 image_xscale=1
+hittype="instashield"
+
+coll=instance_place(x,y,collider)
+if (coll) {
+if (object_is_ancestor(coll.object_index,hittable)) {
+if (coll.object_index=brick) brickc+=1 else brickc=4
+hitblock(coll,owner,0,esign(coll.y-owner.y),0)
+}    
+}
+
+
+coll=instance_place(x,y,enemy)
+if (coll) {                    
+global.coll=owner.id
+if coll.object_index=lavabubble{
+coll.vsp=2
+} else 
+enemyexplode(coll,2)
+if owner.instashieldin
+owner.vsp=-owner.vsp
+}
+
+coll=instance_place(x,y,player)
+if (coll) {
+if (coll.id!=owner) if (!invincible(coll)) {    
+if (!flag.passed[owner.p2] && !flag.passed[coll.p2] && !coll.flash && !coll.piped) { coll.hittype=hittype
+with (coll) hurtplayer(hittype)
+}
+instance_create(x,y,kickpart)
+}
+}
+}
+else if (owner.twirl){
+x=owner.x+owner.hsp y=owner.y+4 sprite_index=spr_round32 mask_index=spr_round32 image_yscale=0.7 image_xscale=1.1
+hittype="instashield"
+
+coll=instance_place(x,y,collider)
+if (coll) {
+if (object_is_ancestor(coll.object_index,hittable)) {
+if (coll.object_index=brick) brickc+=1 else brickc=4
+hitblock(coll,owner,0,esign(coll.y-owner.y),0)
+}
+}
+
+
+coll=instance_place(x,y,enemy)
+if (coll) {                    
+global.coll=owner.id
+if coll.object_index=lavabubble{
+coll.vsp=2
+} else 
+enemyexplode(coll,2)
+owner.vsp=-owner.vsp
+}
+
+coll=instance_place(x,y,player)
+if (coll) {
+if (coll.id!=owner) if (!invincible(coll)) {    
+if (!flag.passed[owner.p2] && !flag.passed[coll.p2] && !coll.flash && !coll.piped) { coll.hittype=hittype
+with (coll) hurtplayer(hittype)
+}
+instance_create(x,y,kickpart)
+}
+}
+}
+
+else if (owner.piko)
+{
+hittype="enemy"
+sprite_index=spr_mask2x2
+mask_index=spr_mask2x2
+if (owner.piko>12 && owner.piko<15) {x=owner.x+owner.xsc2*14+owner.hsp y=owner.y-7 image_yscale=9 image_xscale=9}
+if (owner.piko>15 && owner.piko<19) {x=owner.x+owner.xsc2*17+owner.hsp y=owner.y-4 image_yscale=9 image_xscale=9}
+if (owner.piko>19 && owner.piko<23) {x=owner.x+owner.xsc2*17+owner.hsp y=owner.y+5 image_yscale=9 image_xscale=9}
+if (owner.piko=24) {y=-1000}
+
+coll=instance_place(x,y,collider)
+if (coll) {
+if (object_is_ancestor(coll.object_index,hittable)) {
+if (coll.object_index=brick) brickc+=1 else brickc=4
+hitblock(coll,owner,0,esign(coll.y-owner.y),0)
+}    
+}
+
+coll=instance_place(x,y,enemy)
+if (coll) {                    
+global.coll=owner.id
+if coll.object_index=lavabubble{
+coll.vsp=2
+} else 
+enemyexplode(coll,2)
+}
+
+coll=instance_place(x,y,player)
+if (coll) {
+if (coll.id!=owner) if (!invincible(coll)) {    
+if (!flag.passed[owner.p2] && !flag.passed[coll.p2] && !coll.flash && !coll.piped) { coll.hittype=hittype
+with (coll) hurtplayer(hittype)
+}
+instance_create(x,y,kickpart)
+}
+}
+}
+else 
+{y=-1000}
+
+#define projectile
+if (event="create") {
+	image_xscale=8
+	image_yscale=4
+
+	frame_sub=0
+	frame=0
+	brickc=0
+	seqcount=2
+	getregion(x) 
+	timer0=3
+	timer1=128
+	
+	hspeed=xsc*3+owner.hsp*(xsc=sign(owner.hsp))
+	speed=median(2,speed,5)
+	playsfx("sonicboom")	
+}
+if (event="step") {
+	timer0-=1 if (timer0=0) visible=1
+	timer1-=1 if (timer1=0) instance_destroy()
+	calcmoving()
+
+	frame_sub=!frame_sub
+	if frame_sub frame+=1
+	if (frame>=3) frame=0
+
+	if (!inview()) instance_destroy()
+	xsc=sign(hspeed)
+	ignoreoncount=1
+	if (!waterdust && !feathdash){
+	ignoreoncount=0
+	coll=instance_place(x,y,collider)
+	if (coll) {
+		if (object_is_ancestor(coll.object_index,hittable)) {
+			if (coll.object_index=brick) brickc+=1 else brickc=4
+			hitblock(coll,owner,1,-1,0)
+		} else brickc=4
+		instance_create(x,y,kickpart)     
+		if (brickc=4) {sound("itemblockbump") instance_destroy()}
+	}
+
+	coll=instance_place(x,y,enemy)
+	if (coll) {
+		if (coll.object_index!=beetle) {
+			yes=1
+			if (coll.object_index=shell) if (coll.type="beetle") yes=0
+			if (yes) {
+				global.coll=owner.id  
+				instance_create(x,y,kickpart)  
+				enemydie(coll,2)
+			}
+		}
+		instance_destroy()
+	}
+
+	coll=instance_place(x,y,bowserboss)
+	if (coll) {
+		if (!coll.flash) {
+			coll.hp-=1
+			coll.flash=64
+			coll.owner=owner
+			sound("enemybowserhurt")
+			instance_create(x,y,kickpart)
+			instance_destroy()
+		}
+	}
+
+	coll=instance_place(x,y,player)
+	if (coll) {
+		if (coll.id!=owner) if (!invincible(coll)) {    
+			if (!flag.passed[owner.p2] && !flag.passed[coll.p2] && !coll.flash && !coll.piped) { 
+				if (coll.name="knux" && coll.glide && sign(hspeed)=-sign(coll.hsp) && object_index!=powah_wave) {hspeed=abs(coll.hsp+1)*esign(coll.hsp,1) owner=coll.id with (owner) playsfx("knuxreflect") exit}                                                                   
+				if (coll.name="robo" && coll.lookup && coll.xsc=sign(hspeed)) {instance_create(x,y,kickpart) instance_destroy() exit}
+				with(coll) fragplayer(other.owner)
+			}
+			instance_create(x,y,kickpart) instance_destroy()
+		}
+	}
+	} else{
+		timer0=0
+		visible=1
+		if timer1>14 timer1=14 
+		if timer1=14 setxsc=owner.xsc
+		efxfr=efxfr+0.25 
+		if waterdust{
+			hspeed=(sign(setxsc)*(-3/efxfr*2))
+			xsc=sign(hspeed)
+		}
+		else {xsc=setxsc hspeed=-setxsc}
+	
+	
+	}
+}
+if (event="draw") {
+if !waterdust && !feathdash{
+	draw_sprite_part_ext(sheet,0,10+25*frame,88,24,16,round(x-12*xsc),round(y-8),xsc,1,$ffffff,1)
+	}
+else if !feathdash{
+	draw_sprite_general(global.effectssheet[biome],0,8+25*floor(efxfr),158,24,24,x,round(y-8)-13,-1,-xsc,90,$ffffff,$ffffff,$ffffff,$ffffff,1)
+	draw_sprite_general(global.effectssheet[biome],0,8+25*floor(efxfr),158,24,24,x,round(y-8)+15,1,-xsc,90,$ffffff,$ffffff,$ffffff,$ffffff,1)
+	if efxfr<3{draw_sprite_general(global.effectssheet[biome],0,8+25*floor(efxfr*2),183,24,24,x,round(y-8)+18,1,-xsc,90,$ffffff,$ffffff,$ffffff,$ffffff,1)}
+	} 
+else {
+	draw_sprite_part_ext(owner.sheets[3],0,227+40*floor(efxfr),46,39,39,round(x-19.5*xsc),round(y-19.5)+4,xsc,1,$ffffff,owner.alpha)
+	savedepth=depth
+	depth=owner.depth+1
+	draw_sprite_part_ext(owner.sheets[3],0,227+40*floor(efxfr),86,39,39,round(x-19.5*xsc),round(y-19.5)+4,xsc,1,$ffffff,owner.alpha)
+	depth=savedepth
+	}
+}
+
+
+#define sprmanager
+frspd=1
+cantslowanim=0
+if (grabflagpole) {sprite="flagslide"}
+else if (hurt) {sprite="knock"}
+else if (crouch) {sprite="crouch"}
+else if (trip) {sprite="trip" frspd=1 cantslowanim=1}
+else if (piko) {sprite="piko" frspd=1}
+else if (jump) {
+if (onvine) 
+{
+sprite="climbing" frspd=sign(left+right+up+down)
+}
+    else if (bonk) sprite="bonk"
+    else if (twirl) sprite="twirl"
+    else if (fall=8) {sprite="skip"}
+    else if (fall=9) {sprite="flip" if vsp>0 fall=1}
+    else {sprite="jump" if (vsp>0) sprite="fall"}
+} else {
+    if (spin) {sprite="ball" frspd=0.5+abs(hsp/3)}
+    else if (push!=0) {sprite="push" frspd=1+abs(hsp/3)}
+    else if (hsp=0) {
+        if (hang) {sprite="hang"}
+        else if (pose) sprite="pose"
+        else if (lookup) {sprite="lookup"}
+        else if (waittime>maxwait) {sprite="wait"}
+        else {sprite="stand"}
+    } else {
+        if (braking) sprite="brake"
+else if (abs(hsp)>maxspd*0.9 && !water && !finish && boost && boostvar>=0.75) {sprite="maxrun" frspd=abs(hsp/3)}
+        else if (abs(hsp)>maxspd*0.9 && !water && !finish) {sprite="run" frspd=abs(hsp/3)}
+        else {sprite="walk" frspd=0.2+abs(hsp/4)}
+    }
+}
+
+
+#define controls
+com_inputstack()
+
+tempbrick=0
+
+//situations in which it should skip controls entirely
+if (hurt || piped || move_lock) {
+    di=0
+    exit
+}
+
+if (up) com_piping()
+oup=up
+
+if (up && (!hang || !size)) {
+    if (hsp=0 && !jump) lookup=1
+    else lookup=0
+} else lookup=0
+
+//list of things that prevent you from moving
+if (spindash || (crouch && !jump) || twirl || trip || (super && fall=10) || vinegrab || grabflagpole) h=0
+if (gianadash) h=sign(xsc)
+
+//movement
+if (h!=0) {
+    loose=0
+    coll=noone
+    if (h=sign(hsp) || hsp=0) coll=collision(h,0)
+    if (coll) if (object_is_ancestor(coll.object_index,moving)) coll=place_meeting(x+h,y+coll.vsp+sign(coll.vsp),coll)
+    if (coll) if (player_climbstep(coll)) coll=noone
+    if (x<=minx && left) coll=1
+    if (coll) {
+        com_hitwall(h)
+        if (!jump && !spin && !crouch && !firedash) {
+            push=h
+            xsc=h
+            braking=0
+com_piping()
+        } else{com_piping()}
+    } else {
+        if (spin) {
+            if (sign(hsp)!=h) hsp+=h*0.05*wf
+        } else {
+            if (!jump) {
+                if (sign(hsp)!=h) {
+                    if (abs(hsp)>maxspd*0.8) {
+                        braking=1
+skidding=1
+playsfx(name+"skid")
+                        brakedir=h
+                    }
+                    hsp+=0.33*wf*h
+                    if (abs(hsp)<0.5) if (!firedash) xsc=h
+                } else {
+                    hsp+=0.06*wf*h
+                    braking=0
+                    if (!firedash) xsc=h
+                }
+            } else {
+                hsp+=0.08*wf*h
+                if (!firedash) xsc=h
+else collwin=instance_place(x+hsp,0,goalblock)
+if collwin {hsp=0 fallsprite="dash" collwin.owner=id with collwin{ event_user(4)}
+}
+            }
+        }
+    }
+}
+
+if (push!=h) push=0
+
+com_di()
+
+//code for specifically the a button
+if ((abut || jumpbufferdo) && (!springin)) {
+    if (!jump&&!piko||fall=69||grabflagpole) { //jump
+        if (crouch && push==0 && fall!=69) {
+            jumpsnd=playsfx(name+"jump")
+            shoot(x,y+10,smoke,0,0)
+            fall=8
+            hsp=3*xsc
+            jump=1
+            vsp=-2
+            skip=1
+        } else {
+            trip=0
+            jumpsnd=playsfx(name+"jump")
+            vsp=-5-0.2*super
+            onvine=0
+            if (water) vsp=-sqrt(sqr(vsp)*wf+2)
+
+            grabflagpole=0
+            latchedtoflagpole=0
+            //change jump angle in steep slopes
+            vd=point_direction(0,0,hsp,vsp)+point_direction(0,0,1,slobal/2)
+            vm=point_distance(0,0,hsp,vsp)
+            hsp=lengthdir_x(vm,vd)
+            vsp=lengthdir_y(vm,vd)
+
+sprite_angle=0
+
+            jump=1
+            fall=1
+            braking=0
+            spin=0
+            canstopjump=1
+            dashtimer=60
+            if (mymoving) hsp+=avgmovingh
+            crouch=0
+            if (spin && !star) seqcount=0
+            fallspd=min(1,0.5+abs(hsp)/5)
+        }
+    } else { //air jumps
+      if (cantwirl!=1) {
+if !twirl 
+{
+if twirlpre!=0 
+twirl=twirlpre 
+else 
+twirl=1
+}
+}
+jumpbuffer=4*!jumpbufferdo
+}
+}
+jumpbufferdo=0
+springin=0
+
+if (akey) {
+    if (jumpbuffer) jumpbuffer-=1
+} else jumpbuffer=0
+
+if (!akey) {
+if twirl
+{
+twirl=0
+}
+    if (canstopjump=1 && jump && vsp<-2 && !sprung && fall!=9) {
+        vsp*=0.5
+    }
+    canstopjump=0
+}
+
+if (bbut) {
+if (jump && !insted && (fall=1 || fall=10)) {
+            insted=1
+            fall=0
+            firedash=0
+            boost=0
+            insta=1 alarm[1]=20+water*10-(name="ashura")*10
+            instashieldin=1
+            playsfx(name+"insta")
+        }
+
+if (!jump && !crouch && !piko) {
+piko=1
+xsc=xsc2
+jump=0
+crouch=0
+playsfx("amypiko")
+}
+}
+
+if (cbut) {
+if (abs(hsp)>1 && !trip)
+{
+jump=1
+fall=1
+trip=1
+hsp=hsp*1.2
+vsp=-2
+xsc=xsc2
+}
+    //if (spindash || (crouch && down && size)) {
+    //    playsfx(name+"spindash",0,1+(median(0,spindash-1,3)/3)*skindat("pitchdash"+string(p2)))
+    //    spindash=min(4,spindash+1)
+    //   tempbrick=1
+    //}
+}
+
+//crouching and spinning
+if (down && !up) {
+    if (!jump && !braking && !spin) {
+            crouch=1
+    }
+com_piping()
+} else {
+    mask_temp(12,12)
+    if (!jump) {
+        if (collision(0,-16) && size) spin=1
+        crouch=0
+    }
+    mask_reset()
+}
+
+if (!grabflagpole && (trip || spin || crouch || size=0 || fall=5)) mask_set(12,12)
+else mask_set(12,24)
+
+#define movement
+if (piped || move_lock) exit
+
+//speed limits
+if (!jump) if (loose || spin || crouch || piko || trip && !jump) {
+    braking=0
+    frick=0.06+(trip*0.1)+crouch*0.5
+    if (spin) frick=0.005
+    hsp=max(0,abs(hsp)-frick)*sign(hsp)
+}
+
+//speed cap rubberband formula
+maxspd=(3 + !!size*0.5 + spin + (boostvar) + firedash/24+ water*0.1)*wf
+if (abs(hsp)>maxspd) hsp=(abs(hsp)*2+maxspd)/3*sign(hsp)
+
+vsp=min(7+downpiped,vsp)
+
+///movement
+//hi moster here dont uncomment the yground or easyground stuff because its required for the cool new slope system to work
+//for anyone porting a charm from unfinished build or below to this build, delete or comment all of the commented code and add player_nslopforce()
+calcmoving()
+
+if (!dead && !grabflagpole) {
+if fall!=69
+player_horstep()
+    player_nslopforce()
+    //yground=easyground()
+	//if (yground!=verybignumber) yground-=14
+    if (jump) {
+        //gravity
+        hang=0
+        if (fall=10 && super) {
+            if !twirl hsp+=(right-left)*0.25
+            if (name="ashura") vsp+=(down-up)*0.15-0.075
+            else vsp+=(down-up)*0.15+0.05+0.1*max(0,2-abs(hsp))*(vsp<2)
+            l=median(0,point_distance(0,0,hsp,vsp)-0.05,3)
+            d=point_direction(0,0,hsp,vsp)
+            hsp=lengthdir_x(l,d)
+            vsp=lengthdir_y(l,d)
+            if !twirl xsc=esign(hsp,xsc)
+        } else if fall!=69 {
+            if twirl vsp=max(0.05,abs(vsp)-0.1)*sign(vsp) else vsp+=0.15*wf
+        }
+vine_climbing()
+        crouch=0
+        spindash=0
+        braking=max(0,braking-1)
+if (sprung && !fall) fall=1
+push=0 spin=0
+coyote=0
+osld=0
+player_vertstep()
+if (!jump) sld=point_direction(0,0,1,slobal)
+    }
+
+sprite_angle=0
+if (osld<180 && osld>0 && !instance_place(x-16,y+4,ground)) dy=3
+else if (osld>180 && osld<320 && !instance_place(x-16,y+4,ground)) dy=3
+
+    if (!jump) {
+//if (yground!=verybignumber) {y=yground while collision(0,0) && !collision(0,-8) {y-=1 }}
+osld=sld
+sld=point_direction(0,0,1,slobal)
+if (!jump && abs(hsp)>=maxspd && spin) {
+diff=anglediff(sld,osld)
+if (sign(diff)=sign(hsp) && diff*sign(hsp)>20 && sld=0) {
+jump=1 fall=1 fallspr=sprite fallspd=frspd
+y=min(y,yp)
+hsp=lengthdir_x(hsp,osld) vsp=-abs(lengthdir_y(hsp,osld))*1.5 // coolness factor
+}
+}
+
+        if (finish && ending="retainer" && !jump) coyote=0
+        if (!collision(0,4) /*&& (y<yground-2)*/) {
+            coyote+=1
+            if (coyote=3) {
+jump=1
+fall=1
+fallspr=sprite
+if (spin || spindash) fall=5
+if (firedash) fall=10
+fallspd=frspd
+spin=0
+crouch=0
+}
+        } else coyote=0
+        if (jumpbuffer=-1) {
+            jumpbuffer=0
+            //jump buffering
+            if (rise=0 && !down) {
+                jumpbufferdo=1
+                if (insta) insted=1
+            }
+        }
+    }
+}
+com_finishmove()
+
+
+#define actions
+com_warping()
+com_actions()
+
+weight=0.4+0.4*!!size
+bartype=0
+
+
+
+// VULNERABILITY AND PLAYER COLLISION
+
+//Intangibility
+is_intangible=0
+with (flag) if (passed[other.p2]) other.is_intangible=1
+if (transform || finish || piped=1) is_intangible=1
+
+//Power levels
+power_lv=0
+is_coinexplosive=0
+if (spindash || spin || (jump && (!fall || fall=5))) power_lv=1
+if (firedash) power_lv=4
+if (star || insta) power_lv=5
+if (super) power_lv+=1
+if (firedash) is_coinexplosive=1
+
+//Special interactions
+pvp_spin=spin //rolling clash
+pvp_avoid=0 //I don't like social interactions
+pvp_stomper=0 //make sure to set for 0 for the mario bros when pounding
+pvp_ignore=instashieldin //For when you wanna hit the others but not yourself
+pvp_knockaway=0 //I won't hurt you, just go away
+
+//shimming
+if (abs(hsp)>(maxspd-boostvar)*0.9 && !water && !finish) sham+=1
+else {sham=0 shimming=0}
+if (sham>=60) shimming=1
+
+//whoputshitinyourpip
+if (piped) exit
+
+//waiting animation
+if maxwait{
+if (sprite="stand")
+{waittime+=1}
+else if sprite!="wait" waittime=0
+}
+
+//grounded state
+if (!jump) {
+    vsp=0
+    if (!star && !spin && !spindash) seqcount=0
+    //ledge hang animation detection
+    if ((sprite="stand" && hsp=0) || hang) {
+        image_xscale=1/6
+        hang=(!instance_place(x,y+4,collider) && instance_place(x-7*xsc,y+4,collider))
+        image_xscale=1
+    } else hang=0
+
+    //skidding
+    if (push=0 && hsp!=0 && braking) {
+        playsfx(name+"skid")
+        skidding=1
+    } else if (skidding) {soundstop(name+"skid") skidding=0}
+}
+
+//water
+if (underwater()) {
+    if (!water) {
+        if (abs(vsp)>2) water_splash(1)
+        vsp=min(1,vsp/2)
+    }
+    water=1 wf=0.45
+} else {
+    if (water) {
+        water=0
+        vsp=max(-4,vsp*2)
+        if (abs(vsp)>2) water_splash(0)
+    }
+    wf=1
+}
+
+//smoke generation
+if (global.dustframe) {
+    if (braking || fall=3) {
+        i=shoot(x,y+10,psmoke) i.depth=depth+2
+    }
+    if (vsp<-5-2*!sprung) {
+        shoot(x,y+8,psmoke,0,-1)
+    }
+    if (vsp>7) {
+        speedwagon+=1
+        if (speedwagon>60) shoot(x,y,psmoke,0,1)
+    } else speedwagon=0
+    if (abs(hsp)>4 && boostvar>=0.75 && !jump) shoot(x-12*xsc,y+12,psmoke,0,0)
+}
+
+
+if (insta) insta+=1
+if (dashtimer) dashtimer-=1
+boostvar=inch(boostvar,0.75*boost*!jump*!spin,0.014+(0.002*jump))
+if (boost) {
+    if (hurt && !super) boost=0
+    if (point_distance(0,0,hsp,vsp)<3.5 || (boostvar<=0 && !boosted)) boost=0
+} else boostvar=0
+if (super) boost=1
+if (firedash) {firedash-=1 boost=1}
+
+//spindash/spin
+global.coll=id
+if (spindash || spin) {
+    coll=instance_position(x-10*sign(hsp),y+22,hittable)
+    coll2=instance_position(x,y+22,hittable)
+    
+    if (spindash) coll=coll2
+    else if (coll2) if (coll2.object_index!=brick) coll=coll2
+    if (coll) if (coll.hit) coll=0
+    if (coll=spinblacklist) coll=0
+    if (!coll)
+        with (hittable)
+            if (id!=other.spinblacklist && (object_index!=brick || other.spindash) && !hit)
+                if (instance_place(x,y-4,other.id)) other.coll=id
+    
+    if (coll) if (!coll.goinup || tempbrick) {
+        i=coll.object_index
+        hitblock(coll,id,0,1,0)
+        if (i=brick) {spinblacklist=coll if (spindash) {jump=1 spindash=0 crouch=0 vsp=-2*wf}}
+    }
+    
+    if (spindash) {
+        spindash=max(1,spindash-0.025)
+        if (!crouch) {
+            //if (spindash>3) boost=1
+            spin=1
+            hsp=xsc*6*(0.75+0.25*median(0,spindash,2)/2)
+            spindash=0
+            
+                soundstop(name+"spindash")
+                playsfx(name+"release")
+            
+        }
+        if (hsp!=0) spindash=0
+    }
+    
+    //stop spinning
+    if (abs(hsp)<0.2 && spin) { 
+            spinc+=1 if (spinc=8) {
+            mask_temp(12,24)
+            if (collision(0,0) && size) {
+                xsc=esign(h,xsc)
+                hsp=xsc
+                spinc=0
+                spin=1
+            } else {
+                spinc=0
+                spin=0    
+                hsp=0
+                soundstop(name+"spin")
+                if (name!="mario") crouch=down
+            }
+            mask_reset()
+        }   
+    }
+} else spinblacklist=noone
+//Christianity moment
+jesus=(boost && vsp<4 && !water)
+
+if piko
+{
+xsc=xsc2
+piko+=1
+if piko < 9 && abs(hsp)<3
+hsp=0
+if piko=9 && abs(hsp)<3
+hsp=1.3*xsc2
+if piko>20 && bkey && abs(hsp)>2.9
+{
+piko=0
+fall=9
+jump=1
+canstopjump=0
+vsp=-6.5*wf
+}
+if piko=35
+{
+piko=0
+}
+}
+if !piko && !trip && !twirl
+xsc2=xsc
+
+if !twirl
+thsp2=hsp
+
+if twirl
+{
+twirlpre=twirl
+hsp=thsp2
+xsc=xsc2
+twirl+=1
+if twirl >= 100
+{
+twirlpre=0
+twirl=0
+cantwirl=1
+}
+}
+
+if hsp=0 && trip
+trip=0
+
+com_endactions()
+
+
+#define enemycoll
+//Code that defines collision with enemies
+
+if (coll) {
+    calcfall=fall
+    if (fall=5 || fall=12) calcfall=0
+    global.coll=id
+    type=coll.object_index
+        
+    seqcount=max(1,seqcount)
+    
+    if (super) {
+        if (water) seqcount=1
+        enemyexplode(coll)
+        exit
+    }
+        
+    if (coll.object_index=lakitu) if (coll.flee) exit
+    
+    if (star  
+    || (spin && type!=spinyegg && type!=beetle && type!=koopa && !object_is_ancestor(type,koopa) && type!=shell)
+    || (pound>13 && type!=piranha && type!=spinyegg && type!=spiny)) {
+        instance_create(mean(x,coll.x),mean(y,coll.y),kickpart)
+        if (type=hammerbro) seqcount=max(5,seqcount)
+        enemydie(coll)                
+        exit
+    }
+    
+    if (spindash || inst || firedash) {if (diggity=32) exit enemyexplode(coll) exit}
+    
+    if (type=piranha) {
+        hurtplayer("enemy")
+        exit
+    }
+    
+    if (spin) {
+        if (type=shell) {if (coll.type!="beetle") {enemydie(coll) exit}}
+        else if (type=beetle || object_is_ancestor(type,koopa) || type=koopa) {hsp=0 jump=1 jumpspd=0.5 spin=0 enemystomp(coll) exit}
+        else if (type=spinyegg) {hurtplayer("enemy") exit}
+        else {enemydie(coll) exit}
+    }
+                     
+    if (type=spiny) {
+        if (!fall && vsp<0) enemyexplode(coll)
+        else hurtplayer("enemy") exit
+    }
+    if (type=spinyegg) {
+        if (punch && punch<=10) enemydie(coll) else hurtplayer("enemy") exit
+    }                
+            
+    if (type=shell && !coll.time) {          
+        if (coll.type="spiny" && (coll.vspeed-vsp)*coll.ysc<0) {
+            hurtplayer("enemy") exit
+        } else if (!coll.kicked || (coll.stop && (coll.owner=id || coll.vspeed>=0))) {
+                if (coll.stop && !coll.kicked) doscore_p(8000)
+                else {seqcount=max(seqcount,2+scorelok1) doscore_p()}
+                if (jump) {
+                    if (vsp>0) {
+                        vsp=-3-akey*1.5
+                        canstopjump=akey
+                        if (fall=12) fall=5
+                    }
+                }
+                kicksound(0)
+                instance_create(mean(x,coll.x),mean(y,coll.y),kickpart)
+                with (coll) {spd=max(3,abs(other.hsp)+1) hspeed=spd*esign(x-other.x,other.xsc) owner=other.id kicked=1 stop=0 phase=owner}
+            
+            exit
+        } else {
+            if (coll.kicked && !coll.stop && sign(hsp)=sign(coll.hspeed) && abs(hsp)>abs(coll.hspeed)) {
+                kicksound(0)
+                instance_create(mean(x,coll.x),mean(y,coll.y),kickpart)
+                coll.spd=max(3,abs(hsp)+1)
+                coll.owner=id
+                coll.phase=id
+                exit
+            } else if (coll.kicked && (!coll.stop || (coll.owner!=id && coll.vspeed<0)) && (vsp<0 || !jump)) {hurtplayer("enemy") exit}
+            else {
+                with (coll) {hspeed=0 owner=noone phase=other.id stop=0 kicked=0 time=15}
+                vsp=-3-akey*1.5 canstopjump=akey sound("enemystomp") doscore_p() if (fall=12) fall=5 exit
+            }
+        }                    
+    }
+    
+    if (type=blooper) {
+        if (jump && (!calcfall || !water) && vsp>0) {if (calcfall) enemystomp(coll,5) else enemyexplode(coll)}
+        else hurtplayer("enemy") exit
+    }
+    
+    if (type=cheepred || type=cheepwhite) {
+        if (jump && !calcfall) {enemyexplode(coll) exit}
+        else {hurtplayer("enemy") exit}
+    }
+    
+    if (jump) {
+        if (type=koopa || type=beetle || type=rexbig || object_is_ancestor(type,koopa)) {
+            if (vsp<0) {
+                if (calcfall) hurtplayer("enemy")
+                else enemyexplode(coll) exit
+            }
+        } else {
+            if (!calcfall) {enemyexplode(coll) exit}
+            if (vsp<0) {hurtplayer("enemy") exit}
+        }
+        
+        if (type=goomba && seqcount=1 && !scorelok4) {seqcount=0 scorelok4=1}    
+        if ((type=koopa || type=redkoopa) && seqcount=1) scorelok1=1    
+        if (type=hopkoopa || type=redhover) seqcount=max(seqcount,1)
+        if (type=hammerbro) seqcount=max(5,seqcount)
+        if (fall=12) fall=5                        
+        enemystomp(coll) exit      
+    } else if (coll.vspeed<0 && coll.y>y+8) {jump=1 fall=1 vsp=-0.5 enemystomp(coll) exit}
+    
+    hurtplayer("enemy")   
+}    
+
+#define hurt
+pipe=0
+sprongin=0
+speed=0
+if (skidding) {soundstop(name+"skid") skidding=0}
+if (carry && carryid) {with (carryid) event_user(0) carryid=noone carry=0}
+
+energy=0
+braking=0
+sprung=0
+diggity=0
+grow=0
+fairdash=0
+gianadash=0
+gk=0
+fk=0
+punch=0
+bounce=0
+twirl=0
+oldsize=size
+jumpbuffer=0
+hyperspeed=0
+hp=0
+star=0
+onvine=0
+if (super) stopsuper()   
+
+if ((!size || ohgoditslava) && !shielded) {
+   if (global.mplay>1 || global.debug || global.lemontest) alarm[7]=120
+   if (global.gamemode="battle") dropcoins(0)
+   die()
+} else {
+    fly=0
+    jet=0
+    climb=0 
+    rise=0
+    slide=0
+    glide=0
+    sprung=0
+    fall=0
+    pound=0  
+    braking=0
+    boost=0
+    upper=0
+    hyperspeed=0
+    if (shielded) playsfx(name+"shielddamage")
+    else playsfx(name+"damage")
+
+    starhit=0
+    
+jump=1 hurt=1+starhit if (!starhit) if (shielded) {shielded=0} else {if size=3 size=1 else size-=1} hsp=xsc*-2*wf vsp=-3*wf
+    
+}
+
+
+//Block hitting
+
+#define hitblocks
+if typeblockhit=0{
+with (blockcoll){
+if (stonebump || owner.size=0 && insted!=1 && !owner.tempkill && cracked=0) {
+    if (!goinup) {if (insted!=2) if (owner.twirl=0) owner.vsp=1.5 sound("itemblockbump") tpos=1}
+} else { 
+     if (!insted) {if (owner.twirl=0) owner.vsp=1.5}
+    owner.blockc+=1
+upwardthrust()
+    global.scor[owner.p2]+=10
+    sound("itemblockbreak")
+    hit=1
+    if (skindat("bricd")) {
+        i=instance_create(x,y,bricd)
+        i.biome=biome
+        i.depth=depth
+    }
+    if (stoned="1") with (instance_create(x,y+8,stone)) phase=1
+    i=instance_create(x+4,y+12,part) i.hspeed=-1 i.vspeed=-1+2*go
+    i=instance_create(x+12,y+12,part) i.hspeed=1 i.vspeed=-1+2*go 
+    i=instance_create(x+4,y+4,part) i.hspeed=-1 i.vspeed=-3+2*go
+    i=instance_create(x+12,y+4,part) i.hspeed=1 i.vspeed=-3+2*go
+    
+    with (turing) event_user(4)
+    instance_destroy()
+  }
+ }
+} else if typeblockhit=1{
+	hititembox()
+}
+
+#define hitwall
+//hit blocks sideways
+if (firedash || (spin && abs(hsp)>0.5) || (super && fall=10)) {
+    global.coll=id
+    with (hittable) if (instance_place(x-other.hitside,y,other.id)) {
+if global.coll.firedash go=sign(global.coll.vsp) else go=-1
+        insted=1
+        event_user(0)
+insted=0
+    }
+    coll=collision(hitside,0)
+    if (firedash && jump) {canpipejump=1 com_piping() fall=5 vsp=0} else canpipejump=0
+}
+
+if (coll=noone) exit
+
+if (!collpos(sign(hitside)*10,8,1)) {        
+    //gap running
+    if (y<coll.y-12) {y=coll.y-14 coll=noone exit}
+}
+com_piping()
+hsp=0
+hyperspeed=0
+
+if twirl
+{
+twirlpre=0
+twirl=0
+cantwirl=0
+}        
+
+
+#define landing
+braking=0
+insted=0
+airdash=0
+dashanim=0
+boosted=0
+twirlpre=0
+twirl=0
+cantwirl=0
+onvine=0
+
+if fall=8 || fall=9
+fall=0
+
+if (downpiped) {
+shoot(x-8,y+4,psmoke,-2,-1)
+shoot(x+8,y+4,psmoke,2,-1)    
+    downpiped=0
+}
+if (hurt) {flash=1 fk=0 hsp=0 hurt=0}
+
+playsfx(name+"step")
+
+//jump buffering
+if (jumpbuffer) jumpbuffer=-1
+
+//jump into tiny space
+if (insted!=2 && !spin) {
+mask_temp(12,12)
+coll=collision(0,0)
+mask_reset()
+if (!coll && collision(0,0)) {
+spin=1
+mask_set(12,12) 
+playsfx(name+"spin")
+hsp=max(abs(hsp),2)*esign(hsp,xsc)
+}
+}
+
+
+#define death
+if (event="create"){
+
+alarmmp=60
+alarm1=300
+sprite="dead"
+frame=0
+frspd=1
+spindash=0
+alpha=1
+
+if global.mplay>1 alphadecay=1
+
+name=owner.name
+p2=owner.p2
+owner=owner.id
+size=owner.size
+xsc=owner.xsc
+ysc=owner.ysc
+water=owner.water
+vspeed=-3.5 gravity=0.1
+
+} 
+else if (event="step"){
+alarmmp=max(0,alarmmp-1)
+alarm1=max(0,alarm1-1)
+
+if alphadecay &&!alarmmp alpha-=0.1
+
+if alarm1=0 instance_destroy()
+
+} else if (event="draw"){
+}
+
+
+#define enterpipe
+if (type="side") {
+	if (firedash) {set_sprite("dash") frspd=1 hspeed=xsc*3 fastpipe=1  }
+	if (spin||crouch) {
+		set_sprite("ball")
+		frspd=min(1,0.1+abs(hsp/4))
+		if (abs(hsp)>=(maxspd) && !underwater()) {fastpipe=1 playsfx(name+"spin")}
+	}
+	if (boost) {fastpipe=1}
+}
+if (type="up") {
+set_sprite("fly")
+}
+if (type="down") {}
+
+if (skidding) {soundstop("sonicskid") skidding=0}
+braking=0
+insta=0
+crouch=0
+push=0     
+firedash=0
+dash=0
+
+
+#define exitpipe
+if (type="door") {}
+if (type="side") {}
+if (type="up") {}
+if (type="down") {}
+
+

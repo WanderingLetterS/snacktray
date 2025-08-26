@@ -1,0 +1,60 @@
+[worldsettings]
+lineamount=13
+
+
+[line 0]
+tilename=start,
+
+[line 1]
+tilename=greenpipe,bluepipe,brownpipe,waterpipe,greenpipeexit,bluepipeexit,brownpipeexit,waterpipeexit,museumpipe,
+
+[line 2]
+tilename=level1,level2,level3,
+
+[line 3]
+tilename=levelmush,levelflower,levelfeather,levelstar,levelminus,tl_grass,t_grass,tr1_grass,tr2_grass,
+
+[line 4]
+tilename=grass,water,watertop,bl_grass,b_grass,br_grass,l_wall,wall,r_wall,
+
+[line 5]
+tilename=tr2_grassflip,tr_grassflip,tl_grassflip,SMBDXsky,waterdeco,waterdeco2,bl_wall,b_wall,br_wall,
+animation=0
+framemax=1
+[line 6]
+tilename=rock,bridge,piramid,SMB3ground,SMB3grass,DXrock,tl_cloud,cloud,tr_cloud,
+
+[line 7]
+tilename=castle,tallbush,tallerbush,tallestbush,
+height=2
+
+[line 8]
+tilename=bush,
+animation=1
+speed=0.1
+framemax=4
+
+[line 9]
+tilename=peachcastle,tall,pipe
+height=2
+
+[line 10]
+tilename=SMB3help,SMB3aiship,
+animation=1
+speed=0.2
+framemax=2
+
+[line 11]
+tilename=rock,
+
+[line 12]
+tilename=level1clear,level2clear,level3clear,level4clear,level5clear,level6clear,level7clear,level8clear,level9clear,
+
+[line 13]
+tilename=levelmushclear,levelflowerclear,levelfeatherclear,levelstarclear,levelminusclear,castleclear,brokenclear,
+
+[line 14]
+tilename=level4,level5,level6,level7,level8,level9,
+
+[line 15]
+tilename=seasidepipe,volcanopipe,whitepipe,maroonpipe,seasidepipeexit,volcanopipeexit,whitepipeexit,maroonpipeexit,museumpipeexit,

@@ -1,0 +1,2 @@
+COMPILATION ERROR in string to be executedError in code at line 21:   
+if (type!="mini") com_item() //remove the mini check if you are adding a mini form                     ^at position 20: Unknown function or script: com_item

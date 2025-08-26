@@ -1,0 +1,28 @@
+time=30
+1=7
+2=7
+3=7
+xxxxxxxxxxxxxxxx/######\xxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxx#########xxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxx##    `##xxxx   xxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxx##    %xxxOxx  %xxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxx##    /##xxxx  %xxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxx##xxx/###xxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxx##xxx##´xxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxx##xxx##xxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxx##xxx##xxxxxxxxxxxxxxxxxxxxxxxxx
+/###########\xxx##xxx##xxxxxxxxxxxxxxxxxxxxxxxxx
+#############\x/#´   `#\xxxxxxxxxxxxx##########\
+####O    .######´.....####xxxxx##Oxxx  .t. `####
+####  .. .##´         #         #xxxxx     .###O
+####t :: T##T S    @  1 ....  % #Oxxx@  :  .####
+####  .. .##\         #         #xxxxx     .###O
+####O    .#######     ####xxxxx##Oxxx   .  /####
+#############´xxxx   /#´xxxxxxxxxxxxx## . #####´
+`###########´xxxxx   xxxxxxxxxxxxxxxxxO . Oxxxxx
+xxxxxxxxxxxxxxxxxx   xxxxxxxxxxxxxxxxxx . xxxxxx
+xxxxxxxxxxxxxxxx## : ##xxxxxxxxxxxxxxxx . xxxxxx
+xxxxxxxxxxxxxxxx#  .  #xxxxxxxxxxxxxxxx   xxxxxx
+xxxxxxxxxxxxxxxx#. . .#xxxxxxxxxxxxxxxx F xxxxxx
+xxxxxxxxxxxxxxxx#  .  #xxxxxxxxxxxxxx#O   O#xxxx
+xxxxxxxxxxxxxxxx# x x #xxxxxxxxxxxxxx#######xxxx

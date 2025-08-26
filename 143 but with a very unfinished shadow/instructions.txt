@@ -1,0 +1,7 @@
+Required steps for compiling Sonic Boll:
+
+- Extract all the included files to C:\SonicBoll\...
+- Install the Emulogic font to your system
+- Launch a registered or cracked Game Maker 8.1
+- Install both included extensions to Game Maker
+- Load game gm81 source and have fun!

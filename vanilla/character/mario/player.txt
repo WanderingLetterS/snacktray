@@ -1,0 +1,226 @@
+[mario]
+name=Mario
+
+icon speed=6
+icon loop=yes
+animation speed=1.0
+center x=19
+center y=19
+box width=38
+box height=40
+pole center offset=3
+
+carry offset x=-1
+carry offset y=-1
+bubble offset small x=6
+bubble offset small y=4
+bubble offset x=6
+bubble offset y=2
+fire duration=8
+victory duration=50
+time until wait=600
+pipe squish=20
+
+
+skin offset=44
+use paletting=true
+defaultspray 1=5
+defaultspray 2=5
+defaultspray 3=2
+defaultspray 4=10
+
+snack layout=true
+
+
+max sizes=9
+
+single sheet=true
+singlesheet split width=8,623,1238,8,8,8,623,1238,623,1238
+singlesheet split height=0,0,0,527,1054,0,1054,1054,896,896
+
+
+
+custom sprite list=stand,wait,lookup,crouch,balance,push,pose,knock,dead,walk,run,brake,jump,bonk,fall,spring,springfall,climbing,flagslide,roll,standcarry,swimcarry,lookupcarry,crouchcarry,piping,pipingup,sidepiping,doorenter,doorexit,spinjump,doublejump,doublebonk,doublefall,runjump,wallslide,slide,fire,throw,longjump,swim,swimpaddle,dive,bellyslide,fly,walkcarry,jumpcarry,bonkcarry,fallcarry
+sheet splits=crouchcarry
+sheet split size=312
+
+reroute maxrun=run
+
+connect crouch=true
+connect push=true
+connect jump=true
+connect dead=true
+connect bonk=true
+connect fall=true
+connect springfall=true
+connect climbing=true
+connect flagslide=true
+connect swimcarry=true
+connect lookupcarry=true
+connect crouchcarry=true
+connect doorexit=true
+connect doublebonk=true
+connect doublefall=true
+connect runjump=true
+connect slide=true
+connect fire=true
+connect throw=true
+connect swimpaddle=true
+connect bellyslide=true
+connect bonkcarry=true
+connect bonkfall=true
+
+stand frames=8
+stand speed=0.1
+stand frametimes=32,2,4,1,1,1,1,1
+
+wait frames=8
+wait loop=5
+wait speed=0.1
+
+
+lookup frames=4
+pose frames=6
+crouch frames=2
+hurt frames=1
+dead frames=7
+deadup frames=7
+walk frames=8
+run frames=8
+brake frames=1
+jump frames=2
+bonk frames=2
+fall frames=3
+runjump frames=1
+longjump frames=5
+sideflip frames=6
+doublejump frames=2
+doublebonk frames=2 
+doublefall frames=3
+wallslide frames=1
+groundpound frames=8
+slide frames=2
+standcarry frames=3
+lookupcarry frames=4
+crouchcarry frames=4
+walkcarry frames=8
+jumpcarry frames=2
+bonkcarry frames=1
+fallcarry frames=3
+
+throw frames=1
+roll frames=8
+poundfall frames=2
+swim frames=4
+paddle frames=4
+swimcarry frames=4
+spinjump frames=8
+fire frames=3
+push frames=4
+balance frames=4
+bellyslide frames=3
+dive frames=5
+climbing frames=4
+capeflight frames=6
+
+
+run loop=3
+pose loop=6
+brake loop=2
+lookup loop=2
+crouch loop=2
+jump loop=2
+doublejump loop=2
+longjump loop=5
+bonk loop=2
+doublebonk loop=2
+fall loop=3
+doublefall loop=3
+lookupcarry loop=2
+crouchcarry loop=2
+jumpcarry loop=2
+doublejumpcarry loop=2
+fallcarry loop=3
+groundpound loop=8
+poundfall loop=2
+dead loop=4
+dive loop=5
+fire loop=3
+
+
+standcarry speed=0.2
+
+lookup speed=0.2
+crouch speed=0.2
+lookupcarry speed=0.2
+crouchcarry speed=0.2
+brake speed=0.25
+pose speed=0.325
+dead speed=0.2
+deadup speed=0.2
+walk speed=0.4
+run speed=0.5
+jump speed=0.1
+doublejump speed=0.1
+longjump speed=0.25
+bonk speed=0.1
+doublejumpbonk speed=0.1
+fall speed=0.15
+doublejumpfall speed=0.15
+slide speed=0.25
+walkcarry speed=0.5
+jumpcarry speed=0.1
+fallcarry speed=0.15
+spinjump speed=0.75
+swim speed=0.2
+paddle speed=0.375
+swimcarry speed=0.3
+fire speed=0.3
+poundfall speed=0.1
+push speed=0.1
+balance speed=0.1
+bellyslide speed=0.2
+dive speed=0.8
+climbing speed=0.125
+
+
+wait frametimes=1,1,1,1,1,1,1,1,1,1,1,2,2,2,2
+run frametimes=1.75,1.75,1,1,1,1,1,1
+lookup frametimes=1,32,1,1
+standcarry frametimes=24,1,1
+lookupcarry frametimes=1,32,1,1
+crouchcarry frametimes=1,32,1,1
+dead frametimes=1.35,8,1.35,1,1,1,1
+dive frametimes=2,2,2,24,2
+bellyslide frametimes=32,1,1
+
+grind frames=1
+piping frames=8
+pipingup frames=8
+sidepiping frames=8
+doorenter frames=4
+doorexit frames=1
+
+piping speed=0.5
+pipingup speed=0.5
+sidepiping speed=0.4
+doorenter speed=0.20
+doorexit speed=0.20
+
+doorenter loop=4
+doorenter framestimes=1,1,1,1
+
+boll top=#E00808
+boll mid=#000000
+boll bot=#006EEE
+
+[lang]
+winspecial=Mario got a Chaos Emerald
+allspecial=Mario got all Chaos Emeralds
+princess=our Princess
+savetext1=Peace is Paved
+savetext2=With Kingdom Saved
+savetext3=Hurrah to Mario
+savetext4=Our Only Hero 
+savetext5=This Ends Your Trip
+savetext6=Of a Long Friendship

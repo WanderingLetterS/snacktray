@@ -1,0 +1,39 @@
+[line 0]
+tilename="start"
+
+[line 1]
+tilename="greenpipe,bluepipe,tealpipe,SMB3pipe"
+
+[line 2]
+tilename="level1,level2,level3,level4,level5,level6,level7,level8,level9"
+
+[line 3]
+tilename="levelmush,levelflower,levelfeather,levelstar,levelminus"
+
+[line 4]
+tilename="grass,water,lava,snow,deadgrass,sand,autumngrass,rock,searock"
+
+[line 5]
+tilename="SMB3bush,SMB3flower"
+animation=1
+speed=0.2
+framemax=4
+
+[line 6]
+tilename="SMB3rock,SMB3bridge,SMB3piramid,SMB3ground"
+
+[line 7]
+tilename="SMB3start,SMB3level1,SMB3level2,SMB3level3,SMB3level4,SMB3level5,SMB3level6,SMB3level7,SMB3level8"
+
+[line 8]
+tilename="SMB3level9,SMB3fortress,SMB3fortress-clear,SMB3door,SMB3minigameSMB3mushhouse,SMB3mushhouse-clear"
+
+[line 9]
+tilename="SMB3castle,castle"
+height=2
+
+[line 10]
+tilename="SMB3help,SMB3aiship"
+animation=1
+speed=0.2
+framemax=2

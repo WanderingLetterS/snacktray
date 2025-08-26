@@ -1,0 +1,2 @@
+COMPILATION ERROR in string to be executedError in code at line 401:   
+ if is_fire() && cpu_myleader.bbut && !cpu_myleader.jump &&!jump && abs(cpu_myleader.x-x)<32 if !collision(xsc*4,0) {bkey=1}       ^at position 6: Unknown function or script: is_fire

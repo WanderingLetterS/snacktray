@@ -1,0 +1,61 @@
+time=40
+1=25
+2=25
+3=25
+xxxxxxxxxxxxxxxxxxxxxxxxx###xxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxx#x#xxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxx/###\xxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxx/#######\xxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxx##     ##xxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxx##  F  ##xxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxx`#     #´xxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxx#     #xxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxx/#\   /#\xxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxx`´`#3#´`´xxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxx     B  xxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxx     B:. xxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxx     B  . xxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx    xxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  .xxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@ .xxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@ .xxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.  .xxxxxxxxxxxxxx
+xxxxxxxxxxxxxx/######xxxxxOxxxx    xxxxxxxxxxxxxx
+xxxxxxxxxxxxx/#´              B  . xxxxxxxxxxxxxx
+x/########O###´ .   .         Bt. xxxxxxxxxxxxxxx
+x#´xxxxxxx#x   .     .        B  xxxxxxxxxxxxxxxx
+x#xxxxxxxx#x  . /####xx%%xxxxxxxxxxxxxxxxxxxxxxxx
+x#xx     xxx b @#xxx#xx%%xOxxxxxxxxxxxxxxxxxxxxxx
+x#xx S   ... b @#xxx#xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+x#xx     xxx b @#xxx#xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+x#xxxxxxxx#x    ####´xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+x#\xxxxxxx#x    #´xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+x`########O#####´xxxxxxxx#######xxxxxxxxxxxx###\x
+#xxx#xxxxxxxxxx#xxxxx                  @      `#\
+#xxx#xxxxxxxxxx#xxxxx    ......    @       @   `#
+#xxx#xxxxxxxxxx###\xx                .....      #
+#xxx#xxxxxxxxxx#xxxxxxxxx#######xxxxxxx##### xx #
+#xxx#xxxxxxxxxx#xxxxxxxxxxxxxxxxxxxxxxxxxxx# xx #
+#xxx#xxxxxxxxxx#xxxxxxxxxxxxxxxxxxxxxxxxxxx# xx #
+#xxx####xxxx#######xxxxxxxxxxxxxxxxxxxxxxxx#    #
+#xxxxxxxx%%xxxxx   xxxxxxxxxxxxxxxxxOxxxxxx#.TT.#
+#xxxxxxxx  xxxxx   xxxxxxxxxxxxxx/#####\xxx######
+#xxxxxxxx      B . xxxxxxxxxxxxx/´.:::.`\xx`####´
+´xxxxxxxxx     B . xxxxxxxxxxxxx#. xxx .#xxx`##´x
+xxxxxxxxxxxxxxxx . xxxxxxxxxxxxx#.xxxxx.xxxxx##xx
+xxxxxxxxxxxxxxxx   xxxxxxxxxxxxx#.xxxxx.xxxxx##xx
+xxxxxxxxxxxxxxxx   ###########xx# xxxxx xxxxx##xx
+xxxxxxxxxxxxxxxx   # .:::. ###           ######xx
+xxxxxxxxxxxxxxxx   B.xxxxx.###           #####´xx
+xxxxxxxxxxxxxxxx   B.xxxxx.###1xx@@###@@xxxxxxxxx
+xxxxxxxxxxxxxxxxx  B.xxxxx.xxx xxxx#x#xxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxx           xxxx#x`\xxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxx           xxxx#xx#xxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxx###BxB2BxB##xxx####xxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxBxB BxBxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxB  t  Bxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxB  !  Bxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxB     Bxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxB     Bxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxBBBBBBBxxxxxxxxxxxxxxxxxxx

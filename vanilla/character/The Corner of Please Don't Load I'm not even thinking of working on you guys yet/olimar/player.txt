@@ -1,0 +1,63 @@
+[olimar]
+name=Olimar
+
+icon speed=6
+icon loop=yes
+animation speed=1.0
+center x=24
+center y=28
+box width=48
+box height=48
+
+stand frames=1
+wait frames=11
+lookup frames=3
+win frames=4
+crouch frames=2
+knock frames=1
+dead frames=8
+walk frames=6
+jump frames=1
+fall frames=3
+bonk frames=1
+climbing frames=4
+pluck frames=5
+toss frames=3
+whistle frames=7
+flagslide frames=1
+
+fall loop=2
+bonk loop=1
+crouch loop=2
+dead loop=7
+lookup loop=3
+toss loop=3
+
+dead speed=0.1
+crouch speed=0.25
+walk speed=0.3
+lookup speed=0.25
+jump speed=0.5
+fall speed=0.1
+bonk speed=0.25
+dash speed=0.25
+toss speed=0.25
+pluck speed=0.2
+whistle speed=0.25
+
+dead frametimes=0.5,0.25,0.25,0.5,0.5,0.5,0.5,0.5,
+
+boll top=#0077FF
+boll mid=#000000
+boll bot=#ff0000
+
+[lang]
+winspecial=Simple got a Chaos Emerald
+allspecial=Simple got all Chaos Emeralds
+princess=our Princess
+savetext1=Peace is Paved
+savetext2=With Kingdom Saved
+savetext3=Hurrah to Simple
+savetext4=Our weirdass Hero 
+savetext5=This Ends Your Trip
+savetext6=Of a Personable Mod

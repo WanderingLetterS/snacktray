@@ -1,0 +1,2 @@
+COMPILATION ERROR in string to be executedError in code at line 2:   
+ com_dmgr_instashield() //Ashura reuses the instashield, hence this. So, it's just nice to have.    ^at position 3: Unknown function or script: com_dmgr_instashield

@@ -1,0 +1,116 @@
+[megaman]
+name=Megaman
+description=Megaman (-S- Edition)
+
+icon speed=6
+icon loop=yes
+animation speed=1.0
+center x=16
+center y=16
+box width=33
+box height=33
+
+
+use paletting=true
+total palettes=30
+defaultspray 1=0
+defaultspray 2=0
+defaultspray 3=0
+defaultspray 4=0
+
+skin offset=44
+
+custom sprite list=stand,wait,lookup,crouch,knock,walk,slide,jump,climbing,crouchshoot,shoot,throw,tornado,phaser,walkshoot,jumpshoot,climbingshoot,flagslide
+
+size reroute fire=big
+size reroute feather=big
+size reroute extra=big
+
+connect wait=true
+connect lookup=true
+connect crouch=true
+connect knock=true
+connect walk=true
+connect slide=true
+connect jump=true
+connect climbing=true
+connect crouchshoot=true
+
+connect throw=true
+connect tornado=true
+connect phaser=true
+connect walkshoot=true
+connect jumpshoot=true
+connect climbingshoot=true
+connect flagslide=true
+
+reroute bonk=jump
+reroute ball=jump
+reroute cloudcarry=stand
+
+fire duration=16
+victory duration=30
+time until wait=200
+pipe squish=20
+
+stand frames=1
+shoot frames=1
+wait frames=2
+lookup frames=1
+pose frames=4
+crouch frames=1
+hurt frames=1
+walk frames=5
+
+
+slide frames=1
+jump frames=1
+jumpshoot frames=1
+bonk frames=1
+ball frames=8
+
+climbing frames=2
+climbingshoot frames=1
+flagslide frames=1
+throw frames=1
+cloudspawn frames=1
+tornado frames=4
+phaser frames=1
+walkshoot frames=5
+shoot offset x=4
+throw offset x=4
+walkshoot offset x=4
+
+walk loop=2
+
+wait frametimes =1,600
+
+stand speed=0.2
+wait speed=0.1
+lookup speed=0.2
+walk speed=0.2
+walkshoot speed=0.2
+jump speed=0.1
+jumpshoot speed=0.1
+bonk speed=0.1
+fall speed=0.1
+wall speed=0.1
+dash speed=0.1
+
+wait frametimes=1,20
+
+boll top=#FFF2F2
+boll mid=#E81A1A
+boll bot=#000000
+
+
+[lang]
+winspecial=Megaman got a Chaos Emerald
+allspecial=Megaman got all Chaos Emeralds
+princess=our Princess
+savetext1=Peace is Paved
+savetext2=With Kingdom Saved
+savetext3=Hurrah to Megaman
+savetext4=Our BEST MAN 
+savetext5=This Ends Your Trip
+savetext6=Of a Long BITCH

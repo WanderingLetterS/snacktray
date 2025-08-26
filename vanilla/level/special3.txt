@@ -1,0 +1,47 @@
+time=33
+1=40
+2=40
+3=40
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx#xOx###xOx####\xx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx###############\x
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ....  ....`##\
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx             ###
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   xxxxxxxxx.#xx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx . xxxxxxxxx.#Ox
+xxxxxxxxxxx####     xxxx#%%     xxOx : xOxx%%   .#xx
+xxxxxxxxxxx#### %   xxxx#%% ... xx#x : x#xx%% :: ###
+xxxxxxxxxxx#### %   xxxx#%%     xx#x . x#xx     /##´
+xxxxxxxxxxx####     xxxx#    xxxxxOx t xOxx#######´x
+xxxxxxxxxxx#########xxxx#####xxxxxxxbbbxxxxxxxxxxxxx
+xxxxxxxxxxx`########xxxxxxxxxxxxxxxx   xxxxxxxxxxxxx
+xxxxxxxxxxxx`#######xxxxxxxxxxxxxxxx   xxxxxxxxxxxxx
+##xxxxxxxxxxx`######xxxxxxxxxxxxxxxx   xxxxxxxxxxxxx
+##xxxxxxxxxxx   B  @xxxx    Oxxxx@      Oxxxxxxxxxxx
+##              B%  xxxx %%  xxxx  . :   xxxxxxxxxxx
+##      S       B% @xxxx %%  xxxx@ . :   xxxxxxxxxxx
+##              B%  xxxx %%  xxxx  . :   xxxxxxxxxxx
+##xxxxxxxxxxx   B  @xxxx    Oxxxx@      Oxxxxxxxxxxx
+##xxxxxxxx### . xxxxxxxxxxxxxxxxxxxxBBB########xxxxx
+xxxxxxxxxxx`# : xxxxxxxxxxxxxxxxxxxx   #% #@@@#xxxxx
+xxxxxxxxxxxx# t xxxxxxxxxxxxxxxxxxxx . # :    #xxxxx
+xxxxxxxxxxxxb : xxxxxxxxxxxxxxxxxxxx . #\ .   #xxxxx
+xxxxxxxxxxxxb . xxxxxxxxxxxxxxxxxxx/ : ##\    #xxxxx
+xxxxxxxxxxxxb   xxxxxxxxxxxxxxxxxxx# . ###\   #xxxxx
+xxxxxxxxxxxxb   xxxxxxxxxxxxxxxxxxx# . ´xx#   #xxxxx
+xxxxxxxxxxxxb   xxxxxxxxxxxxxxxxxxx#   xxx#   #xxxxx
+xxxxxxxxxxxx#   #xxxxxxxxxxxxxxxxx/´. xxxxxxx #xxxxx
+xxxxxxxxxxxx# ! #xxxxxxxxxxxxxxx /´. xxxxxxxx #xxxxx
+xxxxxxxxxxx/#   #\xxxxxxxxxxxxxx/´. xxxxxxxxx #xxxxx
+xxxxxxxx/#####1#####\xxxxxxxxxx/´. xxxxxxxxxx #xxxxx
+xxxxxxxx#´         `#xxxxxxxxxx#. xxxxxxxxxxx #xxxxx
+xxxxxxxx#           #xxxxxxxxxx#  xxxxxxxxxxx #xxxxx
+xxxxxxxx#´    F    `#xxxxxxxxxx#  b    xxxx   #xxxxx
+xxxxxxxx#           #xxxxxxxxxx#  b  % xxxx   #xxxxx
+xxxxxxxx#´  O   O  `#xxxxxxxxxx#  b  % xxxx   #xxxxx
+xxxxxxxx#####\ /#####xxxxxxxxxx#  b    xxxx   #xxxxx
+xxxxxxxx`###########´xxxxxxxxxx#  xxxxxxxxxxxx#xxxxx
+xxxxxxxxx`#´xxxxx`#´xxxxxxxxxxxx  xxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   xxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx           Bxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  .:.:.:. !Bxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx          Bxxxxxxxx

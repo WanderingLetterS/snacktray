@@ -1,0 +1,29 @@
+﻿%ppppppp - player name (8 characters)
+%sssss - score
+%s/ss - remaining multiplayer stages
+%-w - world stage
+%> - horizontal energy bar
+%v - vertical energy bar
+%tt - time
+%:tt - time in seconds
+%c - coins
+%f - frags
+%l - lives
+%e - emblem
+
+offset x=0
+offset y=0
+
+classic-----------------------------------------
+
+     %e%ppppppp   %sssss    $*%c       %:tt
+        *%l                  %>
+ %v
+------------------------------------------------
+
+battle------------------------------------------
+
+     %e%ppppppp      %f     $*%c       %:tt
+       %sssss                %>        %s/ss
+ %v
+------------------------------------------------

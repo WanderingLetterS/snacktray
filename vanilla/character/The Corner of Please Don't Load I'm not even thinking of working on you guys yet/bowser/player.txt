@@ -1,0 +1,127 @@
+[bowser]
+name=Bowser
+
+icon speed=6
+icon loop=yes
+animation speed=1.0
+center x=30
+center y=40
+box width=61
+box height=65
+shield offset=-6
+pole center offset=8
+time until wait=300
+fire duration=8
+victory duration=50
+skin offset=140
+marker offset=42
+use ypos=true
+
+use paletting=true
+defaultspray 1=7
+defaultspray 2=6
+defaultspray 3=5
+defaultspray 4=9
+
+custom sprite list=stand,wait,lookup,pose,crouch,knock,dead,walk,turn,jumpstart,jump,bonk,fall,fired,firedjump,firedcrouch,throw,throwjump,bombjump,bombfall,superjump,superfall,shell,shellglide,superjumpcharge,land,superland,climbing,flagslide,grind,piping,pipingup,sidepiping,doorenter,doorexit
+
+reroute swim=fall
+reroute paddle=jump
+reroute shelljump=shell
+
+stand frames=3
+wait frames=2
+lookup frames=2
+lookup speed=0.2
+crouch speed=0.125
+walk frames=8
+pose frames=1
+run frames=2
+jumpstart frames=1
+jump frames=2
+ball frames=3
+fall frames=3
+turn frames=3
+throw frames=3
+throwjump frames=3
+fired frames=3
+firedjump frames=3
+firedcrouch frames=3
+bombjump frames=1
+bombfall frames=1
+superjump frames=1
+superfall frames=1
+shell frames=12
+shellglide frames=12
+superjumpcharge frames=3
+fly frames=2
+turn frametimes=2,2,2
+turn loop=2
+crouch frames=2
+armless frames=2
+claw frames=3
+climbing frames=2
+
+wait loop=1
+lookup loop=2
+claw loop=3
+armless loop=2
+crouch loop=2
+jump loop=3
+fall loop=3
+throw loop=3
+throwjump loop=3
+fired loop=3
+firedjump loop=3
+firedcrouch loop=3
+pose loop=9
+superjumpcharge loop=2
+
+stand speed=0.2
+wait speed=0.2
+jump speed=0.2
+fall speed=0.2
+walk speed=0.4
+claw speed=0.05
+throw speed=0.3
+throwjump speed=0.3
+fired speed=0.3
+firedjump speed=0.3
+firedcrouch speed=0.3
+pose speed=0.4
+shell speed=0.5
+shellglide speed=0.5
+superjumpcharge speed=0.5
+climbing speed=0.125
+
+stand frametimes=32,1,1
+walk frametimes=2,1,1,1,2,1,1,1
+jump frametimes=0.3,9999
+fall frametimes=0.3,0.3,9999
+
+
+grind frames=1
+piping frames=12
+pipingup frames=12
+sidepiping frames=12
+doorenter frames=1
+doorexit frames=1
+
+piping speed=0.35
+pipingup speed=0.35
+sidepiping speed=0.35
+
+boll top=#aaaaaa
+boll mid=#000000
+boll bot=#808080
+
+[lang]
+winspecial=Bowser got a Chaos Emerald
+allspecial=Bowser got all Chaos Emeralds
+princess=our Princess
+savetext1=Peace is Paved
+savetext2=With Kingdom Saved
+savetext3=Hurrah to Bowser
+savetext4=Our Only Hero...?
+savetext5=This Ends Your Trip
+savetext6=Of a Long Friendship

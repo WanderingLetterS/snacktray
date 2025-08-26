@@ -1,0 +1,46 @@
+time=30
+1=35
+2=35
+3=35
+xxxxxx/#################################\
+xxxxx/´:.....        B     ..... `#######
+xxxx/´.        .:... ...     B    ######´
+xxxx#   xxxxx##############xxx    #####xx
+xxxx#   xxxxx########xxx#xxxxx    ..:`#Ox
+xxx/# . xxxxx##@@@###xxx#xxxxxx     .:#xx
+xx/## . xxxxx#´   ###xxx#xxxxxxx     .##O
+x/##´ . xxx##´    ###xxx#xxxxxxx     .#xx
+x##@            . #######xxxxxxx\    !#Ox
+x##@            . #########bbbxx#B\t /#xx
+x`##\ . xxx##\  . #´!  B     bxx#:######\
+xx`## . xxxxx#\ . ´    B     bxx#:#######
+xxxxx . xxxxx## .      B     #xx#:######´
+xxxxx : xxxxx##        B     #xx#B#####´x
+xxxxxxxxxxxxx##        B  !  bxxx ####´xx
+xxxxxxxxxxxxx##BBB########bbbb xx ###´xxx
+xxxxxxxxxxxxx## t #xxxxxxxx  .  x ##´xxxx
+xxxxxxxxxxxxx##.:.#xxxxxxxxx  .   ##xxxxx
+xxx/##xx###xx##:.:#xxxxxxxxxx  .  ##xxxxx
+xx/# xxxxxxxx## ! ############\   `#\xxxx
+x/## Oxxxxxxx#########xxxxxxx##B   #xxxxx
+/###              @############@B .#Oxxxx
+####T  S    ...   @###xxxxxxx##B  .#xxxxx
+`###              @############    ##xxxx
+x`## Oxxxxxx#     xxxxxxxxxxxxxxx .#xxxxx
+xx`# xxxxxxx`\    xxxxxxxxxxxxxxx .#Oxxxx
+xxx`##xx###xx`\                    #xxxxx
+xxxxxxxxxxxxxx`\   ....    ....   /##xxxx
+xxxxxxxxxxxxxxx`########B###########´xxxx
+xxxxxxxxxxxxxxxxxxxxxx     xxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxx  .  xxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxx  :  xxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxx  .  xxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxx     xxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxx/O#1#O\xxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxx/### ###\xxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxx##     ##xxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxx##     ##xxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxx##  F  ##xxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxx`#     #´xxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxx`#####´xxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxx`###´xxxxxxxxxxxxxx
