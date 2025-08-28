@@ -85,8 +85,8 @@ if (event="create"){
 }
 else if (event="step"){
 	if !inview() instance_destroy()
-	i=3
-	repeat(4){
+	i=7
+	repeat(8){
 		if i!=0{
 			prev_x[i]=prev_x[i-1]
 			prev_y[i]=prev_y[i-1]
@@ -151,12 +151,23 @@ if (event="thunderball_create"){
 }else if (event="thunderball_step"){
 	fr=fr+0.2
 	frame=floor(fr) mod 4
-
+	xsc=sign(hspeed)
 	com_proj_dmg_blocks(false)
 	com_proj_dmg_enemies(false)
 	y=ystart+cos(fr)*3
 }else if (event="thunderball_draw"){
-	draw_sprite_part_ext(owner.sheetshields,0,209+frame*17,43,30,30,round(x-15*xsc),round(y-15*1),xsc,1,c_white,1)
+prevframe=frame-2
+	if prevframe<0 prevframe+=4
+	draw_set_blend_mode(bm_add)
+	draw_sprite_part_ext(owner.sheetshields,0,209+(prevframe)*31,43,30,30,round(prev_x[7]-3*xsc),round(prev_y[7]-3*1),xsc/4,0.25,c_white,1)
+
+	draw_sprite_part_ext(owner.sheetshields,0,209+((prevframe+1) mod 3)*31,43,30,30,round(prev_x[4]-7*xsc),round(prev_y[4]-7*1),xsc/2,0.5,c_white,1)
+	
+	draw_sprite_part_ext(owner.sheetshields,0,209+frame*31,43,30,30,round(x-19*xsc),round(y-19*1),xsc*1.25,1.25,c_white,1)
+	
+	draw_set_blend_mode(bm_normal)
+
+	draw_sprite_part_ext(owner.sheetshields,0,209+frame*31,43,30,30,round(x-15*xsc),round(y-15*1),xsc,1,c_white,1)
 
 
 }
@@ -167,7 +178,9 @@ hspeed=owner.xsc*2+owner.hsp
 
 com_proj_dmg_enemies(false)
 }else if (event="bubble_draw"){
-
+	fr=fr+0.2
+	frame=floor(fr) mod 4
+	if fr>=4 {with owner {proj_type="waterplosion" fire_projectile(other.x,other.y)} instance_destroy()}
 
 }
 if (event="waterplosion_create"){
@@ -506,7 +519,7 @@ canstopjump=0
 }
 
 if (bbut) {
-    if ((is_fire() || is_clover() || is_ice() || is_thunder() || is_water()) && count_projectiles()<3 && !crouch && !dive) {
+    if ((is_fire() || is_clover() || is_ice() || is_thunder() || is_water()) && count_projectiles()<(3-is_thunder()-is_clover()*2) && !crouch && !dive) {
 		if is_fire()
 		proj_type="fireball"
 		else if is_clover()
