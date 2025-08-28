@@ -37,11 +37,8 @@ Jump out of a Groundpound to reach higher places
 10
 
 #define customhud
-dontdrawdefaulthud=1
-if !dontdrawhud {
-	spr=sheets[drawsize]
-	draw_snack_hud()
-}
+dontdrawdefaulthud=true
+draw_snack_hud()
 
 #define effectsbehind
 with (carryid) {hspeed=0 event_user(1)}
@@ -87,7 +84,20 @@ if (event="create"){
 	event=type+"_create"
 }
 else if (event="step"){
-
+	if !inview() instance_destroy()
+	i=3
+	repeat(4){
+		if i!=0{
+			prev_x[i]=prev_x[i-1]
+			prev_y[i]=prev_y[i-1]
+			
+		} else {
+			prev_x[i]=xprevious
+			prev_y[i]=yprevious
+		}
+		i-=1
+	}
+	
 	event=type+"_step"
 }
 else if (event="draw"){
@@ -96,22 +106,35 @@ else if (event="draw"){
 }
 
 if (event="fireball_create"){
-	hspeed=owner.xsc*2+owner.hsp
-	gravity=0.1
-
+	hspeed=owner.xsc*3+owner.hsp/3
+	gravity=0.15
+	fr=0
 }else if (event="fireball_step"){
-
-
-	if com_proj_mov_bouncewall() {with owner {type="fireplosion" fire_projectile(other.x,other.y)}}
-	/*if*/ com_proj_mov_bouncefloor() //{with owner {type="fireplosion" fire_projectile(other.x,other.y)}}
+	fr+=0.2
+	frame=floor(fr) mod 4
+	
+	
+	if com_proj_mov_bouncewall() {with owner {proj_type="fireplosion" fire_projectile(other.x,other.y)} instance_destroy()}
+	/*if*/ com_proj_mov_bouncefloor() //vspeed=-2
 	com_proj_dmg_enemies(true)
 	
 }else if (event="fireball_draw"){
-	draw_sprite_part_ext(owner.sheetshields,0,209+frame*17,26,16,16,round(x-8*1),round(y-8*1),1,1,c_white,1)
+	prevframe=frame-2
+	if prevframe<0 prevframe+=4
+	draw_set_blend_mode(bm_add)
+	draw_sprite_part_ext(owner.sheetshields,0,209+(prevframe)*17,26,16,16,round(prev_x[2]-2*xsc),round(prev_y[2]-2*1),xsc/4,0.25,c_white,1)
+
+	draw_sprite_part_ext(owner.sheetshields,0,209+((prevframe+1) mod 3)*17,26,16,16,round(prev_x[1]-4*xsc),round(prev_y[1]-4*1),xsc/2,0.5,c_white,1)
+	
+	draw_sprite_part_ext(owner.sheetshields,0,209+frame*17,26,16,16,round(x-10*xsc),round(y-10*1),xsc*1.25,1.25,c_white,1)
+	
+	draw_set_blend_mode(bm_normal)
+	draw_sprite_part_ext(owner.sheetshields,0,209+frame*17,26,16,16,round(x-8*xsc),round(y-8*1),xsc,1,c_white,1)
 
 }
 if (event="fireplosion_create"){
 	fr=0
+	ignoreoncount=1
 
 }else if (event="fireplosion_step"){
 	fr=fr+0.2
@@ -126,8 +149,12 @@ if (event="thunderball_create"){
 	hspeed=owner.xsc*2+owner.hsp
 
 }else if (event="thunderball_step"){
+	fr=fr+0.2
+	frame=floor(fr) mod 4
+
 	com_proj_dmg_blocks(false)
 	com_proj_dmg_enemies(false)
+	y=ystart+cos(fr)*3
 }else if (event="thunderball_draw"){
 	draw_sprite_part_ext(owner.sheetshields,0,209+frame*17,43,30,30,round(x-15*xsc),round(y-15*1),xsc,1,c_white,1)
 
@@ -145,7 +172,7 @@ com_proj_dmg_enemies(false)
 }
 if (event="waterplosion_create"){
 
-
+ignoreoncount=1
 }else if (event="waterplosion_step"){
 
 
@@ -154,22 +181,35 @@ if (event="waterplosion_create"){
 
 }
 if (event="iceball_create"){
-
+	hspeed=owner.xsc*3+owner.hsp/3
+	gravity=0.1
+	fr=0
 
 }else if (event="iceball_step"){
-
+	fr+=0.2
+	frame=floor(fr) mod 4
+	
+	gravity=0.1
+	if com_proj_mov_bouncewall() {with owner {proj_type="iceplosion" fire_projectile(other.x,other.y)} instance_destroy()}
+	com_proj_mov_bouncefloor()
+	//com_proj_freeze_enemies(true)
 
 }else if (event="iceball_draw"){
+	draw_sprite_part_ext(owner.sheetshields,0,209+frame*17,141,16,16,round(x-8*1),round(y-8*1),xsc,1,c_white,1)
 
 
 }
 if (event="iceplosion_create"){
-
-
+	fr=0
+	ignoreoncount=1
 }else if (event="iceplosion_step"){
+	fr=fr+0.2
+	frame=floor(fr)
 
+	if (frame>=3) {instance_destroy() visible=0}
 
 }else if (event="iceplosion_draw"){
+	draw_sprite_part_ext(owner.sheetshields,0,209+frame*17,124,16,16,round(x-8*1),round(y-8*1),1,1,c_white,1)
 
 
 }
@@ -182,6 +222,19 @@ if (event="cloverwhip_create"){
 }else if (event="cloverwhip_draw"){
 
 
+}
+if (event="twirlefx_create"){
+	fr=0
+	ignoreoncount=1
+}else if (event="twirlefx_step"){
+	fr+=2
+	if fr>10 instance_destroy()
+
+}else if (event="twirlefx_draw"){
+	draw_set_blend_mode(bm_add)
+	draw_sprite_part_ext(owner.sheetshields,0,209,175,24,15,round(x-(15+fr)*xsc),round(y+fr/3),xsc*(1+fr/30),1+fr/30,c_white,1)
+	draw_sprite_part_ext(owner.sheetshields,0,209+25,175,24,15,round(x-(8-fr)*xsc),round(y-fr/3),xsc*(1-fr/30),1-fr/30,c_white,1)
+	draw_set_blend_mode(bm_normal)
 }
 
 
@@ -240,6 +293,7 @@ if (!carry) {
 	else if (jump) {
 		if (onvine) {sprite="climbing" frspd=(left||right||up||down) }
 		else if (fall=6) {sprite="knock"}
+		else if twirly>=10 {sprite="spinjump" frspd=0.9}
 		else if (flight) {sprite= "fly" frspd=0 frame=((vsp+2.5)/6.5)*(global.animdat[p2,(16+128*32)+1+min(4,size)]-1) if frame>=frn frame=frn-1}
 		else if (spinjump) {sprite="spinjump"}
 		else if (hang && vsp>=1 && !spinjump) {sprite="wallslide"}
@@ -259,10 +313,10 @@ if (!carry) {
 			else {sprite="stand"}
 		} else {
 			if (abs(hsp+hyperspeed)>(4)) {sprite="maxrun"}
-			if (abs(hsp+hyperspeed)>(3)) {sprite="run"}
+			if (abs(hsp+hyperspeed)>(maxspd) && runvar) {sprite="run"}
 			else {
 				sprite="walk"
-				frspd=median(0.5,1,0.3+abs(hsp/4))
+				frspd=max(0.2,abs(hsp/3))
 			}
 		}
 	}
@@ -328,7 +382,7 @@ if (h!=0 && !wallkick) {
             xsc=h
             braking=0
         }
-        if (!pound && !water && fall!=6 && !crouch && h=xsc && kicked!=h && !carry) if (knuxcanclimb(collision(8*h,0))) {
+        if (!pound && !water && fall!=6 && !crouch && h=xsc && kicked!=h && !carry) if (knuxcanclimb(collision(8*h,0))){
             if (jump) hang=4
             if (vsp>1) crouch=0
             xsc=h
@@ -408,6 +462,20 @@ if ((abut || jumpbufferdo) && !springin) {
             canstopjump=1
         }
         
+		
+		if !flying && !fly && !twirly && fall!=6 && !dive && !spinjump && !collision(0,6){
+			proj_type="twirlefx"
+			fire_projectile(x,y)
+			twirly=20
+			vsp=-1
+			if is_thunder() {
+				vsp=-4
+				twirly=0
+				spinjump=1
+				canstopsinjump=0
+			}
+		}
+		
         if (super && !crouch && !flying && fall!=6 && !float && ((abs(hsp)>2 && (vsp)<0) || fly)) {
             fly=1
             vsp=-3
@@ -438,9 +506,21 @@ canstopjump=0
 }
 
 if (bbut) {
-    if (size=2 && count_projectiles()<2 && !crouch && !dive) {
-        fire_projectile(x+8*xsc,y+2)
-        fired=8
+    if ((is_fire() || is_clover() || is_ice() || is_thunder() || is_water()) && count_projectiles()<3 && !crouch && !dive) {
+		if is_fire()
+		proj_type="fireball"
+		else if is_clover()
+		proj_type="cloverwhip"
+		else if is_ice()
+		proj_type="iceball"
+		else if is_thunder()
+		proj_type="thunderball"
+		else if is_water()
+		proj_type="bubble"
+		
+        i=fire_projectile(x+8*xsc,y+2)
+		if is_fire()||is_ice() && up i.vspeed=-4
+        fired=16
         if (sprite="fire") frame=0
     }
 }
@@ -465,6 +545,7 @@ if (cbut) {
 			spinjump=1
 			jumpspd=0
 			crouch=0
+			canstopsinjump=1
 			playsfx(name+"spinjump")
 			vsp=-(4.2+min(1,abs(hsp)/8))
         } else if (!jump && !spin && crouch) {	
@@ -503,9 +584,10 @@ if (cbut) {
 if (ckey) {
     if (spinjump && vsp>0) spinjump=1
 } else {
-    if (spinjump=1 && vsp<-2) {
+    if (spinjump=1 && vsp<-2 && canstopsinjump) {
         vsp*=0.6
         spinjump=2
+		canstopsinjump=0
     }
 }
 
@@ -893,21 +975,31 @@ if ((slobal=0 && (hsp=0 || ((left || right) && !down))) || jump) && (!collision(
 jumpspd=min(jumpspd,100)
 
 if (spinjump) {
-fall=(vsp<0)
-spinball+=1 if (spinball=16) {spinball=0
-if (count_projectiles()<2 && !poundcancel && size=2 && !pound && !carry) {
-ballspin=!ballspin
-i=fire_projectile(x+8*ballspin,y+2)
-fired=8
-i.hspeed=-4+8*ballspin
+	fall=(vsp<0)
+	spinball+=1 if (spinball=16) {spinball=0
+		if (count_projectiles()<2 && !poundcancel && size=2 && !pound && !carry) {
+			ballspin=!ballspin
+			if is_fire()
+			proj_type="fireball"
+			else if is_clover()
+			proj_type="cloverwhip"
+			else if is_ice()
+			proj_type="iceball"
+			else if is_thunder()
+			proj_type="thunderball"
+			else if is_water()
+			proj_type="bubble"
+			i=fire_projectile(x+8*ballspin,y+2)
+			fired=8
+			i.hspeed=-4+8*ballspin
+		}
+	}
 }
-}
-}
+
+if twirly {twirly-=1 if twirly>=10 vsp=-0.15}
 
 
-
-
-jesus=(((boost && vsp<4)||(size==5 && !down && abs(hsp)>2.8)) && !water)
+jesus=(((boost && vsp<4)||(is_mini() && !down && abs(hsp)>2.8)) && !water)
 // if jeezus==1 {
     // if !plat plat=instance_create(0,0,ground)
     // plat.x=x-6
@@ -1020,7 +1112,7 @@ if (coll) {
                 if (bkey && !carry && !spin && !dive) {
                     coll.carry=id coll.owner=id coll.alarm[1]=600 coll.alarm[2]=-1 carryid=coll
                     carry=1
-    skidding=0
+					skidding=0
                 } else { 
                     if (coll.stop && !coll.kicked && size!=5) doscore_p(8000)
                     else if size!=5 {seqcount=max(seqcount,2+scorelok1) doscore_p()}

@@ -36,7 +36,7 @@ max sizes=9
 
 single sheet=true
 singlesheet split width=8,623,1238,8,8,8,623,1238,623,1238
-singlesheet split height=0,0,0,527,1054,0,1054,1054,896,896
+singlesheet split height=0,0,0,527,1054,527,527,1054,1054,1054
 
 
 

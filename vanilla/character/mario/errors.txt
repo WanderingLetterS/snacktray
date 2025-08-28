@@ -1,2 +1,2 @@
-COMPILATION ERROR in string to be executedError in code at line 5:   
- draw_snack_hud()    ^at position 3: Unknown function or script: draw_snack_hud
+COMPILATION ERROR in string to be executedError in code at line 36:   
+ if prevframe<0 prevframe+4                            ^at position 27: Assignment operator expected.
