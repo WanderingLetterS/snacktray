@@ -306,7 +306,7 @@ if (ready) {
 
         //drawing spray selector
         if showsprays {
-
+             draw_sprite_part(global.ogpalsprite[p2],0,9,59,37,9,x-18,y-33)
             draw_sprite_part(global.ogpalsprite[p2],0,9+(8*global.pal_1[p2]),26,8,8,x-17,y-32)
             draw_sprite_part(global.ogpalsprite[p2],0,9+(8*global.pal_2[p2]),34,8,8,x-16+8,y-32)
             draw_sprite_part(global.ogpalsprite[p2],0,9+(8*global.pal_3[p2]),42,8,8,x-15+16,y-32)
