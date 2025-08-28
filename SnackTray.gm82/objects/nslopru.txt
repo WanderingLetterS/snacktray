@@ -1,0 +1,7 @@
+sprite=spr_nslopru
+visible=1
+solid=0
+persistent=0
+depth=999000
+parent=collider
+mask=spr_nslopru

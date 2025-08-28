@@ -1,0 +1,7 @@
+sprite=spr_mushblock2
+visible=0
+solid=0
+persistent=0
+depth=999002
+parent=autotiler
+mask=

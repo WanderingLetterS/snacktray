@@ -1,0 +1,7 @@
+sprite=spr_code
+visible=1
+solid=0
+persistent=0
+depth=-99998
+parent=
+mask=

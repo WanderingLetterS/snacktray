@@ -1,0 +1,7 @@
+sprite=spr_itemspawner
+visible=1
+solid=0
+persistent=0
+depth=1000002
+parent=
+mask=

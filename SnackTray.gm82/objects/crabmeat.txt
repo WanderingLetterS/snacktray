@@ -1,0 +1,7 @@
+sprite=spr_crabmeat
+visible=1
+solid=0
+persistent=0
+depth=1
+parent=enemy
+mask=spr_mask12x12

@@ -1,0 +1,7 @@
+sprite=spr_ireader
+visible=1
+solid=0
+persistent=0
+depth=2
+parent=collider
+mask=spr_mask16x16

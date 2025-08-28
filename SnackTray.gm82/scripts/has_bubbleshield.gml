@@ -1,0 +1,1 @@
+return shielded==4

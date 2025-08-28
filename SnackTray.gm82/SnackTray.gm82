@@ -1,0 +1,23 @@
+gm82_version=5
+gameid=10102010
+
+info_author=Boll Team
+info_version=2.1.5.2
+info_information=
+
+exe_company=Boll Team
+exe_product=Boll Deluxe 2.1.5.2 Old Engine
+exe_copyright=Boll Team @2010 - 2025
+exe_description=Boll Deluxe
+exe_version=2.1.5.2
+
+has_backgrounds=0
+has_datafiles=0
+has_fonts=0
+has_objects=1
+has_paths=0
+has_scripts=1
+has_sounds=0
+has_sprites=1
+has_timelines=0
+has_triggers=0

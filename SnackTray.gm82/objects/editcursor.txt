@@ -1,0 +1,7 @@
+sprite=spr_cursor
+visible=1
+solid=0
+persistent=0
+depth=-999
+parent=
+mask=tex_1x1

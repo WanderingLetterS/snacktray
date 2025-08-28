@@ -1,0 +1,7 @@
+sprite=spr_bulletbill
+visible=1
+solid=0
+persistent=0
+depth=1000001
+parent=enemy
+mask=spr_mask12x12

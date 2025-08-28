@@ -1,0 +1,7 @@
+sprite=spr_powerdummy
+visible=1
+solid=1
+persistent=0
+depth=4
+parent=item
+mask=spr_mask12x12

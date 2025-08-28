@@ -1,0 +1,7 @@
+sprite=tex_runes
+visible=1
+solid=0
+persistent=1
+depth=999999
+parent=
+mask=

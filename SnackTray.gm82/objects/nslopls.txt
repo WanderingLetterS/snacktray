@@ -1,0 +1,7 @@
+sprite=spr_nslopls
+visible=1
+solid=0
+persistent=0
+depth=1000003
+parent=phaser
+mask=spr_nslopl

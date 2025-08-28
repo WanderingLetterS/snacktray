@@ -1,0 +1,7 @@
+sprite=spr_bridge
+visible=0
+solid=0
+persistent=0
+depth=999
+parent=
+mask=spr_16

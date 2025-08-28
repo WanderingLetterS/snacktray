@@ -1,0 +1,7 @@
+sprite=spr_lemon
+visible=0
+solid=0
+persistent=1
+depth=0
+parent=
+mask=

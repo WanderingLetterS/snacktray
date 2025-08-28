@@ -1,0 +1,7 @@
+sprite=spr_donut
+visible=1
+solid=0
+persistent=0
+depth=999990
+parent=movingphaser
+mask=spr_16

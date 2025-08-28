@@ -1,0 +1,7 @@
+sprite=spr_urchin
+visible=1
+solid=0
+persistent=0
+depth=1000001
+parent=spiny
+mask=spr_mask16x16

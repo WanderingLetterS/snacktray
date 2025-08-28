@@ -1,0 +1,7 @@
+sprite=spr_banzailauncher
+visible=1
+solid=0
+persistent=0
+depth=-1
+parent=collider
+mask=spr_mask64x80

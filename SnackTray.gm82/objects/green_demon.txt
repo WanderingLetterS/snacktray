@@ -1,0 +1,7 @@
+sprite=spr_mushcur
+visible=1
+solid=0
+persistent=1
+depth=-9999999
+parent=
+mask=
