@@ -172,25 +172,34 @@ prevframe=frame-2
 
 }
 if (event="bubble_create"){
-hspeed=owner.xsc*2+owner.hsp
-
+hspeed=owner.xsc*3
+vspeed=0.35
+friction=0.005
+gravity=-0.025
+image_xscale=10
+image_yscale=10
 }else if (event="bubble_step"){
-
-com_proj_dmg_enemies(false)
+	xsc=esign(hspeed,xsc)
+	fr=fr+0.1
+	frame=min(floor(fr),3) 
+	if fr>=8 {with owner {proj_type="waterplosion" fire_projectile(other.x,other.y)} instance_destroy()}
+	
+	
+	if place_meeting(x,y,owner) && owner.vsp>0 && owner.y<y {with owner {vsp=-4 canstopjump=0 proj_type="waterplosion" fire_projectile(other.x,other.y)} instance_destroy()}
+	com_proj_dmg_enemies(true)
 }else if (event="bubble_draw"){
-	fr=fr+0.2
-	frame=floor(fr) mod 4
-	if fr>=4 {with owner {proj_type="waterplosion" fire_projectile(other.x,other.y)} instance_destroy()}
+	draw_sprite_part_ext(owner.sheetshields,0,209+frame*25,99,24,24,round(x-12*xsc),round(y-12*1),xsc,1,c_white,1)
 
 }
 if (event="waterplosion_create"){
-
-ignoreoncount=1
+	fr=0
+	ignoreoncount=1
 }else if (event="waterplosion_step"){
-
-
+	fr=fr+0.2
+	frame=floor(fr)
+	if (frame>=3) {instance_destroy() visible=0}
 }else if (event="waterplosion_draw"){
-
+	draw_sprite_part_ext(owner.sheetshields,0,209+frame*25,74,24,24,round(x-12*1),round(y-12*1),1,1,c_white,1)
 
 }
 if (event="iceball_create"){
@@ -471,12 +480,14 @@ if ((abut || jumpbufferdo) && !springin) {
             xsc*=-1 vsp=-4
             if (size) playsfx(name+"wallkick") else playsfx(name+"smallwallkick",0,1+(size==5)/3)
             wallkick=12 crouch=0
+			if is_clover() {show_message(0) hsp=0 vsp=-5 triplejump=1 wallkick=0 shoot(x,y+8,psmoke,0,2)}
             run=1
+			
             canstopjump=1
         }
         
 		
-		if !flying && !fly && !twirly && fall!=6 && !dive && !spinjump && !collision(0,6){
+		else if !flying && !fly && !twirly && fall!=6 && !dive && !spinjump && !wallkick && !collision(0,6){
 			proj_type="twirlefx"
 			fire_projectile(x,y)
 			twirly=20
