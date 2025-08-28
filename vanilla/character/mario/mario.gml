@@ -480,7 +480,7 @@ if ((abut || jumpbufferdo) && !springin) {
             xsc*=-1 vsp=-4
             if (size) playsfx(name+"wallkick") else playsfx(name+"smallwallkick",0,1+(size==5)/3)
             wallkick=12 crouch=0
-			if is_clover() {show_message(0) hsp=0 vsp=-5 triplejump=1 wallkick=0 shoot(x,y+8,psmoke,0,2)}
+			if is_clover() {xsc*=-1 hsp=sign(hsp) vsp=-5 canstopjump=0 triplejump=0.5 wallkick=0 shoot(x,y+8,psmoke,0,2)}
             run=1
 			
             canstopjump=1
