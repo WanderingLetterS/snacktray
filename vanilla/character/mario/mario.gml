@@ -184,7 +184,7 @@ image_yscale=10
 	frame=min(floor(fr),3) 
 	if fr>=8 {with owner {proj_type="waterplosion" fire_projectile(other.x,other.y)} instance_destroy()}
 	
-	
+	if fr>4
 	if place_meeting(x,y,owner) && owner.vsp>0 && owner.y<y {with owner {vsp=-4 canstopjump=0 proj_type="waterplosion" fire_projectile(other.x,other.y)} instance_destroy()}
 	com_proj_dmg_enemies(true)
 }else if (event="bubble_draw"){
