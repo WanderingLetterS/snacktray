@@ -10,7 +10,7 @@ objlist[length,4]=argument[4] //family
 objlist[length,21]=0
 
 objlist[length,3]=0
-for (j=0;j<8;j+=1) {
+for (j=0;j<12;j+=1) {
     objlist[length,j+5]=""
     objlist[length,j+101]=""
 }

@@ -17,7 +17,7 @@ box height=35
 pole center offset=4
 skin offset=44
 
-use paletting=true
+use paletting=false
 
 pitch spindash=yes
 jump ball animation=no

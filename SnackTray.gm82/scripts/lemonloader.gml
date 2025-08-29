@@ -81,7 +81,7 @@ lemongrab.thumbregion=ds_map_find_value(map,"thumbregion")
 lemongrab.spawnx=ds_map_find_value(map,"spawnx")
 lemongrab.spawny=ds_map_find_value(map,"spawny")
 lemongrab.spawnr=ds_map_find_value(map,"spawnr")
-if (lv="2.1.5") {
+if (lv="2.1.5" ||lv="SnackTray") {
     lemongrab.tspawnx=ds_map_find_value(map,"tspawnx")
     lemongrab.tspawny=ds_map_find_value(map,"tspawny")
     lemongrab.tspawnr=ds_map_find_value(map,"tspawnr")
@@ -93,7 +93,7 @@ if (lv="2.1.5") {
 lemongrab.levelname=string(ds_map_find_value(map,"name"))
 lemongrab.leveldesc=string(ds_map_find_value(map,"desc"))  
 lemongrab.time=max(30,ds_map_find_value(map,"time"))
-if (lv!="2.1.5" && lemongrab.time==600) lemongrab.time=12001
+if ((lv!="2.1.5"||lv="SnackTray") && lemongrab.time==600) lemongrab.time=12001
 ds_map_destroy(map)
 
 global.levelname=lemongrab.levelname
@@ -126,11 +126,11 @@ repeat (8) {
     
     if (lv="2" || lv="3" || lv="2.0.5" || lv="-S-"|| lv="2.0.75"||lv="2.1" || lv="2.1.1" || lv="2.1.2" || lv="2.1.3" || lv="2.1.4" || lv="2.1.5") lemongrab.water[r]=readshort()
     else lemongrab.water[r]=0
-    if (lv="-S-" || lv="2.0.5"|| lv="2.0.75"||lv="2.1"|| lv="2.1.1" || lv="2.1.2" ||lv="2.1.3" ||lv="2.1.4" || lv="2.1.5") lemongrab.horizon[r]=readshort()
+    if (lv="-S-" || lv="2.0.5"|| lv="2.0.75"||lv="2.1"|| lv="2.1.1" || lv="2.1.2" ||lv="2.1.3" ||lv="2.1.4" || lv="2.1.5" ||lv="SnackTray") lemongrab.horizon[r]=readshort()
     else lemongrab.horizon[r]=0
     w=readshort()
     h=readshort()
-    if (lv="2.1.1" || lv="2.1.2" || lv="2.1.3" || lv="2.1.4" || lv="2.1.5"){
+    if (lv="2.1.1" || lv="2.1.2" || lv="2.1.3" || lv="2.1.4" || lv="2.1.5" ||lv="SnackTray"){
     bpm=readshort()
     bpb=readshort()
     lightlevel=readshort()
@@ -205,17 +205,19 @@ repeat (8) {
                     i.off=off
                     i.dataid=did
                     if (ent) {
-                        k=0 repeat (8) {i.data[k]=readstring() k+=1}
+                        k=0
+                        if lv!="SnackTray" repeat (8) {i.data[k]=readstring() k+=1}
+                        else repeat (12) {i.data[k]=readstring() k+=1}
                         if (lemongrab.objlist[did,5]="align") {
-                            if (obj=fbarblock && (lv!="2.1.1" && lv!="2.1.2" && lv!="2.1.3" && lv!="2.1.4"&& lv!="2.1.5"))
-                            || ((obj=itembox||obj=phaser||obj=brick||obj=monitor) && lv!="2.0.75" && lv!="2.1" && lv!="2.1.1" && lv!="2.1.2" && lv!="2.1.3" && lv!="2.1.4"&& lv!="2.1.5")
-                            || ((obj=warpbox||obj=door) && lv!="2.1.5") { //fix objects getting align much later
+                            if (obj=fbarblock && (lv!="2.1.1" && lv!="2.1.2" && lv!="2.1.3" && lv!="2.1.4"&& lv!="2.1.5" && lv!="SnackTray"))
+                            || ((obj=itembox||obj=phaser||obj=brick||obj=monitor) && lv!="2.0.75" && lv!="2.1" && lv!="2.1.1" && lv!="2.1.2" && lv!="2.1.3" && lv!="2.1.4"&& lv!="2.1.5" && lv!="SnackTray")
+                            || ((obj=warpbox||obj=door) && lv!="2.1.5" && lv!="SnackTray") { //fix objects getting align much later
                                 var al;
                                 al=7 repeat (8) {i.data[al+1]=i.data[al] al-=1}
                                 i.data[0]="0"
                             }
 
-                            if (lv!="3"&&lv!="4"&&lv!="-S-"&&lv!="2.0.5"&&lv!="2.0.75"&&lv!="2.1"&&lv!="2.1.1"&&lv!="2.1.2"&&lv!="2.1.3"&&lv!="2.1.4"&& lv!="2.1.5") {
+                            if (lv!="3"&&lv!="4"&&lv!="-S-"&&lv!="2.0.5"&&lv!="2.0.75"&&lv!="2.1"&&lv!="2.1.1"&&lv!="2.1.2"&&lv!="2.1.3"&&lv!="2.1.4"&& lv!="2.1.5" && lv!="SnackTray") {
                                 //convert old align flag
                                 if (i.data[0]="1") i.data[0]="-8,0"
                                 else i.data[0]="0,0"
@@ -234,7 +236,7 @@ repeat (8) {
                                 data[1]="0"
                             }
                         }
-                        if lv!="2.1.5" {
+                        if lv!="2.1.5" && lv!="SnackTray" {
                             if (obj == token) {
                                 i.data[0]="0,0"
                                 i.data[1]="1"

@@ -44,7 +44,7 @@ writestring("[lemon]")
 l=lemongrab.length
 
 map=ds_map_create()
-ds_map_add(map,"v","2.1.5")
+ds_map_add(map,"v","SnackTray")
 ds_map_add(map,"thumbx",lemongrab.thumbx)
 ds_map_add(map,"thumby",lemongrab.thumby)
 ds_map_add(map,"thumbregion",lemongrab.thumbregion)
@@ -184,7 +184,7 @@ for (r=0;r<8;r+=1) {
                     b=(x << 12) + y
                     external_call(global._BufA,b>>16,0) //writebyte
                     external_call(global._BufY,b&$ffff,0) //writeshort
-                    if (ent) for (k=0;k<8;k+=1) external_call(global._BufB,string(data[k]),0) //writestring
+                    if (ent) for (k=0;k<12;k+=1) external_call(global._BufB,string(data[k]),0) //writestring
                 }
             }
         }

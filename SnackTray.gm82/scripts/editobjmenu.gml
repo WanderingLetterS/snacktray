@@ -469,7 +469,7 @@ switch (argument[0]) {
         if (type=0) return get_string("Offset: ",argument[2])
         if (type=1) return tylerpicker(argument[2],0)
         if (type=2) {
-            i=show_contextmenu("Layer:|-|Behind|Middle|Front",0)
+            i=show_contextmenu("Layer:|-|Behind|Middle|OverTerrain|Front",0)
             if (!i) return argument[2]
             return string(i-1)
         }
@@ -486,6 +486,7 @@ switch (argument[0]) {
         }
         if (type=6) return string(get_color(deciphercolor(argument[2])))
         if (type=7) return string(show_contextmenu("Use current region|Ground|Underground|Underwater|Castle|Bonus|Sky|Beach|Forest|Desert|GhostHouse|Airship|Volcano|Snow|Autumn|Factory|Clockwork|Abstract|Tutorial",0)-1)
+        if (type=8) return get_string("Frames: ",argument[2])
     }
     case terraintyler: {
         if (type=0) return get_string("Offset: ",argument[2])
@@ -508,6 +509,7 @@ switch (argument[0]) {
         }
         if (type=6) return string(get_color(deciphercolor(argument[2])))
         if (type=7) return string(show_contextmenu("Use current region|Ground|Underground|Underwater|Castle|Bonus|Sky|Beach|Forest|Desert|GhostHouse|Airship|Volcano|Snow|Autumn|Factory|Clockwork|Abstract|Tutorial",0)-1)
+        if (type=8) return get_string("Frames: ",argument[2])
     }
     case objectstyler: {
         if (type=0) return get_string("Offset: ",argument[2])
@@ -530,6 +532,7 @@ switch (argument[0]) {
         }
         if (type=6) return string(get_color(deciphercolor(argument[2])))
         if (type=7) return string(show_contextmenu("Use current region|Ground|Underground|Underwater|Castle|Bonus|Sky|Beach|Forest|Desert|GhostHouse|Airship|Volcano|Snow|Autumn|Factory|Clockwork|Abstract|Tutorial",0)-1)
+        if (type=8) return get_string("Frames: ",argument[2])
     }
     case decortyler: {
         if (type=0) return get_string("Offset: ",argument[2])
@@ -552,6 +555,7 @@ switch (argument[0]) {
         }
         if (type=6) return string(get_color(deciphercolor(argument[2])))
         if (type=7) return string(show_contextmenu("Use current region|Ground|Underground|Underwater|Castle|Bonus|Sky|Beach|Forest|Desert|GhostHouse|Airship|Volcano|Snow|Autumn|Factory|Clockwork|Abstract|Tutorial",0)-1)
+        if (type=8) return get_string("Frames: ",argument[2])
     }
 
     case phaser: {

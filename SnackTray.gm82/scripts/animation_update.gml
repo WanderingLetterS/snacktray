@@ -36,3 +36,17 @@ if (!skindat("bricd")) with (brick) if (tile) {
     if biggie==1 tile_set_region(tile,88+32*global.frame,280,32,32)
     else tile_set_region(tile,200+16*global.frame,184,16,16)
 }
+
+//Animate Tylers
+with tyler {
+    event_user(10)
+}
+with terraintyler {
+    event_user(10)
+}
+with objectstyler {
+    event_user(10)
+}
+with decortyler {
+    event_user(10)
+}

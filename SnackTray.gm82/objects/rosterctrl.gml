@@ -77,7 +77,8 @@ for (i=0;i<global.characters;i+=1){
 l=ds_priority_size(p)
 
 maxpage=ceil((global.characters-(disabledchars+1))/16) //+1 is because global.charactesr is one higher than the last used slot
-//if maxpage!=0 maxpage+=1 adds a blank page if the above method is used - also sylve
+if maxpage<=1 maxpage=2 //You know, so people can actually acess mods?
+
 for (i=0;i<l;i+=1) {
     c=ds_priority_delete_min(p)
     u=36*(i mod 8)
