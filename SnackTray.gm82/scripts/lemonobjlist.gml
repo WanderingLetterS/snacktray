@@ -1027,7 +1027,30 @@ listobj(hillzone          ,0,spr_191hill       ,218,hillzone)
 listobj(fencezone          ,0,spr_191fence       ,219,hillzone)
     listdoc("Fence Zone","don't use these in new levels they probably barely work")
 
+listobj(tflower        ,1,spr_tflower     ,220,tflower) //lol
+listdoc("Thunder Flower","")
+listargs("align")
+listdata("0"    )
 
+listobj(wflower        ,1,spr_wflower     ,221,tflower) //lol
+listdoc("Water Flower","")
+listargs("align")
+listdata("0"    )
+
+listobj(iflower        ,1,spr_iflower     ,222,tflower) //lol
+listdoc("Ice Flower","")
+listargs("align")
+listdata("0"    )
+
+listobj(cflower        ,1,spr_cflower     ,223,tflower) //lol
+listdoc("Clover Flower","")
+listargs("align")
+listdata("0"    )
+
+listobj(questionmush       ,1,spr_questionmush     ,224,tflower) //lol
+listdoc("Question Mushroom","Can do a little bit of anything and everything.")
+listargs("align")
+listdata("0"    )
 
 n=ds_map_create()
 k=ds_map_find_first(m)

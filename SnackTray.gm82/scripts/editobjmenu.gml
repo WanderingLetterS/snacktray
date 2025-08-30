@@ -5,7 +5,7 @@ type=argument[1]
 switch (argument[0]) {
     case itembox: {
         if (type=1) {
-            i=show_contextmenu("Box contents:|-|Single Coin|Fire Flower|Feather|Mini Mushroom|Multiple Coins|1-Up|Poison Mushroom|Green Spring|Starman|Key|Shield|Spring|Sideways Spring|P-Switch|Shard|Nothing",0)
+            i=show_contextmenu("Box contents:|-|Single Coin|Fire Flower|Feather|Mini Mushroom|Multiple Coins|1-Up|Poison Mushroom|Green Spring|Starman|Key|Shield|Spring|Sideways Spring|P-Switch|Shard|Nothing|Thunder Flower|Water Flower|Ice Flower|Clover Flower|Question Msuhroom",0)
             if (!i) return argument[2]
             if (i=1) return ""
             if (i=2) return "item"
@@ -23,6 +23,11 @@ switch (argument[0]) {
             if (i=14) return "pswitch"
             if (i=15) return "shard"
             if (i=16) return "none"
+            if (i=17) return "thunderitem"
+            if (i=18) return "wateritem"
+            if (i=19) return "iceitem"
+            if (i=20) return "cloveritem"
+            if (i=21) return "questionitem"
         }
         if (type=2) return string(!funnytruefalse(argument[2]))
         if (type=3) return string(!funnytruefalse(argument[2]))
@@ -32,7 +37,7 @@ switch (argument[0]) {
 
     case bigitembox: {
         if (type=1) {
-            i=show_contextmenu("Box contents:|-|Single Coin|Fire Flower|Feather|Mini Mushroom|Multiple Coins|1-Up|Poison Mushroom|Green Spring|Starman|Key|Shield|Spring|Sideways Spring|P Switch|Shard|Nothing",0)
+            i=show_contextmenu("Box contents:|-|Single Coin|Fire Flower|Feather|Mini Mushroom|Multiple Coins|1-Up|Poison Mushroom|Green Spring|Starman|Key|Shield|Spring|Sideways Spring|P Switch|Shard|Nothing|Thunder Flower|Water Flower|Ice Flower|Clover Flower|Question Mushroom",0)
             if (!i) return argument[2]
             if (i=1) return ""
             if (i=2) return "item"
@@ -50,6 +55,11 @@ switch (argument[0]) {
             if (i=14) return "pswitch"
             if (i=15) return "shard"
             if (i=16) return "none"
+            if (i=17) return "thunderitem"
+            if (i=18) return "wateritem"
+            if (i=19) return "iceitem"
+            if (i=20) return "cloveritem"
+            if (i=21) return "questionitem"
         }
         if (type=2) return get_string("Bonus Target's name:",argument[2])
         if (type=0){return get_string("Alignment in pixels (x,y):",argument[2])}
@@ -58,7 +68,7 @@ switch (argument[0]) {
     case noteblock: {
         if (type=0) {return get_string("Alignment in pixels (x,y):",argument[2])}
         if (type=1) {
-            i=show_contextmenu("Box contents:|-|Single Coin|Fire Flower|Feather|Mini Mushroom|Multiple Coins|1-Up|Poison Mushroom|Green Spring|Starman|Key|Shield|Spring|Sideways Spring|P Switch|Shard|Nothing",0)
+            i=show_contextmenu("Box contents:|-|Single Coin|Fire Flower|Feather|Mini Mushroom|Multiple Coins|1-Up|Poison Mushroom|Green Spring|Starman|Key|Shield|Spring|Sideways Spring|P Switch|Shard|Nothing|Thunder Flower|Water Flower|Ice Flower|Clover Flower|Question Msuhroom",0)
             if (!i) return argument[2]
             if (i=1) return ""
             if (i=2) return "item"
@@ -76,6 +86,11 @@ switch (argument[0]) {
             if (i=14) return "pswitch"
             if (i=15) return "shard"
             if (i=16) return "none"
+            if (i=17) return "itemthunder"
+            if (i=18) return "itemwater"
+            if (i=19) return "itemice"
+            if (i=20) return "itemclover"
+            if (i=21) return "itemquestion"
         }
         if (type=2) return string(!funnytruefalse(argument[2]))
         if (type=3) return string(!funnytruefalse(argument[2]))
@@ -84,7 +99,7 @@ switch (argument[0]) {
 
     case monitor: {
         if (type=1) {
-            i=show_contextmenu("Monitor contents:|-|10 Coins|Mushroom|Fire Flower|Mini Mushroom|Star|1-Up|Poison Mushroom|Feather|Shield|Super Ring|Time",0)
+            i=show_contextmenu("Monitor contents:|-|10 Coins|Mushroom|Fire Flower|Mini Mushroom|Star|1-Up|Poison Mushroom|Feather|Shield|Super Ring|Time|Thunder Flower|Water Flower|Ice Flower|Clover Flower|Question Msuhroom",0)
             if (!i) return argument[2]
             if (i=1) return "10coin"
             if (i=2) return "mush"
@@ -97,6 +112,11 @@ switch (argument[0]) {
             if (i=9) return "shield"
             if (i=10) return "superring"
             if (i=11) return "time"
+            if (i=12) return "thunder"
+            if (i=13) return "water"
+            if (i=14) return "ice"
+            if (i=15) return "clover"
+            if (i=16) return "?mush"
         }
         if (type=0){return get_string("Alignment in pixels (x,y):",argument[2])}
     } break

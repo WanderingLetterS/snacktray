@@ -28,6 +28,21 @@ else if contents="mush" {
 else if contents="fire" {
     give_item(owner,"fflower")
 }
+else if contents="thunder" {
+    give_item(owner,"tflower")
+}
+else if contents="water" {
+    give_item(owner,"wflower")
+}
+else if contents="ice" {
+    give_item(owner,"iflower")
+}
+else if contents="clover" {
+    give_item(owner,"cflower")
+}
+else if contents="?mush" {
+    give_item(owner,"?mushroom")
+}
 else if contents="mini" {
     give_item(owner,"mini")
 }

@@ -173,7 +173,24 @@ if (type="wflower" || type="bflower") {
     size=7
     itemget=1
 }
+if (type="?mushroom" ) {
+    coll=other.id
+    if (p2!=other.p2) {
+        itemc+=1
+        doscore_p(1000,1)
+    }
+    playgrowsfx("4")
 
+    if (skidding) {
+        soundstop(name+"skid")
+        skidding=0
+    }
+
+    if (!super && size!=4) grow=1
+    oldsize=size
+    size=4
+    itemget=1
+}
 if (type="iflower") {
 coll=other.id
 if (p2!=other.p2) {

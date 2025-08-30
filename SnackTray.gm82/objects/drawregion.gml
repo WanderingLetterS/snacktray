@@ -330,8 +330,12 @@ if (within(editcursor.x,editcursor.y,mmx+100-mmw/2,mmy+72-mmh/2,mmw,mmh)) {
                         data[i]=other.data[i]
                         if (lemongrab.objlist[j,5+i]="align") {off2x=other.off2x off2y=other.off2y}
                         editsaveundo()
+                        updatedeities()
+                        drawdeities()
 
                     }
+                    updatedeities()
+                        drawdeities()
                    with (other) {event_user(7)}
                 }
             }

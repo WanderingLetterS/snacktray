@@ -1,0 +1,80 @@
+ERROR in
+action number 1
+of Draw Event
+for object monitor:
+
+Trying to draw non-existing background.
+
+
+ERROR in
+action number 1
+of Draw Event
+for object monitor:
+
+Trying to draw non-existing background.
+
+
+ERROR in
+action number 1
+of Draw Event
+for object monitor:
+
+Trying to draw non-existing background.
+
+
+ERROR in
+action number 1
+of Draw Event
+for object monitor:
+
+Trying to draw non-existing background.
+
+
+ERROR in
+action number 1
+of Draw Event
+for object monitor:
+
+Trying to draw non-existing background.
+
+
+ERROR in
+action number 1
+of Draw Event
+for object monitor:
+
+Trying to draw non-existing background.
+
+
+ERROR in
+action number 1
+of Draw Event
+for object monitor:
+
+Trying to draw non-existing background.
+
+
+ERROR in
+action number 1
+of Draw Event
+for object monitor:
+
+Trying to draw non-existing background.
+
+
+ERROR in
+action number 1
+of Draw Event
+for object monitor:
+
+Trying to draw non-existing background.
+
+
+ERROR in
+action number 1
+of Draw Event
+for object monitor:
+
+Trying to draw non-existing background.
+
+

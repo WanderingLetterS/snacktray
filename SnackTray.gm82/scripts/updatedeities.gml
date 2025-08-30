@@ -334,9 +334,31 @@ test=1
     } break
     case (itembox): {
         spr=spr_box frame=0
-        if (data[3]="1") frame=1
-        if (data[2]="1") frame+=2
-        if (data[1]="none") frame=4
+
+        if (data[1]="none") frame=15
+        else if (data[1]="") frame=0
+        else if (data[1]="item") frame=1
+        else if (data[1]="itemfeather") frame=2
+        else if (data[1]="mini") frame=3
+        else if (data[1]="coins") frame=4
+        else if (data[1]="life") frame=5
+        else if (data[1]="poison") frame=6
+        else if (data[1]="vine") frame=7
+        else if (data[1]="star") frame=8
+        else if (data[1]="key") frame=9
+        else if (data[1]="shield") frame=10
+        else if (data[1]="spring") frame=11
+        else if (data[1]="spreng") frame=12
+        else if (data[1]="pswitch") frame=13
+        else if (data[1]="shard") frame=14
+        else if (data[1]="thunderitem") frame=16
+        else if (data[1]="wateritem") frame=17
+        else if (data[1]="iceitem") frame=18
+        else if (data[1]="cloveritem") frame=19
+        else if (data[1]="questionitem") frame=20
+        if (data[3]="1") if (data[2]="1") frame=23 else frame=22
+        else if (data[2]="1") frame=21
+
     } break
     case (platform): {
         spr=spr_platform frame=0
