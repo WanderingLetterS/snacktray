@@ -8,6 +8,7 @@ center x=17
 center y=15
 box width=34
 box height=34
+short small form=0.5
 
 pitch spindash=yes
 jump ball animation=no
