@@ -38,17 +38,18 @@ cantriangel=0
 
 df=degtorad(135)
 
-x=round(200+(20+80*cos(df)))
-y=round(140-80*sin(df))
+x=round(global.screenwidth/2+(20+80*cos(df)))
+y=round(global.screenheight/2+12-80*sin(df))
 instance_create(x,y,introblink)
 ystart=96
 
 instance_create(0,0,intromode7)
 instance_create(0,0,introborder)
 instance_create(0,0,introfade)
-instance_create(200,y+16,introtape)
+instance_create(global.screenwidth/2,y+16,introtape)
 instance_create(0,y+16,introslide1)
 instance_create(0,y+16,introslide2)
+instance_create(0,y+16,text1080)
 
 repeat (32) instance_create(0,0,introslide)
 
@@ -296,22 +297,23 @@ action_id=603
 applies_to=self
 */
 if (sureface_exists("boll")) {
-    draw_surface_stretched_ext(boll,x-90*vs-1,floor(y-98*is),180*vs,180*is,0,1)
-    draw_surface_stretched_ext(boll,x-90*vs+1,floor(y-98*is),180*vs,180*is,0,1)
-    draw_surface_stretched_ext(boll,x-90*vs,floor(y-98*is)-1,180*vs,180*is,0,1)
-    draw_surface_stretched_ext(boll,x-90*vs,floor(y-98*is)+1,180*vs,180*is,0,1)
+    draw_surface_stretched_ext(boll,x-40*vs-1,floor(y-98*is),180*vs,180*is,0,1)
+    draw_surface_stretched_ext(boll,x-40*vs+1,floor(y-98*is),180*vs,180*is,0,1)
+    draw_surface_stretched_ext(boll,x-40*vs,floor(y-98*is)-1,180*vs,180*is,0,1)
+    draw_surface_stretched_ext(boll,x-40*vs,floor(y-98*is)+1,180*vs,180*is,0,1)
 
     texture_set_interpolation(1)
-    draw_surface_stretched(boll,x-90*vs,floor(y-98*is),180*vs,180*is)
+    draw_surface_stretched(boll,x-40*vs,floor(y-98*is),180*vs,180*is)
     texture_set_interpolation(0)
 }
 
-
+global.halign=1
 if (year && introtape.f20=1) {
-    global.halign=1
-    if (classic && year) draw_systext(x,208,"Sonic Boll is "+string(year)+" years old today!")
-    global.halign=0
-}
+    if (classic && year) draw_systext(x,210,"Sonic Boll is "+string(year)+" years old today!")
+
+} else if introtape.f20=1 draw_systext(global.screenwidth/2,210,"Press any button to play!")
+
+ global.halign=0
 #define KeyPress_32
 /*"/*'/**//* YYD ACTION
 lib_id=1

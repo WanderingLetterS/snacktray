@@ -53,5 +53,5 @@ draw_self()
 with (introslide1) if (visible) event_user(0)
 with (introslide2) if (visible) event_user(0)
 
-draw_sprite(spr_20,0,x,y+cosine(200,76,f20))
-draw_sprite_ext(spr_20,1,x,y+cosine(200,76,f20),1,1,0,$ffffff,fg20)
+draw_sprite(spr_20,0,x,y+cosine(global.screenwidth/2,76,f20))
+draw_sprite_ext(spr_20,1,x,y+cosine(global.screenwidth/2,76,f20),1,1,0,$ffffff,fg20)

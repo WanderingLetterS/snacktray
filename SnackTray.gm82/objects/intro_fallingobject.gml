@@ -16,8 +16,13 @@ case 7: sprite_index=spr_feather break;
 case 8: sprite_index=spr_starman break;
 case 9: sprite_index=spr_shield break;
 case 0: sprite_index=spr_ring break;
+case 10: sprite_index=spr_tflower break;
+case 11: sprite_index=spr_wflower break;
+case 12: sprite_index=spr_iflower break;
+case 13: sprite_index=spr_cflower break;
+case 14: sprite_index=spr_questionmush break;
 }
-if egg(0.1) sprite_index=spr_mark
+if egg(1) sprite_index=spr_mark
 image_speed=0
 y-=random(90)
 x=random_range(view_xview,view_xview+view_hview*2)

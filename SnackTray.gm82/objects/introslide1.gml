@@ -29,7 +29,7 @@ applies_to=self
 */
 if (go) {
     f=min(1,f+0.04)
-    x=lerp(-40,200,sqr(f))
+    x=lerp(-40,global.screenwidth/2,sqr(f))
     y=ystart+64-cos((1-x/200)*pi/2)*64
     if (f=1) {
         time1+=0.2

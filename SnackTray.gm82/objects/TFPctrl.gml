@@ -4,7 +4,10 @@ lib_id=1
 action_id=603
 applies_to=self
 */
+
+room_goto(titlescreen)
 thing=0
+
 state=0
 textframe=0
 

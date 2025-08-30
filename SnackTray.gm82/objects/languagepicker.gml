@@ -39,7 +39,7 @@ else {
         settings("languagepick",1)
         event_user(1)
     } else {
-        with (instance_create(200,y+8,genericcursor)) {
+        with (instance_create(global.screenwidth/2,y+8,genericcursor)) {
             image_blend=playercol(0,0)
             special=1
         }

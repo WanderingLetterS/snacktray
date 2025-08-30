@@ -4,8 +4,8 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-image_xscale=400
-image_yscale=224
+image_xscale=global.screenwidth
+image_yscale=global.screenheight
 image_blend=0
 alarm[0]=180
 #define Alarm_0

@@ -44,7 +44,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-surf=sureface("mode7",800,448)
+surf=sureface("mode7",global.screenwidth*2,global.screenheight*2)
 
 if (sureface_set_target("mode7")) {
     xx-=0.002
@@ -61,16 +61,16 @@ if (sureface_set_target("mode7")) {
     /*else*/ {col1=$404000 col2=$aaaa00}
 
     texture_set_interpolation(!introctrl.craft)
-    d3d_set_projection_ortho(0,0,400,224,0)
-    draw_sprite_stretched(tex_sky,3-introctrl.classic,0,0,401,112) //draw the sky texture
+    d3d_set_projection_ortho(0,0,global.screenwidth,global.screenheight,0)
+    draw_sprite_stretched(tex_sky,3-introctrl.classic,0,0,global.screenwidth+1,global.screenheight/2) //draw the sky texture
 
     d3d_transform_add_rotation_z(zz)
-    d3d_transform_add_translation(200,96,0)
+    d3d_transform_add_translation(global.screenwidth,96,0)
     d3d_model_draw(starfield,0,0,0,-1)
     d3d_transform_set_identity()
 
     texture_set_repeat(1)
-    d3d_set_projection_ext(0,0,0,0,-10,3,0,0,-1,105,400/224,1,1000)
+    d3d_set_projection_ext(0,0,0,0,-10,3,0,0,-1,105,global.screenwidth/global.screenheight,1,1000)
     draw_set_blend_mode(bm_add)
     d3d_primitive_begin_texture(pr_trianglestrip,tex1)
         d3d_vertex_texture_color(-70,-40,-5,xx*s,-yy*s,$644000,0)
@@ -93,7 +93,7 @@ if (sureface_set_target("mode7")) {
     draw_set_blend_mode(bm_subtract)
     with (introslide) draw_ellipse_color(x-20+hspeed,y,x+20+hspeed,y+(16*((y-100)/112)),$2b2b2b,0,0)
     draw_set_blend_mode(bm_add)
-    rect(0,0,400,224,0,1)
+    rect(0,0,global.screenwidth,global.screenheight,0,1)
     draw_set_blend_mode(0)
 
     surface_reset_target()
@@ -113,4 +113,4 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-if (sureface_exists("mode7")) draw_surface_stretched(surf,0,0,400,224)
+if (sureface_exists("mode7")) draw_surface_stretched(surf,0,0,global.screenwidth,global.screenheight)
