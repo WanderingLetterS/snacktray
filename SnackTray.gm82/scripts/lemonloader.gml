@@ -291,7 +291,5 @@ repeat (8) {
     with (regionbutton) if (n=r) empty=test
     r+=1
 }
-
 with(drawregion) UPDATE_THE_DEITIES=1
-
 if (converted && room==lemon) ping(lang("error lemon converted"))

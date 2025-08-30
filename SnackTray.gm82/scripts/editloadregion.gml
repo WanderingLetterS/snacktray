@@ -38,6 +38,7 @@ with (drawregion) {
     deity=lemongrab.gods[region]
     viewx=lemongrab.w[region]*8
     viewy=lemongrab.h[region]*9
-    event_user(7)
     UPDATE_THE_DEITIES=1
+    event_user(7)
+
 }

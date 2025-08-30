@@ -2362,3 +2362,5 @@ com_dmgr_dmg_player
 com_dmgr_dmg_enemy
 com_dmgr_dmg_blocks
 draw_sprite_general_centered
+drawdeities
+deathofdeities

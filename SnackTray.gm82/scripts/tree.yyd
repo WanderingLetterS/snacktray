@@ -624,12 +624,14 @@
 	|editgodlist
 	|tylerpicker
 	|updatedeities
+	|deathofdeities
 	|drawtooltip
 	|turingblock
 	|tile_dyn
 	|tile_bake
 	|lemonhappy
 	|unpack_align
+	|drawdeities
 +Special Stage
 	|specialepieces
 	|specialenew

@@ -55,6 +55,7 @@ if (flooding=2) {
             i.obj=lemongrab.objlist[j,0]
             i.spr=lemongrab.objlist[j,1]
             i.off=lemongrab.objlist[j,2]
+            with i updatedeities()
             if (hotbar.picked[hotbar.cur]) for (k=0;k<8;k+=1) i.data[k]=hotbar.data[hotbar.cur,k]
             else for (k=0;k<8;k+=1) i.data[k]=lemongrab.objlist[j,k+101]
             if (lemongrab.objlist[j,5]="align") unpack_align(i)
@@ -65,7 +66,7 @@ if (flooding=2) {
 
 with (deity) if (obj!=other.yes) {x=memx}
 
-UPDATE_THE_DEITIES=1
+//UPDATE_THE_DEITIES=1
 event_user(7)
 flooding=0
 #define Alarm_2
@@ -232,7 +233,7 @@ if (within(editcursor.x,editcursor.y,mmx+100-mmw/2,mmy+72-mmh/2,mmw,mmh)) {
         if (ireaderpick) {
             if (editcursor.rightp) {
                 ireaderpick=0
-                UPDATE_THE_DEITIES=1
+                //UPDATE_THE_DEITIES=1
             }
             if (editcursor.leftp) {
                 if(ireaderinst.obj=ireader) {
@@ -242,14 +243,14 @@ if (within(editcursor.x,editcursor.y,mmx+100-mmw/2,mmy+72-mmh/2,mmw,mmh)) {
                     ireaderinst.data[2]=string(cury-ireaderinst.y)
                 }
                 ireaderpick=0
-                UPDATE_THE_DEITIES=1
+                //UPDATE_THE_DEITIES=1
             }
 
         }
         else if (gobblepick) {
             if (editcursor.rightp) {
                 gobblepick=0
-                UPDATE_THE_DEITIES=1
+                //UPDATE_THE_DEITIES=1
             }
             if (editcursor.leftp) {
                 if(gobbleinst.obj=gobble) {
@@ -259,14 +260,12 @@ if (within(editcursor.x,editcursor.y,mmx+100-mmw/2,mmy+72-mmh/2,mmw,mmh)) {
                     gobbleinst.data[2]=string(cury-gobbleinst.y)
                 }
                 gobblepick=0
-                UPDATE_THE_DEITIES=1
             }
 
         }
         else if (gobblepick2) {
             if (editcursor.rightp) {
                 gobblepick2=0
-                UPDATE_THE_DEITIES=1
             }
             if (editcursor.leftp) {
                 if(gobbleinst2.obj=gobble) {
@@ -276,7 +275,6 @@ if (within(editcursor.x,editcursor.y,mmx+100-mmw/2,mmy+72-mmh/2,mmw,mmh)) {
                     gobbleinst2.data[2]=string(cury-gobbleinst2.y)
                 }
                 gobblepick2=0
-                UPDATE_THE_DEITIES=1
             }
 
         } else if (editcursor.leftp && curx=median(curx,-max(1,1/editzoom.level),-1) && cury=median(cury,lemongrab.h[region]-lemongrab.horizon[region],lemongrab.h[region]-lemongrab.horizon[region]+max(1,1/editzoom.level)-1)) {
@@ -328,12 +326,13 @@ if (within(editcursor.x,editcursor.y,mmx+100-mmw/2,mmy+72-mmh/2,mmw,mmh)) {
                     if (lemongrab.objlist[j,5+i]="align") unpack_align(id)
                     if obj!=code
                     with (drawregion.deity) if (obj=other.obj && selected) {
+
                         data[i]=other.data[i]
                         if (lemongrab.objlist[j,5+i]="align") {off2x=other.off2x off2y=other.off2y}
                         editsaveundo()
 
                     }
-                    with (other) {UPDATE_THE_DEITIES=1 event_user(7)}
+                   with (other) {event_user(7)}
                 }
             }
         } else if (editcursor.tool=0) { //pencil
@@ -395,6 +394,7 @@ if (within(editcursor.x,editcursor.y,mmx+100-mmw/2,mmy+72-mmh/2,mmw,mmh)) {
                     clicked=2
                     if (lemongrab.objlist[hotbar.obj[hotbar.cur],0]=waterblock) {
                         with (instance_position(curx,cury,watercontainer)) {
+                            deathofdeities()
                             instance_destroy()
                             if !(settings("nolemonsound")) sound("lemonerase")
                             with (other) event_user(7)
@@ -405,9 +405,10 @@ if (within(editcursor.x,editcursor.y,mmx+100-mmw/2,mmy+72-mmh/2,mmw,mmh)) {
                                 lemongrab.objlist[hotbar.obj[hotbar.cur],0]=sloper1s||
                                 lemongrab.objlist[hotbar.obj[hotbar.cur],0]=sloper2s){
                         with (instance_position(curx,cury,semicontainer)) {
+                            deathofdeities()
                             instance_destroy()
                             if !(settings("nolemonsound")) sound("lemonerase")
-                            with (other) {UPDATE_THE_DEITIES=1 event_user(7)}
+                            with (other) { event_user(7)}
                         }
                     } else if (lemongrab.objlist[hotbar.obj[hotbar.cur],0]=groundback/*||
                                 lemongrab.objlist[hotbar.obj[hotbar.cur],0]=slopel1b||
@@ -415,15 +416,17 @@ if (within(editcursor.x,editcursor.y,mmx+100-mmw/2,mmy+72-mmh/2,mmw,mmh)) {
                                 lemongrab.objlist[hotbar.obj[hotbar.cur],0]=sloper1b||
                                 lemongrab.objlist[hotbar.obj[hotbar.cur],0]=sloper2b*/){
                         with (instance_position(curx,cury,backcontainer)) {
+                            deathofdeities()
                             instance_destroy()
                             if !(settings("nolemonsound")) sound("lemonerase")
-                            with (other) {UPDATE_THE_DEITIES=1 event_user(7)}
+                            with (other) { event_user(7)}
                         }
                     }
                     else with (instance_position(curx,cury,deity)) {
+                        deathofdeities()
                         instance_destroy()
                         if !(settings("nolemonsound")) sound("lemonerase")
-                        with (other)  {UPDATE_THE_DEITIES=1 event_user(7)}
+                        with (other)  { event_user(7)}
                     }
                 }
             }
@@ -458,7 +461,7 @@ if (within(editcursor.x,editcursor.y,mmx+100-mmw/2,mmy+72-mmh/2,mmw,mmh)) {
                     }
                 } else {
                     selected_array[0]=0
-                    UPDATE_THE_DEITIES=1 event_user(7)
+                    event_user(7)
                     selecting=1
                 }
             }
@@ -528,7 +531,7 @@ if (within(editcursor.x,editcursor.y,mmx+100-mmw/2,mmy+72-mmh/2,mmw,mmh)) {
 }
 if (drawing) {
     //drawing objects
-    if (!editcursor.left) {drawing=0 UPDATE_THE_DEITIES=1 event_user(7)}
+    if (!editcursor.left) {drawing=0 event_user(7)}
     else if ((curx!=drawx || cury!=drawy) && curx=median(0,curx,lemongrab.w[region]-1) && cury=median(0,cury,lemongrab.h[region]-1)) {
          if (lemongrab.objlist[hotbar.obj[hotbar.cur],0]=waterblock) {
             //water painting
@@ -537,7 +540,7 @@ if (drawing) {
                 i=instance_create(curx,cury,lemongrab.waters[region])
                 i.region=region
                 i.obj=lemongrab.objlist[hotbar.obj[hotbar.cur],0]
-                with i updatedeities()
+                with i {updatedeities() drawdeities()}
                 myarray_i=1
                 savema=selected_array[0]
                 repeat (savema) {
@@ -545,13 +548,13 @@ if (drawing) {
                     myarray_i+=1
                     selected_array[0]-=1
                 }
-
+                event_user(7)
                 selected_array[0]=0
                 /*with (watercontainer) if (selected) {selected=0 event_user(0)}
                 with (deity) if (selected) {selected=0 event_user(0)}
                 with (semicontainer) if (selected) {selected=0 event_user(0)}
                 with (backcontainer) if (selected) {selected=0 event_user(0)}*/
-                UPDATE_THE_DEITIES=1 event_user(7)
+
             } else if (drawing=1) grabj=noone
         } else if (lemongrab.objlist[hotbar.obj[hotbar.cur],0]=groundsemi||
             lemongrab.objlist[hotbar.obj[hotbar.cur],0]=slopel1s||
@@ -564,7 +567,7 @@ if (drawing) {
                 i=instance_create(curx,cury,lemongrab.semis[region])
                 i.region=region
                 i.obj=lemongrab.objlist[hotbar.obj[hotbar.cur],0]
-                with i updatedeities()
+                with i {updatedeities() drawdeities()}
                 myarray_i=1
                 savema=selected_array[0]
                 repeat (savema) {
@@ -572,12 +575,12 @@ if (drawing) {
                     myarray_i+=1
                     selected_array[0]-=1
                 }
+                event_user(7)
                 /*
                 with (watercontainer) if (selected) {selected=0 event_user(0)}
                 with (deity) if (selected) {selected=0 event_user(0)}
                 with (semicontainer) if (selected) {selected=0 event_user(0)}
                 with (backcontainer) if (selected) {selected=0 event_user(0)}*/
-                UPDATE_THE_DEITIES=1 event_user(7)
             } else if (drawing=1) grabj=noone
         } else if (lemongrab.objlist[hotbar.obj[hotbar.cur],0]=groundback/*||
             lemongrab.objlist[hotbar.obj[hotbar.cur],0]=slopel1s||
@@ -590,7 +593,7 @@ if (drawing) {
                 i=instance_create(curx,cury,lemongrab.backs[region])
                 i.region=region
                 i.obj=lemongrab.objlist[hotbar.obj[hotbar.cur],0]
-                with i updatedeities()
+                with i {updatedeities()}
                 myarray_i=1
                 savema=selected_array[0]
                 repeat (savema) {
@@ -598,12 +601,11 @@ if (drawing) {
                     myarray_i+=1
                     selected_array[0]-=1
                 }
-
+                event_user(7)
                 /*with (watercontainer) if (selected) {selected=0 event_user(0)}
                 with (deity) if (selected) {selected=0 event_user(0)}
                 with (semicontainer) if (selected) {selected=0 event_user(0)}
                 with (backcontainer) if (selected) {selected=0 event_user(0)}*/
-                UPDATE_THE_DEITIES=1 event_user(7)
             } else if (drawing=1) grabj=noone
         } else {
             grabj=instance_position(curx,cury,deity)
@@ -616,7 +618,8 @@ if (drawing) {
                 if (hotbar.picked[hotbar.cur]) for (k=0;k<12;k+=1) i.data[k]=hotbar.data[hotbar.cur,k]
                 else for (k=0;k<12;k+=1) i.data[k]=lemongrab.objlist[j,k+101]
                 if (lemongrab.objlist[j,5]="align") unpack_align(i)
-                with i updatedeities()
+                with i {updatedeities() drawdeities()}
+
                 myarray_i=1
                 savema=selected_array[0]
                 repeat (savema) {
@@ -631,7 +634,7 @@ if (drawing) {
                 with (semicontainer) if (selected) {selected=0 event_user(0)}
                 with (backcontainer) if (selected) {selected=0 event_user(0)}*/
 
-                UPDATE_THE_DEITIES=1 event_user(7)
+
             } else if (drawing=1) grabj=noone
         }
         drawx=curx
@@ -639,7 +642,7 @@ if (drawing) {
         //single click cancel
         if (drawing=2) {
             drawing=0
-            UPDATE_THE_DEITIES=1event_user(7)
+            event_user(7)
         }
     }
 }
@@ -658,9 +661,9 @@ if (grabj) {
         }
         drawx=curx
         drawy=cury
-        UPDATE_THE_DEITIES=1
+        //UPDATE_THE_DEITIES=1
     }
-    if (!editcursor.left) { UPDATE_THE_DEITIES=1 event_user(7)/*with grabj updatedeities() grabj=noone*/}
+    if (!editcursor.left) { /*UPDATE_THE_DEITIES=1*/ event_user(7)/*with grabj updatedeities() grabj=noone*/}
 }
 if (grab) {
     //grab the view
@@ -819,7 +822,7 @@ if (selecting) {
                         other.selected_array[0]+=1 other.selected_array[other.selected_array[0]]=id
                     }
                 }
-                UPDATE_THE_DEITIES=1
+                //UPDATE_THE_DEITIES=1
                 selecting=0
             }
         }
@@ -894,7 +897,7 @@ if (selecting) {
                         }
                     }
                 }
-                UPDATE_THE_DEITIES=1
+                //UPDATE_THE_DEITIES=1
                 event_user(7)
             }
             selecting=0
@@ -922,7 +925,7 @@ if (grabs) {//grab selection
     if (!editcursor.left) {
         grabs=0
     }
-    UPDATE_THE_DEITIES=1 event_user(7)
+    /*UPDATE_THE_DEITIES=1*/ event_user(7)
 }
 
 if (editcursor.escape) {
@@ -1110,140 +1113,18 @@ lemongrab.objlist[hotbar.obj[hotbar.cur],0]=sloper2s){
     draw_set_alpha(0.25)
 }
 
-//with (deity)
 
 // draw deity inlined
 
 var d;
 with (deity) {
 
-    if (drawregion.UPDATE_THE_DEITIES && !drawregion.dont_update_eities)
+    if (drawregion.UPDATE_THE_DEITIES && !drawregion.dont_update_deities)
     updatedeities()
 
-    draw_sprite_ext(spr,frame,x*16+off+off2x,y*16+off+off2y,1,1,0,c_white,draw_get_alpha())
-
-    switch(obj) {
-    case (tyler):
-    case (objectstyler):
-    case (terraintyler):
-    case (decortyler): {
-        for (i=0;i<ur;i+=1) for (j=0;j<vr;j+=1) {
-            if (flip=0) draw_background_part_ext(sheet,l,t,w,h,u+i*w,v+j*h,1,1,col,0.5)
-            if (flip=1) draw_background_part_ext(sheet,l,t,w,h,u+(i+1)*w,v+j*h,-1,1,col,0.5)
-            if (flip=2) draw_background_part_ext(sheet,l,t,w,h,u+i*w,v+(j+1)*h,1,-1,col,0.5)
-            if (flip=3) draw_background_part_ext(sheet,l,t,w,h,u+(i+1)*w,v+(j+1)*h,-1,-1,col,0.5)
-        }
-    } break
-
-    case (itemlaunch): {
-        draw_sprite(spr_itemspawner,11,(x*16)+8,(y*16)+8) break;
-    }
-
-    case (spawncancel): if (point) {
-        draw_set_color($ff)
-        draw_arrow(x*16,y*16+8,point.x*16+16,point.y*16+8,8)
-        draw_set_color($ffffff)
-    } break
-
-    case (textblock): {
-        global.halign=align
-        draw_skintext(x*16,y*16,data[0],col)
-        global.halign=0
-    } break
-
-    case (pipeblock):
-    case (sidepipe):
-    case (downpipe):
-    case (theothersidepipe):
-    case (door):
-    case (warpbox): {
-        if (point) {
-            draw_set_color($ff)
-            draw_arrow(x*16+8,y*16+8,point.x*16+8,point.y*16+8,8)
-            draw_set_color($ffffff)
-        }
-        if (point2) {
-            draw_set_color($ff00)
-            draw_arrow(x*16+8,y*16+8,point2.x*16+8,point2.y*16+8,8)
-            draw_set_color($ffffff)
-        }
-    } break
-
-    case (axe): if (point) {
-        draw_set_color($ff)
-        draw_arrow(x*16+8,y*16+8,point.x*16+8,point.y*16+8,8)
-        draw_set_color($ffffff)
-    } break
-
-    case (activate_region): {
-        rect(x*16+off+off2x,y*16+off+off2y,real(data[1])*16,real(data[2])*16,c_navy,0.5) //Not finding out if every object gets "col" Lol
-    } break
-
-    case (fbarblock): {
-        if (fire) {
-            if (clock) {for (i=0;i<6+6*long;i+=1) draw_sprite(spr_firebar,0,x*16+8+6*i,y*16+8-6*i)}
-            else {for (i=0;i<6+6*long;i+=1) draw_sprite(spr_firebar,0,x*16+8-6*i,y*16+8-6*i)}
-        }
-    } break
-    case (platform): {
-        if (sub) {
-            draw_circle(x*16+8,(y-height)*16+16,8,1)
-            draw_circle(sub.x*16-8,(y-height)*16+16,8,1)
-            draw_line(x*16,(y-height)*16+16,x*16,y*16)
-            draw_line(sub.x*16,(y-height)*16+16,sub.x*16,sub.y*16)
-            draw_line(x*16+8,(y-height)*16+8,sub.x*16-8,(y-height)*16+8)
-        }
-    } break
-    case (axewall): if (point) {
-        draw_set_color($ff)
-        d=point_direction(x,y,point.x,point.y)
-        draw_arrow(x*16+8,y*16+8,x*16+8+lengthdir_x(32,d),y*16+8+lengthdir_y(32,d),8)
-        draw_set_color($ffffff)
-    } break
-    case (mark): if frame==0{ draw_omitext(x*16,y*16+4,data[0])} break
-    case (anchor): { draw_omitext(x*16,y*16+4,data[0])} break
-
-    case (retainer): {
-        if (data[0]="") draw_sprite_part(skindat("tex_princess0"),0,8,8,112,112,x*16-32,y*16-88+skindat("prin"))
-    } break
-    case (ireader): {
-        draw_sprite(spr_ireader,1,srcx*16,srcy*16)
-        draw_set_color($ff) if (selected) draw_set_color($ffffff)
-        draw_arrow(x*16+8,y*16+8,srcx*16+8,srcy*16+8,8)
-        draw_set_color($ffffff)
-    } break
-
-    case (obj=gobble): {
-        draw_sprite(spr_ireader,1,srcx*16,srcy*16)
-        draw_sprite(spr_ireader,1,srcx2*16,srcy2*16)
-        draw_set_color($ff) if (selected) draw_set_color($ffffff)
-        draw_arrow(x*16+8,y*16+8,srcx*16+8,srcy*16+8,8)
-        draw_arrow(x*16+8,y*16+8,srcx2*16+8,srcy2*16+8,8)
-        draw_set_color($ffffff)
-    } break
-
-    case (fakesemiplat): {
-        rect(x*16,y*16,real(data[1])*16,real(data[2])*16,col,0.5)
-    } break
-
-    case (lightbulb): {
-        rect((x*16)-((real(data[2])*16)/2)+8,(y*16)-((real(data[3])*16)/2)+8,real(data[2])*16,real(data[3])*16,$00c3f4,0.5)
-    } break
-
-    case (detector): {
-        rect(x*16+5,y*16,6,real(data[3])*8,col,0.5)
-    } break
-
-    case (gate): {
-        rect(x*16+5,y*16,6,real(data[2])*16,col,0.5)
-    } break
-
-    case (sidegate): {
-        rect(x*16,y*16+5,real(data[2])*16,6,col,0.5)
-        draw_sprite(spr_sidegate,0,(x*16)+(real(data[2])-1)*16,y*16)
-    } break
-    }
+    drawdeities()
     update=0
+
 }
 
 UPDATE_THE_DEITIES=0
@@ -1339,7 +1220,7 @@ var ofx,ofy;
 
 d3d_transform_set_identity()
 if (!sureface_exists("drawregion") || !sureface_exists("drawregion2") || global.lemonjustundone) {usersevened=1 UPDATE_THE_DEITIES=1 global.lemonjustundone=0}
-if (usersevened ) {event_user(8) usersevened=0 }
+if (usersevened ) {event_user(8) usersevened=0 UPDATE_THE_DEITIES=0}
 rect(0,0,width,height,0,1)
 draw_set_blend_mode_ext(bm_one,bm_one)
 draw_surface(s,0,0)

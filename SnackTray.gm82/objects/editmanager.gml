@@ -96,7 +96,7 @@ if (global.lemontest) {
     global.lemontest=0
 
     with (drawregion) {
-        UPDATE_THE_DEITIES=1
+        //UPDATE_THE_DEITIES=1
         event_user(7)
     }
 } else {

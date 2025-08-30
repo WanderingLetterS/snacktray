@@ -47,10 +47,10 @@ with (drawregion) {
         o.off2y=cbuffer[i,18]
         o.selected=1
         o.depth=0
+        with o updatedeities()
     }
 
     update=1
-    UPDATE_THE_DEITIES=1
     event_user(7)
 }
 
