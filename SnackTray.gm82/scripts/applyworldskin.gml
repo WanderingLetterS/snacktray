@@ -24,8 +24,8 @@ with (globalmanager) {
     for (i=0;i<=musc;i+=1) skindat("music loop "+mload[i],0)
     replaceworld(skin,loadspec)
 
-    if (global.levelskin && !global.worldskin) replaceasset(skin,skindir+global.lskins[global.levelskin+1,0])
-    else replaceasset(skin)
+    //if (global.levelskin && !global.worldskin) replaceasset(skin,skindir+global.lskins[global.levelskin+1,0])
+    //else replaceasset(skin)
     return 1
 }
 return 0

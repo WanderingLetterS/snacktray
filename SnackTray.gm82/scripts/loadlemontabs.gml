@@ -44,7 +44,7 @@ if (argument[0]=3) {
 }
 //Technical
 if (argument[0]=4) {
-    l[ 0]=-1           l[ 1]=signalcommunicator     l[ 2]=bopblock  l[ 3]=gate l[ 4]=gobble    l[ 5]=axe   l[ 6]=anchor     l[ 7]=segafadewarp       l[8]=talkbox     l[ 9]=phaser         l[10]=bulletspawner       l[11]=tyler     l[12]=ground     l[13]=-1      l[14]=-1    l[15]=-1        l[16]=-1          l[17]=-1       l[18]=-1    l[19]=-1
+    l[ 0]=-1           l[ 1]=signalcommunicator     l[ 2]=bopblock  l[ 3]=gate l[ 4]=gobble    l[ 5]=axe   l[ 6]=-1     l[ 7]=segafadewarp       l[8]=talkbox     l[ 9]=phaser         l[10]=bulletspawner       l[11]=tyler     l[12]=ground     l[13]=-1      l[14]=-1    l[15]=-1        l[16]=-1          l[17]=-1       l[18]=-1    l[19]=-1
     l[20]=-1           l[21]=button     l[22]=onoffscreen   l[23]=spawnerblock     l[24]=variableblock      l[25]=lightbulb   l[26]=mark   l[27]=barrier      l[28]=textblock       l[29]=grateblock        l[30]=cheepspawner       l[31]=terraintyler     l[32]=decortyler     l[33]=activate_region      l[34]=-1    l[35]=-1        l[36]=-1    l[37]=-1       l[38]=-1     l[39]=-1
     l[40]=-1           l[41]=detector     l[42]=timerblock  l[43]=signalblock    l[44]=ireader            l[45]=channelmaster           l[46]=code         l[47]=segafadedest l[48]=heaven      l[49]=x1F0         l[50]=spawncancel       l[51]=objectstyler     l[52]=jetstream     l[53]=-1      l[54]=-1    l[55]=-1        l[56]=-1              l[57]=-1       l[58]=-1     l[59]=-1
 }

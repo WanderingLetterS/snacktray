@@ -55,7 +55,7 @@ with (drawregion) {
     unchanged=1
     if (argument[0]) {
         global.lemoncusthumb=""
-        replaceasset(globalmanager.wskin)
+        //replaceasset(globalmanager.wskin)
         if (argument[0] == 2) { //new time-saving technique: have editnew use 0, 1, and 2 as arguments for different behavior. when its only used 3 times in the entire game
             global.lemonlskin="None"
         }

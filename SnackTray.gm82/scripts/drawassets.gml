@@ -1,5 +1,5 @@
 //drawassets()
-
+exit
 
 
 var j,i,spr,w,h,fh,hw,top,dx,dy,type,ab,blend;

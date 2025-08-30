@@ -124,7 +124,7 @@ repeat (8) {
         error(lang("error lemon biome1")+lemongrab.typemus[r]+lang("error lemon biome2"))
     }
     
-    if (lv="2" || lv="3" || lv="2.0.5" || lv="-S-"|| lv="2.0.75"||lv="2.1" || lv="2.1.1" || lv="2.1.2" || lv="2.1.3" || lv="2.1.4" || lv="2.1.5") lemongrab.water[r]=readshort()
+    if (lv="2" || lv="3" || lv="2.0.5" || lv="-S-"|| lv="2.0.75"||lv="2.1" || lv="2.1.1" || lv="2.1.2" || lv="2.1.3" || lv="2.1.4" || lv="2.1.5"||lv="SnackTray") lemongrab.water[r]=readshort()
     else lemongrab.water[r]=0
     if (lv="-S-" || lv="2.0.5"|| lv="2.0.75"||lv="2.1"|| lv="2.1.1" || lv="2.1.2" ||lv="2.1.3" ||lv="2.1.4" || lv="2.1.5" ||lv="SnackTray") lemongrab.horizon[r]=readshort()
     else lemongrab.horizon[r]=0

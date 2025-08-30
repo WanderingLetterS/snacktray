@@ -28,8 +28,8 @@ if (fn="") {
     }
     global.lemonfilename=fn
     if global.lemon_compat {
-        if (directory_exists(filename_dir(fn)+"\baseasset")) replaceasset(globalmanager.wskin,filename_dir(fn)+"\")
-        else replaceasset(globalmanager.wskin)
+        //if (directory_exists(filename_dir(fn)+"\baseasset")) replaceasset(globalmanager.wskin,filename_dir(fn)+"\")
+        //else replaceasset(globalmanager.wskin)
     }
     drawregion.update=1
 } else {

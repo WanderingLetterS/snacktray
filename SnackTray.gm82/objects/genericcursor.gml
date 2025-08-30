@@ -148,3 +148,13 @@ if (akey) {
     if (bbut) image_index=3
     image_index=min(4,image_index+0.2)
 } else image_index=0
+#define Draw_0
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+
+
+draw_sprite_ext(sprite_index,image_index,xprevious,yprevious,image_xscale,image_yscale,image_angle,image_blend,image_alpha*0.5)
+draw_self()

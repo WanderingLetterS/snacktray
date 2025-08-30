@@ -14,12 +14,12 @@ if (i!=-1) {
         global.worldskin=max(0,i)
         applyworldskin(global.wskins[global.worldskin+1,0])
         if (i=0) {
-            if (directory_exists(filename_dir(global.lemonfilename)+"\baseasset")) replaceasset(globalmanager.wskin,filename_dir(global.lemonfilename))
-            else replaceasset(globalmanager.wskin)
+            //if (directory_exists(filename_dir(global.lemonfilename)+"\baseasset")) replaceasset(globalmanager.wskin,filename_dir(global.lemonfilename))
+            //else replaceasset(globalmanager.wskin)
         }
     }
 
-    if (i!=0) replaceasset(globalmanager.wskin)
+    //if (i!=0) replaceasset(globalmanager.wskin)
     drawregion.update=1
     global.worldskin2=global.worldskin
 }

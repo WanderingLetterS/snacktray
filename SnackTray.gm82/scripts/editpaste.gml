@@ -39,8 +39,12 @@ with (drawregion) {
         o.data[5]=cbuffer[i,10]
         o.data[6]=cbuffer[i,11]
         o.data[7]=cbuffer[i,12]
-        o.off2x=cbuffer[i,13]
-        o.off2y=cbuffer[i,14]
+        o.data[8]=cbuffer[i,13]
+        o.data[9]=cbuffer[i,14]
+        o.data[10]=cbuffer[i,15]
+        o.data[11]=cbuffer[i,16]
+        o.off2x=cbuffer[i,17]
+        o.off2y=cbuffer[i,18]
         o.selected=1
         o.depth=0
     }

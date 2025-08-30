@@ -26,9 +26,9 @@ with(dr) {
             dr.cbuffer[i,3]=spr
             dr.cbuffer[i,4]=off
             z=0
-            repeat (8) {dr.cbuffer[i,5+z]=data[z] z+=1}
-            dr.cbuffer[i,13]=off2x
-            dr.cbuffer[i,14]=off2y
+            repeat (12) {dr.cbuffer[i,5+z]=data[z] z+=1}
+            dr.cbuffer[i,17]=off2x
+            dr.cbuffer[i,18]=off2y
             selected=0 event_user(0)
             if (argument[0]) instance_destroy() // cut
         }
@@ -52,7 +52,7 @@ if (editcursor.shift) {
     l=dr.cbuffer[0]
     str="lemon|"+string(l)+"|"+string(sx)+"|"+string(sy)+"|"+string(w)+"|"+string(h)+"|"
     for (i=1;i<=l;i+=1) {
-        for (j=0;j<15;j+=1) str+=string(dr.cbuffer[i,j])+"|"
+        for (j=0;j<19;j+=1) str+=string(dr.cbuffer[i,j])+"|"
     }
     clipboard_set_text(str)
     hotbar.str="Copied to clipboard"

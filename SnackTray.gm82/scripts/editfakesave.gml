@@ -26,8 +26,8 @@ if (fn="") {
         if (!show_question("File already exists:##"+fn+"##Overwrite?")) exit
     }
     global.lemonfilename=fn
-    if (directory_exists(filename_dir(fn)+"\baseasset")) replaceasset(globalmanager.wskin,filename_dir(fn)+"\")
-    else replaceasset(globalmanager.wskin)
+    //if (directory_exists(filename_dir(fn)+"\baseasset")) replaceasset(globalmanager.wskin,filename_dir(fn)+"\")
+    //else replaceasset(globalmanager.wskin)
     drawregion.update=1
 }
 

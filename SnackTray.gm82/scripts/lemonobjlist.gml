@@ -143,7 +143,7 @@ listobj(talkbox         ,0,spr_talkbox      ,24,anchor)
     listdata("Hi!" )
 
 listobj(anchor          ,1,spr_anchor       ,25,anchor)
-    listdoc("Asset Anchor","Check the lemon section in the game manual for detailed instructions.")
+    listdoc("Asset Anchor","Deprecated, will be automatically converted into decor tylers on level load.")
     listargs("name"    ,"offset", "bim")
     listdata("mushroom","0,0","0")
 

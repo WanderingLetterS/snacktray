@@ -7,7 +7,7 @@ applies_to=self
 layer=unreal(layer,0)
 blend=unreal(blend,$ffffff)
 str=tile
-
+my_sheet=global.masterterrain[biome]
 if (bim="-1") getregion(x)
 else biome=unreal(bim,0)
 

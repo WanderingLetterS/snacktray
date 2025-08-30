@@ -110,8 +110,7 @@ instance_activate_object(gobble)
 
 if object_index=editmanager
 instance_activate_region(view_xview[0],view_yview[0],view_wview[0],view_hview[0],1)
-else
-for (i=0;i<=global.mplay;i+=1) {
+else if global.gamemode!="sscreencoop" for (i=0;i<=global.mplay;i+=1) {
     //instance_activate_region(players[i].x-440,-verybignumber,880,verybignumber*2,1)
     instance_activate_region(view_xview[i]-80,view_yview[i]-80,view_wview[0]+160,view_hview[0]+160,1)
 
@@ -121,7 +120,7 @@ for (i=0;i<=global.mplay;i+=1) {
     }
 }
 
-with player instance_activate_region(x-80,y-80,160,160,1)
+with player if is_cpu instance_activate_region(x-860,y-60,120,120,1)
 with moving {
     if sub instance_activate_object(sub)
     if main instance_activate_object(main)

@@ -99,9 +99,9 @@ for (i=1;i<=7;i+=1) if (!replacesheet("","specialstage"+string(i),wskin+"special
 skindat("specialsheets",i+1)
 if (i=0) replacesheet("","specialstage1",wskin+"specialstage.png",256,128,1)
 
-if (directory_exists(wskin+"assets")) {
-    replaceasset(wskin,global.lskins[global.levelskin+1,0])
-}
+//if (directory_exists(wskin+"assets")) {
+    //replaceasset(wskin,global.lskins[global.levelskin+1,0])
+//}
 
 with globalmanager {
     for (i=0;i<=musc;i+=1) {

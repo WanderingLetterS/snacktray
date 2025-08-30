@@ -342,6 +342,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
+draw_sprite_ext(sprite_index,image_index,xprevious,yprevious,image_xscale,image_yscale,image_angle,image_blend,image_alpha*0.5)
 draw_self()
-
+draw_sprite_ext(spr_input,p2>1,xprevious-2,yprevious+17,1,1,0,image_blend,0.5)
 draw_sprite_ext(spr_input,p2>1,x-2,y+17,1,1,0,image_blend,1)
