@@ -185,7 +185,7 @@ if (owner.fired<=30 && owner.fired && !owner.using_sub){
 	
 	
 	if owner.fired>25 {
-		if owner.fired=26 playsfx(name+"whip")
+		if owner.fired=26 playsfx(owner.name+"whip")
 		x=floor(owner.x-owner.xsc*24)
 		y=floor(owner.y-9+7*owner.crouch)
 		image_xscale=owner.xsc*16
