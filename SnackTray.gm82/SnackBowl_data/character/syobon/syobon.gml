@@ -1,5 +1,5 @@
 #define spritelist
-stand,wait,lookup,pose,crouch,knock,dead,walk,run,brake,jump,bonk,fall,fly,wall,climbing,flagslide,swim,paddle,doorexit,doorenter,piping,pipingup,sidepiping
+stand,wait,lookup,pose,crouch,knock,dead,walk,run,brake,jump,bonk,fall,fly,wall,climbing,flagslide,swim,paddle,doorexit,doorenter,piping,pipingup,sidepiping,grind
 
 
 #define soundlist

@@ -3,18 +3,18 @@ name=Syobon
 
 snack layout=true
 
-custom powerup graphics=yes
+custom powerup graphics=false
 
 skin offset=44
 
-icon speed=6
+icon speed=9
 icon loop=yes
 animation speed=1.0
-center x=17
-center y=15
-box width=34
-box height=34
-pole center offset=6
+center x=12
+center y=19
+box width=25
+box height=35
+pole center offset=9
 
 carry offset x=0
 carry offset y=0
@@ -25,43 +25,42 @@ pipe squish=20
 
 snacklayout=true
 
-use paletting=true
-defaultspray 1=0
-defaultspray 2=0
-defaultspray 3=0
-defaultspray 4=0
+use paletting=false
 
 single sheet=true
 singlesheet split width=8,8,8,8,8,8,8,8,8,8
 singlesheet split height=-0,0,0,0,0,0,0,0,0,0
 
-custom sprite list=stand,lookup,win,crouch,knock,dead,walk,brake,run,jump,fall,fly,flagslide,climbing,swim,paddle,doorexit,doorenter,grind
+custom sprite list=jump,stand,walk,dead,crouch
 
-reroute wall=brake
+reroute wall=jump
+reroute wait=stand
 reroute bonk=jump
 reroute piping=stand
 reroute pipingup=jump
 reroute sidepiping=walk
+reroute lookup=stand
+reroute win=stand
+reroute knock=dead
+reroute brake=walk
+reroute run=walk
+reroute fall=jump
+reroute fly=jump
+reroute flagslide=jump
+reroute climbing=jump
+reroute swim=walk
+reroute paddle=jump
+reroute doorexit=stand
+reroute doorenter=stand
+reroute grind=jump
 
 connect stand=true
-connect lookup=true
-connect win=true
 connect crouch=true
-connect knock=true
 connect dead=true
 connect walk=true
-connect brake=true
-
 connect jump=true
-connect fall=true
-connect fly=true
-connect flagslide=true
 
-connect swim=true
-connect paddle=true
-connect doorexit=true
-connect doorenter=true
-connect grind=true
+
 
 
 stand frames=1
@@ -71,17 +70,16 @@ win frames=1
 crouch frames=1
 knock frames=1
 dead frames=1
-walk frames=3
-run frames=3
+walk frames=2
+run frames=2
 brake frames=1
 jump frames=1
 bonk frames=1
-fall frames=3
+fall frames=1
 wall frames=1
 swim frames=2
 paddle frames=2
 climbing frames=2
-grind frames=2
 
 jump loop=3
 fall loop=3
@@ -91,8 +89,7 @@ pound loop=8
 
 wait speed=0.2
 deadup speed=0.5
-walk speed=0.3
-grind speed=0.3
+walk speed=0.2
 run speed=0.5
 jump speed=1
 fall speed=0.1
