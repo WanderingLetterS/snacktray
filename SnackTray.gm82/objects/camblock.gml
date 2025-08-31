@@ -10,5 +10,5 @@ left=!place_meeting(x-200,y+112,camblock)
 right=!place_meeting(x+600/2,y+112,camblock)
 
 image_blend=$ff
-image_xscale=13
-image_yscale=7
+image_xscale=25
+image_yscale=14
