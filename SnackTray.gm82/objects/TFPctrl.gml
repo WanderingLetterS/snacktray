@@ -6,6 +6,9 @@ applies_to=self
 */
 
 room_goto(titlescreen)
+
+instance_destroy() exit
+
 thing=0
 
 state=0
