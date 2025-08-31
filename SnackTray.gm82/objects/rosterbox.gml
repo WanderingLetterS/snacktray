@@ -328,11 +328,11 @@ if (ready) {
             if skin=0 skin=-1
             offsetties=(sprite_get_width(global.charicon[global.option[p2],skin+1])==24)
 
-            draw_sprite(global.charicon[global.option[p2],skin+1],0,x-14+offsetties+(i mod 2)*26,y+offsetties-4+(i>1)*27)
+            draw_sprite(global.charicon[global.option[p2],skin+1],0,x-14+offsetties+(i mod 2)*26,y+offsetties-7+(i>1)*27)
 
 
             draw_set_color(c_lime)
-            draw_rectangle(x-26+sideselect*26,y-18+vertselect*27,x-1+sideselect*26,y+7+vertselect*27,1)
+            draw_rectangle(x-26+sideselect*26,y-18+vertselect*27,x-1+sideselect*26,y+5+vertselect*27,1)
             draw_set_color(c_white)
         }
     }
