@@ -1,9 +1,0 @@
-ERROR in
-action number 1
-of Draw Event
-for object palbutton:
-
-Error in code at line 2:   
-draw_sprite_ext(spr_editpal,lemongrab.objlist[obj,25],x,y,1,1,0,c_black,0.5)                                                 ^at position 48: Negative array index
-
-

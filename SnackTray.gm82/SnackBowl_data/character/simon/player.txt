@@ -11,13 +11,15 @@ icon speed=6
 icon loop=yes
 animation speed=1.0
 center x=17
-center y=18
+center y=20
 box width=35
 box height=35
 pole center offset=4
 skin offset=44
 
 use paletting=false
+
+bigger whip=true
 
 pitch spindash=yes
 jump ball animation=no
@@ -26,6 +28,28 @@ victory duration=50
 victory frame=4
 time until wait=300
 pipe squish=20
+
+custom sprite list=stand,crouch,lookup,knock,dead,pose,walk,brake,crawlwalk,slide,attack,crouchattack,dropkickdown,dropkickdiag,climb
+
+connect stand=true
+connect crouch=true
+connect lookup=true
+connect knock=true
+connect dead=true
+connect pose=true
+connect brake=true
+connect slide=true
+connect dropkickdiag=true
+connect climb=true
+
+reroute spring=crouch
+reroute jump=stand
+reroute bonk=crouch
+reroute fall=crouch
+reroute flagslide=climb
+reroute handlegrab=crouch
+reroute grindgrab=crouch
+reroute grind=crouch
 
 stand frames=1
 wait frames=1
@@ -47,7 +71,7 @@ attack frames=4
 crouchattack frames=4
 dropkickdown frames=1
 dropkickdiag frames=1
-climb frames=1
+climb frames=2
 handlegrab frames=1
 grindgrab frames=1
 grind frames=1
@@ -70,7 +94,8 @@ attack speed=0.2
 crouchattack speed=0.2
 dropkickdown speed=0.25
 dropkickdiag speed=0.25
-climb speed=0.25
+climb speed=0.1
+flagslide speed=0.1
 handlegrab speed=0.125
 grindgrab speed=0.125
 grind speed=0.15

@@ -1,81 +1,0 @@
-ERROR in
-action number 1
-of Other Event: User Defined 0
-for object decortyler:
-
-Error in code at line 5:   
-if (bim="-1") getregion(x)           ^at position 10: Cannot compare arguments.
-
-
-ERROR in
-action number 1
-of Other Event: User Defined 0
-for object decortyler:
-
-Error in code at line 5:   
-if (bim="-1") getregion(x)           ^at position 10: Cannot compare arguments.
-
-
-ERROR in
-action number 1
-of Other Event: User Defined 0
-for object decortyler:
-
-Error in code at line 5:   
-if (bim="-1") getregion(x)           ^at position 10: Cannot compare arguments.
-
-
-ERROR in
-action number 1
-of Other Event: User Defined 0
-for object decortyler:
-
-Error in code at line 5:   
-if (bim="-1") getregion(x)           ^at position 10: Cannot compare arguments.
-
-
-ERROR in
-action number 1
-of Other Event: User Defined 0
-for object decortyler:
-
-Error in code at line 5:   
-if (bim="-1") getregion(x)           ^at position 10: Cannot compare arguments.
-
-
-ERROR in
-action number 1
-of Other Event: User Defined 0
-for object decortyler:
-
-Error in code at line 5:   
-if (bim="-1") getregion(x)           ^at position 10: Cannot compare arguments.
-
-
-ERROR in
-action number 1
-of Other Event: User Defined 0
-for object decortyler:
-
-Error in code at line 5:   
-if (bim="-1") getregion(x)           ^at position 10: Cannot compare arguments.
-
-
-ERROR in
-action number 1
-of Other Event: User Defined 0
-for object decortyler:
-
-Error in code at line 5:   
-if (bim="-1") getregion(x)           ^at position 10: Cannot compare arguments.
-
-
-ERROR in
-action number 1
-of Other Event: User Defined 0
-for object decortyler:
-
-Error in code at line 5:   
-if (bim="-1") getregion(x)           ^at position 10: Cannot compare arguments.
-
-
