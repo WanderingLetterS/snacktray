@@ -1185,6 +1185,16 @@ switch (argument[0]) {
     case chardoor: {
         if (type=0) return "Character: "+string(i)
     }
+
+    case burner: {
+        if (type=0) {return "Align: "+string(i)}
+        if (type=1) {
+            if (i="0") return "Point: Up"
+            if (i="1") return "Point: Down"
+            if (i="2") return "Point: Left"
+            if (i="3") return "Point: Right"
+        }
+    }
 }
 
 if (type=1) {

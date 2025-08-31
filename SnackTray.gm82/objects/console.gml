@@ -416,6 +416,12 @@ if (keyboard_check_pressed(vk_enter) && !off) {
             global.screenheight=224
             break;
         }
+        case "1times5": {
+            sound("systemin")
+            global.screenwidth=400*1.5
+            global.screenheight=224*1.5
+            break;
+        }
         case "fixthescreen": {
             sound("systemin")
             global.screenwidth=global.defaultscreenwidth

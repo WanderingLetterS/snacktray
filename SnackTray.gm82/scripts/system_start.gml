@@ -176,3 +176,32 @@ stats("bootups",stats("bootups")+1)
 if (!global.easter && egg(1)) {
     global.greenmode = true;
 }
+
+
+
+i=0
+repeat (parameter_count()) {
+    switch (parameter_string(i)) {
+        case "-resolutionx":
+            gotolemon=1
+            j=0
+            repeat (parameter_count()) {
+                global.screenwidth=unreal(parameter_string(i+1),global.defaultscreenwidth)
+                j+=1
+            }
+            
+            break
+        case "-resolutiony":
+            gotolemon=1
+            j=0
+            repeat (parameter_count()) {
+                global.screenheight=unreal(parameter_string(i+1),global.defaultscreenheight)
+                j+=1
+            }
+            
+            break
+        default:
+            break
+    }
+    i+=1
+}

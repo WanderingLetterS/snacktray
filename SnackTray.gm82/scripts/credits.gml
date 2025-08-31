@@ -86,6 +86,7 @@ PRESS ESC TO EXIT AT ANY TIME!
 [Game Design]
 Snack Tray
 -S-: New Movesets for Mario and Sonic
+Toadoat: Syobon's Moveset
 
 Boll Deluxe
 nekonesse - CowboyJoseph64
@@ -96,6 +97,7 @@ Emília - -S- - Flareguy
 
 Snack Tray
 -S-: Most of the Stuff
+Toadoat: Syobon
 
 Boll Deluxe
 nekonesse - -S-
@@ -110,6 +112,7 @@ Floogle - Symbolcom
 
 Snack Tray
 -S-: New poses for Mario and Sonic, New Underground below background
+Toadoat + King the Racoon: Syobon
 
 Boll Deluxe
 nekonesse - -S-
@@ -126,7 +129,7 @@ Mr Gandy - MiwwieUwU
 
 [Level Design]
 Snack Tray
-Huh?
+-S-
 
 Boll Deluxe
 Emília - nekonesse

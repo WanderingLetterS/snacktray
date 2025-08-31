@@ -411,6 +411,7 @@
 		|spr_pokey
 		|spr_pokeybody
 		|spr_thwimp
+		|spr_burner
 	+slope
 		|spr_slopel1
 		|spr_slopel1s

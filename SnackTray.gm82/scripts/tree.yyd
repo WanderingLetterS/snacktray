@@ -329,6 +329,7 @@
 			|hititembox
 			|com_item
 			|vine_climbing
+			|com_grindblock
 		+mask work
 			|mask_set
 			|mask_reset

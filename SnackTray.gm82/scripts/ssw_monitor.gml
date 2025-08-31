@@ -14,31 +14,32 @@ itemfound=false
 if instance_exists(player){
     itemfound=true
     with instance_nearest(x,y,player){
+        if !dead{
+            if other.lastplayer!=other.lastplayer
+            other.lastplayer=id
+            if ((other.my_item=="?mush" && !default_questionmush) || (custom_items)){
+                itemfound=true
+                switch (other.my_item){
+                    case "?mushroom": {frx=0 fry=0  break}
 
-    if other.lastplayer!=other.lastplayer
-    other.lastplayer=id
-        if ((other.my_item=="?mush" && !default_questionmush) || (custom_items)){
-            itemfound=true
-            switch (other.my_item){
-                case "?mushroom": {frx=0 fry=0  break}
+                    case "?mush": { frx=2 fry=0 break}
 
-                case "?mush": { frx=2 fry=0 break}
+                    case "fire":  {frx=0 fry=1  break}
+                    case "feather": {frx=1 fry=1 break}
+                    case "ice":  {frx=2 fry=1 break}
 
-                case "fire":  {frx=0 fry=1  break}
-                case "feather": {frx=1 fry=1 break}
-                case "ice":  {frx=2 fry=1 break}
+                    case "thunder":  {frx=0 fry=2 break}
+                    case "water":  {frx=1 fry=2 break}
+                    case "clover":  {frx=2 fry=2 break}
 
-                case "thunder":  {frx=0 fry=2 break}
-                case "water":  {frx=1 fry=2 break}
-                case "clover":  {frx=2 fry=2 break}
+                    case "mush":    {frx=0 fry=3 break}
+                    case "mini":    { frx=1 fry=3 break}
+                    case "1up": {  frx=2 fry=3 break}
 
-                case "mush":    {frx=0 fry=3 break}
-                case "mini":    { frx=1 fry=3 break}
-                case "1up": {  frx=2 fry=3 break}
-
-                default: itemfound=false; break;
-            }
-        }    else itemfound=false
+                    default: itemfound=false; break;
+                }
+            }    else itemfound=false
+        }
     }
     if itemfound{
 

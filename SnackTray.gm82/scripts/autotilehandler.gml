@@ -19,6 +19,7 @@ with (warpbox) getregion(x)
 with (axewall) getregion(x)
 with (platdonut) getregion(x)
 with (swinginghammer) getregion(x)
+with (burner) getregion(x)
 
 global.always_codeblock_count=0
 with (code) event_user(0)
@@ -49,6 +50,7 @@ with (jetstream) event_user(0)
 with (enemydummy) event_user(0)
 with (thwimp) event_user(0)
 with (pokey) event_user(3)
+with (ziptrack) event_user(0)
 
 with (camsecret) y=-verybignumber
 with (camblock) event_user(0)
@@ -151,7 +153,7 @@ with (cannon)        event_user(0)
 with (cannon)        event_user(1)
 with (redcannon)        event_user(0)
 with (redcannon)        event_user(1)
-
+with (burner) event_user(0)
 
 with (pipeblock) event_user(0)
 with (sidepipe) event_user(0)

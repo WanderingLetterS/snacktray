@@ -1,4 +1,6 @@
 var noped;
+//Grind block cooldown stuff to allow jumping off of that shit.
+grind_cooldown=max(grind_cooldown-1,0)
 
 if (respawncamslide) {
     view_xview[p2]=round(cosine(slidefromx,safevx,camslidec/50))

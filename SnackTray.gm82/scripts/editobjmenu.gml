@@ -1181,6 +1181,15 @@ switch (argument[0]) {
         if (type=0) return get_string("Filename of character (lowercase):",argument[2])
     } break
 
+    case burner: {
+        if (type=0) return get_string("Alignment in pixels (x,y):",argument[2])
+        if (type=1) {
+            i=show_contextmenu("Orientation:|-|Point Up|Point Down|Point Left|Point Right",0)
+            if (!i) return argument[2]
+            return string(i-1)
+        }
+    }
+
 }
 
 if (type=1) return string(!funnytruefalse(argument[2]))

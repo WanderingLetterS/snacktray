@@ -540,6 +540,13 @@ test=1
         if (data[1]="3") frame=3
     } break
 
+    case burner:
+        if (data[1]="0") frame=0
+        if (data[1]="1") frame=2
+        if (data[1]="2") frame=3
+        if (data[1]="3") frame=1
+    break;
+
     case (token):
         frame = min(unreal(data[1],0),2) //all these other objects doing a whole lotta ifs for something that could be 1 line :p
     }

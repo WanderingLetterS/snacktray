@@ -36,6 +36,14 @@ if pollenated{
         if vsp>1 vsp=1
 
 }
+//I <3 grinding
+if (grind_cooldown==0){
+    if place_meeting(x,y+vsp,ziptrack) {
+        my_ziptrack=instance_place(x,y+vsp,ziptrack)
+        com_grindblock()
+    }
+}
+
 disallow=noone
 
 yp=y

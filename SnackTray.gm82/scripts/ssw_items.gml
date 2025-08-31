@@ -21,35 +21,37 @@ itemfound=false
 if instance_exists(player){
     itemfound=true
     with instance_nearest(x,y,player){
+        if !dead{
+            if other.lastplayer!=other.lastplayer
+                other.lastplayer=id
+            if ((other.my_item=="?mushroom" && !default_questionmush) || (custom_items)){
+                itemfound=true
+                switch (other.my_item){
+                    case "?mushroom": {if custom_mushrooms_idle other.hspeed=0  frx=fr fry=0 frox=8 froy=8 break}
 
-    if other.lastplayer!=other.lastplayer
-    other.lastplayer=id
-        if ((other.my_item=="?mushroom" && !default_questionmush) || (custom_items)){
-            itemfound=true
-            switch (other.my_item){
-                case "?mushroom": {if custom_mushrooms_idle other.hspeed=0  frx=fr fry=0 frox=8 froy=8 break}
+                    case "mushroom": { if custom_mushrooms_idle other.hspeed=0  frx=fr fry=1 frox=8 froy=8 break}
 
-                case "mushroom": { if custom_mushrooms_idle other.hspeed=0  frx=fr fry=1 frox=8 froy=8 break}
+                    case "fflower":  {frx=ifr fry=2 frox=8 froy=8 break}
+                    case "bfeather": {frx=other.featherfr fry=3 frox=8 froy=8 break}
+                    case "iflower":  {frx=ifr fry=4 frox=8 froy=8 break}
 
-                case "fflower":  {frx=ifr fry=2 frox=8 froy=8 break}
-                case "bfeather": {frx=other.featherfr fry=3 frox=8 froy=8 break}
-                case "iflower":  {frx=ifr fry=4 frox=8 froy=8 break}
+                    case "tflower":  {frx=ifr fry=5 frox=8 froy=8 break}
+                    case "wflower":  {frx=ifr fry=6 frox=8 froy=8 break}
+                    case "cflower":  {frx=ifr fry=7 frox=8 froy=8 break}
 
-                case "tflower":  {frx=ifr fry=5 frox=8 froy=8 break}
-                case "wflower":  {frx=ifr fry=6 frox=8 froy=8 break}
-                case "cflower":  {frx=ifr fry=7 frox=8 froy=8 break}
+                    case "mini":    {if custom_mushrooms_idle other.hspeed=0 frx=fr fry=8 frox=8 froy=8 break}
+                    case "lifemush": { if custom_mushrooms_idle other.hspeed=0  frx=fr fry=9 frox=8 froy=8 break}
 
-                case "mini":    {if custom_mushrooms_idle other.hspeed=0 frx=fr fry=8 frox=8 froy=8 break}
-                case "lifemush": { if custom_mushrooms_idle other.hspeed=0  frx=fr fry=9 frox=8 froy=8 break}
-
-                default: itemfound=false; break;
-            }
-        }    else itemfound=false
+                    default: itemfound=false; break;
+                }
+            }    else itemfound=false
+        }
     }
     if itemfound{
         draw_sprite_part_ext(instance_nearest(x,y,player).sheetshields,0,frx*17+sprite_get_width(instance_nearest(x,y,player).sheetshields)-76,fry*17+9,w*16,h*16,floor(x-frox*xsc),floor(y-froy*ysc)+dy,xsc,ysc,$ffffff,1)
         exit
     }
+
 }
 
 sheet=global.masterobjects[biome]

@@ -759,7 +759,7 @@ listdoc("Bumper","")
 listargs("align","type")
 listdata("0","0")
 
-listobj(conveyorbelt             ,0,spr_conveyor        ,150,conveyorbelt)
+listobj(conveyorbelt             ,0,spr_conveyor        ,150,dashpanel)
 listdoc("Conveyor Belt","It can move various objects, and even yourself!")
 listargs("align","beltspd","edgetile")
 listdata("0","2","0")
@@ -1051,6 +1051,16 @@ listobj(questionmush       ,1,spr_questionmush     ,224,tflower) //lol
 listdoc("Question Mushroom","Can do a little bit of anything and everything.")
 listargs("align")
 listdata("0"    )
+
+listobj(ziptrack           ,0,spr_ziptrack      ,231,dashpanel)
+    listdoc("Ziptrack","You guys like grinding?")
+    listargs("xdir","spd")
+    listdata("1","0")
+
+listobj(burner             ,0,spr_burner        ,232,cannon)
+    listdoc("Burner","Fires a pillar of pure fire.")
+    listargs("align","dir")
+    listdata("0","0")
 
 n=ds_map_create()
 k=ds_map_find_first(m)

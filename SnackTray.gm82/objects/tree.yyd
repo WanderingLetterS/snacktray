@@ -630,6 +630,8 @@
 		|dashpanel
 		|bumper
 		|fireballshooter
+		|burner
+		|burnerfire
 	+tilers
 		|autotiler
 		|pipetiler
