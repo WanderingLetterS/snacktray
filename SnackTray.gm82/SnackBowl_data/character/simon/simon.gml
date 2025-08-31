@@ -2,7 +2,7 @@
 stand,wait,lookup,pose,crouch,knock,dead,walk,run,crawlwalk,brake,spring,jump,bonk,fall,slide,attack,crouchattack,dropkickdown,dropkickdiag,climb,flagslide,handlegrab,grindgrab,grind
 
 #define soundlist
-release,skid,spin,spindash,insta,dash,boom,firedash,peelcharge,peelrelease
+whip
 
 
 #define movelist
@@ -63,6 +63,8 @@ if global.stagecount>0{
 	sublevel=1
 }
 
+bigger_whip=deciphercolor(playerskindat(p2,name+" bigger whip"))
+
 SUBWEP_KNIFE=1
 SUBWEP_BOOMERANG=6
 SUBWEP_AXE=2
@@ -122,27 +124,55 @@ size=0
 #define effectsfront
 //Draw the Whip
 if fired && !using_sub{
-	if level==1 {
-		if fired>30
-			draw_sprite_part_ext(sheetshields,0,301,26,8,24,floor(x-xsc*24),floor(y-9+7*crouch),xsc,1,c_white,1)
-		else if fired>25
-			draw_sprite_part_ext(sheetshields,0,310,26,16,24,floor(x-xsc*24),floor(y-17+7*crouch),xsc,1,c_white,1)
-		else
-			draw_sprite_part_ext(sheetshields,0,327,34,24,16,floor(x+xsc*12),floor(y-18+7*crouch),xsc,1,c_white,1)
-	} else if level==2 {
-		if fired>30
-			draw_sprite_part_ext(sheetshields,0,301,26+25,8,24,floor(x-xsc*24),floor(y-9+7*crouch),xsc,1,c_white,1)
-		else if fired>25
-			draw_sprite_part_ext(sheetshields,0,310,26+25,16,24,floor(x-xsc*24),floor(y-17+7*crouch),xsc,1,c_white,1)
-		else
-			draw_sprite_part_ext(sheetshields,0,327,34+25,24,16,floor(x+xsc*12),floor(y-18+7*crouch),xsc,1,c_white,1)
-	} else {
-		if fired>30
-			draw_sprite_part_ext(sheetshields,0,301,26+25*choose(1,2,3,4),8,24,floor(x-xsc*24),floor(y-9+7*crouch),xsc,1,c_white,1)
-		else if fired>25
-			draw_sprite_part_ext(sheetshields,0,310,26+25*choose(1,2,3,4),16,24,floor(x-xsc*24),floor(y-17+7*crouch),xsc,1,c_white,1)
-		else
-			draw_sprite_part_ext(sheetshields,0,327,34+25*choose(1,2,3,4),24,16,floor(x+xsc*12),floor(y-18+7*crouch),xsc,1,c_white,1)
+	if !bigger_whip{
+
+		if level==1 {
+			if fired>30
+				draw_sprite_part_ext(sheetshields,0,301,26,8,24,floor(x-xsc*24),floor(y-9+7*crouch),xsc,1,c_white,1)
+			else if fired>25
+				draw_sprite_part_ext(sheetshields,0,310,26,16,24,floor(x-xsc*24),floor(y-17+7*crouch),xsc,1,c_white,1)
+			else
+				draw_sprite_part_ext(sheetshields,0,327,34,24,16,floor(x+xsc*12),floor(y-18+7*crouch),xsc,1,c_white,1)
+		} else if level==2 {
+			if fired>30
+				draw_sprite_part_ext(sheetshields,0,301,26+25,8,24,floor(x-xsc*24),floor(y-9+7*crouch),xsc,1,c_white,1)
+			else if fired>25
+				draw_sprite_part_ext(sheetshields,0,310,26+25,16,24,floor(x-xsc*24),floor(y-17+7*crouch),xsc,1,c_white,1)
+			else
+				draw_sprite_part_ext(sheetshields,0,327,34+25,24,16,floor(x+xsc*12),floor(y-18+7*crouch),xsc,1,c_white,1)
+		} else {
+			if fired>30
+				draw_sprite_part_ext(sheetshields,0,301,26+25*choose(1,2,3,4),8,24,floor(x-xsc*24),floor(y-9+7*crouch),xsc,1,c_white,1)
+			else if fired>25
+				draw_sprite_part_ext(sheetshields,0,310,26+25*choose(1,2,3,4),16,24,floor(x-xsc*24),floor(y-17+7*crouch),xsc,1,c_white,1)
+			else
+				draw_sprite_part_ext(sheetshields,0,327,34+25*choose(1,2,3,4),24,16,floor(x+xsc*12),floor(y-18+7*crouch),xsc,1,c_white,1)
+		}
+	} else{
+		if level==1 {
+			if fired>30
+				draw_sprite_part_ext(sheetshields,0,209,95,11,17,floor(x-xsc*27 ),floor(y-9+7*crouch),xsc,1,c_white,1)
+			else if fired>25
+				draw_sprite_part_ext(sheetshields,0,221,95,19,27,floor(x-xsc*27),floor(y-17+7*crouch),xsc,1,c_white,1)
+			else
+				draw_sprite_part_ext(sheetshields,0,241,103,27,19,floor(x+xsc*12),floor(y-18+7*crouch),xsc,1,c_white,1)
+		} else if level==2 {
+			if fired>30
+				draw_sprite_part_ext(sheetshields,0,209,95+28,11,17,floor(x-xsc*24),floor(y-9+7*crouch),xsc,1,c_white,1)
+			else if fired>25
+				draw_sprite_part_ext(sheetshields,0,221,95+28,19,27,floor(x-xsc*24),floor(y-17+7*crouch),xsc,1,c_white,1)
+			else
+				draw_sprite_part_ext(sheetshields,0,241,103+28,27,19,floor(x+xsc*12),floor(y-18+7*crouch),xsc,1,c_white,1)
+		} else {
+			if fired>30
+				draw_sprite_part_ext(sheetshields,0,209,95+28*choose(1,2,3,4),11,17,floor(x-xsc*24),floor(y-9+7*crouch),xsc,1,c_white,1)
+			else if fired>25
+				draw_sprite_part_ext(sheetshields,0,221,95+28*choose(1,2,3,4),19,27,floor(x-xsc*24),floor(y-17+7*crouch),xsc,1,c_white,1)
+			else
+				draw_sprite_part_ext(sheetshields,0,241,103+28*choose(1,2,3,4),27,19,floor(x+xsc*12),floor(y-18+7*crouch),xsc,1,c_white,1)
+		}
+	
+	
 	}
 }
 
@@ -155,6 +185,7 @@ if (owner.fired<=30 && owner.fired && !owner.using_sub){
 	
 	
 	if owner.fired>25 {
+		if owner.fired=26 playsfx(name+"whip")
 		x=floor(owner.x-owner.xsc*24)
 		y=floor(owner.y-9+7*owner.crouch)
 		image_xscale=owner.xsc*16
