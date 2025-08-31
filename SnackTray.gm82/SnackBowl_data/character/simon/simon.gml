@@ -485,7 +485,7 @@ if (up && (!hang || is_basic())) {
 } else lookup=0
 
 //list of things that prevent you from moving
-if ( vinegrab ||fired ) h=0
+if ( vinegrab ||fired||backdash ) h=0
 
 
 //movement
@@ -545,6 +545,7 @@ if ((abut || jumpbufferdo) && (!springin)) {
 				graber.tailsgrabbed=0
 			}
 			slide=0
+			backdash=0
             grabflagpole=0
             latchedtoflagpole=0
 
@@ -628,6 +629,7 @@ if (bbut && !fired && !slide && !dropkick) {
 			default: req_hearts=1 break;
 		}
 		if subenergy>=req_hearts{
+			backdash=0
 			subenergy-=req_hearts
 			using_sub=1 
 			fired=20
@@ -637,7 +639,10 @@ if (bbut && !fired && !slide && !dropkick) {
 }
 
 if (cbut) {
-    
+	if !jump{
+		backdash=60
+		fired=0
+	}
 }
 
 
@@ -862,7 +867,9 @@ if dropkick{
 
 	if !jump dropkick=0
 }
+//BAckdash
 
+if backdash {hsp=-3*xsc xsc=-sign(hsp) backdash-=1}
 
 
 
