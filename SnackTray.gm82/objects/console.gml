@@ -410,7 +410,7 @@ if (keyboard_check_pressed(vk_enter) && !off) {
             global.screenheight=160/2
             break;
         }
-        case "og resolution": {
+        case "ogresolution": {
             sound("systemin")
             global.screenwidth=400
             global.screenheight=224
