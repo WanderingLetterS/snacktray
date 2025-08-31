@@ -1,90 +1,0 @@
-ERROR in
-action number 1
-of Draw Event
-for object monitor:
-
-In script ssw_monitor:Error in code at line 20:   
-        if ((other.my_item=="?mush" && !default_questionmush) || (custom_items)){                               ^at position 30: Cannot compare arguments.
-
-
-ERROR in
-action number 1
-of Draw Event
-for object monitor:
-
-In script ssw_monitor:Error in code at line 20:   
-        if ((other.my_item=="?mush" && !default_questionmush) || (custom_items)){                               ^at position 30: Cannot compare arguments.
-
-
-ERROR in
-action number 1
-of Draw Event
-for object monitor:
-
-In script ssw_monitor:Error in code at line 20:   
-        if ((other.my_item=="?mush" && !default_questionmush) || (custom_items)){                               ^at position 30: Cannot compare arguments.
-
-
-ERROR in
-action number 1
-of Draw Event
-for object monitor:
-
-In script ssw_monitor:Error in code at line 20:   
-        if ((other.my_item=="?mush" && !default_questionmush) || (custom_items)){                               ^at position 30: Cannot compare arguments.
-
-
-ERROR in
-action number 1
-of Draw Event
-for object monitor:
-
-In script ssw_monitor:Error in code at line 20:   
-        if ((other.my_item=="?mush" && !default_questionmush) || (custom_items)){                               ^at position 30: Cannot compare arguments.
-
-
-ERROR in
-action number 1
-of Draw Event
-for object monitor:
-
-In script ssw_monitor:Error in code at line 20:   
-        if ((other.my_item=="?mush" && !default_questionmush) || (custom_items)){                               ^at position 30: Cannot compare arguments.
-
-
-ERROR in
-action number 1
-of Draw Event
-for object monitor:
-
-In script ssw_monitor:Error in code at line 20:   
-        if ((other.my_item=="?mush" && !default_questionmush) || (custom_items)){                               ^at position 30: Cannot compare arguments.
-
-
-ERROR in
-action number 1
-of Draw Event
-for object monitor:
-
-In script ssw_monitor:Error in code at line 20:   
-        if ((other.my_item=="?mush" && !default_questionmush) || (custom_items)){                               ^at position 30: Cannot compare arguments.
-
-
-ERROR in
-action number 1
-of Draw Event
-for object monitor:
-
-In script ssw_monitor:Error in code at line 20:   
-        if ((other.my_item=="?mush" && !default_questionmush) || (custom_items)){                               ^at position 30: Cannot compare arguments.
-
-
-ERROR in
-action number 1
-of Draw Event
-for object monitor:
-
-In script ssw_monitor:Error in code at line 20:   
-        if ((other.my_item=="?mush" && !default_questionmush) || (custom_items)){                               ^at position 30: Cannot compare arguments.
-
-

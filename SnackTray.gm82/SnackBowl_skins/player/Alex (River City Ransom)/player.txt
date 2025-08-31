@@ -17,6 +17,8 @@ box height=35
 pole center offset=1
 skin offset=44
 
+bigger whip=false
+
 use paletting=true
 defaultspray 1=0
 defaultspray 2=0
