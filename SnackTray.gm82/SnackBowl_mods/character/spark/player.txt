@@ -1,0 +1,137 @@
+[spark]
+name=Spark
+
+
+lightning color basic=$e89951
+lightning color big=$e89951
+lightning color fire=$4633ff
+lightning color ice=$ff82cb
+lightning color mini=$e89951
+lightning color super=$d17966
+
+icon speed=6
+icon loop=yes
+animation speed=1.0
+center x=24
+center y=28
+box width=48
+box height=48
+
+skin offset=44
+pitch spindash=yes
+jump ball animation=no
+fire duration=8
+victory duration=30
+time until wait=360
+time until wait2=1020
+time until outta here=9600
+spindash dust frames=4
+spindash dust speed=0.5
+pipe squish=20
+
+
+
+max sizes=7
+
+use paletting=true
+defaultspray 1=1
+defaultspray 2=10
+defaultspray 3=7
+defaultspray 4=2
+
+reroute piping=stand
+reroute pipingup=stand
+reroute sidepiping=walk
+reroute doorenter=stand
+reroute doorexit=stand
+
+sheet splits=ball
+sheet split size=392
+
+stand frames=3
+wait frames=4
+wait2 frames=2
+lookup frames=4
+pose frames=1
+crouch frames=1
+knock frames=1
+dead frames=1
+walk frames=8
+run frames=4
+brake frames=1
+spring frames=2
+jump frames=8
+bonk frames=2
+ball frames=8
+spindash frames=6
+spincharge frames=8
+superspin frames=4
+push frames=4
+hang frames=4
+fire frames=2
+fireair frames=2
+dash frames=2
+climb frames=2
+climbon2 frames=2
+outtaprep frames=8
+outtafall frames=2
+emeraldget frames=7
+
+
+wait loop=3
+wait2 loop=2
+lookup loop=2
+bonk loop=2
+walk loop=1
+spincharge loop=3
+outtaprep loop=8
+superspin loop=4
+
+stand speed=0.2
+wait speed=0.1
+wait2 speed=0.1
+lookup speed=0.22
+pose speed=0.20
+dead speed=0
+walk speed=0.5
+run speed=0.25
+spring speed=0.5
+jump speed=0.5
+bonk speed=0.25
+ball speed=0.5
+spindash speed=0.5
+spincharge speed=0.5
+superspin speed=0.5
+push speed=0.1
+hang speed=0.2
+fire speed=0.2
+fireair speed=0.2
+dash speed=0.5
+climb speed=0.05
+climbon2 speed=0.05
+outtaprep speed=0.075
+outtafall speed=0.5
+emeraldget speed=0
+
+stand frametimes=48,1,1
+wait frametimes=8,1,3,3
+lookup frametimes=1,36,1,1
+outtaprep frametimes=0.5,1,1,1,1,2,1,1
+dead frametimes=9999,0
+fire frametimes=1,60
+fireair frametimes=1,60
+
+boll top=#5ed4ff
+boll mid=#19193b
+boll bot=#000136
+
+[lang]
+winspecial=Spark got a Chaos Emerald
+allspecial=Spark got all Chaos Emeralds
+princess=our Princess
+savetext1=Peace is Paved
+savetext2=With Kingdom Saved
+savetext3=Hurrah to Spark
+savetext4=Our Only Hero
+savetext5=This Ends Your Trip
+savetext6=Of a Long Friendship
