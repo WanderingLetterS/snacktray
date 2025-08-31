@@ -1,0 +1,120 @@
+[syobon]
+name=Syobon
+
+snack layout=true
+
+custom powerup graphics=yes
+
+skin offset=44
+
+icon speed=6
+icon loop=yes
+animation speed=1.0
+center x=17
+center y=15
+box width=34
+box height=34
+pole center offset=6
+
+carry offset x=0
+carry offset y=0
+fire duration=8
+victory duration=30
+time until wait=200
+pipe squish=20
+
+snacklayout=true
+
+use paletting=true
+defaultspray 1=0
+defaultspray 2=0
+defaultspray 3=0
+defaultspray 4=0
+
+single sheet=true
+singlesheet split width=8,8,8,8,8,8,8,8,8,8
+singlesheet split height=-0,0,0,0,0,0,0,0,0,0
+
+custom sprite list=stand,lookup,win,crouch,knock,dead,walk,brake,run,jump,fall,fly,flagslide,climbing,swim,paddle,doorexit,doorenter
+
+reroute wall=brake
+reroute bonk=jump
+reroute piping=stand
+reroute pipingup=jump
+reroute sidepiping=walk
+
+connect stand=true
+connect lookup=true
+connect win=true
+connect crouch=true
+connect knock=true
+connect dead=true
+connect walk=true
+connect brake=true
+
+connect jump=true
+connect fall=true
+connect fly=true
+connect flagslide=true
+
+connect swim=true
+connect paddle=true
+connect doorexit=true
+connect doorenter=true
+
+
+
+stand frames=1
+wait frames=1
+lookup frames=1
+win frames=1
+crouch frames=1
+knock frames=1
+dead frames=1
+walk frames=3
+run frames=3
+brake frames=1
+jump frames=1
+bonk frames=1
+fall frames=3
+wall frames=1
+swim frames=2
+paddle frames=2
+climbing frames=2
+
+jump loop=3
+fall loop=3
+jumpcarry loop=3
+fallcarry loop=3
+pound loop=8
+
+wait speed=0.2
+deadup speed=0.5
+walk speed=0.3
+run speed=0.5
+jump speed=1
+fall speed=0.1
+walkcarry speed=0.5
+jumpcarry speed=1
+fallcarry speed=0.1
+twirl speed=0.5
+swim speed=0.2
+paddle speed=0.4
+fire speed=0.3
+
+jump frametimes=4,20
+
+boll top=#E00808
+boll mid=#000000
+boll bot=#006EEE
+
+[lang]
+winspecial=Syobon got a Chaos Emerald
+allspecial=Syobon got all Chaos Emeralds
+princess=our Princess
+savetext1=Peace is Paved
+savetext2=With Kingdom Saved
+savetext3=Hurrah to Syobon
+savetext4=Our Only Hero 
+savetext5=This Ends Your Trip
+savetext6=Of a Long Friendship
