@@ -146,9 +146,9 @@ while (file!="\") {
                 global.charicon[type,global.pskins[0,type]]=sprite_add(dir+file+global.charname[type]+"-card.png",1,0,0,12,12)
                 if (global.charicon[type,global.pskins[0,type]]) {
                     if (sprite_get_width(global.charicon[type,global.pskins[0,type]])!=24 || sprite_get_height(global.charicon[type,global.pskins[0,type]])!=24) {
-                        error(lang("error icon dimensions")+dir+file+global.charname[type]+"-card.png")
+                        /*error(lang("error icon dimensions")+dir+file+global.charname[type]+"-card.png")
                         sprite_delete(global.charicon[type,global.pskins[0,type]])
-                        global.charicon[type,global.pskins[0,type]]=spr_noskincard
+                        global.charicon[type,global.pskins[0,type]]=spr_noskincard*/
                     }
                 } else global.charicon[type,global.pskins[0,type]]=spr_noskincard
 
