@@ -63,7 +63,7 @@ if global.stagecount>0{
 	sublevel=1
 }
 
-bigger_whip=deciphercolor(playerskindat(p2,name+" bigger whip"))
+bigger_whip=playerskindat(p2,name+" bigger whip")
 
 SUBWEP_KNIFE=1
 SUBWEP_BOOMERANG=6
@@ -148,7 +148,7 @@ if fired && !using_sub{
 			else
 				draw_sprite_part_ext(sheetshields,0,327,34+25*choose(1,2,3,4),24,16,floor(x+xsc*12),floor(y-18+7*crouch),xsc,1,c_white,1)
 		}
-	} else{
+	} else {
 		if level==1 {
 			if fired>30
 				draw_sprite_part_ext(sheetshields,0,209,95,11,17,floor(x-xsc*27 ),floor(y-9+7*crouch),xsc,1,c_white,1)
