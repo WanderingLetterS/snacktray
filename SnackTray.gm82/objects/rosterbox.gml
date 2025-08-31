@@ -326,7 +326,9 @@ if (ready) {
         for (i=0;i<4;i+=1) {
             skin=modulo(global.topleftplayerskin[p2]+i,0,global.pskins[0,global.option[p2]])
             if skin=0 skin=-1
-            draw_sprite(global.charicon[global.option[p2],skin+1],0,x-13+(i mod 2)*26,y-5+(i>1)*27)
+            offsetties=(sprite_get_width(global.charicon[global.option[p2],skin+1])==24)
+
+            draw_sprite(global.charicon[global.option[p2],skin+1],0,x-14+offsetties+(i mod 2)*26,y+offsetties-4+(i>1)*27)
 
 
             draw_set_color(c_lime)

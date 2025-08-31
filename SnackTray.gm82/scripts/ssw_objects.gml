@@ -83,8 +83,8 @@ switch (argument[0]) {
     
     case "tap": {frx=2+other.frame fry=19 break}
     case "axe": {frx=18+fr fry=20 break}
-    case "pollflower": {frx=25+frame*5 fry=9 w=5 h=2.5 froy=24 break}
-    case "pollen": {frx=25+fr*2.5 fry=11.5 w=2.5 h=2.5 frox=17 froy=16 break}
+    case "pollflower": {frx=29+frame*5 fry=9 w=5 h=2.5 froy=24 break}
+    case "pollen": {frx=29+fr*2.5 fry=11.5 w=2.5 h=2.5 frox=17 froy=16 break}
     
     case "signalblock": {frx=34+(1*active)  fry=24.5 break}
 
