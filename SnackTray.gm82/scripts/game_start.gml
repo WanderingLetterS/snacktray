@@ -36,8 +36,10 @@ repeat (global.mplay) {
         }
     }
     global.myoption[i]=global.option[i]
-    stats("times "+global.charname[global.option[i]]+" was used",stats("times "+global.charname[global.option[i]]+" was used")+1)
-
+    if string(global.currentlevel)!="worldmap" && string(global.currentlevel)!=""{
+        stats("times "+global.charname[global.option[i]]+" was used",stats("times "+global.charname[global.option[i]]+" was used")+1)
+        settings("save_"+string(global.saveslot)+" player "+string(i)+" option",global.option[i])
+    }
     entrypoint="match"
     string_execute(global.charcode[global.option[i]])
     entrypoint=global.gamemode

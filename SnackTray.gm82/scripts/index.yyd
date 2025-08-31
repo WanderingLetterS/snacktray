@@ -2365,3 +2365,6 @@ draw_sprite_general_centered
 drawdeities
 deathofdeities
 com_grindblock
+loadworldlemontabs
+replacelevelpackinfo
+levelpackunlock

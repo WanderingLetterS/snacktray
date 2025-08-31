@@ -33,7 +33,17 @@ ds_map_clear(m)
 
 //huh
 with (warpbox) {if (name!="") ds_map_add(m,name,id) if (nextlevel!="") warp=1}
+//Why not give Warpboxes the ability to use droptargets? I'm sure it'll be fine....
+with (droptarget) if (name!="") ds_map_add(m,name,id)
+with (heaven    ) if (name!="") ds_map_add(m,name,id)
 with (warpbox) {if (warp) {if (global.mplay>1) instance_destroy()} else t=ds_map_find_value(m,target)}
+
+ds_map_clear(m)
+
+//Hi.
+with (worldmap_tile) if (tile!="" && (string(event)="3" || string(event)="4" || string(event)="5")) ds_map_add(m,tile,id)
+
+with (worldmap_tile) if (data!="" && (string(event)="3" || string(event)="4")) t=ds_map_find_value(m,data)
 
 ds_map_destroy(m)
 

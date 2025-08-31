@@ -5,7 +5,7 @@ if (!instance_exists(globalmanager) || global.kill) exit
 
 stats("errors seen",stats("errors seen")+1)
 
-if (room=lemon || global.debug) {show_message(wordwrap(argument[0],50)) exit}
+if (room=lemon || global.debug|| room=worldlemon) {show_message(wordwrap(argument[0],50)) exit}
 t=""
 if global.crashing t="crash "
 

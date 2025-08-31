@@ -151,6 +151,8 @@
 		|specialecur
 		|specialeobj
 		|specialeghost
+	+worldlemon
+		|palbuttontile
 	|editmanager
 	|lemongrab
 	|drawregion
@@ -160,6 +162,7 @@
 	|quickloadbutton
 	|quicksavebutton
 	|bollebutton
+	|bollworldbutton
 	|gridtoggle
 	|lemontab
 	|toolbutton
@@ -688,6 +691,11 @@
 		|signalblock
 		|spriteswitcher
 		|lightbulb
+	+wmap
+		|worldmap_tile
+		|worldmap_tiled1
+		|worldmap_tiled2
+		|minimap_player
 	|lemon_tile
 |DISCLAIMERSCREEN
 |BETA

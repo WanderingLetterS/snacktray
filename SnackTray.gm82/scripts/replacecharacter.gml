@@ -109,7 +109,7 @@ if (what="more" || what="all") {
     replacesheet(slot,name+"9",dir+sheetname+"-clover.png",0,0,1)
     
     
-    
+     replacesheet(slot,name+"map",dir+name+"-worldmap.png",0,0,1)
     
     //replacesheet(slot,name+"6",dir+name+"-items.png",0,0,1)
     //You can only reroute to something of a smaller ""value"". It works the same as getting hurt, basically.

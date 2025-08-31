@@ -9,6 +9,14 @@ if (!global.lemontest) with (globalmanager) {
         else fn=moddir+path
     }
 
+    if (!global.menu_reset) {
+        global.currentlevel = global.nextlevel
+        if levelpackunlock(string(global.nextlevel)){ //this will bring you to the world map in the case the nextlevel thing is sectretly a worldmap unlock thing
+            global.currentlevel = "worldmap"
+        }
+        global.menu_reset=0
+    }
+
     if (!global.respawn) global.currentlevel=global.nextlevel
     tfn=fn+global.currentlevel+".lemon"
     global.lemonfilename=tfn

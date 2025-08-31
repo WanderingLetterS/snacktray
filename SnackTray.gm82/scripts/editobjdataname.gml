@@ -1195,6 +1195,11 @@ switch (argument[0]) {
             if (i="3") return "Point: Right"
         }
     }
+
+    case worldmap_tile:
+    case worldmap_tiled1:
+    case worldmap_tiled2:
+    return "Align: "+string(i)
 }
 
 if (type=1) {

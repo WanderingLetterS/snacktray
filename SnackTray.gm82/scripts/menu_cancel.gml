@@ -6,7 +6,7 @@ if (room=speciale) with (moranboll) {
     dead=1
 }
 
-if (room=boot || room=titlescreen || room=title || room=lemon || room=speciale || room=bundlesel) exit
+if (room=boot || room=titlescreen || room=title || room=lemon || room=worldlemon || room=speciale || room=bundlesel) exit
 
 if (room=bundleroster) segafadeto(title,"systemreturn")
 else if (room=change) {

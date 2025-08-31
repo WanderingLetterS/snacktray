@@ -9,14 +9,14 @@ dw=display_get_width()
 dh=display_get_height()
 
 if (settings("fullscreen")) {
-    if ((room=lemon && !global.lemontestviewhack) || (room=speciale && !instance_exists(moranboll))) {rw=dw rh=dh s=1}
+    if ((room=lemon && !global.lemontestviewhack)||(room=worldlemon && !global.lemontestviewhack)  || (room=speciale && !instance_exists(moranboll))) {rw=dw rh=dh s=1}
     else s=min(dw/rw,dh/rh)
 } else {
     if (room=speciale && !instance_exists(moranboll)) {
         s=1
         rw=1074
         rh=700
-    } else if (room=lemon && !global.lemontestviewhack) {
+    } else if ((room=lemon||room=worldlemon) && !global.lemontestviewhack) {
         s=1
         if (settings("zoomlemon")) {rw=floor(dw*0.8) rh=floor(dh*0.8)}
         else {rw=global.screenwidth rh=700}

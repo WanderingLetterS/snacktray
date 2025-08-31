@@ -1189,6 +1189,17 @@ switch (argument[0]) {
             return string(i-1)
         }
     }
+    case worldmap_tile:
+    case worldmap_tiled1:
+    case worldmap_tiled2: {
+        if (type=0) return get_string("This tile's name:",argument[2])
+        if (type=1) {
+            i=show_contextmenu("Event:|-|None|Level|Shop(Not Done)|Pipe|Teleport|NoEntryPipe",0)
+            if (!i) return argument[2]
+            return string(i-1)
+        }
+        if (type=2) return get_string("This tile's data:",argument[2])
+    }
 
 }
 

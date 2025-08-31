@@ -59,6 +59,7 @@ with (globalmanager) {
         global.masterterrain[i]=background_create_color(1,1,0)
         global.masterobjects[i]=background_create_color(1,1,0)
         global.masterdecor[i]=background_create_color(1,1,0)
+        global.minimapsheet[i]=background_create_color(1,1,0)
         for (j=0;j<96;j+=1) global.effectsprite[i,j]=-1
     }
     list=

@@ -24,6 +24,8 @@ with (burner) getregion(x)
 global.always_codeblock_count=0
 with (code) event_user(0)
 with (activate_region) event_user(0)
+with (worldmap_tile) event_user(0)
+with (worldmap_tile) getregion(x)
 
 
 with (mark) event_user(0)
@@ -37,6 +39,7 @@ with (pulley) event_user(0)
 with (token) event_user(0)
 
 with (player) player_camera(1)
+with (minimap_player) {player_camera(1) getregion(x)}
 with (enemy) event_user(10)
 with (hittable) event_user(3)
 with (lakitu) event_user(0)

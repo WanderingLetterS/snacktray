@@ -89,9 +89,11 @@ instance_deactivate_object(minusbowser)
 instance_deactivate_object(montyhole)
 instance_deactivate_object(litbobomb)
 instance_deactivate_object(ziptrack)
+instance_deactivate_object(worldmap_tile)
 
 
 instance_activate_object(player)
+instance_activate_object(minimap_player)
 instance_activate_object(lakitu)
 instance_activate_object(axewall)
 instance_activate_object(redcoin)

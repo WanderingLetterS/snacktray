@@ -72,6 +72,7 @@ if (pipe) {
                 if (pipeid.t.object_index=theothersidepipe) {x+=24 y+=18}
                 if (pipeid.t.object_index=warpbox) {x+=8 y+=8}
                 if (pipeid.t.object_index=door || pipeid.t.object_index=chardoor) {x+=8 y+=2}
+                if (pipeid.t.object_index=worldmap_tile) {x+=8 y+=8 visible=1}
                 player_camera(1) respawncamslide=1
                 safevx=view_xview[p2] safevy=view_yview[p2]
                 view_xview[p2]=slidefromx view_yview[p2]=slidefromy
@@ -107,6 +108,8 @@ if (pipe) {
             if (pipeid.t.object_index=pipeblock) y+=16
             else if (pipeid.t.object_index=sidepipe) {x+=16 y+=16}
             else if (pipeid.t.object_index=theothersidepipe) y+=16
+            else if (pipeid.t.object_index=worldmap_tile) {piped=0 pipe=0 x+=8 y+=8 visible=1}
+
         }
         if (ppos=61) {
             player_camera(1)

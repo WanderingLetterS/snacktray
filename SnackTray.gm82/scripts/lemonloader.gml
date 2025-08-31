@@ -192,12 +192,30 @@ repeat (8) {
                         o=instance_create(b>>12+u,b&$fff+v,water)
                         o.region=r
                     }
-                } else if (obj==groundsemi||obj==slopel1s||obj==slopel2s||obj==sloper1s||obj==sloper2s) {
+                } else if (obj==groundsemi||obj==slopel1s||obj==slopel2s||obj==sloper1s||obj==sloper2s||obj==worldmap_tiled1) {
                      i=instance_create(b>>12,b&$fff,semi)
                      i.obj=obj
-                } else if (obj==groundback/*||obj==slopel1b||obj==slopel2b||obj==sloper1b||obj==sloper2b*/) {
+                     if lv=="SnackTray"{
+                         i.dataid=did
+                         if (ent) {
+                             for (k=0;k<12;k+=1) i.data[k]=readstring()
+                             if (string(lemongrab.objlist[did,5])="align") {
+                                 unpack_align(i)
+                             }
+                         }
+                     }
+                } else if (obj==groundback||obj==worldmap_tiled2/*||obj==slopel1b||obj==slopel2b||obj==sloper1b||obj==sloper2b*/) {
                      i=instance_create(b>>12,b&$fff,back)
                      i.obj=obj
+                     if lv=="SnackTray"{
+                         i.dataid=did
+                         if (ent) {
+                             for (k=0;k<12;k+=1) i.data[k]=readstring()
+                             if (string(lemongrab.objlist[did,5])="align") {
+                                 unpack_align(i)
+                             }
+                         }
+                     }
                 }else {
                     i=instance_create(b>>12,b&$fff,deity)
                     i.obj=obj

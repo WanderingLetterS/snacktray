@@ -12,6 +12,25 @@ with (globalmanager) {
     if (global.bundled || path=global.lbase) dn=path
     else dn=moddir+path
 
+    if argument_count>1{
+        if file_exists(dn+"levelpack.txt") {
+            replacelevelpackinfo(dn+"levelpack.txt") //This saves all the data into different gloval variables, which is honestly, kinda fucking baller.
+            if argument[1]{//Do the start lock and select yo first stage baybey
+                global.firstlevel=1
+                if variable_global_exists("levelpack_startlevel"){
+                    settings("save_"+string(global.saveslot)+" "+"lastlevel",variable_global_array_get("levelpack_startlevel",0))
+                }else error("no startlevel")
+                settings("save_"+string(global.saveslot)+" started",true)
+                if variable_global_exists("levelpack_startlock"){
+                    for (j=1;j< variable_global_array_get("levelpack_startlock",0) ;j+=1){
+                        settings("save_"+string(global.saveslot)+" locklevel_"+variable_global_array_get("levelpack_startlock",j),true)
+                    }
+                }else error("no startlock")
+            }
+        } else error("no levelpack.txt")
+    }
+
+
     i=0
     for (fn=file_find_first(dn+"*.lemon*",0);fn!="";fn=file_find_next()) { //yall aint ready
         i+=1

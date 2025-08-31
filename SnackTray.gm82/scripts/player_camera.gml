@@ -81,7 +81,7 @@ if (finish && !dead && ending="retainer") {
     global.additivex=0
     global.counting=0
     with player if !dead {global.additivex+=x global.counting+=1 }
-
+    with minimap_player if !dead {global.additivex+=x global.counting+=1 }
     if global.counting==0{
         viewx=round(round(x)-hw)
         if global.mplay<2 show_message("oh.")

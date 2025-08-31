@@ -80,6 +80,7 @@ if (pause) {
                         }
                     }
                     if (global.gamemode=="classic" && !settings("cog inflives")) global.lifes-=1
+                    global.menu_reset=1
                     with instance_create(0,0,pausefade) goto=change
                 }
             }
@@ -185,6 +186,21 @@ if (pause) {
                 pausepage=global.pagespec[global.option[pauseplayer],pinc]
             }
         }
+
+        with (minimap_player) if ((sbut || esc) && !reset) with (other) {
+            pause=1
+            pauseplayer=other.p2
+
+            pinc=other.size
+
+            pausepage=global.pagespec[global.option[pauseplayer],pinc]
+            while (pausepage=-1) {
+                if (pinc) pinc-=1
+                else {pausepage=0 pagestr=0}
+                pausepage=global.pagespec[global.option[pauseplayer],pinc]
+            }
+        }
+
         with (moranboll) if ((sbut || esc) && !stop && !dead && !falling) with (other) {
             pause=1
             pauseplayer=other.p2

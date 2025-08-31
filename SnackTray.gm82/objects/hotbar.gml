@@ -73,35 +73,61 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-t+=1
-for (i=0;i<9+pickeddata;i+=1) {
-    xx=x-159+40*i+(i=9)*20
-    so = t + (i*6)+(i=9)*3
+if room!=worldlemon{
 
-    if (cur == i+1) {
-        yraise[i]=approach_val(yraise[i],-8,1)
-        why = 0;
-    } else {
-        yraise[i]=approach_val(yraise[i],0,1)
-        why = sin(so*pi*freq/room_speed)*amp;
+    t+=1
+    for (i=0;i<9+pickeddata;i+=1) {
+        xx=x-159+40*i+(i=9)*20
+        so = t + (i*6)+(i=9)*3
+
+        if (cur == i+1) {
+            yraise[i]=approach_val(yraise[i],-8,1)
+            why = 0;
+        } else {
+            yraise[i]=approach_val(yraise[i],0,1)
+            why = sin(so*pi*freq/room_speed)*amp;
+        }
+
+        if !settings("funmode")
+        yy=(y+why)+yraise[i]
+        else
+        yy=y+yraise[i]
+
+        draw_sprite_ext(spr_editorbuttonshadow,0,xx,yy,1,1,0,c_black,0.5)
+        if (editcursor.tool=2 && cur=i+1) draw_sprite_ext(spr_editorbutton,2+!editcanflood(lemongrab.objlist[obj[cur],0]),xx,yy,1,1,0,$ffffff,alpha)
+        else if i=9 draw_sprite_ext(spr_editorbutton,(4-(cur=i+1)*3),xx,yy,1,1,0,$ffffff,alpha)
+        else draw_sprite_ext(spr_editorbutton,(cur=i+1),xx,yy,1,1,0,$ffffff,alpha)
+
+        if (cur=i+1) draw_sprite_ext(spr_editsel,0,xx,yy,1,1,0,$ffffff,alpha)
+
+        if (obj[i+1]) draw_sprite_ext(spr_editpal,lemongrab.objlist[obj[i+1],25],xx,yy,1,1,0,c_black,0.5) draw_sprite_ext(spr_editpal,lemongrab.objlist[obj[i+1],25],xx-1,yy-1,1,1,0,$ffffff,alpha)
+        if (picked[i+1]) draw_sprite_ext(spr_editsel,1,xx,yy,1,1,0,$ffffff,alpha)
     }
+} else for (i=0;i<9;i+=1) {
+    xx=x-159+40*i
+    if (editcursor.tool=2 && cur=i+1) draw_sprite_ext(spr_editorbutton,1+!editcanflood(lemongrab.objlist[obj[cur],0]),xx,y,1,1,0,$ffffff,alpha)
+    else draw_sprite_ext(spr_editorbuttonshadow,0,xx,y,1,1,0,c_black,0.5) draw_sprite_ext(spr_editorbutton,(cur=i+1),xx,y,1,1,0,$ffffff,alpha)
 
-    if !settings("funmode")
-    yy=(y+why)+yraise[i]
-    else
-    yy=y+yraise[i]
+    if (cur=i+1) draw_sprite_ext(spr_editsel,0,xx,y,1,1,0,$ffffff,alpha)
 
-    draw_sprite_ext(spr_editorbuttonshadow,0,xx,yy,1,1,0,c_black,0.5)
-    if (editcursor.tool=2 && cur=i+1) draw_sprite_ext(spr_editorbutton,2+!editcanflood(lemongrab.objlist[obj[cur],0]),xx,yy,1,1,0,$ffffff,alpha)
-    else if i=9 draw_sprite_ext(spr_editorbutton,(4-(cur=i+1)*3),xx,yy,1,1,0,$ffffff,alpha)
-    else draw_sprite_ext(spr_editorbutton,(cur=i+1),xx,yy,1,1,0,$ffffff,alpha)
-
-    if (cur=i+1) draw_sprite_ext(spr_editsel,0,xx,yy,1,1,0,$ffffff,alpha)
-
-    if (obj[i+1]) draw_sprite_ext(spr_editpal,lemongrab.objlist[obj[i+1],25],xx,yy,1,1,0,c_black,0.5) draw_sprite_ext(spr_editpal,lemongrab.objlist[obj[i+1],25],xx-1,yy-1,1,1,0,$ffffff,alpha)
-    if (picked[i+1]) draw_sprite_ext(spr_editsel,1,xx,yy,1,1,0,$ffffff,alpha)
+    if (obj[i+1]) {
+        draw_set_alpha(0.5)
+        draw_set_color(c_black)
+        for (wm_i=0;wm_i<width;wm_i+=1){
+            for (wm_j=0;wm_j<height;wm_j+=1){
+                draw_background_part(global.minimapsheet[biome],8+floor(frame)*17+off_x*17++(17 *(off_x*(width-1 +height-1)+wm_j +(wm_i*width))),71+line*17,16,16,x-(8*(width-1))+(16 *wm_i)+8,y+(8*(height-1))-(16 *wm_j)+8)
+            }
+        }
+        draw_set_color(c_white)
+        draw_set_alpha(1)
+        wm_i=0 wm_j=0
+        for (wm_i=0;wm_i<width;wm_i+=1){
+            for (wm_j=0;wm_j<height;wm_j+=1){
+                draw_background_part(global.minimapsheet[biome],8+floor(frame)*17+off_x*17+(17 *(off_x*(width-1 +height-1)+wm_j +(wm_i*width))),71+line*17,16,16,x-(8*(width-1))+(16 *wm_i)+7,y+(8*(height-1))-(16 *wm_j)+7)
+            }
+        }
+    }
 }
-
 global.tscale=2
 global.halign=1
 global.valign=2

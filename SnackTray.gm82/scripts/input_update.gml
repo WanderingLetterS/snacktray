@@ -1,6 +1,6 @@
 var ok,i;
 
-if (room=lemon) exit
+if (room=lemon||room=worldlemon) exit
 
 ok=!global.actually_recording_goddamnit && room!=lemon && room!=boot
 for (i=0;i<global.mplay;i+=1) if (global.input[i]>=JOY) ok=1

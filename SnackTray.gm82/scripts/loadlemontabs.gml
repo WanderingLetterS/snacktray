@@ -1,5 +1,7 @@
 var i,l;
 
+if room=worldlemon {loadworldlemontabs(argument[0]) exit}
+
 with (palbutton) instance_destroy()
 
 with (editmanager) {

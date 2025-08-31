@@ -82,7 +82,9 @@ for (i=0;i<global.biomes;i+=1) {
     fn=wskin+"biomes\"+global.biome[i]+"\decor.png"
     if (file_exists(fn)) background_replace(global.masterdecor[i],fn,1,0)
     else global.masterdecor[i]= global.masterdecor[global.biomes+1]
-
+    fn=wskin+"worldmap.png"
+    if (file_exists(fn)) background_replace(global.minimapsheet[i],fn,1,0)
+    else show_message("No Worldmap??? Add a Worldmap.png, please.")
 
 
     skindat("tex_master"+string(i),global.master[i])
@@ -209,6 +211,36 @@ for (i=0;i<global.enemysprites2;i+=1) {
     global.enemysprite2[i,2]=median(0,unreal(skindat("enemy2 "+global.enemysprite2[i,0]+" speed"),0.125),1)
     global.enemysprite2[i,3]=median(1,unreal(skindat("enemy2 "+global.enemysprite2[i,0]+" loop"),1),global.enemysprite2[i,1])-1
 }
+
+//////wm stands for WorldMap
+global.wm_lineamount=max(0,unreal(skindat("worldsettings lineamount"),0))
+
+for (i=0;i<=global.wm_lineamount;i+=1) {
+    templist=skindat("line "+string(i)+" tilename") //Name List
+
+    global.wm_line[i,0]=unreal(skindat("line "+string(i)+" framemax"),1) //How many frames for the anim?
+    if  global.wm_line[i,0]< 1 global.wm_line[i,0]=1
+    global.wm_line[i,1]=unreal(skindat("line "+string(i)+" frameloop"),1) //Where do we loop from?
+    global.wm_line[i,2]=unreal(skindat("line "+string(i)+" speed"),0.2) //Animation speed?
+
+    global.wm_lineexdata[i,0]=max(unreal(skindat("line "+string(i)+" width"),1),1) //Width
+    global.wm_lineexdata[i,1]=max(unreal(skindat("line "+string(i)+" height"),1),1) //Height
+
+
+
+    global.wm_line[i,3]=string_count(",",templist) //Tile Amount
+
+
+    for (j=0;j<global.wm_line[i,3];j+=1) {
+        p=string_pos(",",templist)
+        global.wm_line[i,4+j]=string_copy(templist,1,p-1)
+        templist=string_delete(templist,1,p)
+    } //saving the tile names from the temp list
+
+
+}
+
+
 
 replacesound("systempause",wskin+"sfx\systempause.wav")
 replacesound("systemtimecount",wskin+"sfx\systemtimecount.wav")

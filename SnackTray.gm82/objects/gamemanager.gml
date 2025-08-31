@@ -83,6 +83,14 @@ var i;
 for (i=0;i<global.mplay;i+=1) {
     view_yview[i]=8+skindat("voffset")
     hud_alpha[i]=1
+    if instance_exists(worldmap_tile) //ITS A WORLDMAP BAYBEYYY. As an extra, since we only check for the default type: 0, this means we can use the others freely in real levels, if we wanted to for some reason.
+    with (instance_create(spawner.x-4*(global.mplay-1)+8*i,spawner.y+2,minimap_player)) {
+        p2=i
+        player_start()
+        other.players[i]=id
+        if (global.gamemode="battle") flash=1
+    }
+    else
     with (instance_create(spawner.x-(16*i)+8,spawner.y+2,player)) {
         p2=i
         player_start()

@@ -5,7 +5,7 @@ if (argument[0]="") exit
 
 with (message) instance_destroy()
 
-if (room=lemon) {show_message(argument[0]) exit}
+if (room=lemon||room=worldlemon)  {show_message(argument[0]) exit}
 
 with (instance_create(0,0,message)) {
     str=argument[0]

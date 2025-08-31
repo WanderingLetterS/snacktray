@@ -17,6 +17,7 @@
 	|tex_introground
 	|tex_grid
 	|tex_runes
+	|tex_invisible
 +mask
 	|spr_16
 	|spr_nslopr
@@ -529,6 +530,8 @@
 		|spr_swinginghammerfull
 		|spr_swinginghammer
 		|spr_gearplatform
+	+wmap
+		|spr_levelthumbnail
 	|spr_editpal
 	|spr_editortabs
 |DISCLAIMERSCREENspr2

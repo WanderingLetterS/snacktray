@@ -609,6 +609,10 @@
 		|lemonloaderredux
 		|lemonrunner
 		|lemongetinfo
+	+worldlemon
+		|loadworldlemontabs
+		|replacelevelpackinfo
+		|levelpackunlock
 	|editobjmenu
 	|editobjdataname
 	|getbiomeid

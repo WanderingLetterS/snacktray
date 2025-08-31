@@ -1062,6 +1062,22 @@ listobj(burner             ,0,spr_burner        ,232,cannon)
     listargs("align","dir")
     listdata("0","0")
 
+
+listobj(worldmap_tile     ,0,tex_invisible      ,0,worldmap_tile)
+    listdoc("Tile","A Tile to be placed in layer 0")
+    listargs("tile","event","data")
+    listdata("start","-1","")
+
+listobj(worldmap_tiled1     ,0,tex_invisible      ,0,worldmap_tile)
+    listdoc("Tile","A Tile to be placed in layer 1")
+    listargs("tile")
+    listdata("start")
+
+listobj(worldmap_tiled2     ,0,tex_invisible      ,0,worldmap_tile)
+    listdoc("Tile","A Tile to be placed in layer 2")
+    listargs("tile")
+    listdata("start")
+
 n=ds_map_create()
 k=ds_map_find_first(m)
 repeat (ds_map_size(m)) {

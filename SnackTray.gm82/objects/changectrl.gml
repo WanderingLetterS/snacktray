@@ -106,6 +106,7 @@ applies_to=self
 */
 if (instance_number(segafade) > instance_number(segafadein)) exit
 if neveragain exit
+if string(global.currentlevel)!="worldmap"
 if !global.respawn global.visualstagecount+=1 //prevent stage count increasing from dying
 savemetadata()
 if (!skindat("deathmusic")) mus_stop()

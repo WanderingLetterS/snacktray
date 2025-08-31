@@ -4,6 +4,8 @@ lib_id=1
 action_id=603
 applies_to=self
 */
+if (instance_number(editmanager)>1) instance_destroy()
+
 instance_create(0,0,editcursor)
 instance_create(x,y,drawregion)
 instance_create(0,0,tooltiplayer)

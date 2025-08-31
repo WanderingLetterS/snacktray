@@ -55,7 +55,7 @@ if (global.mplay=4  && global.gamemode!="sscreencoop") {
     view_visible[3]=1
 }
 
-if (room=lemon) {
+if (room=lemon||room=worldlemon) {
     view_wview[0]=rw
     view_hview[0]=rh
     view_wport[0]=view_wview[0]

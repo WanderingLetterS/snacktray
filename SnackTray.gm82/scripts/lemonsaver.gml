@@ -135,40 +135,34 @@ for (r=0;r<8;r+=1) {
                     external_call(global._BufY,b&$ffff,0) //writeshort
                 }
             }
-        } else if obj=groundsemi||obj=slopel1s||obj=sloper2s||obj=sloper1s||obj=slopel2s{
+        } else if obj=groundsemi||obj=slopel1s||obj=sloper2s||obj=sloper1s||obj=slopel2s||obj=worldmap_tiled1{
             yes=0 with (semi) if (self.obj=obj) yes+=1 with (deity) if (self.obj=obj) yes+=1 //hopefully stop crashes due to wrong layer
             if (yes) {
                 writestring(object_get_name(obj))
                 writebyte(0)
                 writeuint(yes)
 
-                with (semi) if (self.obj=obj) {
+                with (semi) if (self.obj=obj) { //write x, y, then all data fields
+                    dataid=j
                     b=(x << 12) + y
                     external_call(global._BufA,b>>16,0) //writebyte
                     external_call(global._BufY,b&$ffff,0) //writeshort
-                }
-                with (deity) if (self.obj=obj) {
-                    b=(x << 12) + y
-                    external_call(global._BufA,b>>16,0) //writebyte
-                    external_call(global._BufY,b&$ffff,0) //writeshort
+                    if (ent) for (k=0;k<8;k+=1) external_call(global._BufB,string(data[k]),0) //writestring
                 }
             }
-        } else if obj=groundback/*||obj=slopel1b||obj=sloper2b||obj=sloper1b||obj=slopel2b*/{
+        } else if obj=groundback||obj=worldmap_tiled2/*||obj=slopel1b||obj=sloper2b||obj=sloper1b||obj=slopel2b*/{
             yes=0 with (back) if (self.obj=obj) yes+=1 with (deity) if (self.obj=obj) yes+=1
             if (yes) {
                 writestring(object_get_name(obj))
                 writebyte(0)
                 writeuint(yes)
 
-                with (back) if (self.obj=obj) {
+                with (back) if (self.obj=obj) { //write x, y, then all data fields
+                   dataid=j
                     b=(x << 12) + y
                     external_call(global._BufA,b>>16,0) //writebyte
                     external_call(global._BufY,b&$ffff,0) //writeshort
-                }
-                with (deity) if (self.obj=obj) {
-                    b=(x << 12) + y
-                    external_call(global._BufA,b>>16,0) //writebyte
-                    external_call(global._BufY,b&$ffff,0) //writeshort
+                    if (ent) for (k=0;k<8;k+=1) external_call(global._BufB,string(data[k]),0) //writestring
                 }
             }
         } else {

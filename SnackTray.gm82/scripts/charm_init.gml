@@ -28,9 +28,31 @@ object_event_clear(changectrl,ev_other,ev_user0+p2)
 }
 
 sheets[0]=skindat("tex_"+name+"0"+ss)
-if (global.singlesheet[p2]) {
+
+
+if object_index=minimap_player{
+    sheet=skindat("tex_"+name+"map"+ss)
+    if (global.singlesheet[p2]) {
+        i=1
+        repeat (9) {
+            sheets[i]=sheets[0]
+            i+=1
+        }
+    } else {
+        sheets[1]=skindat("tex_"+name+string(global.reroutedsizes[p2,1])+ss)
+        sheets[2]=skindat("tex_"+name+string(global.reroutedsizes[p2,2])+ss)
+        sheets[3]=skindat("tex_"+name+string(global.reroutedsizes[p2,3])+ss)
+        sheets[4]=skindat("tex_"+name+string(global.reroutedsizes[p2,4])+ss)
+        sheets[5]=skindat("tex_"+name+string(global.reroutedsizes[p2,5])+ss)
+        sheets[6]=skindat("tex_"+name+string(global.reroutedsizes[p2,6])+ss)
+        sheets[7]=skindat("tex_"+name+string(global.reroutedsizes[p2,7])+ss)
+        sheets[8]=skindat("tex_"+name+string(global.reroutedsizes[p2,8])+ss)
+        sheets[9]=skindat("tex_"+name+string(global.reroutedsizes[p2,9])+ss)
+    }
+    exit
+}else if (global.singlesheet[p2]) {
     i=1
-    repeat (5) {
+    repeat (9) {
         sheets[i]=sheets[0]
         i+=1
     }

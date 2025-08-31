@@ -18,6 +18,7 @@ with (globalmanager) {
 
     skinstr("lang credits","")
     replaceinfo(skin+"world.txt")
+    replaceinfo(skin+"worldmap.txt")
     if (path=global.wbase) skinstr("name","Default")
     else skinstr("name",string_replace(string_lower(path),"world\",""))
     skinstr("credits world",skinstr("lang credits"))
