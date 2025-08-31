@@ -97,7 +97,7 @@ Emília - -S- - Flareguy
 
 Snack Tray
 -S-: Most of the Stuff
-Toadoat: Syobon
+Toadoat+Moster: Syobon
 
 Boll Deluxe
 nekonesse - -S-
@@ -113,6 +113,7 @@ Floogle - Symbolcom
 Snack Tray
 -S-: New poses for Mario and Sonic, New Underground below background
 Toadoat + King the Racoon: Syobon
+FungiCaptain: Boll Simon
 
 Boll Deluxe
 nekonesse - -S-
