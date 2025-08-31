@@ -275,24 +275,6 @@ if (keyboard_check_pressed(vk_enter) && !off) {
             global.cheater=1
             break
         }                                                                                                                                                                                                                                                                                                                                                               case "fuzzy": {sound("systemin") global.fuzzy=!global.fuzzy if global.fuzzy ping("Red Yoshi mode enabled.") else ping("Red Yoshi mode disabled.") break}
-        case "frameskip": {
-            /*
-            0 = no skipping
-            1 = just one if needed
-            2 = more if needed
-            */
-            frameskip_val=unreal(other.arg,frameskip_val)
-            frameskip_val=min(frameskip_val,2)
-            settings("frameskip",unreal(other.arg,frameskip_val))
-            if (other.arg="") ping("Frameskip settings:##0 - disable##1 - skips one if needed##2 - skips more if needed")
-            if (other.arg="0") ping("Frameskip disabled")
-            if (other.arg="1") ping("Frameskip set to 'one'")
-            if (other.arg="2") ping("Frameskip set to 'more'")
-            sound("systemin")
-
-
-            break
-        }
         case "lives": {
             global.lifes=unreal(arg,global.lifes)
             break
