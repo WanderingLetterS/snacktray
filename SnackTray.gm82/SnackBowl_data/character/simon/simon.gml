@@ -63,7 +63,7 @@ if global.stagecount>0{
 	sublevel=1
 }
 
-bigger_whip=unreal(playerskindat(p2,name+" bigger whip"))
+bigger_whip=unreal(playerskindat(p2,name+" bigger whip"),0)
 
 SUBWEP_KNIFE=1
 SUBWEP_BOOMERANG=6

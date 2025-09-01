@@ -12,376 +12,63 @@ Megaman
 [b]: Shoot
 [x]/[y]: Change Weapon
 [z]: Shoot Mega Buster
+Defeat enemies to get their weapon!
+This character is a Work in Progress!
 
 #define rosterorder
 21
 
 #define customhud
 dontdrawdefaulthud=true
-spr=sheets[global.reroutedsizes[p2,size]]
-{
-    
-	//scope: player
-	p=id
-
-	d3d_transform_stack_push()
-	d3d_transform_add_translation(hoffx,hoffy,0)
-
-	global.halign=0
-	//if dontdrawhudler=1 exit
-	p_offset=80
-
-	if !(global.nohud){
-		if usepalette scr_applyPaletteSegmentedAlpha(global.shaderPaletteSwapAlpha,global.palettesprites[p2*100],global.pal_1[p2]+1,global.pal_2[p2]+1,global.pal_3[p2]+1,global.pal_4[p2]+1,global.reroutedsizes[p2,size],other.hud_alpha[p2],totpal+1)
-
-		// apply ma shader
-		draw_sprite_part(spr,0,59,22,21,21,8+p_offset*p2,199) //grin emoji
-		
-		draw_sprite_part(spr,0,8,8,72,13,30+p_offset*p2,198) //That's my name! :)
-
-
-		//My fucking Energy!
-
-		//energy holder
-		if maxe
-		switch (maxe){
-			case 1: draw_sprite_part(spr,0,8,22,4,10,27+4+p_offset*p2,210) draw_sprite_part(spr,0,54,22,4,10,31+4+p_offset*p2,210) break; //special cases for 1 and 2
-			case 2: draw_sprite_part(spr,0,8,22,8,10,27+4+p_offset*p2,210) draw_sprite_part(spr,0,50,22,8,10,35+4+p_offset*p2,210) break;
-			default:
-			draw_sprite_part(spr,0,8,22,16,10,27+4+p_offset*p2,210) //the starter segment is guaranteed
-			tester=(maxe-2)
-			offx=0
-			while (tester>0){
-				if tester==1{draw_sprite_part(spr,0,50,22,8,10,43+4+offx+p_offset*p2,210)}
-				else if tester==2{draw_sprite_part(spr,0,42,22,16,10,43+4+offx+p_offset*p2,210)}
-				else draw_sprite_part(spr,0,25,22,16,10,43+4+offx+p_offset*p2,210)
-				offx+=16
-				tester-=2
-			}
-			break;
-		}
-		//The actual fucking energy itself
-		if maxe
-		switch (maxe){
-			case 1: if energy draw_sprite_part(spr,0,8,33,min(4,4-min(4,(0.5-energy)*8)),10,27+4+p_offset*p2,210) if energy>0.5 draw_sprite_part(spr,0,54,33,4-((0.5-(energy-0.5))*4),10,31+4+p_offset*p2,210) break; //special cases for 1 and 2
-			case 2: if energy draw_sprite_part(spr,0,8,33,min(8,8-min(8,(1-energy)*8)),10,27+4+p_offset*p2,210) if energy>1 draw_sprite_part(spr,0,50,33,8-((1-(energy-1))*8),10,35+4+p_offset*p2,210) break;
-			default:
-			if energy{
-				draw_sprite_part(spr,0,8,33,16-min(16,(2-min(2,energy))*8),10,27+4+p_offset*p2,210) //the starter segment is guaranteed
-					tester=(maxe-2)
-					offx=0
-					enercheck=(energy-2) //remaining energy
-				while (enercheck>0){
-					if tester==1{draw_sprite_part(spr,0,50,33,8-min(8,(1-enercheck)*8),10,43+4+offx+p_offset*p2,210)}
-					else if tester==2{draw_sprite_part(spr,0,42,33,16-min(16,(tester-enercheck)*8),10,43+4+offx+p_offset*p2,210)}
-					else if (enercheck>=2) draw_sprite_part(spr,0,25,33,16,10,43+4+offx+p_offset*p2,210)
-
-					else draw_sprite_part(spr,0,25,33,16-min(16,(2-(enercheck mod 2))*8),10,43+4+offx+p_offset*p2,210)
-					offx+=16
-					tester-=2
-					enercheck-=2
-				}
-			}
-			break;
-		}
-		shader_reset()
-
-		draw_skintext(16,8,chr(36)+chr(42)+format(global.coins[view_current],2),$ffffff)
-		maintain_ring=0
-		if global.rings[view_current]=0
-			with itemdrop if type="ringup" && p2=view_current {maintain_ring=1}
-		if global.rings[view_current]==0
-			col2=$ffffff
-			if global.frame8 col2=$ff
-		if ringxoffset!=-44 && global.rings[view_current]=0 && !maintain_ring{
-			ringxoffset-=1
-			col2=$ff
-		}else if ringxoffset!=16 && (global.rings[view_current]>0 || maintain_ring) {
-			ringxoffset+=1
-			col2=$ffffff
-		}
-		if global.rings[view_current]!=0
-			col2=$ffffff
-
-		draw_skintext(ringxoffset,24,chr(16)+chr(42)+formatdark(global.rings[view_current],3),col2)
-
-		if global.gamemode!="timeattack" {
-			//Red Rings
-			var rcol;
-			i=1
-			repeat (5) {
-				rcol=c_white
-				if !gamemanager.ringexists[i] rcol=c_gray
-				draw_skintext(328+(i*8),24,chr(19+settings("rr" + string(i) + global.levelfname)),rcol)
-				i+=1
-			}
-
-			//Score
-			draw_skintext(248,8,formatdark(global.scor[view_current],9),$ffffff)
-
-			if (global.inf_time || global.wanna) {
-				draw_skintext(336,8,chr(17)+"-:--",c_white)
-			} else {
-				col=$ffffff
-				if (gamemanager.time<=skindat("hurrytime") && global.frame8) col=$ff
-				if (skindat("mariotime"))
-					t=floor(tick/22.5)
-				else
-					t=floor(tick/60)
-
-				t_offset = ((t div 60) >= 10) + ((t div 60) >= 100) //listen if you can get 1000 minutes of time i dont wanna hear nothing about it being offcentered
-
-				draw_skintext(336 - (t_offset*8),8,chr(17)+string(t div 60)+":"+format(t mod 60,2),col)
-			}
-		} else {
-			global.inf_time=1
-			t=floor(tick/60)
-			t2=floor(tick*1.66666666)
-
-			var timestring, redstring;
-
-			timestring=chr(17)+string(t div 60)+"'"+format(t mod 60,2)+"''"+format(t2 mod 100,2)
-			redstring=" "+chr(19+ta_set("ta_win_" + global.levelfname + string_replace(global.lskins[global.levelskin+1,0], global.lbase, ""))) //i'll still find a use for this trust.
-			
-			global.halign=1
-			draw_skintext(220,8,timestring + redstring,c_white)
-			global.halign=0
-		}
-	}
-	d3d_transform_stack_pop()
-	
-}
-
-//Replace flags and signpost drawing with my own
-
-
-with flag{
-	visible=0
-	if (issign){
-		//interpolation sadly messes with our beloved shader so uh... no interpolation here.
-		if (angle<90 || angle>270) draw_sprite_part_ext(other.spr,0,345,11,40,28,x+lengthdir_x(-20,angle)-view_xview[other.p2],y+8-18,lengthdir_x(1,angle)-view_yview[other.p2],1,$ffffff,1) //bowser face
-		else {
-			
-			draw_sprite_part_ext(other.spr,0,345,11,40,28,x+lengthdir_x(-20,angle+180)-view_xview[other.p2],y+8-18-view_yview[other.p2],lengthdir_x(1,angle+180),1,$ffffff,1) //boser side
-			if owner.usepalette scr_applyPaletteSegmented(global.shaderPaletteSwap,global.palettesprites[owner.p2*100],global.pal_1[owner.p2]+1,global.pal_2[owner.p2]+1,global.pal_3[owner.p2]+1,global.pal_4[owner.p2]+1,owner.size,owner.totpal+1)
-			draw_sprite_part_ext(other.spr,0,386+41*floor(signframe mod 3),11,40,28,x+lengthdir_x(-20,angle+180),y+8-18-view_yview[other.p2],lengthdir_x(1,angle+180),1,$ffffff,1) //player face
-			shader_reset()
-		}
-		if (angle<180) draw_sprite_part_ext(other.spr,0,509,13,4,24,x+lengthdir_x(-20,angle)+lengthdir_x(-4,angle+90)-view_xview[other.p2],y+8-16-view_yview[other.p2],lengthdir_x(1,angle+90),1,$ffffff,1) //singpost side
-		else draw_sprite_part_ext(other.spr,509,13,72,4,24,x+lengthdir_x(-20,angle+180)+lengthdir_x(-4,angle+270)-view_xview[other.p2],y+8-16-view_yview[other.p2],lengthdir_x(1,angle+270),1,$ffffff,1) //singpost side
-		if anglego!=0 signframe=0
-		else if signframe!=3 signframe+=0.1
-	} else if !isblock{
-
-		if !owner {draw_sprite_part_ext(other.spr,0,213+33*global.frame,8,32,35,x-view_xview[other.p2],y-14-view_yview[other.p2]+8,1,1,$ffffff,1)     dontdrawtimer=40}
-		else if y>=ystart {if dontdrawtimer dontdrawtimer-=1 else draw_sprite_part_ext(other.spr,0,81+33*global.frame,8,32,35,x-view_xview[other.p2],y-23-view_yview[other.p2]+8,1,1,$ffffff,1) }
-
-	}
-}
-
-with ermelnads_tronsform{
-	visible=0
-	if global.greenmode color=1 
-	draw_sprite_part(owner.sheetshields,0,469+17*((color mod 3) +(1*color==6)),59+17*floor(color/3),16,16,round(x-8)-view_xview[other.p2],round(y-8)+8-view_yview[other.p2])
-}
-
+draw_snack_hud()
 
 
 #define match
+MEGA_BUSTER=0
+SHELL_SLIDE=1
+HAMMER_THROW=2
+CLOUD_CARRY=3
+BOMB_BLAST=4
+CHEEP_TORNADO=5
+ORBINAUT_SHIELD=6
+BULLET_SHOT=7
+SPIKE_LEAD=8
+//Extras
+BOO_CLOAK=9
+TANOOKI_STATUE=10
+ROLLING_CUTTER=11
+//Megaman Always has his buster, unless a pesky codeblock took it from him...
+//The p2*100 is for each player in case you're going multiplayer
 
-if global.mplay==1 { //thankfully you can't get emeralds anywhere else, so I can jsut replace the code outright and not worry about it.
-object_event_clear(moranboll,ev_step,ev_step_end)
-{ //The notepad++ experience allows me to add this {} here to hide the hideous moranboll replacement code, yippie!
+global.weapon_unlocked[(p2*100)+MEGA_BUSTER]=1
+global.weapon_startingenergy[MEGA_BUSTER]=-1 //Sets it to not show the energy bar at all
 
-object_event_add(moranboll,ev_step,ev_step_end,'var asp;
+global.weapon_unlocked[(p2*100)+SHELL_SLIDE]=0
+global.weapon_unlocked[(p2*100)+HAMMER_THROW]=0
 
-asp=25/14
-
-if (!result) {      
-    surf=sureface("moranboll",800,448) //double size so i can supersample
-    surf2=sureface("moranboll2",400,224)
-    ts=sureface("moranbolltemp",256,128)
-    
-    //build dynamic textures
-    if (!sureface_set_target("moranbolltemp")) exit
-    d3d_set_projection_ortho(0,0,256,128,0)
-    draw_clear_alpha(0,0)
-    draw_sprite(global.mbspr,0,0,0)
-	color=global.emeralds
-	if global.greenmode color=1
-    if (room=speciale) draw_sprite(spr_emerald,0,184,79)
-    else draw_sprite_part(skindat("tex_"+global.charname[global.option[0]]+"shields0"),0,469+17*((color mod 3) +(1*color==6)),59+17*floor(color/3),16,16,184,79)
-	
-    surface_reset_target()          
-    global.mbtex=surface_get_texture(ts)
-    
-    //prerender background so the shadow blending doesnt cut holes
-    if (!sureface_set_target("moranboll2")) exit
-    d3d_set_projection_ortho(0,0,800,448,0)    
-    draw_clear_alpha($ff8000,1) //editor sky color
-    drawlayeredbackground(0)
-    surface_reset_target()    
-    
-    //main surface
-    if (!sureface_set_target("moranboll")) exit
-    
-    //background
-    d3d_set_projection_ortho(0,0,800,448,0)    
-    draw_clear_alpha(0,0)  
-    d3d_set_zwriteenable(0)
-    draw_surface_stretched(surf2,0,0,800,448)    
-    d3d_set_zwriteenable(1)
-    
-    d3d_start()
-    
-    d3d_set_projection_ext(camx,camy,camz,xdb,ydb,z+16,0,0,1,60,asp,2,2048)
-    d3d_transform_add_translation(-xdb,-ydb,-z)
-    d3d_transform_add_rotation_y(-topx*10)
-    d3d_transform_add_rotation_x(topy*10)
-    d3d_transform_add_translation(xdb,ydb,z) 
-    
-    d3d_set_hidden(1)
-    
-    //static geometry
-    d3d_model_draw(staticmodel,0,0,0,global.mbtex)
-    
-    //shadows
-    d3d_set_zwriteenable(0)
-    d3d_set_depth(0.01)
-    draw_set_blend_mode(bm_subtract)       
-    event_user(4)
-    draw_set_blend_mode(0)    
-    d3d_set_zwriteenable(1)
-    d3d_set_depth(0)
-    
-    //draw dynamic objects
-    d3d_primitive_begin_texture(pr_trianglelist,global.mbtex)
-    d3d_set_culling(1)
-    event_user(1)
-    d3d_set_culling(0)
-    d3d_primitive_end()      
-    
-    //player shadow
-    d3d_set_zwriteenable(0)
-    draw_set_blend_mode(bm_subtract)       
-    d3d_set_depth(nzg-7.99)
-    draw_circle_color(xdb-lengthdir_y(z-nzg,topx*10),ydb-lengthdir_y(z-nzg,topy*10),12/(1+abs(z-nzg-8)/128),merge_color(0,$cccccc,sha),0,0)    
-    d3d_set_zwriteenable(1)
-    draw_set_blend_mode(0)    
-    d3d_set_depth(0)        
-    
-    d3d_transform_set_identity()
-    
-    //boll
-    event_user(3)
-    
-    d3d_set_hidden(0)
-    d3d_end()
-    
-    //fix alpha
-    d3d_set_projection_ortho(0,0,800,448,0)    
-    draw_set_blend_mode(bm_add)
-    rect(0,0,800,448,0,1)
-    draw_set_blend_mode(0)
-    
-    surface_reset_target()
-}')
-}
+global.weapon_unlocked[(p2*100)+CLOUD_CARRY]=0
+global.weapon_startingenergy[CLOUD_CARRY]=9
+global.weapon_unlocked[(p2*100)+BOMB_BLAST]=0
+global.weapon_unlocked[(p2*100)+CHEEP_TORNADO]=0
+global.weapon_unlocked[(p2*100)+ORBINAUT_SHIELD]=0
+global.weapon_unlocked[(p2*100)+BULLET_SHOT]=0
+global.weapon_unlocked[(p2*100)+SPIKE_LEAD]=0
+global.weapon_unlocked[(p2*100)+BOO_CLOAK]=0
+global.weapon_unlocked[(p2*100)+TANOOKI_STATUE]=0
+global.weapon_unlocked[(p2*100)+ROLLING_CUTTER]=0
 
 
-
-object_event_clear(moranboll,ev_other,ev_user14)
-{ //The notepad++ experience allows me to add this {} here to hide the hideous moranboll replacement code, yippie!
-
-object_event_add(moranboll,ev_other,ev_user14,'///draw results screen
-
-slide1=min(vww,slide1+16)
-slide2=max(vww,slide2-16)
-slide3=min(vww,slide3+16)
-slide4=max(vww,slide4-16)
-
-if (mode=0) alpha3=max(0,alpha3-0.05)
-
-if (slide4=vww && !mode) mode=1
-if (mode=1) {
-    resc+=1
-    if (resc=120) {
-        sound("systemtimecount",1)
-        mode=2
-        resc=0
-    }
-}
-if (mode=2) {
-    kek=!kek
-    if (kek) {
-        if (coins) {coins-=1 points+=500}
-        if (time) {time-=1 points+=500}
-        if (perfect) {perfect-=500 points+=500}
-    }
-    
-    if (floor(points/20000)>mempts) {
-        mempts+=1
-        if (global.wanna) playgrowsfx("")
-        else sound("item1up")
-    }
-    
-    if (coins<=0 && time<=0 && perfect<=0) {
-        soundstop("systemtimecount")
-        sound("systemregister")
-        mode=3
-    }
-}
-if (mode=3) {
-    resc+=1
-    if (resc=64) {
-        sound("itemspecial")
-        mode=4
-    }
-}
-if (mode=4) {
-    alpha3=min(1,alpha3+0.05)
-    if (alpha3=1) destroy=1
-}
-
-d3d_set_projection_ortho(view_xview[0],view_yview[0],400,224,0)
-offmoran-=1
-draw_clear_alpha(0,1)
-drawlayeredbackground(0)
-d3d_set_projection_ortho(0,0,400,224,0)
-
-t+=0.25           
-for (i=0;i<global.emeralds;i+=1) {
-	color=i
-	if global.greenmode color=1
-	draw_sprite_part(skindat("tex_"+global.charname[global.option[0]]+"shields0"),0,469+17*((color mod 3) +(1*color==6)),59+17*floor(color/3),16,16,200-global.emeralds*12+24*i,64+round(sin(i*24+t/2)*2))
-}
-
-global.halign=1
-
-global.tscale=2
-if (global.emeralds=7) draw_skintext(vww,16,wordwrap(endstrall,24))
-else draw_skintext(vww,16,wordwrap(endstr,24))
-global.tscale=1
-
-global.halign=2
-
-draw_skintext(slide1,96,lang("score 3")+":",$ffff,1)
-draw_skintext(slide2,112,lang("score 5")+":",$ffff,1)
-draw_skintext(slide3,128,lang("score 9")+":",$ffff,1)
-draw_skintext(slide4,144,lang("score 0")+":",$ffff,1)
-
-global.halign=0
-
-draw_skintext(slide1,96," "+string(coins))
-draw_skintext(slide2,112," "+string(time))
-draw_skintext(slide3,128," "+string(perfect))
-draw_skintext(slide4,144," "+string(points))')
-}
-
-}
-
-
-
+global.weapon_requirement[(p2*100)+MEGA_BUSTER]=0
+global.weapon_requirement[(p2*100)+SHELL_SLIDE]=5
+global.weapon_requirement[(p2*100)+HAMMER_THROW]=1
+global.weapon_requirement[(p2*100)+BOMB_BLAST]=1
+global.weapon_requirement[(p2*100)+CHEEP_TORNADO]=10
+global.weapon_requirement[(p2*100)+ORBINAUT_SHIELD]=1
+global.weapon_requirement[(p2*100)+BULLET_SHOT]=4
+global.weapon_requirement[(p2*100)+SPIKE_LEAD]=4
+global.weapon_requirement[(p2*100)+BOO_CLOAK]=1
+global.weapon_requirement[(p2*100)+TANOOKI_STATUE]=1
+global.weapon_requirement[(p2*100)+ROLLING_CUTTER]=1
 
 
 #define start
@@ -418,25 +105,9 @@ ROLLING_CUTTER=11
 //Max weapons
 max_weapon=11
 
-//Megaman Always has his buster, unless a pesky codeblock took it from him...
-//The p2*100 is for each player in case you're going multiplayer
 
-global.weapon_unlocked[(p2*100)+MEGA_BUSTER]=1
-global.weapon_startingenergy[MEGA_BUSTER]=-1 //Sets it to not show the energy bar at all
 
-global.weapon_unlocked[(p2*100)+SHELL_SLIDE]=1
-global.weapon_unlocked[(p2*100)+HAMMER_THROW]=1
 
-global.weapon_unlocked[(p2*100)+CLOUD_CARRY]=1
-global.weapon_startingenergy[CLOUD_CARRY]=9
-global.weapon_unlocked[(p2*100)+BOMB_BLAST]=0
-global.weapon_unlocked[(p2*100)+CHEEP_TORNADO]=0
-global.weapon_unlocked[(p2*100)+ORBINAUT_SHIELD]=0
-global.weapon_unlocked[(p2*100)+BULLET_SHOT]=0
-global.weapon_unlocked[(p2*100)+SPIKE_LEAD]=0
-global.weapon_unlocked[(p2*100)+BOO_CLOAK]=0
-global.weapon_unlocked[(p2*100)+TANOOKI_STATUE]=0
-global.weapon_unlocked[(p2*100)+ROLLING_CUTTER]=0
 
 //global.mega_addon_weapons[p2]=  This is just here to make you remember it exists
 /* More useful variables to keep in mind
@@ -551,11 +222,12 @@ if (type="cflower") {
 
 #define effectsfront
 if weapon_switch{
-if weapon=MEGA_BUSTER  scr_applyPaletteSegmentedAlpha(global.shaderPaletteSwapAlpha,global.palettesprites[p2*100],global.pal_1[p2]+1,global.pal_2[p2]+1,global.pal_3[p2]+1,global.pal_4[p2]+1,size,alpha*(1-0.75*shadow),totpal+1)
-   
-draw_sprite_part_ext(sheetshields,0,209,7+17*weapon,16,16,round(x-8),round(y-32),1,1,$ffffff,1)
-shader_reset()
-weapon_switch-=1}
+	if weapon=MEGA_BUSTER  scr_applyPaletteSegmentedAlpha(global.shaderPaletteSwapAlpha,global.palettesprites[p2*100],global.pal_1[p2]+1,global.pal_2[p2]+1,global.pal_3[p2]+1,global.pal_4[p2]+1,size,alpha*(1-0.75*shadow),totpal+1)
+	   
+	draw_sprite_part_ext(sheetshields,0,209,7+17*weapon,16,16,round(x-8),round(y-32),1,1,$ffffff,1)
+	shader_reset()
+	weapon_switch-=1
+}
 
 
 
@@ -938,10 +610,10 @@ switch (weapon){
 		}
 		if (event="draw"){
 			if owner.size==0
-			draw_background_part(global.master[biome],56,376,16,16,x-8,y)
+			draw_background_part(global.master[biome],136,216,16,16,x-8,y)
 			else {
-				draw_background_part(global.master[biome],56,376,16,16,x-2,y)
-				draw_background_part(global.master[biome],56,376,16,16,x-14,y)
+				draw_background_part(global.master[biome],136,216,16,16,x-2,y)
+				draw_background_part(global.master[biome],136,216,16,16,x-14,y)
 			}
 		}
 	break;
