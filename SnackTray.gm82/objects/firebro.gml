@@ -39,13 +39,13 @@ if (trap) {
         }
         if (abs(x-xstart)>128) retreat=1
     }
-    hc+=1 if (hc=48) {hc=0
+    hc+=1 if (hc=88) {hc=0
         xsc=esign(x-nearest.x,1)
-        if (gonnathrow) {with (instance_create(x,y-10,fireball)) {xsc=other.xsc hspeed=-xsc owner=other.id}}
-        gonnathrow=rchoose(0,1,1)
+        if (gonnathrow) {with (instance_create(x,y-10,fireball)) {xsc=other.xsc hspeed=2.5*-xsc owner=other.id}}
+        gonnathrow=rchoose(0,1,1,1)
         if (jumping) sprite="firebrojump"
         else sprite="firebro"
-        if (gonnathrow) sprtime=8
+        if (gonnathrow) sprtime=75
     }
 
     jc+=1 if (jc=224) {jc=0 if (!jump) {

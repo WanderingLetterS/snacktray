@@ -310,6 +310,7 @@ replacesound("enemyexplode",wskin+"sfx\enemyexplode.wav")
 replacesound("enemythwomp",wskin+"sfx\enemythwomp.wav")
 replacesound("enemybones",wskin+"sfx\enemybones.wav")
 replacesound("enemycrusher",wskin+"sfx\enemycrusher.wav")
+replacesound("enemyfirepiranhashoot",wskin+"sfx\enemyfirepiranhashoot.wav")
 
 replacesound("finalbowserdie",wskin+"sfx\finalbowserdie.wav")  
 replacesound("finalbowserfall",wskin+"sfx\finalbowserfall.wav")  

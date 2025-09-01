@@ -99,15 +99,15 @@ dead speed=0.5
 
 walk frames=8
 walk loop=1
-walk speed=0.5
+walk speed=0.4
 
-run frames=4
+run frames=8
 run loop=1
-run speed=0.5
+run speed=0.4
 
 maxrun frames=4
 maxrun loop=1
-maxrun speed=0.5
+maxrun speed=0.2
 
 brake frames=4
 brake loop=4
@@ -116,15 +116,15 @@ brake frametimes= 1,1,2,10
 
 jump frames=3
 jump loop=2
-jump speed=0.25
+jump speed=0.5
 
 bonk frames=2
 bonk loop=2
-bonk speed=0.25
+bonk speed=0.1
 
 fall frames=3
 fall loop=2
-fall speed=0.5
+fall speed=0.25
 
 spring frames=2
 spring loop=1
@@ -134,7 +134,7 @@ springfall frames=8
 springfall loop=1
 springfall speed=0.5
 
-roll frames=6
+roll frames=8
 roll loop=1
 roll speed=0.5
 
@@ -168,15 +168,15 @@ doorexit speed=0.1
 
 spinjump frames=8
 spinjump loop=1
-spinjump speed=0-5
+spinjump speed=0.5
 
 spindash frames=4
 spindash loop=1
-spindash speed=0.5
+spindash speed=0.45
 
 spincharge frames=6
 spincharge loop=3
-spincharge speed=0.5
+spincharge speed=0.45
 
 rampof frames=8
 rampof loop=7
