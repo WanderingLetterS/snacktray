@@ -17,6 +17,7 @@ watermode=0
 waterlevel=32
 red=0
 enemy2=1
+hasthesoundplayed=0
 
 sprite="firepiranhaup"
 #define Alarm_0
@@ -60,6 +61,8 @@ lib_id=1
 action_id=603
 applies_to=self
 */
+hasthesoundplayed=0
+
 if (loose) {
     open=1
     active=1
@@ -97,10 +100,16 @@ if firetime=120{
 firetime=0
 fired=30
 shoot(x,y-8,fireballplant,sign(nearestplayer().x-x),sign(nearestplayer().y-(y-8)))
+if hasthesoundplayed=0{
+sound("enemyfirepiranhashoot") hasthesoundplayed=1
+if hasthesoundplayed=1 exit
+}
 }
 if (sign(nearestplayer().y-(y-8)) * ysc) ==1{
 sprite="firepiranhadown"
 }else sprite="firepiranhaup"
+
+xsc=esign(-(nearestplayer().x-x), 1)
 
 if fired {sprite+="shoot" fired-=1}
 #define Other_10
