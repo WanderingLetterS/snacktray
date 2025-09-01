@@ -43,6 +43,7 @@ connect dropkickdiag=true
 connect climb=true
 
 reroute spring=crouch
+reroute run=walk
 reroute jump=stand
 reroute bonk=crouch
 reroute fall=crouch
