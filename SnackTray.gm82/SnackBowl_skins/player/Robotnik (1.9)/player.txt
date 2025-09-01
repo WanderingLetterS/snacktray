@@ -57,6 +57,10 @@ reroute pipingup=jump
 reroute sidepiping=run
 reroute doorenter=stand
 reroute doorexit=stand
+reroute grind=run
+reroute handlegrab=fly
+reroute grindgrab=run
+reroute grind=run
 
 reroute armlessalt=claw
 
