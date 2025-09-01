@@ -1,0 +1,10 @@
+[settings]
+boss music=yes
+
+[music]
+fast music=no
+hurry timer=30
+hurry music=yes
+automatic fast music semitones=2
+music continues after death=no
+boss music=yes
