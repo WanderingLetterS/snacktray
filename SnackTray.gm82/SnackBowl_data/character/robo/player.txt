@@ -6,10 +6,10 @@ snack turn=yes
 icon speed=6
 icon loop=yes
 animation speed=1.0
-center x=30
-center y=40
-box width=61
-box height=65
+center x=21
+center y=27
+box width=43
+box height=43
 shield offset=-6
 pole center offset=8
 
@@ -17,6 +17,11 @@ fire duration=8
 victory duration=30
 
 use paletting=true
+defaultspray 1=12
+defaultspray 2=6
+defaultspray 3=6
+defaultspray 4=12
+
 
 stand frames=4,4,4,1
 wait frames=2
@@ -36,8 +41,32 @@ armless frames=8
 armlessalt frames=8,8,8,2
 fired frames=4
 flagslide frames=4
+piping frames=8
+pipingup frames=8
+sidepiping frames=8
+doorenter frames=3
+doorexit frames=2
+climbing frames=2
 
+snack layout=true
+skin offset=44
 
+single sheet=true
+singlesheet split width=8,8,696,689,689,8,689,689,689
+singlesheet spilt height=0,0,0,0,0,0
+
+sheet splits=ball
+sheet split size=352
+
+custom sprite list=stand,wait,lookup,crouch,pose,dead,run,runnojet,turn,knockstand,knockrun,fly,ball,piping,pipingup,sidepiping,doorenter,doorexit,jump,fall,armless,climbing,flagslide,handlegrab,grindgrab
+
+connect crouch=true
+connect dead=true
+connect knockstand=true
+connect knockrun=true
+connect doorexit=true
+connect flagslide=true
+connect grindgrab=true
 
 wait loop=2
 fired loop=4
