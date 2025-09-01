@@ -10,7 +10,7 @@ switch (argument[0]) {
     case "fireball": {draw_sprite_part_ext(global.enemysheet,0,10+global.framefire*17,67,16,16,round(x-7*xsc),round(y-7),xsc,1,$ffffff,1) break}
     case "firexplosion": {
         if (object_index=gianaexplosion) draw_sprite_part(sheet,0,21+floor(frame)*17,52,16,16,round(x-7),round(y-7))
-        else draw_sprite_part(global.enemysheet,0,10+floor(frame)*17,84,16,16,round(x-7),round(y-7))
+        else draw_sprite_part(global.enemysheet,0,10+17*floor(exploframe/1.333333333),84,16,16,round(x-7),round(y-7))
     break}
     case "gianafireball": {draw_sprite_part_ext(sheet,0,21+frame*17,33,16,16,round(x-7*xsc),round(y-7),xsc,1,$ffffff,1) break}
     case "gianafire": {draw_sprite_part_ext(sheet,0,80+33*frame,90,32,32,round(x-16*xsc),round(y-16),xsc,1,$ffffff,1) break}
