@@ -1,0 +1,117 @@
+[robo]
+name=Robotnik
+
+snack turn=false
+
+icon speed=6
+icon loop=yes
+animation speed=1.0
+center x=19
+center y=32
+box width=39
+box height=57
+shield offset=-6
+pole center offset=8
+marker offset=32
+pipe squish=0
+
+single sheet=true
+singlesheet split width=8,242,476,710,710,8
+singlesheet split height=0,0,0,0,0,0
+
+custom sprite list=wait,stand,jump,fly,crouch,lookup,knockstand,knockrun,run,turn,dead,deadair,claw,ball
+
+roster size=1
+
+use paletting=true
+defaultspray 1=5
+defaultspray 2=6
+defaultspray 3=0
+defaultspray 4=0
+
+snack layout=true
+skin offset=44
+
+connect stand=true
+connect armlessalt=true
+connect jump=true
+connect crouch=true
+connect wait=true
+connect lookup=true
+
+connect knockrun=true
+connect run=true
+connect turn=true
+
+connect deadair=true
+connect claw=true
+connect ball=true
+
+reroute armless=claw
+reroute pose=turn
+reroute climbing=fly
+reroute flagslide=fly
+reroute grind=ball
+reroute piping=lookup
+reroute pipingup=jump
+reroute sidepiping=run
+reroute doorenter=stand
+reroute doorexit=stand
+
+reroute armlessalt=claw
+
+fire duration=8
+victory duration=30
+wait frames=2
+stand frames=1
+lookup frames=3
+pose frames=3
+knockstand frames=1
+knockrun frames=1
+run frames=2
+jump frames=3
+ball frames=3
+turn frames=2
+fly frames=2
+turn loop=2
+crouch frames=1
+armless frames=1
+armlessalt frames=1
+claw frames=1
+flagslide frames=1
+dead frames=1
+deadair frames=1
+
+wait loop=1
+jump loop=1
+claw loop=1
+armless loop=1
+crouch loop=1
+
+stand speed=0.125
+crouch speed=0.35
+run speed=0.25
+armless speed=0.25
+jump speed=0.25
+claw speed=1
+fly speed=0.4
+climbing speed=0.125
+flagslide speed=0.125
+
+
+lookup speed=0.3
+
+boll top=#aaaaaa
+boll mid=#000000
+boll bot=#808080
+
+[lang]
+winspecial=Robotnik got a Chaos Emerald
+allspecial=Robotnik got all Chaos Emeralds
+princess=our Princess
+savetext1=Peace is Paved
+savetext2=With Kingdom Saved
+savetext3=Hurrah to Robotnik
+savetext4=Our Only Hero..?
+savetext5=This Ends Your Trip
+savetext6=Of a Long Friendship
