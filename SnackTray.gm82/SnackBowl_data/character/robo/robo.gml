@@ -31,11 +31,9 @@ Mecha Sonic [fthr]
 #define rosterorder
 7
 
-#define hud
-if !dontdrawhud {
-	spr=sheets[size]
-	drawdefaulthud()
-}
+#define customhud
+dontdrawdefaulthud=true
+draw_snack_hud()
 
 #define start
 mask_set(18,26)
@@ -65,7 +63,7 @@ firedarm=0
 if iaminsidemyself=1 exit
 
 if (hsp!=0 && !jump){
-	draw_sprite_general(sheets[size],0,8+(floor(sparkanim)*16),119,15,8,x-(sign(hsp)*20),y+6+dy,sign(hsp),1,sign(hsp),$ffffff,$ffffff,$ffffff,$ffffff,1)
+	draw_sprite_general(sheets[size],0,8+(floor(sparkanim)*16),48,15,8,x-(sign(hsp)*20),y+6+dy,sign(hsp),1,sign(hsp),$ffffff,$ffffff,$ffffff,$ffffff,1)
 }
 sparkanim= (sparkanim+0.1) mod 2
 
@@ -329,10 +327,10 @@ if is_spike{
 			
 		}else//Bowl
 		
-		draw_sprite_part_ext(sheet,0,
+		draw_sprite_part_ext(sheetshields,0,
 		88+((direction<90)||direction>240)*13-((direction>90)&&direction<240)*13  ,
 		59-((direction<180)&&direction>0)*13+((direction>180)&&direction<360)*13  ,
-		12,12,round(x-8),round(y-8),xsc,1,$ffffff,1)
+		12,12,round(x-248),round(y-8),xsc,1,$ffffff,1)
 	}
 
 
@@ -412,11 +410,8 @@ if is_spike{
 			draw_sprite_part_ext(owner.sheet_193,0,126,205+16*(owner.size==2),64,15,round(x-56*xsc),round(y-8),xsc,1,$ffffff,1)
 		}else if global.legacy_skin==2{ //18
 			draw_background_part_ext(owner.sheet_18,126,205+16*(owner.size==2),64,15,round(x-56*xsc),round(y-8),xsc,1,$ffffff,1)
-		}else if global.legacy_skin==3{//17
-			//In this game, Mecha doesn't actually have a claw or fitting equivalent. So we'll have to use the Bowl method instead.
-			draw_sprite_part_ext(sheet,0,114,46+16*floor(frame),64,15,round(x-56*xsc),round(y-8),xsc,1,$ffffff,1)
 		}else//Bowl
-		draw_sprite_part_ext(sheet,0,114,46+16*floor(frame),64,15,round(x-56*xsc),round(y-8),xsc,1,$ffffff,1)
+		draw_sprite_part_ext(sheetshields,0,274,16+16*floor(frame),64,15,round(x-56*xsc),round(y-8),xsc,1,$ffffff,1)
 	}
 
 }
@@ -1447,14 +1442,7 @@ if (!irandom(30)) playsfx(name+"splode")
 
 } else if (event="draw") {
 	with dethplotion{
-		if global.legacy_skin[p2]==1{
-            draw_sprite_part(owner.sheet_193,0,126+frame*25,180,24,24,round(x-12),round(y-12)) 
-        } else if global.legacy_skin[p2]==2{
-            draw_sprite_part(owner.sheet_18,0,126+frame*25,180,24,24,round(x-12),round(y-12)) 
-        } else if global.legacy_skin[p2]==3{
-            draw_sprite_part(owner.sheet_17,0,126+frame*25,180,24,24,round(x-12),round(y-12)) 
-        } else 
-            draw_sprite_part(sheet,0,8+frame*25,94,24,24,round(x-12),round(y-12)) 
+            draw_sprite_part(sheetshields,0,209+frame*25,48,24,24,round(x-12),round(y-12)) 
 		visible=1
 		
 	}
