@@ -1,0 +1,22 @@
+1=40
+xxxxxxxx#####xxxxxxxxxxxx
+xxxxxxxx#´:`#xxxxxxxxxxxx
+xxxxxxxx#:::#xxxxxxxxxxxx
+#########\B/##########xxx
+#´    `#´    `#´    `#xxx
+# S    # t .  :  . t ####
+#      #             ´ `#
+#      # . @  :  @ . B F#
+#      #             \ /#
+#\    /#\           /####
+##    #O#: :  O  : :#O#O#
+#´    `#´           `####
+#                    ´ `#
+#  ..    . @  :  @ . 1 !#
+#  ..                \ /#
+#        . .  :  . . ####
+#\    /#\    /#\    /#xxx
+################´B`###xxx
+xxxxxxxxxxxxxxx#:::#xxxxx
+xxxxxxxxxxxxxxx#\:/#xxxxx
+xxxxxxxxxxxxxxx#####xxxxx
