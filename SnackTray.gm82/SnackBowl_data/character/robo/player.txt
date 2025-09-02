@@ -2,7 +2,7 @@
 name=Mecha Sonic
 
 snack turn=yes
-
+snack layout=yes
 icon speed=6
 icon loop=yes
 animation speed=1.0

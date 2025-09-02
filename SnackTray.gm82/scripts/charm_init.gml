@@ -68,7 +68,7 @@ poleoffx=playerskindat(p2,"poleoffx"+ss)
 skin_offsety=playerskindat(p2,"skin_offsety"+ss)
 useypos=playerskindat(p2,"useypos"+ss)
 smallshield=playerskindat(p2,"smlshield"+ss)
-
+snack_layout=playerskindat(p2,"snacklayout"+ss)
 default_questionmush=playerskindat(p2,"default_questionmush"+ss)
 custom_items=playerskindat(p2,"custom_items"+ss)
 custom_mushrooms_idle=playerskindat(p2,"custom_mushrooms_idle"+ss)
