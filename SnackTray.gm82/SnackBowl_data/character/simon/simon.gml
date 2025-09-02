@@ -63,7 +63,7 @@ if global.stagecount>0{
 	sublevel=1
 }
 
-bigger_whip=unreal(playerskindat(p2,name+" bigger whip"),0)
+bigger_whip=funnytruefalse(playerskindat(p2,name+" bigger whip"),0)
 
 SUBWEP_KNIFE=1
 SUBWEP_BOOMERANG=6
@@ -100,9 +100,9 @@ insta=0
 
 #define itemget
 coincheck=global.coins[0]
-
+saveenergy=energy
 com_item()
-
+energy=saveenergy
 //Obtain Weapon/Subweapon: Collecting the same powerup multiple times means getting a levelup.
 switch (size){//Detect powerup gotten
 	case 0: /*Nothing*/ break;
@@ -116,6 +116,7 @@ switch (size){//Detect powerup gotten
 	case 5: /*Mini: Big Heart*/ subenergy+=5 break;
 	case 4: /*Extra: Block Chicken*/ energy=maxe break;
 }
+
 subenergy+=global.coins[0]-coincheck
 
 
@@ -453,6 +454,7 @@ else if (jump) {
     else {sprite="jump" if vsp>1 sprite="fall"} //frspd=fallspd
 } else {
     if (spin) {sprite="ball" frspd=0.5+abs(hsp/3)}
+	else if backdash sprite="brake"
     else if (push!=0) {sprite="push" frspd=1+abs(hsp/3)}
     else if (hsp=0) {
         if (pose) sprite="pose"
@@ -507,11 +509,11 @@ if (h!=0) {
 			if canrun>0 && h==xsc{run=1} else {canrun=0 run=0}
 			if run canrun=2
 		}
-		if !slide && !dropkick{
+		if !slide && !dropkick && !backdash{
 			hsp=h*(2+run)
 			xsc=h
 			if crouch hsp=h
-		}
+		} else if backdash {hsp=-3*xsc backdash-=1}
 		
     }
 } else {
@@ -519,11 +521,11 @@ if (h!=0) {
 	if !(jump && fired)
 	hsp=0
 	run=0
-	
+	if backdash {hsp=-3*xsc*backdash/30 backdash-=1}
 }
 if !jump canrun-=1
 
-if slide {hsp=(slide/15)*xsc slide-=1}
+if slide {if jump slide=0 hsp=(slide/15)*xsc slide-=1}
 		
 
 if (push!=h) push=0
@@ -621,7 +623,7 @@ if (peelout && up) peelout+=1
 
 //code for specifically the b button
 if (bbut && !fired && !slide && !dropkick) {
-	
+	if backdash {hsp=0 backdash=0}
     fired=40
 	if up && subweapon { 
 		switch (subweapon){
@@ -629,7 +631,6 @@ if (bbut && !fired && !slide && !dropkick) {
 			default: req_hearts=1 break;
 		}
 		if subenergy>=req_hearts{
-			backdash=0
 			subenergy-=req_hearts
 			using_sub=1 
 			fired=20
@@ -640,7 +641,7 @@ if (bbut && !fired && !slide && !dropkick) {
 
 if (cbut) {
 	if !jump{
-		backdash=60
+		backdash=40
 		fired=0
 	}
 }
@@ -650,6 +651,7 @@ if (cbut) {
 if !fired{
 	if (down && !up) {
 		if (!jump && !braking) {
+			if backdash {backdash=0 hsp=0}
 			crouch=1
 		}
 		com_piping()
@@ -867,9 +869,7 @@ if dropkick{
 
 	if !jump dropkick=0
 }
-//BAckdash
 
-if backdash {hsp=-3*xsc xsc=-sign(hsp) backdash-=1}
 
 
 

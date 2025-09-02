@@ -5,7 +5,17 @@ var xx,yy;
 
 switch (argument[0]) {
     case "poof": {draw_sprite_part_ext(sheet,0,218+frame*25,10,24,24,round(x-12*image_xscale),round(y-12*image_yscale),image_xscale,image_yscale,c_white,1) break}
-    case "macguffin": {if global.greenmode draw_sprite_part(sheet,0,97+17,27,16,16,round(x-8),round(y-8)) else draw_sprite_part(sheet,0,97+17*color,27,16,16,round(x-8),round(y-8)) break}
+    case "macguffin": {
+
+    if !owner.snacklayout
+    if global.greenmode draw_sprite_part(sheet,0,97+17,27,16,16,round(x-8),round(y-8)) else draw_sprite_part(sheet,0,97+17*color,27,16,16,round(x-8),round(y-8))
+    else {
+        if global.greenmode color=1
+	       draw_sprite_part(owner.sheetshields,0,469+17*((color mod 3) +(1*color==6)),59+17*floor(color/3),16,16,round(x-8),round(y-8)+8)
+
+    }
+
+    break}
     case "firebroball":
     case "fireball": {draw_sprite_part_ext(global.enemysheet,0,10+global.framefire*17,67,16,16,round(x-7*xsc),round(y-7),xsc,1,$ffffff,1) break}
     case "firexplosion": {
