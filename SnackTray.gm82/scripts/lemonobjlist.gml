@@ -17,6 +17,9 @@ listobj(lemon_tile     ,0,spr_ground       ,0,lemon_tile)
 listobj(groundblock     ,0,spr_ground       ,0,groundblock)
     listdoc("Ground","")
 
+listobj(altblock    ,0,spr_altground       ,0,groundblock)
+    listdoc("Alt Ground","")
+
 listobj(crackedblock     ,0,spr_crackedground       ,177,groundblock)
     listdoc("Cracked Ground","")
 
@@ -1061,6 +1064,8 @@ listobj(burner             ,0,spr_burner        ,232,cannon)
     listdoc("Burner","Fires a pillar of pure fire.")
     listargs("align","dir")
     listdata("0","0")
+
+
 
 n=ds_map_create()
 k=ds_map_find_first(m)
