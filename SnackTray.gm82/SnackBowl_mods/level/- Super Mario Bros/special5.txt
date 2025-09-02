@@ -1,0 +1,10 @@
+﻿1=0
+x#####xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#     #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx####xxx
+#######xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx#  `#xx
+          `#########   B   B   B   B   B   B   `#x
+ !       S           B:B:B:B:B:B:B:B:B:B:B:B     F
+          /######### B   B   B   B   B   B     /#x
+#######xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx#  /#xx
+#     #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx####xxx
+x#####xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

@@ -1,0 +1,26 @@
+1=0
+xxxxxxxxxxxxxx#######xxxxxxxxx
+xxxxxxxxxxxxxx#´   `#xxxxxxxxx
+xxxxxxxxxxxxxx# :.: #xxxxxxxxx
+xxxxxxxxxxxxxx# .F. #xxxxxxxxx
+xxxxxxxxxxxxxx# :.: #xxxxxxxxx
+xxxxxxxxxxxxxx#\   /#xxxxxxxxx
+xxxxxxxxxxxxxx##   ##xxxxxxxxx
+xxxxxxxxxxxxxxxx   xxxxxxxxxxx
+#######xxxxxxxxxBBBxxxxxxxxxxx
+#´   `#xxxxxxxx     xxxxxx   x
+#                          .  
+#  S   . . . .   O        .!. 
+#                          .  
+#\   /#xxxxxxxx     xxxxxx   x
+#######xxxxxxxxx   xxxxxxxxxxx
+xxxxxxxxxxxxxxxxxx xxxxxxxxxxx
+xxxxxxxxxxxxxxxx   xxxxxxxxxxx
+xxxxxxxxxxxxxxxx xxxxxxxxxxxxx
+xxxxxxxxxxxxxxxx xxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxx xxxxxxxxxxxx
+xxxxxxxxxxxxxxxx   xxxxxxxxxxx
+xxxxxxxxxxxxxxx  :  xxxxxxxxxx
+xxxxxxxxxxxxxxx :!: xxxxxxxxxx
+xxxxxxxxxxxxxxx  :  xxxxxxxxxx
+xxxxxxxxxxxxxxxx   xxxxxxxxxxx

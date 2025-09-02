@@ -1,0 +1,20 @@
+﻿1=12
+2=26
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...xxxxxxxx
+xxxxxxxxxxxxxxxxxxxx      xxxxxxx%b :bbb:xxxxxxx
+xxxxxxxxxxxxxxxxxxx    F   xxxxxx%b  b!b xxxxxxx
+xxxxxxxxxxxxxxxxxxxx      xxxxxxx%b :b b:xxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx# #xxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx# #xxxxxxxx
+xxxxxxxx####xxxxxxxxxxxxxxxxxxxxxxxxx#.#xxxxxxxx
+xxxxxxx#....#xxxxxxxxxxxxxxxxxxxxxxxx#t#xxxxxxxx
+xxxxxxx#\../#xxxxxxxxxxxxxxxxxxxxxxxx#.#xxxxxxxx
+xxxxxxx##bb#xxxxxxxxxxxxxxxxxxxxxxxxx#2#xxxxxxxx
+xxxxxxx#´  `#####xxxxxxxx . . . @#####B#####xxxx
+xxS       ! b1  %xxxxxxxx  :t:       b b   !:xxx
+xxxxxxx#\  /#####xxxxxxxx . . . @#####B####x  xx
+xxxxxxx##BB##xxxxxxxxxxxxxxxxxxxxxxxx# #xxxxx..x
+xxxxxxx#´..`#xxxxxxxxxxxxxxxxxxxxxxxx# `###x  xx
+xxxxxxx#....#xxxxxxxxxxxxxxxxxxxxxxxx#\     :xxx
+xxxxxxxx####xxxxxxxxxxxxxxxxxxxxxxxxxx#####xxxxx

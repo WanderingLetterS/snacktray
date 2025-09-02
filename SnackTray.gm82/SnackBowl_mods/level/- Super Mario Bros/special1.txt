@@ -1,0 +1,21 @@
+﻿1=15
+2=50
+#########xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+##´   `##xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#´ S   `#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#       #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#       #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#       #xxxxxxxxx########xxxxxxxxxxxxx
+#\          xxxxxx##´::`##xxxxxxxx#####
+##\    : . : xxxxx#´.  .`####x@x###´ `#
+######  . .  xxxxx#: @@       2     F #
+xxxxxx . O . xxxxx#: @@  ####x@x###\ /#
+xxxxxx  . .  xxxxx#\    /#xxxxxxxx#####
+xxxxxx : . : xxxxx##\  /##xxxxxxxxxxxxx
+xxxxxxx      `######´  `##xxxxxxxxxxxxx
+xxxxxxxxxxxx\1  %##´    `#xxxxxxxxxxxxx
+xxxxxxxxxxxx#   %##:  @ :#xxxxxxxxxxxxx
+xxxxxxxxxxxx#.t %##: @  :#xxxxxxxxxxxxx
+xxxxxxxxxxxx#.. %##\.  ./#xxxxxxxxxxxxx
+xxxxxxxxxxxx########\::/##xxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxx########xxxxxxxxxxxxx

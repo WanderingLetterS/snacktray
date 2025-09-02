@@ -1,0 +1,23 @@
+﻿1=0
+#####xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#´ `###############xxxxxxxxxxxxxxxxxxx
+# S              `#xxxxxxxxxxxxxxxxxxx
+#\ /############\.#xxxxxxxxxxxxxxxxxxx
+#####xxxxxxxxxxx#.#xxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxx#.#xxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxx#.#xxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxx#.#xxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxx#.#xxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxx#.#xxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxx#.`#########xxxxxxxxxx
+xxxxxxxxxxxxxxxx#\........`#xxxxx xxxx
+xxxxxxxxxxxxxxxx######### .#xxxx   xxx
+xxxxxxxxxxxxxxxxxxxxxxxxx .#xxx     xx
+xxxxxxxxxxxxxxxx########x .#xx       x
+xxxxxxxxxxxxxxxx#´.... %x .#x    F    
+xxxxxxxxxxxxxxxx#. xxxxxx .#xx       x
+xxxxxxxxxxxxxxxx#. xxxxxx .#xxx     xx
+xxxxxxxxxxxxxxxx#. xxxxxx .#xxxx   xxx
+xxxxxxxxxxxxxxxx#.        .#xxxxx xxxx
+xxxxxxxxxxxxxxxx#\......../#xxxxxxxxxx
+xxxxxxxxxxxxxxxx############xxxxxxxxxx

@@ -1,0 +1,10 @@
+1=20
+xxxxxxxxxxxxxxxxx#..%xxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxx#..%x#..%xxxxxxxxxxxxxxxxxxxxxxxxxx
+######x#..%x#..%x####x#::%xx    xxxxxxxxxxxxxxx
+#    %x#..%x####x#::%x####xx    xxxxxxxxxxxxxxx
+# S  %x####x#::%x####x#::%xx                1 F
+#    %x#..%x####x#::%x####xx    xxxxxxxxxxxxxxx
+######x#..%x#..%x####x#::%xx    xxxxxxxxxxxxxxx
+xxxxxxxxxxxx#..%x#..%xxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxx#..%xxxxxxxxxxxxxxxxxxxxxxxxxx
