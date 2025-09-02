@@ -12,7 +12,7 @@ box width=43
 box height=43
 shield offset=-6
 pole center offset=8
-
+time until wait=300
 fire duration=8
 victory duration=30
 
@@ -33,6 +33,7 @@ run frames=2
 runnojet frames=2
 jump frames=3
 ball frames=3
+spindash frames=3
 turn frames=2
 fly frames=2
 crouch frametimes=1,3,3,3,3
@@ -58,9 +59,10 @@ singlesheet spilt height=0,0,0,0,0,0
 sheet splits=ball
 sheet split size=352
 
-custom sprite list=stand,wait,lookup,crouch,pose,dead,run,runnojet,turn,knockstand,knockrun,fly,ball,piping,pipingup,sidepiping,doorenter,doorexit,jump,fall,armless,climbing,flagslide,handlegrab,grindgrab
+custom sprite list=stand,wait,lookup,crouch,pose,deadair,dead,run,runnojet,turn,knockstand,knockrun,fly,ball,piping,pipingup,sidepiping,doorenter,doorexit,jump,spindash,fired,climbing,flagslide,handlegrab,grindgrab
 
 connect crouch=true
+connect deadair=true
 connect dead=true
 connect knockstand=true
 connect knockrun=true
@@ -74,6 +76,7 @@ armless loop=2
 crouch loop=2
 
 stand speed=0.125
+wait speed=0.125
 lookup speed=0.2
 crouch speed=0.35
 run speed=0.25

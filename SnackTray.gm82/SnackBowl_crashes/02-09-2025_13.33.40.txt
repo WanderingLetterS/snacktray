@@ -1,0 +1,9 @@
+ERROR in
+action number 1
+of End Step Event
+for object gamemanager:
+
+In script player_update:In script spriteswitch:Error in code at line 59:   
+            if (global.animname[p2,i]==sprite) {sid=global.reroutedanims[p2,i] break;}                                          ^at position 41: Cannot compare arguments.
+
+

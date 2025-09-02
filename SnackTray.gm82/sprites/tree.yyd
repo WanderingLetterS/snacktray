@@ -264,6 +264,7 @@
 +graphics
 	+tiles
 		|spr_ground
+		|spr_altground
 		|spr_crackedground
 		|spr_bground
 		|spr_semi

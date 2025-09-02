@@ -1,5 +1,5 @@
 #define spritelist
-stand,wait,lookup,pose,crouch,knockstand,knockrun,deadair,run,runnojet,turn,fly,jump,ball,dead,fired,climbing,flagslide,handlegrab,grindgrab,grind,piping,pipingup,sidepiping,doorenter,doorexit
+stand,wait,lookup,pose,crouch,knockstand,knockrun,deadair,run,runnojet,turn,fly,jump,ball,spindash,dead,fired,climbing,flagslide,handlegrab,grindgrab,grind,piping,pipingup,sidepiping,doorenter,doorexit
 
 #define soundlist
 release,skid,spin,spindash,chain,jet,splode,stomp,lookup,taunt
@@ -58,19 +58,24 @@ chargestored=0
 firedarm=0
 
 #define effectsbehind
-
+if (jet && jump){
+	draw_sprite_general(sheetshields,0,209+(floor(jetanim)*18),73,17,9,x-8 -2*xsc,y+14+dy,1,1,0,$ffffff,$ffffff,$ffffff,$ffffff,1)
+}
+jetanim= (jetanim+0.1) mod 2
 #define effectsfront
 if iaminsidemyself=1 exit
 
-if (hsp!=0 && !jump){
-	draw_sprite_general(sheets[size],0,8+(floor(sparkanim)*16),48,15,8,x-(sign(hsp)*20),y+6+dy,sign(hsp),1,sign(hsp),$ffffff,$ffffff,$ffffff,$ffffff,1)
+if (hsp!=0 && !jump)||spindash{
+	draw_sprite_general(sheetshields,0,309+(floor(sparkanim)*16),48+16*(abs(hsp+hyperspeed)>maxspd*1.25),15,8,x-(esign(hsp,xsc)*20),y+7+dy,esign(hsp,xsc),1,0,$ffffff,$ffffff,$ffffff,$ffffff,1)
 }
 sparkanim= (sparkanim+0.1) mod 2
 
 
 
+
+
 if randomsparksGO mod 2{
-	draw_sprite_part_ext(sheets[size],0,49,46,25,31,round(x-10),round(y-16+dy),1,1,$ffffff,1)
+	draw_sprite_part_ext(sheetshields,0,209,9,25,31,round(x-10),round(y-16+dy),1,1,$ffffff,1)
 	
 }if randomsparksGO randomsparksGO-=1
 
@@ -242,6 +247,7 @@ if is_spike{
 		timer1=128
 		speed=5
 		p2=owner.p2
+		ignoreoncount=1
 	}
 	if (event="step") {
 		timer0-=1 if (timer0=0) visible=1
@@ -251,7 +257,7 @@ if is_spike{
 		frame_sub=!frame_sub
 		if frame_sub frame+=1
 		if (frame>=3) frame=0
-
+		ignoreoncount=1
 		if (!inview()) instance_destroy()
 		xsc=1
 
@@ -327,17 +333,17 @@ if is_spike{
 			
 		}else//Bowl
 		
-		draw_sprite_part_ext(sheetshields,0,
-		88+((direction<90)||direction>240)*13-((direction>90)&&direction<240)*13  ,
-		59-((direction<180)&&direction>0)*13+((direction>180)&&direction<360)*13  ,
-		12,12,round(x-248),round(y-8),xsc,1,$ffffff,1)
+		draw_sprite_part_ext(owner.sheetshields,0,
+		248+((direction<90)||direction>240)*13-((direction>90)&&direction<240)*13  ,
+		22-((direction<180)&&direction>0)*13+((direction>180)&&direction<360)*13  ,
+		12,12,round(x-8),round(y-8),xsc,1,$ffffff,1)
 	}
 
 
 } else {
 	if (event="create") {
-		image_xscale=4
-		image_yscale=4
+		image_xscale=6
+		image_yscale=8
 
 		frame_sub=0
 		frame=0
@@ -411,7 +417,7 @@ if is_spike{
 		}else if global.legacy_skin==2{ //18
 			draw_background_part_ext(owner.sheet_18,126,205+16*(owner.size==2),64,15,round(x-56*xsc),round(y-8),xsc,1,$ffffff,1)
 		}else//Bowl
-		draw_sprite_part_ext(sheetshields,0,274,16+16*floor(frame),64,15,round(x-56*xsc),round(y-8),xsc,1,$ffffff,1)
+		draw_sprite_part_ext(owner.sheetshields,0,274,9+16*floor(frame),64,15,round(x-56*xsc),round(y-8),xsc,1,$ffffff,1)
 	}
 
 }
@@ -429,7 +435,7 @@ else if (transform) {sprite="transform"}
 else if (alarm[5]) {sprite=knockspr}
 else if (staydash) {sprite="run"}
 else if (fired) {sprite="fired" /*frspd=2*/}
-else if (spindash) {sprite="ball" frspd=spindash/6}
+else if (spindash) {sprite="spindash" frspd=spindash/6}
 else if (crouch) {sprite="crouch"}
 else if (jump) {
 	if (onvine) 
@@ -892,9 +898,8 @@ if (piped) exit
 
 //waiting animation
 if dowait{
-if (sprite="stand")
-{waittime+=1}
-else if sprite!="wait" waittime=0
+	if (sprite="stand"){waittime+=1}
+	else if sprite!="wait" waittime=0
 }
 
 //grounded state
