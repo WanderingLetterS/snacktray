@@ -1,5 +1,5 @@
 #define spritelist
-stand,wait,lookup,pose,crouch,knock,dead,walk,run,crawlwalk,brake,spring,jump,bonk,fall,slide,attack,crouchattack,dropkickdown,dropkickdiag,climb,flagslide,handlegrab,grindgrab,grind
+stand,wait,lookup,pose,crouch,knock,dead,walk,run,crawlwalk,brake,spring,jump,bonk,fall,slide,attack,crouchattack,dropkickdown,dropkickdiag,climb,flagslide,handlegrab,grindgrab,grind,doorenter,doorexit
 
 #define soundlist
 whip
