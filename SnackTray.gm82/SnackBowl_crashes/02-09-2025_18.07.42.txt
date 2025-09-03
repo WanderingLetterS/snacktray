@@ -1,0 +1,9 @@
+ERROR in
+action number 1
+of Other Event: User Defined 0
+for object menubutton:
+
+In script editlevelskin:Error in code at line 62:   
+if (i!=0 && chk!=0) {                    ^at position 19: Cannot compare arguments.
+
+

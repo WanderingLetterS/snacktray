@@ -1,0 +1,48 @@
+ERROR in
+action number 1
+of Draw Event
+for object flag:
+
+Trying to draw non-existing sprite.
+
+
+ERROR in
+action number 1
+of Draw Event
+for object player:
+
+Trying to draw non-existing sprite.
+
+
+ERROR in
+action number 1
+of Other Event: User Defined 0
+for object player:
+
+Trying to draw non-existing sprite.
+
+
+ERROR in
+action number 1
+of Other Event: User Defined 0
+for object player:
+
+Trying to draw non-existing sprite.
+
+
+ERROR in
+action number 1
+of Other Event: User Defined 0
+for object player:
+
+Trying to draw non-existing sprite.
+
+
+ERROR in
+action number 1
+of Other Event: User Defined 0
+for object player:
+
+Trying to draw non-existing sprite.
+
+

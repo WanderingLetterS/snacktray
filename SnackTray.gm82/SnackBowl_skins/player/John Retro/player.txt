@@ -1,0 +1,123 @@
+[syobon]
+name=John Retro
+
+snack layout=true
+
+custom powerup graphics=false
+
+skin offset=44
+
+icon speed=6
+icon loop=yes
+animation speed=1.0
+center x=16
+center y=18
+box width=33
+box height=34
+pole center offset=6
+
+carry offset x=0
+carry offset y=0
+fire duration=8
+victory duration=30
+time until wait=200
+pipe squish=20
+
+snacklayout=true
+
+use paletting=true
+defaultspray 1=0
+defaultspray 2=0
+defaultspray 3=0
+defaultspray 4=0
+
+single sheet=true
+singlesheet split width=8,8,8,8,8,8,8,8,8,8
+singlesheet split height=-0,0,0,0,0,0,0,0,0,0
+
+custom sprite list=stand,crouch,brake,walk,jump,dead,flagslide,climbing,swim,paddle,doorexit,doorenter,grind
+
+reroute wall=brake
+reroute bonk=jump
+reroute piping=stand
+reroute pipingup=jump
+reroute sidepiping=walk
+reroute fall=jump
+reroute run=walk
+reroute knock=dead
+reroute fly=jump
+reroute win=stand
+reroute pose=stand
+
+
+connect stand=true
+connect crouch=true
+connect dead=true
+connect walk=true
+connect brake=true
+connect jump=true
+
+
+connect climbing=true
+connect swim=true
+connect paddle=true
+connect doorexit=true
+connect grind=true
+
+
+stand frames=1
+wait frames=1
+lookup frames=1
+win frames=1
+crouch frames=1
+knock frames=1
+dead frames=1
+walk frames=3
+run frames=3
+brake frames=1
+jump frames=1
+bonk frames=1
+fall frames=3
+wall frames=1
+swim frames=2
+paddle frames=2
+climbing frames=2
+grind frames=1
+
+jump loop=3
+fall loop=3
+jumpcarry loop=3
+fallcarry loop=3
+pound loop=8
+
+wait speed=0.2
+deadup speed=0.5
+walk speed=0.3
+grind speed=0.3
+run speed=0.5
+jump speed=1
+fall speed=0.1
+walkcarry speed=0.5
+jumpcarry speed=1
+fallcarry speed=0.1
+twirl speed=0.5
+swim speed=0.2
+paddle speed=0.4
+fire speed=0.3
+
+jump frametimes=4,20
+
+boll top=#d82800
+boll mid=#000000
+boll bot=#887000
+
+[lang]
+winspecial=John Retro got a Chaos Emerald
+allspecial=John Retro got all Chaos Emeralds
+princess=our Princess
+savetext1=Peace is Paved
+savetext2=With Kingdom Saved
+savetext3=Hurrah to John Retro
+savetext4=Our Only Hero 
+savetext5=This Ends Your Trip
+savetext6=Of a Long Friendship
