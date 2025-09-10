@@ -29,17 +29,9 @@ Tails [fthr]
 #define rosterorder
 13
 
-#define hud
-if !dontdrawhud {
-	spr=sheets[size]
-	drawdefaulthud()
-}
-
-#define hudmp
-if !dontdrawhud {
-	spr=sheets[size]
-	drawdefaulthud()
-}
+#define customhud
+dontdrawdefaulthud=true
+draw_snack_hud()
 
 #define grabflagpole
 grabflagpole=1

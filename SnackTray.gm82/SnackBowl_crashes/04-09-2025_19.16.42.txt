@@ -1,0 +1,9 @@
+ERROR in
+action number 1
+of Other Event: User Defined 0
+for object player:
+
+Error in code at line 90:   
+   round(drawx)+lengthdir_x((margin-(sprcx/divisio))*drawxsc*pxsc*mxsc,sprite_angle)+lengthdir_x((margin+((dy-(14+sprcy))/divisio))*drawysc*mysc+14,sprite_angle-90),                                              ^at position 45: Division by 0.
+
+
