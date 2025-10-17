@@ -9,7 +9,7 @@ if (type="jumprefresh") {
 }
 
 if ((!piped && !hurt && !(global.mplay>1 && flash)) || monitem) {
-
+    if !mushroom_unsupported
     if (type="mushroom") {
         coll=other.id
         if (p2!=other.p2) {
@@ -32,7 +32,7 @@ if ((!piped && !hurt && !(global.mplay>1 && flash)) || monitem) {
         itemget=1
     }
 
-
+    if !fflower_unsupported
     if (type="fflower") {
         coll=other.id
         if (p2!=other.p2) {
@@ -52,7 +52,7 @@ if ((!piped && !hurt && !(global.mplay>1 && flash)) || monitem) {
         itemget=1
     }
 
-
+    if !feather_unsupported
     if (type="bfeather") {
         coll=other.id
         if (p2!=other.p2) {
@@ -72,7 +72,7 @@ if ((!piped && !hurt && !(global.mplay>1 && flash)) || monitem) {
         itemget=1
     }
 
-
+    if !mini_unsupported
     if (type="mini") {
         coll=other.id
         if (p2!=other.p2) {
@@ -135,7 +135,7 @@ if ((!piped && !hurt && !(global.mplay>1 && flash)) || monitem) {
     }
 
 }
-
+if !tflower_unsupported
 if (type="tflower" || type="sflower") {
     coll=other.id
     if (p2!=other.p2) {
@@ -154,7 +154,7 @@ if (type="tflower" || type="sflower") {
     size=6
     itemget=1
 }
-
+if !wflower_unsupported
 if (type="wflower" || type="bflower") {
     coll=other.id
     if (p2!=other.p2) {
@@ -173,6 +173,7 @@ if (type="wflower" || type="bflower") {
     size=7
     itemget=1
 }
+if questionmush_supported
 if (type="?mushroom" ) {
     coll=other.id
     if (p2!=other.p2) {
@@ -191,6 +192,7 @@ if (type="?mushroom" ) {
     size=4
     itemget=1
 }
+if !iflower_unsupported
 if (type="iflower") {
 coll=other.id
 if (p2!=other.p2) {
@@ -209,7 +211,7 @@ oldsize=size
 size=8
 itemget=1
 }
-
+if !cflower_unsupported
 if (type="cflower") {
 coll=other.id
 if (p2!=other.p2) {

@@ -17,7 +17,7 @@ listobj(lemon_tile     ,0,spr_ground       ,0,lemon_tile)
 listobj(groundblock     ,0,spr_ground       ,0,groundblock)
     listdoc("Ground","")
 
-listobj(altblock    ,0,spr_altground       ,0,groundblock)
+listobj(altblock    ,0,spr_altground       ,233,groundblock)
     listdoc("Alt Ground","")
 
 listobj(crackedblock     ,0,spr_crackedground       ,177,groundblock)
@@ -1064,6 +1064,17 @@ listobj(burner             ,0,spr_burner        ,232,cannon)
     listdoc("Burner","Fires a pillar of pure fire.")
     listargs("align","dir")
     listdata("0","0")
+
+listobj(triangleblock             ,0,spr_triangleblock       ,234,triangleblock)
+    listdoc("Triangle Block","Climb on walls and ceilings!")
+    listargs("align","dir")
+    listdata("0","0")
+
+listobj(bouncymush             ,0,spr_bouncymush     ,235,bouncymush)
+    listdoc("Bouncy Mushroom","Boing,Boing,Boing,Boing...")
+    listargs("align")
+    listdata("0")
+
 
 
 

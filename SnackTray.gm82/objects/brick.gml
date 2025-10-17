@@ -86,7 +86,7 @@ if (skindat("brickvar")) frx=rchoose(0,1,2,3)
 else frx=0
 
 if (tile) tile_delete(tile)
-tile=tile_dyn(global.master[biome],0,0,16,16,x,y,2)
+tile=tile_dyn(global.master[biome],0,0,16,16,x,y,depth)
 //tile=tile_dyn(global.master[biome],152+frx*16,264,16,16,x,y,2)
 #define Draw_0
 /*"/*'/**//* YYD ACTION

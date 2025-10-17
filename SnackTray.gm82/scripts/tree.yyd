@@ -330,6 +330,7 @@
 			|com_item
 			|vine_climbing
 			|com_grindblock
+			|com_usingtriangleblock
 		+mask work
 			|mask_set
 			|mask_reset

@@ -533,6 +533,7 @@
 		|genblock
 		|x1F0
 		|wind
+		|triangleblock
 	+objects
 		+platforms
 			|plat3
@@ -580,6 +581,7 @@
 			|coral
 			|tokenblock
 			|ziptrack
+			|bouncymush
 		+warping
 			|pipeblock
 			|sidepipe

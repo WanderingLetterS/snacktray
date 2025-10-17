@@ -8,6 +8,6 @@ getregion(x)
 
 instance_create(x,y,phaser)
 
-tile_bake(global.master[biome],136,216,16,16,x,y,1000001)
+tile_bake(global.master[biome],136,216,16,16,x,y,1000000)
 
 instance_destroy();

@@ -1,0 +1,9 @@
+ERROR in
+action number 1
+of Other Event: User Defined 0
+for object player:
+
+In script com_inputstack:In script com_usingtriangleblock:Error in code at line 35:   
+                        x-=hsp*(1/f)                                     ^at position 36: Division by 0.
+
+

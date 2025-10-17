@@ -9,7 +9,10 @@ if (object_index=player ) {
     if (step==1) {
         oldspr=sprite
         if (flash && global.bgscroll mod 5<3) exit
+
+        if using_triangleblock {jump=0 hsp=triangleblock_speed} //Trick the code into thinking we're not jumping to use our run animations
         if (!piped && !codeblock_stopsprmanager && !global.legacy_skin[p2]) charm_run("sprmanager")
+        if using_triangleblock {jump=1}
         if ((depth=0 || depth=1) && p2=gamemanager.plrsort) depth=!depth
     }
 

@@ -2,6 +2,6 @@ sprite=spr_brick
 visible=1
 solid=0
 persistent=0
-depth=1
+depth=999999
 parent=hittable
 mask=spr_mask16x16

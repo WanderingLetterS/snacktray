@@ -55,6 +55,11 @@ input_get(p2)
 if (p2=0 && canmouse && !global.ignorejoy) mousecursor(0)
 input_keystates()
 
+
+if !checkonce{
+    if left||right||up||down||p2=0 {visible=1 checkonce=1}
+
+}
 if (!held) {
     if !cantkeycontrol {
     x=median(view_xview[0]+8,x+(right-left)*2,view_xview[0]+global.screenwidth)

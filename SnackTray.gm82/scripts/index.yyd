@@ -2365,3 +2365,4 @@ draw_sprite_general_centered
 drawdeities
 deathofdeities
 com_grindblock
+com_usingtriangleblock

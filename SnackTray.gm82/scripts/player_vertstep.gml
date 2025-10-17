@@ -72,9 +72,11 @@ if (coll.object_index=monitor && jump && vsp>0 && (fall=0 || fall=5) && !hurt) {
     coll.vspeed=-2
     
 }
+if coll.object_index=bouncymush {
+    vsp=-5
+    canstopjump=1
+}
 
-    
-    
 if (coll /*|| y>yground*/) {
     
     if (coll.object_index=pswitch && jump && vsp>0) {

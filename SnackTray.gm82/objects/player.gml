@@ -212,7 +212,9 @@ if !(flash && global.bgscroll mod 5<3)
         mem=size
         if (((hurt || fall=6) && hk<4) || (grow && gk mod 6<3)) size=oldsize
         sheet=sheets[size]
+        if using_triangleblock x-=triangleblock_cling*6 //Get that looking nicely
         ssw_core(0)
+        if using_triangleblock x+=triangleblock_cling*6 //Let's not fuck with gameplay now.
         if (!super) if (((hurt || fall=6) && hk<4) || (grow && gk mod 6<3)) size=mem
     }
 

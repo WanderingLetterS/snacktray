@@ -110,11 +110,12 @@ instance_destroy();
  }
 }
 
-coll = place_meeting(x,y,collider) && !place_meeting(x,y,banzailauncher) && !collhit && !collhb
-if (coll) {
-instance_create(x,y,bigBOM)
-sound("enemybigexplode")
-instance_destroy()
+coll = instance_place(x,y,collider)
+if coll && !place_meeting(x,y,banzailauncher) && !collhit && !collhb
+if (coll.object_index!=phaser) {
+    instance_create(x,y,bigBOM)
+    sound("enemybigexplode")
+    instance_destroy()
 }
 #define Collision_enemy
 /*"/*'/**//* YYD ACTION

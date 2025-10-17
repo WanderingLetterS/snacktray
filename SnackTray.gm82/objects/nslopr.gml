@@ -25,16 +25,21 @@ applies_to=self
 
 if !position_meeting(x+8,y+24,collider) && inview() && !guaranteedc2 c2=0 //this should only ever happen with cracked ground
 
+if !doonce{
+    if global.terrainsheettype[biome]==1{ //minimum
+        doonce=1
 
-if global.terrainsheettype[biome]==1{ //minimum
-    tile_bake(sheet,24,8,16,16,x-8,y-8,999998)
-exit
-} else if global.terrainsheettype[biome]==2{ //small
-    tile_bake(sheet,24,8,16,32-(16*!c2),x-8,y-8,999998)
-exit
-} else if global.terrainsheettype[biome]==3{ //medium/3x3
-    tile_bake(sheet,56,8,16,24-(8*!c2),x-8,y-8,999998)
-exit
+        tile_bake(sheet,24,8,16,16,x-8,y-8,999998)
+    exit
+    } else if global.terrainsheettype[biome]==2{ //small
+        doonce=1
+        tile_bake(sheet,24,8,16,32-(16*!c2),x-8,y-8,999998)
+    exit
+    } else if global.terrainsheettype[biome]==3{ //medium/3x3
+        doonce=1
+        tile_bake(sheet,56,8,16,24-(8*!c2),x-8,y-8,999998)
+    exit
+    }
 }
 
 

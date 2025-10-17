@@ -40,6 +40,15 @@ applies_to=self
 
 lookx=instance_nearest(x,y,rostercursor).x
 looky=instance_nearest(x,y,rostercursor).y
+mindistance=999999
+with rostercursor{
+    if visible{
+        other.newdistance=point_distance(x,y,other.x,other.y)
+        if other.mindistance>=other.newdistance {other.mindistance=other.newdistance other.lookx=x other.looky=y}
+    }
+}
+
+
 
 dx=-(lookx-x)/32
 dy=-(looky-y)/32

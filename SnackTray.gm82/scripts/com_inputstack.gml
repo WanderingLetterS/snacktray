@@ -134,3 +134,4 @@ h=right-left
 //This is not a good place to put these but oh well
 if (using_grindblock) {com_grindblock() di=0 exit}
 //if (using_skateboard) {com_skateboard() di=0 exit}
+if (using_triangleblock) {com_usingtriangleblock() di=0 exit}

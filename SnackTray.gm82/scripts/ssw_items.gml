@@ -19,7 +19,7 @@ frox=0 froy=0 frx=0 fry=0 w=1 h=1 xsc=1 ysc=1
 
 itemfound=false
 if instance_exists(player){
-    itemfound=true
+    itemfound=false
     with instance_nearest(x,y,player){
         if !dead{
             if other.lastplayer!=other.lastplayer

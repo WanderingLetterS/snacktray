@@ -341,6 +341,7 @@
 		|spr_fireballshooter
 		|spr_spikecrusher
 		|spr_ziptrack
+		|spr_triangleblock
 	+enemies
 		|spr_goomba
 		|spr_spikenemy
@@ -524,6 +525,7 @@
 		|spr_activateregion
 		|spr_191hill
 		|spr_191fence
+		|spr_bouncymush
 	+gimmicks
 		|spr_polflower
 		|spr_pollen
