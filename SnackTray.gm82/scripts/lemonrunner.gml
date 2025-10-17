@@ -69,16 +69,16 @@ repeat (8) {
 
     j=0
     k=0
-    repeat(72) {
+    repeat(72*2) {
         v=lg.cambitmap[i,k]
         v2=lg.cambitmap2[i,k]
         v3=lg.cambitmap3[i,k]
         b=128
         repeat (8) {
-            if (j mod 24<lg.w[i]/25 && j div 24<lg.h[i]/14) {
-                if (v & b) instance_create(offx+(j mod 24)*400,(j div 24)*224+16,camblock)
-                if (v2 & b) instance_create(offx+(j mod 24)*400,(j div 24)*224+16,camsecret)
-                if (v3 & b) instance_create(offx+(j mod 24)*400,(j div 24)*224+16,camsecret)
+            if (j mod 48<lg.w[i]/16 && j div 48<lg.h[i]/9) {
+                if (v & b) instance_create(offx+(j mod 48)*250,(j div 48)*140+16,camblock)
+                if (v2 & b) instance_create(offx+(j mod 48)*250,(j div 48)*140+16,camsecret)
+                if (v3 & b) instance_create(offx+(j mod 48)*250,(j div 48)*140+16,camsecret)
                 b=b>>1
             }
             j+=1

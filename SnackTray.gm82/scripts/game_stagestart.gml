@@ -49,7 +49,7 @@ if (!global.lemontest) {
     if (l == global.lbase) l = ""
 
     if (string_count("$locked", global.leveldesc) && !settings(global.currentlevel+l+" found")) {
-        settings(global.currentlevel+l+" found",1)
+        settings_savefile(global.currentlevel+l+" found",1)
         sound("itemtoken")
         //Possibly add a Found Level notification here? idk
     }

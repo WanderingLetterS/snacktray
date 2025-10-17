@@ -21,7 +21,7 @@ with (globalmanager) {
         if (string_count("$locked",ds_map_find_value(map,"desc"))) {
             mike=global.lskins[global.levelskin+1,0]
             if mike==global.lbase mike=""
-            if (!settings(global.levellist[i,0]+mike+" found")) {
+            if (!settings_savefile(global.levellist[i,0]+mike+" found")) {
                 global.levellist[i,2] = 1 //unfound level
             } else global.levellist[i,2] = 2 //found level
         } else global.levellist[i,2] = 0 //0 = level not locked

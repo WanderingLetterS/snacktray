@@ -10,7 +10,7 @@ if (!hit && !argument[0].diggity) {
                 }
             case 2: {
                 if !global.lemontest
-                    settings("token " + other.name + " " + chr(187) + other.pack,1)
+                    settings_savefile("token " + other.name + " " + chr(187) + other.pack,1)
                 other.tokencolore=$74f9eb
                 break;
             }

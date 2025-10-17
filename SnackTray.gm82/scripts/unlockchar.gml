@@ -1,4 +1,4 @@
-if (settings("lock "+argument[0])) { //muahaha
+if (settings_savefile("lock "+argument[0])) { //muahaha
     with (instance_create(0,0,unlockmsg)) {
         name=argument[0]
         p2=-1
@@ -7,5 +7,5 @@ if (settings("lock "+argument[0])) { //muahaha
         if string(global.unlockdata[p2])=="0" || string(global.unlockdata[p2])=="" {unlocktext="No unlock text##exists for this character."}
         str=unlocktext
     }
-    settings("lock "+argument[0],0)
+    settings_savefile("lock "+argument[0],0)
 }

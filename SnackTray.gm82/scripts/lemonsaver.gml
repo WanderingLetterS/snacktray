@@ -96,7 +96,7 @@ for (r=0;r<8;r+=1) {
     writeshort(bpb)
     writeshort(lightlevel)
     size=ceil((w*h)/8)
-    for (i=0;i<72;i+=1) {
+    for (i=0;i<(72*2);i+=1) {
         external_call(global._BufA,lemongrab.cambitmap[r,i],0) //writebyte
         external_call(global._BufA,lemongrab.cambitmap2[r,i],0) //writebyte
     }

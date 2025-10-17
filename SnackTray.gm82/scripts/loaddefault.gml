@@ -21,8 +21,8 @@ settings("lemonmusic","")
 settings("edit autosave",1)
 settings("detail",0)
 settings("camshimmie",0)
-settings("lock ashura",1)
-settings("lock super",1)
+
+
 
 
 for (i=0;i<9;i+=1) {

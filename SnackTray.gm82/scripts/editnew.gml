@@ -28,14 +28,14 @@ with (lemongrab) {
     thumbx=1
     thumby=4
     spawnx=4
-    spawny=11
+    spawny=14
     spawnr=0
     tspawnx=3
-    tspawny=11
+    tspawny=14
     tspawnr=0
     for (i=0;i<8;i+=1) {
-        w[i]=25
-        h[i]=14
+        w[i]=32
+        h[i]=18
         water[i]=0
         horizon[i]=1
         bpm[i]=110
@@ -60,9 +60,10 @@ with (drawregion) {
             global.lemonlskin="None"
         }
         global.lemonfilename=""
-        for (i=0;i<25;i+=1) {
-            with (instance_create(i,12,deity)) {spr=spr_ground obj=groundblock}
-            with (instance_create(i,13,deity)) {spr=spr_ground obj=groundblock}
+        for (i=0;i<32;i+=1) {
+            with (instance_create(i,15,deity)) {spr=spr_ground obj=groundblock}
+            with (instance_create(i,16,deity)) {spr=spr_ground obj=groundblock}
+            with (instance_create(i,17,deity)) {spr=spr_ground obj=groundblock}
         }
         with (regionbutton) empty=!!n
     }

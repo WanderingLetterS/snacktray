@@ -493,7 +493,7 @@ if (within(editcursor.x,editcursor.y,mmx+100-mmw/2,mmy+72-mmh/2,mmw,mmh)) {
             }
         } else if (editcursor.tool=3) { //cambitmap
             unchanged=0
-            pos=(floor(curx/25) mod 24)+floor(cury/14)*24
+            pos=(floor(curx/16) mod 48)+floor(cury/9)*48
             if (pos=median(0,pos,576)) {
                 if (editcursor.leftp) {editsaveundo() lemongrab.cambitmap[region,pos div 8]=lemongrab.cambitmap[region,pos div 8] ^ (1<<(7-(pos mod 8))) lemongrab.cambitmap2[region,pos div 8]=lemongrab.cambitmap2[region,pos div 8] & ~(1<<(7-(pos mod 8))) event_user(7)}
                 if (editcursor.rightp) {editsaveundo() lemongrab.cambitmap2[region,pos div 8]=lemongrab.cambitmap2[region,pos div 8] ^ (1<<(7-(pos mod 8))) lemongrab.cambitmap[region,pos div 8]=lemongrab.cambitmap[region,pos div 8] & ~(1<<(7-(pos mod 8))) event_user(7)}
@@ -695,8 +695,8 @@ if (resize) {
     //grab the region
     memx=lemongrab.w[region]
     memy=lemongrab.h[region]
-    lemongrab.w[region]=median(25,curx,600)
-    lemongrab.h[region]=median(14,cury,336*3)
+    lemongrab.w[region]=median(32,curx,600)
+    lemongrab.h[region]=median(18,cury,336*3)
     lemongrab.water[region]=min(lemongrab.water[region],lemongrab.h[region])
     lemongrab.horizon[region]=min(lemongrab.horizon[region],lemongrab.h[region])
     if (lemongrab.w[region]!=memx || lemongrab.h[region]!=memy) event_user(7)
@@ -709,23 +709,23 @@ if (resize) {
 
         if (region == lemongrab.spawnr) {
             sx = lemongrab.spawnx
-            loope=0 repeat (8) {if (lemongrab.spawnr==loope) break; sx-=25 + lemongrab.w[loope] loope+=1}
+            loope=0 repeat (8) {if (lemongrab.spawnr==loope) break; sx-=32 + lemongrab.w[loope] loope+=1}
 
             if (sx > lemongrab.w[region] - 1) sx = lemongrab.w[region] - 1
             if (lemongrab.spawny > lemongrab.h[region] - 1) lemongrab.spawny = lemongrab.h[region] - 1
 
-            loope=0 repeat (8) {if (lemongrab.spawnr==loope) break; sx+=25 + lemongrab.w[loope] loope+=1}
+            loope=0 repeat (8) {if (lemongrab.spawnr==loope) break; sx+=32 + lemongrab.w[loope] loope+=1}
             lemongrab.spawnx = sx
         }
 
         if (region == lemongrab.tspawnr) { //how it feels to be an identical code chunk with 6 variables different
             sx = lemongrab.tspawnx
-            loope=0 repeat (8) {if (lemongrab.tspawnr==loope) break; sx-=25 + lemongrab.w[loope] loope+=1}
+            loope=0 repeat (8) {if (lemongrab.tspawnr==loope) break; sx-=32 + lemongrab.w[loope] loope+=1}
 
             if (sx > lemongrab.w[region] - 1) sx = lemongrab.w[region] - 1
             if (lemongrab.tspawny > lemongrab.h[region] - 1) lemongrab.tspawny = lemongrab.h[region] - 1
 
-            loope=0 repeat (8) {if (lemongrab.tspawnr==loope) break; sx+=25 + lemongrab.w[loope] loope+=1}
+            loope=0 repeat (8) {if (lemongrab.tspawnr==loope) break; sx+=32 + lemongrab.w[loope] loope+=1}
             lemongrab.tspawnx = sx
         }
 
@@ -1063,9 +1063,9 @@ if (gridtoggle.on) {
 texture_set_repeat(1)
 draw_primitive_begin_texture(pr_trianglestrip,gridtex2)
 draw_vertex_texture(-0.5,-0.5,0,0)
-draw_vertex_texture(lemongrab.w[region]*16-0.5,-0.5,lemongrab.w[region]/50,0)
-draw_vertex_texture(-0.5,lemongrab.h[region]*16-0.5,0,lemongrab.h[region]/28)
-draw_vertex_texture(lemongrab.w[region]*16-0.5,lemongrab.h[region]*16-0.5,lemongrab.w[region]/50,lemongrab.h[region]/28)
+draw_vertex_texture(lemongrab.w[region]*16-0.5,-0.5,lemongrab.w[region]/64,0)
+draw_vertex_texture(-0.5,lemongrab.h[region]*16-0.5,0,lemongrab.h[region]/36)
+draw_vertex_texture(lemongrab.w[region]*16-0.5,lemongrab.h[region]*16-0.5,lemongrab.w[region]/64,lemongrab.h[region]/36)
 draw_primitive_end()
 
 draw_set_color($1ffffff)
@@ -1184,21 +1184,21 @@ for (i=0;i<72;i+=1) {
     v3=lemongrab.cambitmap3[region,i]
     b=128
     repeat (8) {
-        if (j mod 24<lemongrab.w[region]/25 && j div 24<lemongrab.h[region]/14) {
+        if (j mod 48<lemongrab.w[region]/16 && j div 48<lemongrab.h[region]/9) {
             if (v1 & b) {
-                xx=(j mod 24)*25*16
-                yy=(j div 24)*14*16
-                rect(xx,yy,min(xx+global.screenwidth,lemongrab.w[region]*16)-xx,min(yy+global.screenheight,lemongrab.h[region]*16)-yy,$ff,0.5)
+                xx=(j mod 48)*16*16
+                yy=(j div 48)*9*16
+                rect(xx,yy,min(xx+global.defaultscreenwidth/2,lemongrab.w[region]*16)-xx,min(yy+global.defaultscreenheight/2,lemongrab.h[region]*16)-yy,$ff,0.5)
             }
             if (v2 & b) {
-                xx=(j mod 24)*25*16
-                yy=(j div 24)*14*16
-                rect(xx,yy,min(xx+global.screenwidth,lemongrab.w[region]*16)-xx,min(yy+global.screenheight,lemongrab.h[region]*16)-yy,$ff0000,0.5)
+                xx=(j mod 48)*16*16
+                yy=(j div 48)*9*16
+                rect(xx,yy,min(xx+global.defaultscreenwidth/2,lemongrab.w[region]*16)-xx,min(yy+global.defaultscreenheight/2,lemongrab.h[region]*16)-yy,$ff0000,0.5)
             }
             if (v3 & b) {
-                xx=(j mod 24)*25*16
-                yy=(j div 24)*14*16
-                rect(xx,yy,min(xx+global.screenwidth,lemongrab.w[region]*16)-xx,min(yy+global.screenheight,lemongrab.h[region]*16)-yy,$ff0000,0.5)
+                xx=(j mod 48)*16*16
+                yy=(j div 48)*9*16
+                rect(xx,yy,min(xx+global.defaultscreenwidth/2,lemongrab.w[region]*16)-xx,min(yy+global.defaultscreenheight/2,lemongrab.h[region]*16)-yy,$ff0000,0.5)
             }
             b=b>>1
         }

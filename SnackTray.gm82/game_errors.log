@@ -1,4 +1,0 @@
-COMPILATION ERROR in string to be executedError in code at line 127:   
-        if (!coll) && if !abs(hsp)>maxspd hsp+=(0.3+0.2*(abs(hsp)<1.4)+0.02*(size==5))*wf*h                         ^at position 24: Unexpected symbol in expression.
-
-

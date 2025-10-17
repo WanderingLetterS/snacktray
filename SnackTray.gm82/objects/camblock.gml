@@ -4,11 +4,11 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-top=!position_meeting(x+200,y-112,camblock)
-bottom=!place_meeting(x+200,y+224,camblock)
-left=!place_meeting(x-200,y+112,camblock)
-right=!place_meeting(x+600/2,y+112,camblock)
+top=!position_meeting(x+125,y-70,camblock)
+bottom=!place_meeting(x+125,y+140,camblock)
+left=!place_meeting(x-125,y+70,camblock)
+right=!place_meeting(x+(750/2)/2,y+70,camblock)  //screensize (500) +screensize/2   then divided by 2... why? Well, whatever.
 
 image_blend=$ff
-image_xscale=25
-image_yscale=14
+image_xscale=16
+image_yscale=9

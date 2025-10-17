@@ -176,7 +176,9 @@ stats("bootups",stats("bootups")+1)
 if (!global.easter && egg(1)) {
     global.greenmode = true;
 }
+global.curr_savefile=unreal(settings("savefile_number"),1)
 
+if global.curr_savefile=0 global.curr_savefile=1
 
 
 i=0

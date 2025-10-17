@@ -1,10 +1,12 @@
-///stats(key)
-///stats(key,value)
-//statistics registry. specifying a value writes to it.
+///settings_savefile(key)
+///settings_savefile(key,value)
+//settings registry. specifying a value writes to it.
 
 var map;
-map=global.statmap
+map=global.setmap
+
 key=string(global.curr_savefile)+"_"+argument[0]
+
 if (argument_count=1) {
     if (ds_map_exists(map,key)) return ds_map_find_value(map,key)
     else return 0

@@ -201,6 +201,7 @@
 		|ta_load
 		|ta_save
 		|settings
+		|settings_savefile
 		|stats
 		|settings_resetbinds
 	|loadtext

@@ -152,6 +152,12 @@ repeat (8) {
         lemongrab.cambitmap2[r,i]=readbyte()
         i+=1
     }
+    if lv="SnackTray"
+    repeat (72) {
+        lemongrab.cambitmap[r,i]=readbyte()
+        lemongrab.cambitmap2[r,i]=readbyte()
+        i+=1
+    }
     
     //read entities
     test=1
