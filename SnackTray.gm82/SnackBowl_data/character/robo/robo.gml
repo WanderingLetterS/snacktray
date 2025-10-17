@@ -1083,7 +1083,7 @@ with (enemy) if (phase!=other.id && !lock)
 
 if (coll) {
 
-
+	hsp*=1.1 //KILL.
 
     calcfall=fall
     if (fall=5 || fall=12) calcfall=0

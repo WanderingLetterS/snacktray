@@ -101,6 +101,7 @@ else if (event="step"){
 	event=type+"_step"
 }
 else if (event="draw"){
+
 	event=type+"_draw"
 	
 }
@@ -172,12 +173,12 @@ prevframe=frame-2
 
 }
 if (event="bubble_create"){
-hspeed=owner.xsc*3
-vspeed=0.35
-friction=0.005
-gravity=-0.025
-image_xscale=10
-image_yscale=10
+	hspeed=owner.xsc*3
+	vspeed=0.35
+	friction=0.005
+	gravity=-0.025
+	image_xscale=10
+	image_yscale=10
 }else if (event="bubble_step"){
 	xsc=esign(hspeed,xsc)
 	fr=fr+0.1
@@ -236,13 +237,32 @@ if (event="iceplosion_create"){
 
 }
 if (event="cloverwhip_create"){
-
+	fr=0
+	ignoreoncount=0
+	image_xscale=1
+	image_yscale=4
 
 }else if (event="cloverwhip_step"){
-
+	fr+=4
+	image_xscale=fr
+	bbox_left=owner.x
+	if (fr>=64) {instance_destroy() visible=0}
+	coll=instance_place(x,y,collider)
+	if coll{
+		if knuxcanclimb(coll){
+			owner.bbox_right=bbox_right
+			instance_destroy()
+		
+		}
+			
+	}
 
 }else if (event="cloverwhip_draw"){
+	
+		draw_sprite_part_ext(owner.sheetshields,0,273-fr,158,fr+3,16,round(x-8*1),round(y),1,1,c_white,1)
 
+	
+	
 
 }
 if (event="twirlefx_create"){
@@ -1005,14 +1025,13 @@ if (spinjump) {
 			ballspin=!ballspin
 			if is_fire()
 			proj_type="fireball"
-			else if is_clover()
-			proj_type="cloverwhip"
 			else if is_ice()
 			proj_type="iceball"
 			else if is_thunder()
 			proj_type="thunderball"
 			else if is_water()
 			proj_type="bubble"
+			if !is_clover()
 			i=fire_projectile(x+8*ballspin,y+2)
 			fired=8
 			i.hspeed=-4+8*ballspin
