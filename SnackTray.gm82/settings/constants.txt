@@ -1,5 +1,5 @@
 gametitle="Boll Deluxe: Snack Tray"
-version="2.1.5.2"
+version="0.1"
 JOY=2
 vk_mouseback=5
 margin=1/256

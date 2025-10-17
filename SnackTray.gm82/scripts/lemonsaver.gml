@@ -44,7 +44,7 @@ writestring("[lemon]")
 l=lemongrab.length
 
 map=ds_map_create()
-ds_map_add(map,"v","SnackTray")
+ds_map_add(map,"v","SnackTray2")
 ds_map_add(map,"thumbx",lemongrab.thumbx)
 ds_map_add(map,"thumby",lemongrab.thumby)
 ds_map_add(map,"thumbregion",lemongrab.thumbregion)

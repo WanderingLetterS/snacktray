@@ -70,6 +70,9 @@ if (!ds_map_read_safe(map,readstring())) {show_message("can't find lemon header?
 lv=ds_map_find_value(map,"v")
 
 lemongrab.compat = string(lv)
+trulv=lv
+if lv="SnackTray2" {trulv=lv lv="SnackTray"}
+
 if (lv="1.9.1" || lv="1.9.2" || lv="1.9.3") { //Lol
     lemonloader193(map)
     exit
@@ -152,7 +155,7 @@ repeat (8) {
         lemongrab.cambitmap2[r,i]=readbyte()
         i+=1
     }
-    if lv="SnackTray"
+    if trulv="SnackTray2"
     repeat (72) {
         lemongrab.cambitmap[r,i]=readbyte()
         lemongrab.cambitmap2[r,i]=readbyte()

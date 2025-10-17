@@ -69,7 +69,7 @@ repeat (8) {
 
     j=0
     k=0
-    if lemongrab.compat="SnackTray"
+    if lemongrab.compat="SnackTray2"
     repeat(72*2) {
         v=lg.cambitmap[i,k]
         v2=lg.cambitmap2[i,k]
@@ -87,21 +87,22 @@ repeat (8) {
     }
     else {
         repeat(72) {
-        v=lg.cambitmap[i,k]
-        v2=lg.cambitmap2[i,k]
-        v3=lg.cambitmap3[i,k]
-        b=128
-        repeat (8) {
-            if (j mod 24<lg.w[i]/25 && j div 24<lg.h[i]/14) {
-                if (v & b) instance_create(offx+(j mod 24)*400,(j div 24)*224+16,camblock)
-                if (v2 & b) instance_create(offx+(j mod 24)*400,(j div 24)*224+16,camsecret)
-                if (v3 & b) instance_create(offx+(j mod 24)*400,(j div 24)*24+16,camsecret)
-                b=b>>1
-            }
-            j+=1
-        } k+=1
+            v=lg.cambitmap[i,k]
+            v2=lg.cambitmap2[i,k]
+            v3=lg.cambitmap3[i,k]
+            b=128
+            repeat (8) {
+                if (j mod 24<lg.w[i]/25 && j div 24<lg.h[i]/14) {
+                    if (v & b) instance_create(offx+(j mod 24)*400,(j div 24)*224+16,camblock)
+                    if (v2 & b) instance_create(offx+(j mod 24)*400,(j div 24)*224+16,camsecret)
+                    if (v3 & b) instance_create(offx+(j mod 24)*400,(j div 24)*224+16,camsecret)
+                    b=b>>1
+                }
+                j+=1
+            } k+=1
 
 
+        }
     }
     offx+=lg.w[i]*16+global.screenwidth
     i+=1
