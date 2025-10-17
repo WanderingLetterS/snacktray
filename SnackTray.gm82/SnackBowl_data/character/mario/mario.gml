@@ -243,14 +243,18 @@ if (event="cloverwhip_create"){
 	image_yscale=4
 
 }else if (event="cloverwhip_step"){
-	fr+=4
+	if fr < 32 fr+=3 else fr=32
 	image_xscale=fr
-	bbox_left=owner.x
-	if (fr>=64) {instance_destroy() visible=0}
+	x=owner.x+image_xscale*owner.xsc
+	owner.fired=2
+	y=owner.y
+	if (fr>=32) {fr2+=1}
+	if fr2>32 instance_destroy() 
 	coll=instance_place(x,y,collider)
 	if coll{
 		if knuxcanclimb(coll){
-			owner.bbox_right=bbox_right
+			owner.x=bbox_right-owner.mask_w 
+			owner.fired=0
 			instance_destroy()
 		
 		}
@@ -259,7 +263,7 @@ if (event="cloverwhip_create"){
 
 }else if (event="cloverwhip_draw"){
 	
-		draw_sprite_part_ext(owner.sheetshields,0,273-fr,158,fr+3,16,round(x-8*1),round(y),1,1,c_white,1)
+		draw_sprite_part_ext(owner.sheetshields,0,273-fr*2,158,fr*2+3,16,round(x-image_xscale*owner.xsc),round(y-8*1),owner.xsc,1,c_white,1)
 
 	
 	
@@ -439,17 +443,17 @@ if (h!=0 && !wallkick) {
                     brakedir=h
                 }
                 hsp+=(0.44-0.175*!water+0.04*(abs(hsp)<1))*wf*h
-                if (abs(hsp)<0.5 || carry && !spin) xsc=h
+                if (abs(hsp)<0.5 || carry && !spin) if !(is_clover() && fired) xsc=h
             } else {
                 if (sign(hsp)!=h || abs(hsp)<maxspd) hsp+=(0.06+0.04*(abs(hsp)<0.5))*wf*h
-                xsc=h
+                if !(is_clover() && fired) xsc=h
                 braking=0
             }
         } else {
             if (water) {if (h!=sign(hsp)) hsp+=0.1*h else if (abs(hsp)<maxspd)hsp+=0.0475*h}
             else if (size==5) hsp+=0.085*wf*h
             else if (sign(hsp)!=h || abs(hsp)<maxspd) hsp+=0.06*wf*h
-            if (!hang && !wallkick && !twist && !spin) xsc=h
+            if (!hang && !wallkick && !twist && !spin && !(is_clover() && fired)) xsc=h
         }
     }
 }
