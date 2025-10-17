@@ -61,6 +61,7 @@ global.weapon_unlocked[(p2*100)+ROLLING_CUTTER]=0
 global.weapon_requirement[(p2*100)+MEGA_BUSTER]=0
 global.weapon_requirement[(p2*100)+SHELL_SLIDE]=5
 global.weapon_requirement[(p2*100)+HAMMER_THROW]=1
+global.weapon_requirement[(p2*100)+CLOUD_CARRY]=1
 global.weapon_requirement[(p2*100)+BOMB_BLAST]=1
 global.weapon_requirement[(p2*100)+CHEEP_TORNADO]=10
 global.weapon_requirement[(p2*100)+ORBINAUT_SHIELD]=1
@@ -70,7 +71,99 @@ global.weapon_requirement[(p2*100)+BOO_CLOAK]=1
 global.weapon_requirement[(p2*100)+TANOOKI_STATUE]=1
 global.weapon_requirement[(p2*100)+ROLLING_CUTTER]=1
 
+global.weapon_progress[(p2*100)+MEGA_BUSTER]=0
+global.weapon_progress[(p2*100)+SHELL_SLIDE]=0
+global.weapon_progress[(p2*100)+HAMMER_THROW]=0
+global.weapon_progress[(p2*100)+BOMB_BLAST]=0
+global.weapon_progress[(p2*100)+CHEEP_TORNADO]=0
+global.weapon_progress[(p2*100)+ORBINAUT_SHIELD]=0
+global.weapon_progress[(p2*100)+BULLET_SHOT]=0
+global.weapon_progress[(p2*100)+SPIKE_LEAD]=0
+global.weapon_progress[(p2*100)+BOO_CLOAK]=0
+global.weapon_progress[(p2*100)+TANOOKI_STATUE]=0
+global.weapon_progress[(p2*100)+ROLLING_CUTTER]=0
 
+#define enemykill
+
+switch (kill.object_index){
+
+case koopa:
+case hopkoopa:
+case redkoopa:
+case redhover:
+case yelkoopa:
+case yelhover:
+case blukoopa:
+case bluhover:
+	global.weapon_progress[(p2*100)+SHELL_SLIDE]+=1
+	
+break;
+case hammerbro:
+	global.weapon_progress[(p2*100)+HAMMER_THROW]+=1
+break;
+
+case lakitu:
+	global.weapon_progress[(p2*100)+CLOUD_CARRY]+=1
+break;
+
+case bobomb:
+case litbobomb:
+case bombshellkoopa:
+case bombenemy:
+	global.weapon_progress[(p2*100)+BOMB_BLAST]+=1
+break;
+
+case cheepred:
+case cheepwhite:
+case cheepfly:
+	global.weapon_progress[(p2*100)+CHEEP_TORNADO]+=1
+break;
+
+case orbinautgreen:
+case orbinautblue:
+case orbinautred:
+case orbinautbbumper:
+	global.weapon_progress[(p2*100)+ORBINAUT_SHIELD]+=1
+break;
+
+case bullseyebill:
+case bulletbill:
+	global.weapon_progress[(p2*100)+BULLET_SHOT]+=1
+break;
+
+case banzaibill:
+	global.weapon_progress[(p2*100)+BULLET_SHOT]+=2
+break;
+
+case spikenemy:
+	global.weapon_progress[(p2*100)+SPIKE_LEAD]+=1
+break;
+
+case boo:
+	global.weapon_progress[(p2*100)+BOO_CLOAK]+=1
+break;
+
+case thwomp:
+case thwimp:
+	global.weapon_progress[(p2*100)+TANOOKI_STATUE]+=1
+break;
+
+//case cutman_boss:
+//	global.weapon_progress[(p2*100)+ROLLING_CUTTER]+=1
+//break;
+
+default: break;
+
+
+}
+
+loopi=0
+repeat (max_weapon+1){
+
+if global.weapon_progress[(p2*100)+loopi]>global.weapon_requirement[(p2*100)+loopi]  global.weapon_unlocked[(p2*100)+loopi]=1
+
+loopi+=1
+}
 #define start
 
 usepalette=true
@@ -337,7 +430,7 @@ switch (weapon){
 						global.coll=owner.id  
 						instance_create(x,y,kickpart)  
 						coll.mega_damage+=1*(1+(coll.object_index=goomba))+charged
-						if coll.mega_damage>=4  enemydie(coll,2)
+						if coll.mega_damage>=4  { with owner {kill=other.coll charm_run("enemykill")} enemydie(coll,2)}
 					}
 				}
 				if charged!=2 && instance_exists(coll) instance_destroy()
@@ -452,6 +545,7 @@ switch (weapon){
 			if coll 
 			if (owner!=noone && owner!=coll) {
 				doscore_e(8000,coll.id) 
+				with owner {kill=other.coll charm_run("enemykill")} 
 				with (coll) {
 					sound("enemykick") 
 					with (instance_create(x,y,genericdead)) {
@@ -538,6 +632,7 @@ switch (weapon){
 			if coll 
 			if (owner!=noone && owner!=coll) {
 				doscore_e(8000,coll.id) 
+				with owner {kill=other.coll charm_run("enemykill")} 
 				with (coll) {
 					sound("enemykick") 
 					with (instance_create(x,y,genericdead)) {
@@ -1184,7 +1279,9 @@ if (coll) {
     
     if (super) {
         if (water) seqcount=1
+		{kill=coll charm_run("enemykill")}
         enemyexplode(coll)
+		
         exit
     }
         
@@ -1195,6 +1292,7 @@ if (coll) {
     || (pound>13 && type!=piranha && type!=spinyegg && type!=spiny)) {
         instance_create(mean(x,coll.x),mean(y,coll.y),kickpart)
         if (type=hammerbro) seqcount=max(5,seqcount)
+		{kill=coll charm_run("enemykill")}
         enemydie(coll)                
         exit
     }
@@ -1210,11 +1308,11 @@ if (coll) {
         if (type=shell) {if (coll.type!="beetle") {enemydie(coll) exit}}
         else if (type=beetle || object_is_ancestor(type,koopa) || type=koopa) {hsp=0 jump=1 jumpspd=0.5 spin=0 enemystomp(coll) exit}
         else if (type=spinyegg) {hurtplayer("enemy") exit}
-        else {enemydie(coll) exit}
+        else { {kill=coll charm_run("enemykill")} enemydie(coll) exit}
     }
                      
     if (type=spiny) {
-        if (!fall && vsp<0) enemyexplode(coll)
+        if (!fall && vsp<0) {{kill=coll charm_run("enemykill")} enemyexplode(coll)}
         else hurtplayer("enemy") exit
     }
     if (type=spinyegg) {
@@ -1256,12 +1354,12 @@ if (coll) {
     }
     
     if (type=blooper) {
-        if (jump && (!calcfall || !water) && vsp>0) {if (calcfall) enemystomp(coll,5) else enemyexplode(coll)}
+        if (jump && (!calcfall || !water) && vsp>0) {{kill=coll charm_run("enemykill")} if (calcfall) enemystomp(coll,5) else enemyexplode(coll)}
         else hurtplayer("enemy") exit
     }
     
     if (type=cheepred || type=cheepwhite) {
-        if (jump && !calcfall) {enemyexplode(coll) exit}
+        if (jump && !calcfall) {{kill=coll charm_run("enemykill")} enemyexplode(coll) exit}
         else {hurtplayer("enemy") exit}
     }
     
@@ -1269,7 +1367,7 @@ if (coll) {
         if (type=koopa || type=beetle || type=rexbig || object_is_ancestor(type,koopa)) {
             if (vsp<0) {
                 if (calcfall) hurtplayer("enemy")
-                else enemyexplode(coll) exit
+                else {{kill=coll charm_run("enemykill")} enemyexplode(coll)} exit
             }
         } else {
             if (!calcfall) {enemyexplode(coll) exit}
@@ -1277,12 +1375,15 @@ if (coll) {
         }
         
         if (type=goomba && seqcount=1 && !scorelok4) {seqcount=0 scorelok4=1}    
-        if ((type=koopa || type=redkoopa) && seqcount=1) scorelok1=1    
-        if (type=hopkoopa || type=redhover) seqcount=max(seqcount,1)
-        if (type=hammerbro) seqcount=max(5,seqcount)
-        if (fall=12) fall=5                        
+		if ((type=koopa || type=redkoopa) && seqcount=1) scorelok1=1    
+		if (type=hopkoopa || type=redhover) seqcount=max(seqcount,1)
+		if (type=hammerbro) seqcount=max(5,seqcount)
+		if (fall=12) fall=5     
+		dive=0                   
+		if size==5 {if vsp<=0 {hurtplayer("enemy") exit} else playsfx(name+"smalljump",0,3.6) vsp=-3-akey*1.5 canstopjump=akey exit}
+		{kill=coll charm_run("enemykill")}
         enemystomp(coll) exit      
-    } else if (coll.vspeed<0 && coll.y>y+8) {jump=1 fall=1 vsp=-0.5 enemystomp(coll) exit}
+    } else if (coll.vspeed<0 && coll.y>y+8) {jump=1 fall=1 vsp=-0.5 {kill=coll charm_run("enemykill")} enemystomp(coll) exit}
     
     hurtplayer("enemy")   
 }    

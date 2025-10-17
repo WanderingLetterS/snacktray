@@ -1,2 +1,2 @@
-COMPILATION ERROR in string to be executedError in code at line 316:   
-  ^at position 1: Symbol } expected.
+COMPILATION ERROR in string to be executedError in code at line 802:   
+        if (type=hammerbro) seqcount=max(5,seqcount)           ^at position 10: Symbol ) expected.
