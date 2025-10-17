@@ -277,6 +277,7 @@ switch (sub_type){
 		if (event=="create"){
 			hspeed=owner.hsp+owner.xsc*6
 			does_damage=2
+			y+=1
 			image_xscale=8
 			image_yscale=4
 		}
