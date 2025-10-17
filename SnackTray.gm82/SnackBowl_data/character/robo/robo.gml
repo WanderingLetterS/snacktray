@@ -62,11 +62,12 @@ if (jet && jump){
 	draw_sprite_general(sheetshields,0,209+(floor(jetanim)*18),73,17,9,x-8 -2*xsc,y+14+dy,1,1,0,$ffffff,$ffffff,$ffffff,$ffffff,1)
 }
 jetanim= (jetanim+0.1) mod 2
+
 #define effectsfront
 if iaminsidemyself=1 exit
 
 if (hsp!=0 && !jump)||spindash{
-	draw_sprite_general(sheetshields,0,309+(floor(sparkanim)*16),48+16*(abs(hsp+hyperspeed)>maxspd*1.25),15,8,x-(esign(hsp,xsc)*20),y+7+dy,esign(hsp,xsc),1,0,$ffffff,$ffffff,$ffffff,$ffffff,1)
+	draw_sprite_general(sheetshields,0,309+(floor(sparkanim)*16),48+10*(abs(hsp+hyperspeed)>maxspd*1.25),15,8,x-(esign(hsp,xsc)*20),y+7+dy,esign(hsp,xsc),1,0,$ffffff,$ffffff,$ffffff,$ffffff,1)
 }
 sparkanim= (sparkanim+0.1) mod 2
 
@@ -278,8 +279,11 @@ if is_spike{
 					global.coll=owner.id  
 					instance_create(x,y,kickpart)  
 					enemydie(coll,2)
+					if abs(owner.hsp)<(owner.maxspd+1)
+					owner.hsp*=1.2 //KILL.
 				}
 			}
+			
 			instance_destroy()
 		}
 
@@ -504,8 +508,9 @@ if (h!=0) {
         if (xsc!=h && !count_projectiles() && !(chain>0 && chain<11)) {
             if (!turning) {turning=maxturning turndir=h}
         } else {if (!turning>middleturning) turning+=1 if (turning>=maxturning) turning=0}
-        if (!coll) hsp+=(0.3+0.2*(abs(hsp)<1.4)+0.02*(size==5))*wf*h
+        if (!coll) &&  (!(abs(hsp)>maxspd)|| sign(hsp)!=h)hsp+=(0.3+0.2*(abs(hsp)<1.4)+0.02*(size==5))*wf*h
     } else if (!coll) {
+	if (!(abs(hsp)>maxspd)|| sign(hsp)!=h)
         hsp+=0.06*wf*h
         if (firedash) collwin=instance_place(x+hsp,0,goalblock)
         if collwin {hsp=0 fallsprite="dash" collwin.owner=id with collwin{ event_user(4)}}
@@ -619,6 +624,7 @@ if (down && !up) {
             crouch=1
         } else if (!spin && !crouch) {
             spin=1
+			if sign(hsp)!=xsc && abs(hsp)<3
             hsp=3*xsc*wf
             playsfx(name+"spin")
         }
@@ -646,7 +652,7 @@ if (!jump && !spin) if (loose || crouch) {
 
 //speed cap rubberband formula
 maxspd=(3 + (size==5)*0.55 - jet + spin + (fall==10)*0.5 + firedash/24)*wf
-if (abs(hsp)>maxspd) hsp=(abs(hsp)*2+maxspd)/3*sign(hsp)
+//if (abs(hsp)>maxspd) hsp=(abs(hsp)*2+maxspd)/3*sign(hsp)
 
 vsp=min(7+downpiped,vsp)
 
@@ -1082,8 +1088,8 @@ with (enemy) if (phase!=other.id && !lock)
     if (instance_place(x,y-other.vsp-16*!!other.diggity,other.id)) other.coll=id
 
 if (coll) {
-
-	hsp*=1.1 //KILL.
+	if abs(hsp)<(maxspd+1)
+	hsp*=1.2 //KILL.
 
     calcfall=fall
     if (fall=5 || fall=12) calcfall=0
@@ -1377,7 +1383,8 @@ if (jumpbuffer) jumpbuffer=-1
 //fall into spin
 if (!spin && rise=0 && !hurt && down && abs(hsp)>=0.5) {
     spin=1
-    hsp=3*xsc*wf
+    if abs(hsp)<3
+	hsp=3*xsc*wf
     playsfx(name+"spin")
     seqcount=1
 }
