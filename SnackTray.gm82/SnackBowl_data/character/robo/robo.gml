@@ -40,6 +40,11 @@ mask_set(18,26)
 sparklvl=1
 snack_turn= 1
 dowait=1
+feather_unsupported=1
+tflower_unsupported=1
+wflower_unsupported=1
+cflower_unsupported=1
+iflower_unsupported=1
 
 
 #define stop

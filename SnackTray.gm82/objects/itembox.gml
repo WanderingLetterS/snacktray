@@ -56,7 +56,7 @@ if (content="wateritem" || (content="itemfeather" && alwayswater )) {
 if (content="iceitem" || (content="item" && alwaysice )) {
     if (mush) {with (instance_create(x+8+offset,y+8+4*go,mushroom)) {iid=id vspeed=0.25*other.go alarm[0]=48}}
     else {
-        if other.wflower_unsupported {
+        if other.iflower_unsupported {
             if other.fflower_unsupported{
                 if nevermush{
                     with (instance_create(x+8+offset,y+8+4*go,shield)) vspeed=3.5*other.go
