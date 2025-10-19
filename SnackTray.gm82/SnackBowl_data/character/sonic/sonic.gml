@@ -241,7 +241,7 @@ else if (jump) {
         else {sprite="stand"}
     } else {
         if (braking) sprite="brake"
-else if ((abs(hsp)>maxspd*1.4 || (abs(hsp)>maxspd*0.95 && boost))&& !water && !finish) {sprite="maxrun" frspd=abs(hsp/3)}
+		else if ((abs(hsp)>maxspd*1.4 || (abs(hsp)>maxspd*0.95 && boost))&& !water && !finish) {sprite="maxrun" frspd=abs(hsp/3)}
         else if (abs(hsp)>maxspd*0.9 && !water && !finish) {sprite="run" frspd=abs(hsp/3)}
         else {sprite="walk" frspd=0.2+abs(hsp/4)}
     }
@@ -614,7 +614,7 @@ if (bbut) {
 			if up{
 				tricking=1
 				vsp=-4
-				hsp=0
+				//hsp=0
 				proj_type="pstar"
 				i=fire_projectile(x,y) i.hspeed=-2 i.vspeed=2
 				i=fire_projectile(x,y) i.hspeed=2 i.vspeed=2
