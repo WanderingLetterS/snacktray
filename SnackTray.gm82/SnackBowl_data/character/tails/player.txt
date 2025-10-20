@@ -175,8 +175,8 @@ spindash loop=1
 spindash speed=0.45
 
 spincharge frames=6
-spincharge loop=1
-spincharge speed=0.5
+spincharge loop=3
+spincharge speed=0.45
 
 rampof frames=8
 rampof loop=7

@@ -204,7 +204,7 @@ cantslowanim=0
 if (grabflagpole) {sprite="flagslide"}
 else if (hurt) {sprite="knock"}
 else if (bouncewindup) sprite="bouncewindup"
-else if (spindash) {if (spinchargetimer>10) sprite="spincharge" else sprite="spindash"}
+else if (spindash) {if (spinchargetimer) sprite="spincharge" else sprite="spindash"}
 else if (crouch) {sprite="crouch"}
 else if (jump) {
 	if !(spindash) {
@@ -419,9 +419,7 @@ if ((abut || jumpbufferdo) && (!springin)) {
 			}
 		else {insta=20+water*10 fall=0}
 		if size==6 {
-			i=shoot(x,y+8)
-					i.hspeed=0 i.vspeed=2
-					i.growsize=-1 i.depth=depth-1
+
 			vsp=-4
 			proj_type="pstar"
 			i=fire_projectile(x,y) i.hspeed=-2 i.vspeed=2
@@ -475,46 +473,8 @@ if ((abut || jumpbufferdo) && (!springin)) {
 
 if (spindash) {
 	spindust+=0.5
-	if spindust mod 1 {
-		
-		i=shoot(x-xsc*3,bbox_bottom+1) i.hspeed=-xsc*spindash i.vspeed=random(1)-0.5
-		i.gravity=-0.1
-		i.image_xscale=0.25
-		i.image_yscale=0.25
-		i.depth=p2-1
-		
-		i=shoot(x,bbox_bottom) i.hspeed=-xsc*spindash i.vspeed=random(1)-0.5
-		i.gravity=-0.15
-		i.image_xscale=0.25
-		i.image_yscale=0.25
-		i.depth=p2+1
-	}
 	spindust=wrap_val(spindust,0,7)
-	
-	
-} 
-
-if (sprite="maxrun" && !jump) {
-	spindust+=0.5
-	if spindust mod 1 {
-		
-		i=shoot(x-xsc*3,bbox_bottom+1) i.hspeed=-hsp/2 i.vspeed=random(1)-0.5
-		i.gravity=-0.1
-		i.image_xscale=0.25
-		i.image_yscale=0.25
-		i.depth=p2-1
-		
-		i=shoot(x,bbox_bottom) i.hspeed=-hsp/2 i.vspeed=random(1)-0.5
-		i.gravity=-0.15
-		i.image_xscale=0.25
-		i.image_yscale=0.25
-		i.depth=p2+1
-	}
-	spindust=wrap_val(spindust,0,7)
-	
-	
-} 
-
+} else spindust=0
 
 
 jumpbufferdo=0
@@ -573,7 +533,7 @@ if (bbut) {
 
 				if size==2{
 					hsp=4.5*xsc
-					vsp=-1
+					vsp=0
 					firedash=24
 					boost=1
 					playsfx(name+"firedash")
@@ -595,33 +555,33 @@ if (bbut) {
 
 					i=shoot(x+16*xsc,y+8)
 					i.hspeed=0 i.vspeed=-4
-					i.growsize=-1 i.depth=depth+2
+					i.growsize=-1i.depth=depth+2
 
 					i=shoot(x+16*xsc,y+8)
 					i.hspeed=0 i.vspeed=-2
-					i.growsize=1 i.depth=depth-2
+					i.growsize=1i.depth=depth-2
 
 					i=shoot(x+16*xsc,y) 
 					i.hspeed=xsc*-2 i.vspeed=0
-					i.growsize=-1 i.depth=depth+2
-					i.image_xscale=0.75 i.image_yscale=0.75
+					i.growsize=-1i.depth=depth+2
+					i.image_xscale=0.75i.image_yscale=0.75
 
 					i=shoot(x+16*xsc,y) 
 					i.hspeed=xsc*2 i.vspeed=0
-					i.growsize=-1 i.depth=depth+2
-					i.image_xscale=0.75 i.image_yscale=0.75
+					i.growsize=-1i.depth=depth+2
+					i.image_xscale=0.75i.image_yscale=0.75
 
 
 					i=shoot(x,y-16) 
 					i.hspeed=xsc*-3 i.vspeed=-2
 					i.growsize=-1i.depth=depth+2
-					i.image_xscale=0.5 i.image_yscale=0.5
+					i.image_xscale=0.5i.image_yscale=0.5
 
 
 					i=shoot(x,y-16) 
 					i.hspeed=xsc*3 i.vspeed=-2
-					i.growsize=-1 i.depth=depth-2
-					i.image_xscale=0.5 i.image_yscale=0.5
+					i.growsize=-1i.depth=depth-2
+					i.image_xscale=0.5i.image_yscale=0.5
 					hsp*=1.01
 
 				}else if size!=8{

@@ -25,14 +25,14 @@ var iid;
 iid=noone
 
 nevermush=0
-if other.mushroom_unsupported {nevermush=1 mush=0}
+if owner.mushroom_unsupported {nevermush=1 mush=0}
 
 
 if (content="thunderitem" || (content="item" && alwaysthunder )) {
-    if (mush) {with (instance_create(x+8+offset,y+8+4*go,mushroom)) {iid=id vspeed=0.25*other.go alarm[0]=48}}
+    if (mush) {with (instance_create(x+8+offset,y+8+4*go,mushroom)) {iid=id vspeed=0.25*owner.go alarm[0]=48}}
     else {
-        if other.tflower_unsupported {
-            if other.fflower_unsupported{
+        if owner.tflower_unsupported {
+            if owner.fflower_unsupported{
                 if nevermush{
                     with (instance_create(x+8+offset,y+8+4*go,shield)) vspeed=3.5*other.go
                 } else with (instance_create(x+8+offset,y+8+4*go,mushroom)) {iid=id vspeed=0.25*other.go alarm[0]=48}
@@ -43,8 +43,8 @@ if (content="thunderitem" || (content="item" && alwaysthunder )) {
 if (content="wateritem" || (content="itemfeather" && alwayswater )) {
     if (mush) {with (instance_create(x+8+offset,y+8+4*go,mushroom)) {iid=id vspeed=0.25*other.go alarm[0]=48}}
     else{
-        if other.wflower_unsupported {
-            if other.feather_unsupported{
+        if owner.wflower_unsupported {
+            if owner.feather_unsupported{
                 if nevermush{
                     with (instance_create(x+8+offset,y+8+4*go,shield)) vspeed=3.5*other.go
                 } else with (instance_create(x+8+offset,y+8+4*go,mushroom)) {iid=id vspeed=0.25*other.go alarm[0]=48}
@@ -56,8 +56,8 @@ if (content="wateritem" || (content="itemfeather" && alwayswater )) {
 if (content="iceitem" || (content="item" && alwaysice )) {
     if (mush) {with (instance_create(x+8+offset,y+8+4*go,mushroom)) {iid=id vspeed=0.25*other.go alarm[0]=48}}
     else {
-        if other.iflower_unsupported {
-            if other.fflower_unsupported{
+        if owner.iflower_unsupported {
+            if owner.fflower_unsupported{
                 if nevermush{
                     with (instance_create(x+8+offset,y+8+4*go,shield)) vspeed=3.5*other.go
                 } else with (instance_create(x+8+offset,y+8+4*go,mushroom)) {iid=id vspeed=0.25*other.go alarm[0]=48}
@@ -68,8 +68,8 @@ if (content="iceitem" || (content="item" && alwaysice )) {
 if (content="cloveritem" || (content="itemfeather" && alwaysclover )) {
     if (mush) {with (instance_create(x+8+offset,y+8+4*go,mushroom)) {iid=id vspeed=0.25*other.go alarm[0]=48}}
     else {
-        if other.cflower_unsupported {
-            if other.feather_unsupported{
+        if owner.cflower_unsupported {
+            if owner.feather_unsupported{
                 if nevermush{
                     with (instance_create(x+8+offset,y+8+4*go,shield)) vspeed=3.5*other.go
                 } else with (instance_create(x+8+offset,y+8+4*go,mushroom)) {iid=id vspeed=0.25*other.go alarm[0]=48}
@@ -84,7 +84,7 @@ if (content="cloveritem" || (content="itemfeather" && alwaysclover )) {
 if (content="item") {
     if (mush) {with (instance_create(x+8+offset,y+8+4*go,mushroom)) {iid=id vspeed=0.25*other.go alarm[0]=48}}
     else {
-        if other.fflower_unsupported{
+        if owner.fflower_unsupported{
             if nevermush{
                 with (instance_create(x+8+offset,y+8+4*go,shield)) vspeed=3.5*other.go
             } else with (instance_create(x+8+offset,y+8+4*go,mushroom)) {iid=id vspeed=0.25*other.go alarm[0]=48}
@@ -96,7 +96,7 @@ if (content="item") {
 if (content="itemfeather") {
     if (mush) {with (instance_create(x+8+offset,y+8+4*go,mushroom)) {iid=id vspeed=0.25*other.go alarm[0]=48}}
     else {
-        if other.feather_unsupported{
+        if owner.feather_unsupported{
             if nevermush{
                 with (instance_create(x+8+offset,y+8+4*go,shield)) vspeed=3.5*other.go
             } else with (instance_create(x+8+offset,y+8+4*go,mushroom)) {iid=id vspeed=0.25*other.go alarm[0]=48}
@@ -105,8 +105,8 @@ if (content="itemfeather") {
 }
 if (content="questionmush") {
     if (mush) {with (instance_create(x+8+offset,y+8+4*go,mushroom)) {iid=id vspeed=0.25*other.go alarm[0]=48}}
-    else if !other.questionmush_supported {
-            if other.fflower_unsupported{
+    else if !owner.questionmush_supported {
+            if owner.fflower_unsupported{
                 if nevermush{
                     with (instance_create(x+8+offset,y+8+4*go,shield)) vspeed=3.5*other.go
                 } else with (instance_create(x+8+offset,y+8+4*go,mushroom)) {iid=id vspeed=0.25*other.go alarm[0]=48}
