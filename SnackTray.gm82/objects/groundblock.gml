@@ -12,7 +12,7 @@ c7=position_meeting(x-8,y-8,groundblock) || position_meeting(x-8,y-8,slopeground
 c4=position_meeting(x-8,y+8,groundblock) || position_meeting(x-8,y+8,slopeground) || position_meeting(x-8,y+8,uslopeground) || position_meeting(x-8,y+8,sloper1) || position_meeting(x-8,y+8,sloper2) || position_meeting(x-8,y+8,usloper1) || position_meeting(x-8,y+8,usloper2) || x=region.lefthand
 c1=position_meeting(x-8,y+24,groundblock) || position_meeting(x-8,y+24,slopeground) || position_meeting(x-8,y+24,uslopeground) || x=region.lefthand || y=region.ky-16
 c3=position_meeting(x+24,y+24,groundblock) || position_meeting(x+24,y+21,slopeground) || position_meeting(x+24,y+21,uslopeground) || position_meeting(x+24,y+24,groundblock) || x=region.x-16 || y=region.ky-16
-c8=position_meeting(x+8,y-8,groundblock) || position_meeting(x+8,y-8,slopeground)
+c8=position_meeting(x+8,y-8,groundblock) || position_meeting(x+8,y-8,slopeground) || y=0
 c2=position_meeting(x+8,y+24,groundblock) || position_meeting(x+24,y-8,uslopeground) || y=region.ky-16
 #define Other_11
 /*"/*'/**//* YYD ACTION

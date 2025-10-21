@@ -22,4 +22,7 @@ if (peelout && !up) {
         peelout=0
     }
     else peelout=0
+} else if !akey{
+    if (peelout && up) peelout+=1
+
 }

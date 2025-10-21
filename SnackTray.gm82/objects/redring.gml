@@ -27,10 +27,10 @@ instance_create(x,y,glitter)
 sound("itemredring")
 
 if !global.lemontest {
-    if (settings("rr" + redringid + global.levelfname + pack)) {
+    if (settings_savefile("rr" + redringid + global.levelfname + pack)) {
         stats("clear rings collected",stats("clear rings collected")+1) //"grey rings collected" epic fail
     } else {
-        settings("rr" + redringid + global.levelfname + pack,1)
+        settings_savefile("rr" + redringid + global.levelfname + pack,1)
         stats("red rings collected",stats("red rings collected")+1)
     }
 }

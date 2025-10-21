@@ -74,6 +74,7 @@ pf10=instance_position(x,y,optmusvol)
 pf11=instance_position(x,y,bundlelist)
 pf12=instance_position(x,y,optcamshim)
 pf13=instance_position(x,y,ta_worldskinlist)
+pf14=instance_position(x,y,cheevobase)
 
 with (pf1) {if (other.y<y+16 || other.y>=y+20) over=other.id}
 with (pf2) image_index=1+(other.x>x+44)
@@ -87,6 +88,7 @@ with (pf10) {over=other.id neweroptions.str=lang("tip "+object_get_name(object_i
 with (pf11){over1=(other.y<y+19) over2=(other.y>y+116)}
 with (pf12){over=other.id neweroptions.str=lang("tip "+object_get_name(object_index))}
 with (pf13) {over1=(other.x<x+20) over2=(other.x>bbox_right-20)}
+with (pf14) {mmlegends.str=unlocktip}
 
 if (wdown || wup) {
     with (pf3) event_user(2)

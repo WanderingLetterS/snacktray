@@ -451,22 +451,7 @@ if ((abut || jumpbufferdo) && (!springin)) {
         }
 		
 		if fall && !insted {
-			fall=0 
-			if !uncurled
-			vsp=-1
-			
-			sprung=0
-			sproinged=0
-			bouncetrick=0
-			tricking=0
-			if !uncurled{
-				proj_type="pstar"
-				i=fire_projectile(x,y) i.hspeed=-2 i.vspeed=2
-				i=fire_projectile(x,y) i.hspeed=2 i.vspeed=2
-				i=fire_projectile(x,y) i.hspeed=-2 i.vspeed=-2
-				i=fire_projectile(x,y) i.hspeed=2 i.vspeed=-2
-			}
-			uncurled=0
+			com_dorecurl()
 		}
 		
         jumpbuffer=4*!jumpbufferdo
@@ -474,45 +459,11 @@ if ((abut || jumpbufferdo) && (!springin)) {
 }
 
 if (spindash) {
-	spindust+=0.5
-	if spindust mod 1 {
-		
-		i=shoot(x-xsc*3,bbox_bottom+1) i.hspeed=-xsc*spindash i.vspeed=random(1)-0.5
-		i.gravity=-0.1
-		i.image_xscale=0.25
-		i.image_yscale=0.25
-		i.depth=p2-1
-		
-		i=shoot(x,bbox_bottom) i.hspeed=-xsc*spindash i.vspeed=random(1)-0.5
-		i.gravity=-0.15
-		i.image_xscale=0.25
-		i.image_yscale=0.25
-		i.depth=p2+1
-	}
-	spindust=wrap_val(spindust,0,7)
-	
-	
+	com_handlespindashdust(-xsc*spindash)	
 } 
 
 if (sprite="maxrun" && !jump) {
-	spindust+=0.5
-	if spindust mod 1 {
-		
-		i=shoot(x-xsc*3,bbox_bottom+1) i.hspeed=-hsp/2 i.vspeed=random(1)-0.5
-		i.gravity=-0.1
-		i.image_xscale=0.25
-		i.image_yscale=0.25
-		i.depth=p2-1
-		
-		i=shoot(x,bbox_bottom) i.hspeed=-hsp/2 i.vspeed=random(1)-0.5
-		i.gravity=-0.15
-		i.image_xscale=0.25
-		i.image_yscale=0.25
-		i.depth=p2+1
-	}
-	spindust=wrap_val(spindust,0,7)
-	
-	
+	com_handlespindashdust(-hsp/2)		
 } 
 
 
@@ -534,9 +485,6 @@ if (akey) {
 
 
 if (!akey) {
-if (peelout && up) peelout+=1 
-
-
     if (canstopjump=1 && jump && vsp<-2 && !sprung) {
         vsp*=0.5
     }
@@ -548,10 +496,7 @@ if (bbut) {
     if (spindash || (crouch)) {
 		com_startspindash()
 	} else {
-		if (jump && down && !bounce && !tricking && !bouncewindup){
-		bouncewindup=20
-		fall=0
-		} else if (jump && (fall=0 || fall=2 || fall=5) && !airdash && !firedash)&&!bouncetrick {
+		if (jump && (fall=0 || fall=2 || fall=5) && !airdash && !firedash)&&!bouncetrick {
 			if up && fall==0{
 				uncurled=1
 				fall=1
@@ -914,33 +859,7 @@ com_handlecloverwallrun()
 if (insta) insta-=1
 if (super) boost=1
 if (firedash) {firedash-=1 boost=1}
-if bouncewindup {vsp=-1 bouncewindup-=1
 
-	if !bouncewindup{
-		playsfx(name+"trick")
-		vsp=10
-		while !collision(0,0) && !dead && inview(){
-			y+=vsp
-		
-		}
-		i=shoot(x,y)
-		i.hspeed=-2
-		i=shoot(x,y)
-		i.hspeed=2
-		y-=10
-		bouncetrick=1
-		sproinged=1
-		vsp=-6
-		jump=1
-		//change jump angle in steep slopes
-		vd=point_direction(0,0,hsp,vsp)+point_direction(0,0,1,slobal/1.5)
-		vm=point_distance(0,0,hsp,vsp)
-		hsp=lengthdir_x(vm,vd)
-		vsp=lengthdir_y(vm,vd)
-
-	}
-
-}
 
 
 com_waterforces()

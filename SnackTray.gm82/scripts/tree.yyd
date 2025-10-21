@@ -371,21 +371,28 @@
 				|com_proj_mov_bouncefloor
 				|com_proj_mov_bouncewall
 			+abilities
-				+sonic
+				+generic
+					|com_smokegeneration
+					|com_waterforces
+					|com_defaultenemycollision
+				+sonic_generic
 					|com_startspindash
 					|com_handlespindash
 					|com_handlespinning
 					|com_spinhitblocks
+					|com_handlespindashdust
+					|com_dorecurl
+				+mario_generic
+				+sonic
 					|com_handlesonicdash
 					|com_handlecloverwallrun
 					|com_starthomingattack
 					|com_handlehomingattack
 					|com_startpeelout
 					|com_handlepeelout
-				+generic
-					|com_smokegeneration
-					|com_waterforces
-					|com_defaultenemycollision
+				+unused
+					|com_startquickbounce
+					|com_handlequickbounce
 			+damager functions
 				|com_dmgr_instashield
 				|com_dmgr_dmg_blocks

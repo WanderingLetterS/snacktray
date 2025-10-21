@@ -113,6 +113,7 @@ viewy=median(t,viewy,b-h) if (b-t<h) viewy=round((b+t-h)/2)
 
 if viewy+global.screenheight>region.ky viewy=region.ky-global.screenheight
 
+
 with (flag) if (passed[other.p2] && issign) {other.viewx=view_xview[other.p2]}
 
 //i cant believe youve done this

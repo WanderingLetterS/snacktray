@@ -36,10 +36,13 @@ with firstrun[p2] {
 
     if (global.gamemode="battle") picky=other.place[p2]-1
 
-                 sprite="pose" //TODO: CHANGE THESE TO CUSTOM POSES (battlewin, battlemid, battlelose)
-    if (picky=1) sprite="wait"
-    if (picky=2) sprite="knock"
-    if (picky=3) sprite="dead"
+        sprite="battlewin" //yippie
+        if (picky=1) sprite="battlemid"
+        if (picky=2) sprite="battlelose"
+        if (picky=3) sprite="battledead"
+
+
+
 
     if (sid=0) { //edited from a section of adiwah
         var p,list,c,tokens;

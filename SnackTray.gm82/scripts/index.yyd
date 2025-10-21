@@ -2367,3 +2367,7 @@ deathofdeities
 com_grindblock
 com_usingtriangleblock
 settings_savefile
+com_handlespindashdust
+com_handlequickbounce
+com_startquickbounce
+com_dorecurl

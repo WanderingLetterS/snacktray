@@ -14,10 +14,10 @@ lg=lemongrab.id
 with (spawner) {
     if (global.lemontest) {
         x=lg.tspawnx*16
-        y=lg.tspawny*16+16
+        y=lg.tspawny*16
     } else {
         x=lg.spawnx*16
-        y=lg.spawny*16+16
+        y=lg.spawny*16
     }
 }
 
@@ -29,14 +29,14 @@ repeat (8) {
         typebg=lg.typebg[i]
         typemus=lg.typemus[i]
         lefthand=offx
-        ky=lg.h[i]*16+16
-        water=(lg.h[i]-lg.water[i])*16+16
+        ky=lg.h[i]*16
+        water=(lg.h[i]-lg.water[i])*16
         horizon=(lg.h[i]-lg.horizon[i])*16
         bpm=lg.bpm[i]
         bpb=lg.bpb[i]
         lightlevel=lg.lightlevel[i]
         if horizon<=0 horizon=-verybignumber
-        else horizon+=16
+        //else horizon+=16
         if (water==16) {water=-16 with (instance_create(offx,0,barrier)) {image_xscale=(other.x-x)/16}}
     }
 
@@ -44,25 +44,25 @@ repeat (8) {
 
     with (lg.gods[i]) {
         if obj {
-            o=instance_create(offx+x*16+off+off2x,y*16+off+off2y+16,obj)
+            o=instance_create(offx+x*16+off+off2x,y*16+off+off2y,obj)
             count=lg.objlist[dataid,3]
             if (count) {j=0 repeat (count) {variable_instance_set(o,lg.objlist[dataid,5+j],data[j]) j+=1}}
             if (current_time>global.loadtime+64) loadtext()
         }
     }
     with (lg.waters[i]) {
-        instance_create(offx+x*16,y*16+16,waterblock)
+        instance_create(offx+x*16,y*16,waterblock)
         if (current_time>global.loadtime+64) loadtext()
     }
     with (lg.semis[i]) {
         if obj {
-            instance_create(offx+x*16,y*16+16,obj)
+            instance_create(offx+x*16,y*16,obj)
             if (current_time>global.loadtime+64) loadtext()
         }
     }
     with (lg.backs[i]) {
         if obj {
-            instance_create(offx+x*16,y*16+16,obj)
+            instance_create(offx+x*16,y*16,obj)
             if (current_time>global.loadtime+64) loadtext()
         }
     }
@@ -77,9 +77,9 @@ repeat (8) {
         b=128
         repeat (8) {
             if (j mod 48<lg.w[i]/16 && j div 48<lg.h[i]/9) {
-                if (v & b) instance_create(offx+(j mod 48)*250,(j div 48)*140+16,camblock)
-                if (v2 & b) instance_create(offx+(j mod 48)*250,(j div 48)*140+16,camsecret)
-                if (v3 & b) instance_create(offx+(j mod 48)*250,(j div 48)*140+16,camsecret)
+                if (v & b) instance_create(offx+(j mod 48)*250,(j div 48)*140,camblock)
+                if (v2 & b) instance_create(offx+(j mod 48)*250,(j div 48)*140,camsecret)
+                if (v3 & b) instance_create(offx+(j mod 48)*250,(j div 48)*140,camsecret)
                 b=b>>1
             }
             j+=1
@@ -93,9 +93,9 @@ repeat (8) {
             b=128
             repeat (8) {
                 if (j mod 24<lg.w[i]/25 && j div 24<lg.h[i]/14) {
-                    if (v & b) instance_create(offx+(j mod 24)*400,(j div 24)*224+16,camblock)
-                    if (v2 & b) instance_create(offx+(j mod 24)*400,(j div 24)*224+16,camsecret)
-                    if (v3 & b) instance_create(offx+(j mod 24)*400,(j div 24)*224+16,camsecret)
+                    if (v & b) instance_create(offx+(j mod 24)*400,(j div 24)*224,camblock)
+                    if (v2 & b) instance_create(offx+(j mod 24)*400,(j div 24)*224,camsecret)
+                    if (v3 & b) instance_create(offx+(j mod 24)*400,(j div 24)*224,camsecret)
                     b=b>>1
                 }
                 j+=1
