@@ -169,22 +169,22 @@ if showbox {
 
 var selected_spray, changed;
 selected_spray = false;
-if point_in_rectangle(other.x,other.y,x-23,y-23,x-23+8,y-23+8) {
+if point_in_rectangle(other.x,other.y,x-17,y-32,x-17+8,y-32+8) {
     global.pal_1[p2]=(global.pal_1[p2]+1) mod playerskindat(p2,"totpal"+string(p2))
     changed=1
     selected_spray = true;
 }
-if point_in_rectangle(other.x,other.y,x-23+8,y-23,x-23+16,y-23+8) {
+if point_in_rectangle(other.x,other.y,x-16+8,y-32,x-16+8+8,y-32+8) {
     global.pal_2[p2]=(global.pal_2[p2]+1) mod playerskindat(p2,"totpal"+string(p2))
     changed=2
     selected_spray = true;
 }
-if point_in_rectangle(other.x,other.y,x-23+16,y-23,x-23+24,y-23+8) {
+if point_in_rectangle(other.x,other.y,x-15+16,y-32,x-15+24,y-32+8) {
     global.pal_3[p2]=(global.pal_3[p2]+1) mod playerskindat(p2,"totpal"+string(p2))
     changed=3
     selected_spray = true;
 }
-if point_in_rectangle(other.x,other.y,x-23+24,y-23,x-23+32,y-23+8) {
+if point_in_rectangle(other.x,other.y,x-14+24,y-32,x-14+32,y-32+8) {
     global.pal_4[p2]=(global.pal_4[p2]+1) mod playerskindat(p2,"totpal"+string(p2))
     changed=4
     selected_spray = true;
