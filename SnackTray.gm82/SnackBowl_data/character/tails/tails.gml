@@ -369,7 +369,12 @@ if ((abut || jumpbufferdo) && (!springin)) {
 					spritekeep=0
 					energy-=2
 					vsp=-4
-					
+					tricking=0
+					sprung=0
+					sproinged=0
+					bouncetrick=0
+					tricking=0
+
 					if (y<view_yview) {y=view_yview vsp=-0.75}
 					if energy<1
 					 fly=0
@@ -403,6 +408,12 @@ if ((abut || jumpbufferdo) && (!springin)) {
 				if ((!fall || fall=5 || fall=1) && y>0) {
 					spritekeep=0
 					fly=30
+					tricking=0
+					sprung=0
+					sproinged=0
+					bouncetrick=0
+					tricking=0
+							
 					if fall=1 vsp=-1
 					fall=1
 					tired=(energy<1)
@@ -417,7 +428,7 @@ if ((abut || jumpbufferdo) && (!springin)) {
 			fall=0 
 			if !uncurled
 			vsp=-1
-			
+			tricking=0
 			sprung=0
 			sproinged=0
 			bouncetrick=0
@@ -477,7 +488,7 @@ if (bbut) {
     if (spindash || (crouch)) {
 		com_startspindash()
 	} else {
-		if (jump && (fall=0 || fall=2 || fall=5) && !airdash && !firedash)&&!bouncetrick {
+		if (jump && (fall=0 || fall=2 || fall=5) && !airdash && !firedash) {
 			{
 			
 			
@@ -507,7 +518,7 @@ if (bbut) {
 				
 			
 			}	
-        } else if sproinged||sprung||bouncetrick{
+        } else if sproinged||sprung{
 			if up{
 				tricking=1
 				vsp=-5
@@ -739,7 +750,7 @@ if (fly) {
 	mc=0
 	if (inst) {stopsfx(inst) inst=0}
 }
-
+if !jump && abs(hsp)<3 boost=0
 
 // VULNERABILITY AND PLAYER COLLISION
 

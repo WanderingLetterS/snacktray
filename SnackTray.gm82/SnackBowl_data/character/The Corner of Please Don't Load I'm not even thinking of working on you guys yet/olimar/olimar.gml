@@ -162,7 +162,6 @@ global.olimar_pikunlocked[8]=0
 global.olimar_pikunlocked[9]=0
 global.olimar_pikunlocked[10]=0
 
-
 moddir=global.workdir+"mods\"
 skindir=global.workdir+"skins\"
 path=global.pskins[1+global.playerskin[p2],global.option[p2]]
@@ -1216,7 +1215,7 @@ with curr_proj{
 		mask_index=spr_mask2x2
 		image_xscale=37/2
 		image_yscale=40/2
-		while !collision(0,1) y+=1
+		//while !collision(0,1) y+=1
 		
 	}
 	if (event=="step"){

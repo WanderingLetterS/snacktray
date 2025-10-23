@@ -110,10 +110,13 @@ walk speed=0.4
 run frames=4
 run loop=1
 run speed=0.4
+run offset x=-4
+run offset y=3
 
 maxrun frames=4
 maxrun loop=1
 maxrun speed=0.2
+maxrun offset y=2
 
 brake frames=4
 brake loop=4
@@ -131,6 +134,7 @@ bonk speed=0.1
 fall frames=3
 fall loop=2
 fall speed=0.25
+fall frametimes= 0.5,1,1
 
 spring frames=2
 spring loop=1

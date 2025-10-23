@@ -524,7 +524,7 @@ if (bbut) {
 					playsfx(name+"firedash")
 
 				}
-				if is_feather{
+				if is_feather(){
 					vsp=-4
 					feathdasheffect=1
 					feathdasheffecty_x=x
