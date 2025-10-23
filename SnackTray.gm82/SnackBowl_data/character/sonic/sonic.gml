@@ -512,11 +512,11 @@ if (bbut) {
 				hsp=max(abs(hsp)+0.1, 1.25)*sign(xsc) //hsp=max(2,abs(hsp))*esign(hsp,xsc)
 				vsp=-2
 				fall=10
-				if (size==6) {
+				if is_thunder(){
 					com_starthomingattack()
 				}
 
-				if size==2{
+				if is_fire(){
 					hsp=4.5*xsc
 					vsp=-1
 					firedash=24
@@ -524,7 +524,7 @@ if (bbut) {
 					playsfx(name+"firedash")
 
 				}
-				if size==3{
+				if is_feather{
 					vsp=-4
 					feathdasheffect=1
 					feathdasheffecty_x=x
@@ -533,7 +533,7 @@ if (bbut) {
 					feathdasheffecty_hsp=-xsc*3
 					feathdasheffecty_vsp=-1
 				}
-				if (energy>=(maxe-1) || boost) && size!=8 {
+				if (energy>=(maxe-1) || boost) && !is_ice() {
 					hyperspeed=(2-size==0)*esign(hsp,xsc)
 					boost=1 boosted=1  playsfx(name+"release",0,0.8)  
 					proj_type="psmok"
@@ -569,7 +569,7 @@ if (bbut) {
 					i.image_xscale=0.5 i.image_yscale=0.5
 					hsp*=1.01
 
-				}else if size!=8{
+				}else if !is_ice(){
 					if !underwater(){
 						proj_type="psmok"
 						i=shoot(x-4*t,y+4) i.hspeed=-2*t i.vspeed=0.5 i.growsize=0.25

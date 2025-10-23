@@ -8,6 +8,8 @@ step=argument[0]
 if (object_index=player ) {
     if (step==1) {
         oldspr=sprite
+        over_oldspr=over_sprite
+        under_oldspr=under_sprite
         if (flash && global.bgscroll mod 5<3) exit
 
         if using_triangleblock {jump=0 hsp=triangleblock_speed} //Trick the code into thinking we're not jumping to use our run animations
@@ -23,8 +25,12 @@ if (object_index=player ) {
 } else {
     if (step==1) { //CONGRATULATIONS!!! YOU WIN A FREE iPHONE 5
         oldspr=sprite
+        over_oldspr=over_sprite
+        under_oldspr=under_sprite
     }
     oldspr=string(oldspr)
+    over_oldspr=string(over_oldspr)
+    under_oldspr=string(under_oldspr)
     sheet=sheets[size]
 }
 

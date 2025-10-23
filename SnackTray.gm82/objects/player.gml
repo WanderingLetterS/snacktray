@@ -68,11 +68,17 @@ size=0
 energy=0
 memsize=-1
 sprite=""
+under_sprite=""
+over_sprite=""
 oldspr=""
+under_oldspr=""
+over_oldspr=""
 fallspr=""
 shadow=0
 alpha=1
 sprite_angle=0
+under_sprite_angle=0
+over_sprite_angle=0
 bumperpower=3
 bumpercollision=1
 nocratebounce=0
@@ -213,7 +219,21 @@ if !(flash && global.bgscroll mod 5<3)
         if (((hurt || fall=6) && hk<4) || (grow && gk mod 6<3)) size=oldsize
         sheet=sheets[size]
         if using_triangleblock x-=triangleblock_cling*6 //Get that looking nicely
+
+        //under sprite.
+        if use_under_sprite{
+            if under_sprite!=""
+            ssw_undercore(0)
+        }
+
         ssw_core(0)
+
+        if use_over_sprite{
+            if over_sprite!=""
+            ssw_overcore(0)
+        }
+
+
         if using_triangleblock x+=triangleblock_cling*6 //Let's not fuck with gameplay now.
         if (!super) if (((hurt || fall=6) && hk<4) || (grow && gk mod 6<3)) size=mem
     }

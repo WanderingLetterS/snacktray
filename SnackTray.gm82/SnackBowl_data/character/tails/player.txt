@@ -1,13 +1,13 @@
-[sonic]
-name=Sonic
+[tails]
+name=Tails
 
 icon speed=6
 icon loop=yes
 animation speed=1.0
-center x=17
-center y=15
-box width=34
-box height=34
+center x=22
+center y=16
+box width=39
+box height=32
 short small form=0.8
 
 pitch spindash=yes
@@ -19,10 +19,16 @@ pipe squish=20
 pole center offset=8
 mini sheet=0
 
+movement tails offset x=0
+movement tails offset y=4
+spindash tails offset x=0
+spindash tails offset y=10
+
+
 skin offset=44
 use paletting=true
-defaultspray 1=2
-defaultspray 2=6
+defaultspray 1=6
+defaultspray 2=0
 defaultspray 3=5
 defaultspray 4=0
 
@@ -32,15 +38,14 @@ snack layout=true
 max sizes=9
 
 single sheet=true
-singlesheet split width=8,559,1109,8,8,8,559,1109,559,1109
-singlesheet split height=0,0,0,448,896,0,448,448,896,896
+singlesheet split width=8,8,8,8,8,8,8,8,8,8
+singlesheet split height=0,0,0,0,0,0,0,0,0,0
 
 sheet splits=flagslide
-sheet split size=280
+sheet split size=320
 
 
-
-custom sprite list=stand,wait,lookup,crouch,balance,push,pose,knock,dead,walk,run,maxrun,brake,jump,bonk,fall,spring,springfall,roll,climbing,flagslide,piping,pipingup,sidepiping,doorenter,doorexit,spinjump,spindash,spincharge,rampof,trickup,trickright,uncurl,dash,bouncewindup,bouncetrick
+custom sprite list=stand,wait,lookup,crouch,balance,push,pose,knock,dead,walk,run,maxrun,brake,jump,bonk,fall,tail_idle,tail_movement,roll,climbing,flagslide,piping,pipingup,sidepiping,doorenter,doorexit,spinjump,spindash,spincharge,rampof,trickup,trickright,fired,fly_up,fly,fly_down,fly_tired,swim
 
 connect crouch=true
 connect push=true
@@ -52,6 +57,8 @@ connect fall=true
 connect flagslide=true
 connect doorexit=true
 connect trickright=true
+connect fly=true
+connect fly_tired=true
 
 reroute spring=jump
 reroute springfall=fall
@@ -62,10 +69,9 @@ stand loop=1
 stand speed=0.2
 stand frametimes=32,1,1
 
-wait frames=8
-wait loop=4
+wait frames=7
+wait loop=5
 wait speed=0.15
-wait frametimes=1,1,5,1.15,1.15,1.15,1.15,3
 
 lookup frames=4
 lookup loop=2
@@ -101,7 +107,7 @@ walk frames=8
 walk loop=1
 walk speed=0.4
 
-run frames=8
+run frames=4
 run loop=1
 run speed=0.4
 
@@ -134,9 +140,21 @@ springfall frames=8
 springfall loop=1
 springfall speed=0.5
 
-roll frames=8
+tail_idle frames=6
+tail_idle loop=1
+tail_idle speed=0.1
+tail_idle offset x=-3
+
+tail_movement frames=8
+tail_movement loop=1
+tail_movement speed=0.5
+tail_movement offset x=-6
+tail_movement offset y=0
+
+roll frames=4
 roll loop=1
 roll speed=0.5
+roll offset y=0
 
 climbing frames=4
 climbing loop=1
@@ -166,7 +184,7 @@ doorexit frames=2
 doorexit loop=2
 doorexit speed=0.1
 
-spinjump frames=8
+spinjump frames=4
 spinjump loop=1
 spinjump speed=0.5
 
@@ -190,21 +208,30 @@ trickup frames=2
 trickup loop=1
 trickup speed=0.25
 
-uncurl frames=3
-uncurl loop=2
-uncurl speed=0.25
+fired frames=3
+fired loop=3
+fired speed=0.25
 
-dash frames=5
-dash loop=4
-dash speed=0.2
+fly_up frames=4
+fly_up loop=1
+fly_up speed=0.45
 
-bouncewindup frames=3
-bouncewindup loop=3
-bouncewindup speed=0.25
+fly frames=4
+fly loop=1
+fly speed=0.45
 
-bouncetrick frames=8
-bouncetrick loop=7
-bouncetrick speed=0.2
+fly_down frames=4
+fly_down loop=1
+fly_down speed=0.45
+
+fly_tired frames=4
+fly_tired loop=1
+fly_tired speed=0.25
+
+swim frames=4
+swim loop=1
+swim speed=0.2
+
 
 
 

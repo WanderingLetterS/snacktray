@@ -2371,3 +2371,9 @@ com_handlespindashdust
 com_handlequickbounce
 com_startquickbounce
 com_dorecurl
+ssw_undercore
+under_spriteswitch
+over_spriteswitch
+ssw_overcore
+
+

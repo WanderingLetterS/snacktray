@@ -15,6 +15,8 @@ if (peelout && !up) {
         energy=4
         hyperspeed=(peelout/45)*sign(hsp)
         peelout=0
+        boost=1 boosted=1
+
     }
     else if (peelout<45) {
         playsfx(name+"peelrelease")

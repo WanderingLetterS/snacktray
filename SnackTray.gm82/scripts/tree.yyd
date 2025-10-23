@@ -288,8 +288,12 @@
 		|player_vertstep
 		|player_climbstep
 		|spriteswitch
+		|under_spriteswitch
+		|over_spriteswitch
 		|frame_number
 		|ssw_core
+		|ssw_undercore
+		|ssw_overcore
 		|player_magnetslope
 		|player_nslopforce
 	+Powerup
@@ -390,6 +394,9 @@
 					|com_handlehomingattack
 					|com_startpeelout
 					|com_handlepeelout
+				+mario
+				+tails
+				+luigi
 				+unused
 					|com_startquickbounce
 					|com_handlequickbounce

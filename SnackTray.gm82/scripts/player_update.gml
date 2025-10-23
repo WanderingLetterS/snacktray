@@ -14,5 +14,12 @@ with (player) {
     with (mydamager) event_user(p2)
     if p2==0 ||  global.gamemode!="sscreencoop"
     player_camera(0)
+
     spriteswitch(1)
+
+    if use_under_sprite
+    under_spriteswitch(1)
+
+    if use_over_sprite
+    over_spriteswitch(1)
 }

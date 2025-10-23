@@ -637,34 +637,12 @@ if ((abut || jumpbufferdo) && (!springin)) {
 					}
 				}
 				playsfx(name+"release")
-				i=shoot(x+16*xsc,y+8,psmoke,0,4) 
-				i.growsize=-1
-				i.depth=depth+2
-				i=shoot(x+16*xsc,y+8,psmoke,0,4) 
-				i.growsize=1
-				i.depth=depth-2
+				i=shoot(x+16*xsc,y+8,psmoke,0,4) i.growsize=-1 i.depth=depth+2 i=shoot(x+16*xsc,y+8,psmoke,0,4) i.growsize=1 i.depth=depth-2
 				
-				i=shoot(x+16*xsc,y,psmoke,xsc*-2,2) 
-				i.growsize=-1
-				i.depth=depth+2
-				i.image_xscale=0.75
-				i.image_yscale=0.75
-				i=shoot(x+16*xsc,y,psmoke,xsc*2,2) 
-				i.growsize=1
-				i.image_xscale=0.75
-				i.image_yscale=0.75
-				i.depth=depth-2
-				
-				i=shoot(x,y-16,psmoke,xsc*-3,4) 
-				i.growsize=-1
-				i.depth=depth+2
-				i.image_xscale=0.5
-				i.image_yscale=0.5
-				i=shoot(x+16*xsc,y,psmoke,xsc*3,4) 
-				i.growsize=1
-				i.image_xscale=0.5
-				i.image_yscale=0.5
-				i.depth=depth-2
+				i=shoot(x+16*xsc,y,psmoke,xsc*-2,2) i.growsize=-1  i.depth=depth+2 i.image_xscale=0.75 i.image_yscale=0.75 
+				i=shoot(x+16*xsc,y,psmoke,xsc*2,2) i.growsize=1	i.image_xscale=0.75	i.image_yscale=0.75	i.depth=depth-2	
+				i=shoot(x,y-16,psmoke,xsc*-3,4) i.growsize=-1 i.depth=depth+2 i.image_xscale=0.5 i.image_yscale=0.5 
+				i=shoot(x+16*xsc,y,psmoke,xsc*3,4) i.growsize=1	i.image_xscale=0.5 i.image_yscale=0.5 i.depth=depth-2
 			}
 		
 		} else{
