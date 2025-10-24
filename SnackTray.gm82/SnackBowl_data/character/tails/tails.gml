@@ -1,5 +1,5 @@
 #define spritelist
-stand,wait,lookup,crouch,balance,pose,knock,dead,walk,run,maxrun,push,brake,jump,bonk,fall,spring,springfall,roll,climbing,flagslide,piping,pipingup,sidepiping,doorenter,doorexit,spinjump,spindash,spincharge,rampof,trickup,trickright,fired,fly_up,fly,fly_down,fly_tired,swim,tail_idle,tail_movement
+stand,wait,lookup,crouch,balance,pose,knock,dead,walk,run,maxrun,push,brake,jump,bonk,fall,spring,springfall,roll,climbing,flagslide,piping,pipingup,sidepiping,doorenter,doorexit,spinjump,spindash,spincharge,rampof,trickup,trickright,fired,fly_up,fly,fly_down,fly_tired,swim,tail_idle,tail_movement,handlegrab,grindgrab,grinding
 
 
 #define soundlist
@@ -160,6 +160,10 @@ else if (jump) {
 		{
 		sprite="climbing" frspd=sign(left+right+up+down)
 		}
+		else if using_grindblock{
+			if grind_hanging sprite="grindgrab"
+			else sprite="grinding"
+		}
 		else if (superdashactive||spritekeep) {if oldspr!="maxrun" spritekeep=1 sprite="maxrun"}
 		else if (fly) {sprite="fly" if fly>5 sprite="fly_up" if (down) sprite="fly_down" if (tired) sprite="fly_tired" frspd=1-0.5*tired +(fly/30) if underwater() sprite="swim"}
 		else if (tricking) {if tricking!=2 sprite="trickup" else sprite="trickright"}
@@ -196,13 +200,13 @@ else if (jump) {
 }
 under_sprite=""
 over_sprite=""
-if sprite="stand"||sprite="crouch"||sprite="lookup"||sprite="wait"{
+if sprite="stand"||sprite="crouch"||sprite="lookup"||sprite="wait"||sprite="handlegrab"{
 	under_sprite="tail_idle"
 	under_sprite_angle=0
 	under_xoffset=0
 	under_yoffset=0
 
-} else if sprite="spinjump" || sprite="roll"{
+} else if sprite="spinjump" || sprite="roll" {
 	under_sprite="tail_movement"
 	under_sprite_angle=point_direction(0,0,hsp*sign(xsc),vsp*sign(xsc))
 	under_xoffset=tail_offset_x
@@ -214,7 +218,13 @@ if sprite="stand"||sprite="crouch"||sprite="lookup"||sprite="wait"{
 	under_xoffset=spindashtail_offset_x
 	under_yoffset=spindashtail_offset_y
 
-}
+} else if sprite="grinding" || sprite="grindgrab" {
+
+	under_sprite="tail_movement"
+	under_sprite_angle=point_direction(0,0,hsp*sign(xsc),vsp*sign(xsc))
+	under_xoffset=tail_offset_x+4*xsc
+	under_yoffset=tail_offset_y
+} 
 
 
 #define controls
@@ -380,7 +390,7 @@ if ((abut || jumpbufferdo) && (!springin)) {
 					 fly=0
 					 else fly=1
 				} else {
-					if ((!fall || fall=5 || fall=1 ) && y>0) {
+					if ((!fall) && y>0) {
 						spritekeep=0
 						fly=1
 						fall=1
@@ -405,7 +415,7 @@ if ((abut || jumpbufferdo) && (!springin)) {
 				if (down) {fly=0 fall=0}
 				if (!tired) fly=30
 			} else {
-				if ((!fall || fall=5 || fall=1) && y>0) {
+				if ((!fall) && y>0) {
 					spritekeep=0
 					fly=30
 					tricking=0
@@ -488,7 +498,7 @@ if (bbut) {
     if (spindash || (crouch)) {
 		com_startspindash()
 	} else {
-		if (jump && (fall=0 || fall=2 || fall=5) && !airdash && !firedash) {
+		if (jump && (fall=0 || fall=2 || fall=5 || fly)) {
 			{
 			
 			
@@ -500,15 +510,15 @@ if (bbut) {
 					i.vspeed=-4*(!jump || (size=2 && !left && !right))+down*2-up
 					fired=15
 				}*/
-				if (energy>=3-((size=3)) || (energy && size=4) ) && jump && !(size=2 && !left && !right){
+				if (energy>=2.5-((is_feather())) || (energy && is_ice()) ) && jump && !(is_fire() && !left && !right){
 					if h=0
 					direc=sign(xsc) else direc=h
 					vdirec=down-up	
 					superdashactive=1 
 					superdashspeedboost=1
 					superdash=40
-					if size!=4
-					energy-=3-((size=3))
+					if !is_ice()
+					energy-=3-((is_feather()))
 					playsfx(name+"flydash")
 					i=shoot(x,y,psmoke,-3*xsc,1) i.growsize=2 i.image_xscale=0.75 i.image_yscale=0.75
 					i=shoot(x,y,psmoke,-3*xsc,-1) i.growsize=-2 i.image_xscale=0.75 i.image_yscale=0.75
@@ -826,6 +836,11 @@ if (skidding) {soundstop(name+"skid") skidding=0}
 if (carry && carryid) {with (carryid) event_user(0) carryid=noone carry=0}
 clover_climb=0 
 energy=0
+flydash=0
+flydashactive=0
+superdash=0
+superdashactive=0
+boost=0
 braking=0
 sprung=0
 diggity=0

@@ -40,7 +40,7 @@ sheet split size=280
 
 
 
-custom sprite list=stand,wait,lookup,crouch,balance,push,pose,knock,dead,walk,run,maxrun,brake,jump,bonk,fall,spring,springfall,roll,climbing,flagslide,piping,pipingup,sidepiping,doorenter,doorexit,spinjump,spindash,spincharge,rampof,trickup,trickright,uncurl,dash,bouncewindup,bouncetrick
+custom sprite list=stand,wait,lookup,crouch,balance,push,pose,knock,dead,walk,run,maxrun,brake,jump,bonk,fall,handlegrab,grindgrab,grinding,roll,climbing,flagslide,piping,pipingup,sidepiping,doorenter,doorexit,spinjump,spindash,spincharge,rampof,trickup,trickright,uncurl,dash,bouncewindup,bouncetrick
 
 connect crouch=true
 connect push=true
@@ -52,6 +52,7 @@ connect fall=true
 connect flagslide=true
 connect doorexit=true
 connect trickright=true
+connect grindgrab=true
 
 reroute spring=jump
 reroute springfall=fall
@@ -133,6 +134,18 @@ spring speed=0.25
 springfall frames=8
 springfall loop=1
 springfall speed=0.5
+
+handlegrab frames=1
+handlegrab loop=1
+handlegrab speed=0.25
+
+grindgrab frames=2
+grindgrab loop=1
+grindgrab speed=0.5
+
+grinding frames=2
+grinding loop=1
+grinding speed=0.5
 
 roll frames=8
 roll loop=1

@@ -1,6 +1,6 @@
 ///com_grindblock()
 if grind_cooldown {using_grindblock=0 exit}
-
+onvine=0
 
 if !(using_grindblock){
     if (y>my_ziptrack.y){

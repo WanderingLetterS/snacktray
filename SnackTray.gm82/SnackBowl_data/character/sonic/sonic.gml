@@ -1,5 +1,5 @@
 #define spritelist
-stand,wait,lookup,crouch,balance,pose,knock,dead,walk,run,maxrun,push,brake,jump,bonk,fall,spring,springfall,roll,climbing,flagslide,piping,pipingup,sidepiping,doorenter,doorexit,spinjump,spindash,spincharge,rampof,trickup,trickright,uncurl,dash,bouncewindup,bouncetrick
+stand,wait,lookup,crouch,balance,pose,knock,dead,walk,run,maxrun,push,brake,jump,bonk,fall,spring,springfall,roll,climbing,flagslide,piping,pipingup,sidepiping,doorenter,doorexit,spinjump,spindash,spincharge,rampof,trickup,trickright,uncurl,dash,bouncewindup,bouncetrick,handlegrab,grindgrab,grinding
 
 
 #define soundlist
@@ -202,6 +202,7 @@ else if (event=="4star_draw"){
 frspd=1
 cantslowanim=0
 if (grabflagpole) {sprite="flagslide"}
+
 else if (hurt) {sprite="knock"}
 else if (bouncewindup) sprite="bouncewindup"
 else if (spindash) {if (spinchargetimer>10) sprite="spincharge" else sprite="spindash"}
@@ -211,6 +212,10 @@ else if (jump) {
 		if (onvine) 
 		{
 		sprite="climbing" frspd=sign(left+right+up+down)
+		}
+		else if using_grindblock{
+			if grind_hanging sprite="grindgrab"
+			else sprite="grinding"
 		}
 		else if bouncetrick sprite="bouncetrick"
 		else if (clover_climb) {sprite="maxrun" sprite_angle=90*xsc  dy=-7}

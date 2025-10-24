@@ -41,11 +41,11 @@ single sheet=true
 singlesheet split width=8,8,8,8,8,8,8,8,8,8
 singlesheet split height=0,0,0,0,0,0,0,0,0,0
 
-sheet splits=flagslide
+sheet splits=tail_idle
 sheet split size=320
 
 
-custom sprite list=stand,wait,lookup,crouch,balance,push,pose,knock,dead,walk,run,maxrun,brake,jump,bonk,fall,tail_idle,tail_movement,roll,climbing,flagslide,piping,pipingup,sidepiping,doorenter,doorexit,spinjump,spindash,spincharge,rampof,trickup,trickright,fired,fly_up,fly,fly_down,fly_tired,swim
+custom sprite list=stand,wait,lookup,crouch,balance,push,pose,knock,dead,walk,run,maxrun,brake,jump,bonk,fall,handlegrab,grindgrab,grinding,roll,climbing,flagslide,tail_idle,piping,pipingup,sidepiping,doorenter,doorexit,spinjump,spindash,spincharge,rampof,trickup,trickright,fired,fly_up,fly,fly_down,fly_tired,swim,tail_movement
 
 connect crouch=true
 connect push=true
@@ -59,6 +59,7 @@ connect doorexit=true
 connect trickright=true
 connect fly=true
 connect fly_tired=true
+connect grindgrab=true
 
 reroute spring=jump
 reroute springfall=fall
@@ -90,10 +91,9 @@ push frames=4
 push loop=1
 push speed=0.05
 
-pose frames=5
-pose loop=2
-pose speed=0.20
-pose frametimes=1.5,1,1,1,1
+pose frames=4
+pose loop=4
+pose speed=0.25
 
 knock frames=1
 knock loop=1
@@ -143,6 +143,19 @@ spring speed=0.25
 springfall frames=8
 springfall loop=1
 springfall speed=0.5
+
+handlegrab frames=1
+handlegrab loop=1
+handlegrab speed=0.25
+
+grindgrab frames=2
+grindgrab loop=1
+grindgrab speed=0.5
+
+grinding frames=2
+grinding loop=1
+grinding speed=0.5
+
 
 tail_idle frames=6
 tail_idle loop=1
@@ -204,13 +217,15 @@ rampof frames=8
 rampof loop=7
 rampof speed=0.5
 
-trickright frames=2
-trickright loop=1
-trickright speed=0.25
 
 trickup frames=2
 trickup loop=1
 trickup speed=0.25
+
+trickright frames=4
+trickright loop=1
+trickright speed=0.5
+
 
 fired frames=3
 fired loop=3
