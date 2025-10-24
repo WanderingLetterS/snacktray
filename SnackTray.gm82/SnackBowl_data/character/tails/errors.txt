@@ -1,2 +1,0 @@
-COMPILATION ERROR in string to be executedError in code at line 276:   
-     spring=0              ^at position 13: Variable name expected.

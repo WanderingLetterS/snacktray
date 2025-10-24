@@ -1,0 +1,29 @@
+
+Tails Powerups:
+ Gimmick: Tails gains an extra move in C.
+Fire Form:
+      - Napalm. (Press B to throw a Napalm from Tails Adventure. Leaves a trail of Fire that spreads forward.)
+      - Fire Swipe. Releases a  fast projectile with a decently sized hitbox.
+Feather Form:
+      - Fly Dash+ (Fly Dash costs less energy.)
+      - Quick Swipe. A very fast swipe that lets Tails skip forward in the air at good speeds
+
+Water Form:
+      - Tails now swims in air for a few seconds, this lets him fly free of charge while it lasts.
+      - Water Swipe.  Releases a water bubble you can jump off of to regain some energy!
+
+Thunder Form:
+      - Energy Cannon (Press C to start charging, release while holding a direction to shoot!)
+                      Energy cannon will provide extra height when used downwards.
+      - You can go higher even faster at no additional energy cost.
+
+Ice Form:
+      - Curling. (Press B to throw a curling ball, which will slide forward and explode, freezing all nearby enemies.)
+      - Ice Swipe. Akin to the Fire Swipe, but freezes enemies.
+
+Clover Form:
+      - Flight Burst. Flight now becomes a burst option that brings ggreat heights at the cost of some speed and energy.
+      - Dash Patrol. Fly Dash becmoes a continues move that lasts as long as its held
+
+Extra Form:
+      -None designed currently.
