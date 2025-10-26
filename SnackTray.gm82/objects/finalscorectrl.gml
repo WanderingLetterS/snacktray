@@ -91,7 +91,7 @@ if (advance()) if (cango && !lok && !instance_exists(segafadein)) {
         path=global.lskins[global.levelskin+1,0]
 
         if (path=global.lbase) fn=path
-        else fn=moddir+path
+        else fn=globalmanager.moddir+path
         if !file_exists(fn+global.nextlevel+".lemon") && !file_exists(fn+global.nextlevel+".lemon.png") {
             if global.debug show_message(lang("error level gone1"))
             segafadeto(results)
