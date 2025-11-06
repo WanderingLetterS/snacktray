@@ -5,10 +5,10 @@ icon speed=6
 icon loop=yes
 animation speed=1.0
 multiple box sizes=false
-center x=24
-center y=28
-box width=48
-box height=48
+center x=17
+center y=15
+box width=34
+box height=34
 
 pitch spindash=yes
 jump ball animation=no
@@ -18,20 +18,37 @@ time until wait=300
 pipe squish=20
 pole center offset=8
 
+mini sheet=0
+
+skin offset=44
+
 use paletting=true
 defaultspray 1=9
 defaultspray 2=6
 defaultspray 3=5
 defaultspray 4=0
 
+snack layout=true
+
 size reroute fire=big
 size reroute feather=big
 size reroute extra=big
 
+sheet splits=flagslide
+sheet split size=280
+
 total palettes=13
 
-custom sprite list=stand,wait,lookup,pose,crouch,knock,dead,walk,run,maxrun,brake,spring,springfall,jump,bonk,ball,spindash,spincharge,stomp,push,balance,fire,dropkick,dropkick2,specfall,climbing,flagslide,hanging,hangmove,grinding,piping,pipingup,sidepiping,doorenter,doorexit
-
+custom sprite list=stand,wait,lookup,crouch,balance,push,pose,knock,dead,walk,run,maxrun,brake,spring,bonk,springfall,ball,climbing,flagslide,piping,pipingup,sidepiping,doorenter,doorexit,jump,spindash,spincharge,stomp,dropkick,dropkick2,specfall
+connect crouch=true
+connect push=true
+connect knock=true
+connect dead=true
+connect brake=true
+connect bonk=true
+connect springfall=true
+connect flagslide=true
+connect doorexit=true
 reroute fall=jump
 
 single sheet=false
@@ -124,7 +141,7 @@ spring frametimes=0
 spring offset x=0
 spring offset y=0
 
-springfall frames=8
+springfall frames=2
 springfall loop=1
 springfall speed=0.5
 springfall frametimes=0
@@ -173,14 +190,14 @@ stomp frametimes=0
 stomp offset x=0
 stomp offset y=0
 
-push frames=6
+push frames=4
 push loop=1
 push speed=0.1
-push frametimes=2,1,1,2,1,1
+push frametimes=2,1,2,1
 push offset x=0
 push offset y=0
 
-balance frames=6
+balance frames=4
 balance loop=1
 balance speed=0.2
 balance frametimes=0
@@ -201,7 +218,7 @@ dash frametimes=0
 dash offset x=0
 dash offset y=0
 
-specfall frames=6
+specfall frames=5
 specfall loop=4
 specfall speed=0.125
 specfall frametimes=0
