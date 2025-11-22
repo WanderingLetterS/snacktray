@@ -62,6 +62,40 @@ if (keyboard_check_pressed(vk_enter) && !off) {
         }
     }
     switch (cmd) {
+        case "host_online":
+            if !instance_exists(obj_networkcontroller)
+            instance_create(0,0,obj_networkcontroller)
+
+            with obj_networkcontroller{
+                ///Host, lol
+                if !net_started{
+                    net_started=true
+                    net_host=true
+                    heyhey=get_string("Host in what IP?","127.0.0.1")
+                    listener_start(global.netlisten,heyhey,DEF_PORT,(heyhey=="localhost"))
+                }
+                global.onlinemode=1
+            }
+
+        break;
+        case "connect_online":
+            if !instance_exists(obj_networkcontroller)
+            instance_create(0,0,obj_networkcontroller)
+            with obj_networkcontroller{
+                if !net_started{
+                    net_started=true
+                    net_host=false
+                    heyhey=get_string("Connect to what IP?","127.0.0.1")
+                    socket_connect(global.netsocket,heyhey,DEF_PORT)
+
+                }
+                global.onlinemode=1
+            }
+
+
+        break;
+
+
         case "reloadworld":
         case "worldreload":
         case "reload_world":

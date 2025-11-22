@@ -4,6 +4,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
+
 //dark area
 lightlevel=5
 global.overridelightlevel=-1
@@ -59,7 +60,7 @@ draw_sprite_ext(spr_syslightlevel,unreal(lightlevel,0),0,0,view_xview[0]+400,vie
 else
 draw_sprite_ext(spr_syslightlevel,global.overridelight,0,0,view_xview[0]+400,view_yview[0]+224,0,c_white,lalpha);
 
-surface_reset_target();
+sureface_set_target("appsurf");
 #define Step_2
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -346,7 +347,7 @@ with(timerblock){
     }
 }
 
-surface_reset_target();
+sureface_set_target("appsurf");
 
 }
 

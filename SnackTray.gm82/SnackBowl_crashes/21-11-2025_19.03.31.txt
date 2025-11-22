@@ -1,0 +1,8 @@
+ERROR in
+action number 1
+of  Step Event
+for object obj_networkcontroller:
+
+Trying to set surface(1) data from a nonexisting buffer(0).
+
+

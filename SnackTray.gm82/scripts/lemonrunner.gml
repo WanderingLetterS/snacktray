@@ -112,3 +112,7 @@ with (objcontainer) instance_destroy()
 with (watercontainer) instance_destroy()
 with (semicontainer) instance_destroy()
 with (backcontainer) instance_destroy()
+
+
+
+cement(ground)

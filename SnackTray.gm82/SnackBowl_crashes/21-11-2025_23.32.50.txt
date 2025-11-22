@@ -1,0 +1,8 @@
+ERROR in
+action number 1
+of Draw Event
+for object obj_otherpc:
+
+Trying to use non-existing surface.
+
+

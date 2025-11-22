@@ -10,7 +10,7 @@ k=0
 mytext="1.4.3, The left border."
 
 
-switch(random(10)){
+switch(round(random(10))){
     case 0: mytext="Still using old engine!" break;
     case 1: mytext="Go play Boll 2!#(When its out...)" break;
     case 2: mytext="Go play Boll 2!#(When its out...)" break;

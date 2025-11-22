@@ -206,6 +206,20 @@ if (global.debug) rect(bbox_left,bbox_top,bbox_right-bbox_left+1,bbox_bottom-bbo
 
 if ((room==ta_results || room==scoring || room==results || room==finalscore) && !global.debug && p2!=view_current) exit
 
+if global.onlinemode && global.drawplayershare{
+    sureface_free("playersurf")
+    sureface("playersurf",(sprw[drawsize]-1)*2,(sprh[drawsize]-1)*2)
+
+    sureface_set_target("playersurf")
+
+    safex=x
+    safey=y
+
+    x=sprw[drawsize]
+    y=sprh[drawsize]
+}
+
+
 if (star) ssw_shield("star_back")
 else if (shielded) ssw_shield("shield_back")
 
@@ -220,18 +234,11 @@ if !(flash && global.bgscroll mod 5<3)
         sheet=sheets[size]
         if using_triangleblock x-=triangleblock_cling*6 //Get that looking nicely
 
-        //under sprite.
-        if use_under_sprite{
-            if under_sprite!=""
-            ssw_undercore(0)
-        }
+
 
         ssw_core(0)
 
-        if use_over_sprite{
-            if over_sprite!=""
-            ssw_overcore(0)
-        }
+
 
 
         if using_triangleblock x+=triangleblock_cling*6 //Let's not fuck with gameplay now.
@@ -244,5 +251,21 @@ if latchedtoflagpole x+=poleoffx
 if !global.playerbecomesmall
 if (star) ssw_shield("star")
 else if (shielded) ssw_shield("shield")
+
+
+if global.onlinemode && global.drawplayershare {
+    sureface_set_target("appsurf")
+    buffer_clear(global.netbufferplayer)
+    buffer_get_surface(global.netbufferplayer,sureface_get("playersurf"))
+    
+    
+    
+    x=safex
+    y=safey
+    
+    draw_surface(sureface_get("playersurf"),round(x-view_xview-sprw[drawsize]), //XSC =direction PXSC = Pipe Squishing MXSC=Modifiable XSC
+        round(y-view_yview -sprh[drawsize]))    
+}
+
 
 if (global.debug) rect(bbox_left,bbox_top,bbox_right-bbox_left+1,bbox_bottom-bbox_top+1,$ffffff,0.5)

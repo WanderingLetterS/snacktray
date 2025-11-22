@@ -657,3 +657,8 @@
 	|specialesave
 	|specialetest
 	|specialequit
++Online.
+	|scr_net_readpositionbuffer
+	|scr_net_writepositionbuffer
+	|scr_net_hostsendbuffer
+	|scr_net_readdrawbuffer

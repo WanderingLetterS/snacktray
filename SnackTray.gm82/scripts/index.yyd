@@ -2377,3 +2377,9 @@ over_spriteswitch
 ssw_overcore
 
 
+scr_net_readpositionbuffer
+scr_net_writepositionbuffer
+scr_net_hostsendbuffer
+
+
+scr_net_readdrawbuffer

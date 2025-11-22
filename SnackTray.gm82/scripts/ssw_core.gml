@@ -25,6 +25,14 @@ if (argument[0]) {//animate
     frame=modulo(precise(frame),0,frn)
     likesizebutold=size
 } else {//draw
+    //under sprite.
+        if use_under_sprite{
+            if under_sprite!=""
+            ssw_undercore(0)
+        }
+
+
+
     c=blend
     if !blend c=$ffffff
     usedskin_offsety=skin_offsety
@@ -58,6 +66,8 @@ if (argument[0]) {//animate
     if (size==0 && shortsmallform!=0) {divisio=1/shortsmallform  if !global.singlesheet[p2] multiplicio=-1}
     else if (size==5 && !minisheet) {divisio=1.75 /*like sonic boll 1.9*/ /*no its not thats not even a 9*/ multiplicio=5 }
 
+
+
     if (sprite_angle!=0) draw_sprite_general(
     //  sprite, subimage
         sheets[max(drawsheetsize-multiplicio,0)],0, //deepest apologies -moster //that doesnt even multiply what -also moster
@@ -82,11 +92,17 @@ if (argument[0]) {//animate
         (xsc/divisio)*pxsc*mxsc,(ysc/divisio)*pysc*mysc,
         c,alpha*(1-0.75*shadow)
     )
+
+
     draw_left=8+frx*sprw[drawsize]+splitpadding
     draw_top=usedskin_offsety+fry*sprh[drawsize]
 
-
     shader_reset();
+
+    if use_over_sprite{
+            if over_sprite!=""
+            ssw_overcore(0)
+        }
 
     //if (shadow) d3d_set_fog(0,0,0,0)
     charm_run("effectsfront")

@@ -1,0 +1,8 @@
+ERROR in
+action number 1
+of Draw Event
+for object player:
+
+Error trying to resize unknown surface: playersurf
+
+
