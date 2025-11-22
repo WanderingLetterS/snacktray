@@ -542,8 +542,8 @@ maxe=4
 if hammers hammers-=1
 
 if (abs(hsp)>=2 && !jump) {
-	if (mcs>8) {energy+=1 mcs=0}
-} else if (!jump) if (mcs>30) {energy-=1 mcs=0}
+	if (mcs>2) {energy+=1/16 mcs=0}
+} else if (!jump) if (mcs>3) {energy-=1/30 mcs=0}
 
 is_intangible=0
 with (flag) if (passed[other.p2]) other.is_intangible=1
