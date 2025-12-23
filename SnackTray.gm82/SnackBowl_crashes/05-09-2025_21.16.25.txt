@@ -1,9 +1,0 @@
-ERROR in
-action number 1
-of Draw Event
-for object bgmanager:
-
-In script drawlayeredbackground:Error in code at line 69:   
-                    pary_view=(y_view/(horizon-global.screenheight))*(sky_intentedheight[i]-global.screenheight)                                          ^at position 41: Division by 0.
-
-

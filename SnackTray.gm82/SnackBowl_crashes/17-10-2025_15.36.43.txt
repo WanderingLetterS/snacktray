@@ -1,9 +1,0 @@
-ERROR in
-action number 1
-of Other Event: User Defined 0
-for object projectile:
-
-Error in code at line 133:   
- bbox_left=owner.x    ^at position 3: Cannot assign to the variable
-
-

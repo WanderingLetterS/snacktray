@@ -1,9 +1,0 @@
-ERROR in
-action number 1
-of End Step Event
-for object gamemanager:
-
-In script player_update:In script under_spriteswitch:Error in code at line 14:   
-    if (under_sprite!=under_oldspr && !keepframebetween) frame=0                         ^at position 24: Cannot compare arguments.
-
-

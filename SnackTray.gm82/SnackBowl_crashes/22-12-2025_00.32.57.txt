@@ -1,9 +1,0 @@
-ERROR in
-action number 1
-of Create Event
-for object gamemanager:
-
-In script charm_init:Error in code at line 7:   
-name=global.charname[global.option[p2]]                               ^at position 30: Negative array index
-
-
