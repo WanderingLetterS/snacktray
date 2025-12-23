@@ -1,2 +1,2 @@
 if !global.moreplayersitis instance_destroy()
-p2=5
+p2=9
