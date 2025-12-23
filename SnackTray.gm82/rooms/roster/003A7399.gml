@@ -1,1 +1,1 @@
-p2=2
+p2=2+4*!!(global.moreplayersitis)
