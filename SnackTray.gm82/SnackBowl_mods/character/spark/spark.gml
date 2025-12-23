@@ -1665,7 +1665,8 @@ if (!jump) if (loose || spin || crouch) {
 }
 
 //speed cap rubberband formula		        						//yikes
-maxspd=(3.4 + !!size*0.2 + spin*2 + boost*0.8 + 0.0125*min(coint,100)*(global.emeralds>0))*wf
+maxspd=(3.4 + !!size*0.2 + spin*2 + boost*0.8 + 0.0125*min(coint,100)*(global.emeralds>0)*(!cpu_partner) + abs((x-cpu_myleader.x)/100)*cpu_partner)*wf
+if (cpu_partner && !player_controlled) {maxspd=(maxspd+cpu_myleader.maxspd)/2}
 
 if (abs(hsp)>maxspd+0.01) hsp=(abs(hsp)*2+maxspd)/3*sign(hsp)
 
@@ -1743,6 +1744,143 @@ else if (osld>180 && osld<320 && !instance_place(x-16,y+4,ground)) dy=3
     }
 
 com_finishmove()
+
+#define cpu
+{
+	cpu_support=1
+
+	up=   0 
+	down= 0
+	left= 0
+	right=0
+	akey= 0
+	bkey= 0
+	ckey= 0
+	skey= 0
+	xkey=0
+	ykey=0
+	zkey=0
+
+	if cpu_myleader.flash flash=cpu_myleader.flash
+	if !cpu_myleader.super {size=cpu_myleader.size} else {size=4}
+	super=cpu_myleader.super
+	if cpu_myleader.shielded shielded=cpu_myleader.shielded
+	cpu_myleader=cpu_myleader
+	
+	//respawn
+	if (global.mplay<2 && cpu_deadstore!=dead && alarm[7]=-1) {alarm[7]=120}
+	cpu_deadstore=dead
+
+    //if my player is standing on blockq and I'm directly below it, find a way to get to my player
+	
+	if !auto &&  (global.joynum>(global.input[p2]))||global.input[p2]<2 input_get(global.input[p2])
+	if (left||right||down||up||akey||bkey||ckey||skey||xkey||ykey||zkey)
+		&& !(right){
+		player_controlled=1
+	}
+	if !player_controlled { 
+		akey=0 
+		bkey=0 
+		ckey=0 
+		skey=0
+		left=0 
+		xkey=0 
+		ykey=0 
+		zkey=0
+		backtocputimer=0
+	} else { backtocputimer+=1 if backtocputimer>480 {player_controlled=0 backtocputimer=0} }
+	
+	if player_controlled exit
+	
+	if !instance_exists(cpu_myleader) exit
+		
+	
+	
+	//the actual bot itself
+	
+	akey=0
+	if cpu_myleader.bbox_left-cpu_myleader.hsp*3>bbox_right+(16*!jump) right=1
+	if cpu_myleader.bbox_right-cpu_myleader.hsp*3<bbox_left-(16*!jump) left=1
+	
+	//leave way for other bots
+	with (player) {
+		if (cpu_partner && x>other.x && other.x+16>x) other.right=0
+		if (cpu_partner && x<other.x && other.x-16<x) other.left=0
+		}
+
+	if cpu_myleader.y<(y-32) && cpu_myleader.jump=0 akey=1
+	//if cpu_myleader.y<(y-12)&&cpu_myleader.jump akey=1
+	if cpu_myleader.down down=1
+	if cpu_myleader.spindash&&abs(hsp)<0.5&&!jump && (size && size!=5) {xsc=cpu_myleader.xsc spindash=cpu_myleader.xsc}
+	if cpu_myleader.abut && !jump {jumpwait=abs(cpu_myleader.x-x)/max(abs(cpu_myleader.hsp),1)  }
+	
+	if !jump {if jumpwait {jumpwait-=1 if jumpwait<=1 akey=1}}
+	//Sonic characters only
+	if !right && !left && down && cpu_myleader.spindash && (size && size!=5) {akey=1 spindash=1}
+
+	if vsp>0 canstopjump=0
+	if jump && (cpu_myleader.vsp+cpu_myleader.y) <(y+16)&&canstopjump &&vsp<-1 {up=1 akey=1 cpu_akeystuck=0}
+	if is_fire() && cpu_myleader.bbut && !cpu_myleader.jump &&!jump && abs(cpu_myleader.x-x)<32 if !collision(xsc*4,0) {bkey=1}
+	
+	
+	
+	
+	////Some good pathfinding to avoid bots getting stuck in stupid ways
+	if push!=0 && !instance_place(x+8*xsc,y-32,collider) akey=1
+	if !jump
+	if collision_line(x,y,cpu_myleader.x,cpu_myleader.y,collider,0,1){
+		//Determine where the thing is.
+		
+		if abs(cpu_myleader.x-x)<32 && !push{ //Unlikely that there's something between us horizontally, let's check vertically.
+			
+	
+		} else{	//Ah shit there's something here, even worse, jumping wont fix our issues.
+			if collision_line(x,bbox_bottom,cpu_myleader.x,cpu_myleader.bbox_bottom,collider,0,1){
+				//It's not a tube... (From here characters would likely react differently)
+				
+			} else{ //Oh it's just a tube lmao (Found a small tunnel, characters will react differently.)
+				down=1 akey=1 
+			}
+			
+		}
+		
+		
+	}
+	
+	
+	//Back to general stuff
+	if akey cpu_akeystuck+=1 else cpu_akeystuck=0
+	if cpu_akeystuck>5{akey=0 cpu_akeystuck=0}
+	
+	
+    //if !inview() {x=cpu_myleader.x y=cpu_myleader.y}
+	//return animation
+	if (!inview() && !dead && !piped && !sfxdone) {cpu_return=1 playsfx(name+"spin") sfxdone=1}
+	
+	if (cpu_return) {
+		is_intangible=1
+		trailing=1
+		fall=0 
+		spin=0 
+		hsp=0 vsp=0
+		hurt=0
+		down=0 up=0
+		jump=1
+		move_lock=1
+		x=approach_val(x,cpu_myleader.x,3+(cpu_leader.hsp*4)+abs(x-cpu_myleader.x)/8)
+		y=approach_val(y,cpu_myleader.y,3+(cpu_leader.vsp*2)+abs(y-cpu_myleader.y)/8)
+	
+	}
+
+	if (cpu_return && point_distance(x,y,cpu_myleader.x-cpu_leader.hsp,cpu_myleader.y-cpu_leader.vsp)<=16) {
+		is_intangible=0
+		trailing=0
+		move_lock=0
+		throwsparks(x,y)
+		cpu_return=0
+		sfxdone=0
+	}
+}
 
 #define actions
 
@@ -1932,6 +2070,10 @@ pvp_stomper=0 //make sure to set for 0 for the mario bros when pounding
 pvp_ignore=instashieldin //For when you wanna hit the others but not yourself
 pvp_knockaway=0 //I won't hurt you, just go away
 
+if (cpu_partner) {
+	pvp_ignore=1
+	pvp_avoid=1
+}
 
 //based on the item draw-on from giana
 with monitor {
