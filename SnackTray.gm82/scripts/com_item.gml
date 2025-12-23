@@ -1,3 +1,9 @@
+if cpu_partner with cpu_myleader{
+    type=other.type
+    com_item()
+}
+
+
 if (itemget==1) {
     exit
 }

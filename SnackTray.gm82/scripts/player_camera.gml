@@ -80,11 +80,12 @@ if (finish && !dead && ending="retainer") {
 } else {
     global.additivex=0
     global.counting=0
-    with player if !dead {global.additivex+=x global.counting+=1 }
+    with player if !dead && !(cpu_partner && !player_controlled ) {global.additivex+=x global.counting+=1 }
 
     if global.counting==0{
-        viewx=round(round(x)-hw)
-        if global.mplay<2 show_message("oh.")
+        //death. Truly saddening.
+        //viewx=round(round(x)-hw)
+        //if global.mplay<2 show_message("oh.")
     }else viewx=round(round(global.additivex/global.counting)-hw)
 }
 

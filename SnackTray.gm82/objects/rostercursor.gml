@@ -71,7 +71,8 @@ if (!held) {
     pf6=instance_position(x,y,genericbutton)
     pf7=instance_position(x,y,mmicon)
     pf8=instance_position(x,y,rosterrandom)
-
+    pf10=instance_position(x,y,rostercpu)
+    pf11=instance_position(x,y,rosternocpu)
     canclic=(pf1 || pf3 || pf4)
 }
 
@@ -81,6 +82,10 @@ with (pf2) over=1+other.p2
 with (pf6) over=1
 with (pf7) event_user(1)
 with (pf8) over=1
+with (pf10) over=1
+if abut with (pf10) event_user(0)
+if bbut with (pf10) event_user(1)
+if abut with (pf11) event_user(0)
 
 if (pf3) {
     if cbut global.pal_1[p2]=(global.pal_1[p2]+1) mod playerskindat(p2,"totpal"+string(p2))
@@ -120,7 +125,7 @@ lastp2=pf2.p2
 go=0 with (rosterbox) if (ready) other.go=1
 if (sbut && go) with (rosterctrl) event_user(0)
 
-if (abut) {
+if (abut && pf10==noone && pf11==noone) {
     if (pf1) with (pf1) event_user(0)
     else with (rostergm) pick=0
     if (pf2) {
@@ -250,7 +255,7 @@ if (arel) {
     }}
 
 }
-if (bbut && !held) {
+if (bbut && !held && !pf10) {
     var selected_spray;
     selected_spray = false;
     if mybox with mybox{

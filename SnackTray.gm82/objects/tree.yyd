@@ -76,6 +76,8 @@
 		|rosterbar
 		|rosterscrolldown
 		|rosteroptions
+		|rosternocpu
+		|rostercpu
 	+stagesel
 		|stagectrl
 		|stagego

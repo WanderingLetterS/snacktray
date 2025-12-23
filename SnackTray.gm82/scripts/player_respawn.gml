@@ -15,3 +15,4 @@ if (carryid) {with (carryid) instance_destroy() carryid=noone carry=0}
 
 visible=1
 flash=1
+piped=0

@@ -91,6 +91,37 @@ for (i=0;i<global.mplay;i+=1) {
     }
     with (instance_create(0,0,beatmanager)) {p2=i}
 }
+for (i=0;i<4;i+=1){
+        if global.cpu[i]{
+            with instance_create(spawner.x-(16*i)+8*global.mplay-8,spawner.y+2,player){
+                p2=i+4
+                size=global.size[p2]
+                shielded=global.shielded[p2]
+
+
+                charm_init()
+                cpu_partner=1
+                cpu_myleader=gamemanager.players[p2 mod global.mplay] //This allows for more bots than there are players.
+
+                planned_input=0
+                with player {
+                     if p2 !=other.p2{
+                         if global.input[p2]==other.planned_input
+                            other.planned_input+=1
+                         //Special case tiem!!!
+                         if global.input[p2]=-1 && other.planned_input=0 other.planned_input+=1
+                     }
+                }
+                global.input[p2]=planned_input
+
+
+                gamemanager.players[p2]=id
+                charm_run("start")
+            }
+
+        }
+
+    }
 
 if (!global.discordoverride) {
     if global.lemontest {discord_update_presence("Playing as "+playerskinstr(top,"name"+string((top))),"Testing Level ("+string(global.levelname)+")","boll-icon","lemon-icon")}

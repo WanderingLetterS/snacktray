@@ -16,6 +16,7 @@ if (object_index=player ) {
         if (!piped && !codeblock_stopsprmanager && !global.legacy_skin[p2]) charm_run("sprmanager")
         if using_triangleblock {jump=1}
         if ((depth=0 || depth=1) && p2=gamemanager.plrsort) depth=!depth
+        if cpu_partner depth+=2
     }
 
 

@@ -119,7 +119,9 @@ if (finish && !dead) {
 } else if (global.playback) {
     decodemovie()
 } else {
-    if (!auto) input_get(global.input[p2])
+    if (!auto && !cpu_partner && !gamemanager.pause) input_get(global.input[p2])
+    else if (cpu_partner && !auto && !gamemanager.pause) {charm_run("cpu") if !cpu_support com_defaultcpupartner() }
+    else if (!auto) input_get(global.input[p2])
     encodemovie()
 }
 

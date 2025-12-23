@@ -64,7 +64,7 @@ j=skindat("maxspecial")
 for (i=0;i<j;i+=1) global.moranplayed[i]=0
 
 discardmovie()
-for (i=0;i<4;i+=1) {
+for (i=0;i<12;i+=1) {
     global.playerskin[i]=0
     global.size[i]=0
     global.startsize[i]=0
@@ -78,6 +78,7 @@ for (i=0;i<4;i+=1) {
     global.points[i]=0
     global.pthist[i]=0
     for (j=0;j<7;j+=1) global.scores[j,i]=0
+    global.cpu[i]=0
     global.option[i]=-1
     global.myoption[i]=-1
 }

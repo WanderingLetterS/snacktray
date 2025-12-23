@@ -182,6 +182,7 @@ if (keyboard_check_pressed(vk_enter) && !off) {
         case "reloadsingle":
         case "singlerel":
         case "sinrel":
+        case "sinreload":
         {
             p2=unreal(arg,0)
             if global.option[p2]==-1 {

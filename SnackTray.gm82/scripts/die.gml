@@ -34,7 +34,7 @@ if (skidding) {soundstop(name+"skid") skidding=0}
 
 if (sprongin && sprongin<120) {sprongin=0 speed=0}
 
-if (!global.debug && global.gamemode!="battle" && global.gamemode!="coop" && global.gamemode!="sscreencoop" && !global.lemontest) gamemanager.deathtimer=1
+if (!global.debug && global.gamemode!="battle" && global.gamemode!="coop" && global.gamemode!="sscreencoop" && !global.lemontest && !cpu_partner) gamemanager.deathtimer=1
 gamemanager.deathplayer=id
 
 

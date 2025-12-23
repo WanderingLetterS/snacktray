@@ -155,6 +155,7 @@ applies_to=self
 */
 ///begin respawn
 if (gamemanager.deathtimer >= 10) exit
+if cpu_partner {dead=0 exit}
 respawncamslide=1
 
 slidefromx=view_xview[p2]
@@ -168,13 +169,15 @@ safevy=view_yview[p2]
 
 view_xview[p2]=slidefromx
 view_yview[p2]=slidefromy
+
+if cpu_partner dead=0
 #define Collision_player
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
 applies_to=self
 */
-if (id<other.id) player_collision()
+if (id<other.id) {if (cpu_partner && other.id==cpu_myleader)||(other.cpu_partner && id==other.cpu_myleader) exit player_collision()}
 #define Collision_enemy
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -269,3 +272,5 @@ if global.onlinemode && global.drawplayershare {
 
 
 if (global.debug) rect(bbox_left,bbox_top,bbox_right-bbox_left+1,bbox_bottom-bbox_top+1,$ffffff,0.5)
+
+if cpu_partner dead=0

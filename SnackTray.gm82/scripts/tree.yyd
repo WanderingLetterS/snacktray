@@ -407,6 +407,8 @@
 				|com_dmgr_dmg_enemy
 			+drawers
 				|draw_sprite_general_centered
+			+cpu
+				|com_defaultcpupartner
 		|reset_invincible
 		|knockplayer
 		|invincible

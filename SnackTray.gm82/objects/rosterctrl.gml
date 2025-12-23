@@ -143,6 +143,10 @@ with (rosterbox) if (ready) {
     if (global.option[p2]!=-1) if (!skindat("bundleplayer"))
         applyplayerskin(global.pskins[1+global.playerskin[p2],global.option[p2]],p2,"more",global.option[p2])
 }
+with (rostercpu)
+if global.cpu[p2] {
+        applyplayerskin(global.pskins[1+global.playerskin[p2+4],global.option[p2+4]],p2+4,"more",global.option[p2+4])
+}
 if (global.mplay>0) {
     //Gamemode setting moved to rostergm due to that being its Job
 

@@ -35,6 +35,8 @@ if (!global.respawn) {
     updatelevelskin()
     i=0
     repeat (4) {global.startsize[i]=global.size[i] global.startshielded[i]=global.shielded[i] i+=1}
+    i=4 repeat(4) {if global.cpu[i] global.size[i]=global.startsize[i] global.startshielded[i]=global.shielded[i] i+=1}
+
     mus_play("start",0)
 } else if (!skindat("deathmusic")) {
     FMODAllStop()

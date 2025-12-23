@@ -45,6 +45,16 @@ repeat (global.mplay) {
 
     i+=1
 }
+for (i=0;i<4;i+=1) {
+    if global.cpu[i+4] {
+        global.myoption[i+4]=global.option[i+4]
+        stats("times "+global.charname[global.option[i+4]]+" was used",stats("times "+global.charname[global.option[i+4]]+" was used")+1)
+
+        p2=i
+        entrypoint=global.gamemode
+        string_execute(global.charcode[global.option[p2]])
+    }
+}
 
 if !global.playback global.actually_recording_goddamnit=1
 

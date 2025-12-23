@@ -107,6 +107,8 @@
 		|spr_noicon
 		|spr_matchoptionsbg
 		|spr_missingsprays
+		|spr_ros_cpu
+		|spr_no_cpu
 	+stagesel
 		|spr_stagego
 		|spr_stagepicknew

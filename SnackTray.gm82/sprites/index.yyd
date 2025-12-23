@@ -599,3 +599,5 @@ spr_burner
 spr_altground
 spr_triangleblock
 spr_bouncymush
+spr_ros_cpu
+spr_no_cpu
