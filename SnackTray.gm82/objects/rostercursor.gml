@@ -289,22 +289,22 @@ if (bbut && !held && !pf10) {
         } else {
             var changed;
             //first spray
-            if point_in_rectangle(other.x,other.y,x-23,y-23,x-23+8,y-23+8) {
+            if point_in_rectangle(other.x,other.y,x-17,y-32,x-17+8,y-32+8) {
                 global.pal_1[p2]=wrap_val(global.pal_1[p2]-1, 0, playerskindat(p2,"totpal"+string(p2))-1)
                 selected_spray = true;
                 changed=1
             }
-            if point_in_rectangle(other.x,other.y,x-23+8,y-23,x-23+16,y-23+8) {
+            if point_in_rectangle(other.x,other.y,x-16+8,y-32,x-16+8+8,y-32+8) {
                 global.pal_2[p2]=wrap_val(global.pal_2[p2]-1, 0, playerskindat(p2,"totpal"+string(p2))-1)
                 selected_spray = true;
                 changed=2
             }
-            if point_in_rectangle(other.x,other.y,x-23+16,y-23,x-23+24,y-23+8) {
+            if point_in_rectangle(other.x,other.y,x-15+16,y-32,x-15+24,y-32+8) {
                 global.pal_3[p2]=wrap_val(global.pal_3[p2]-1, 0, playerskindat(p2,"totpal"+string(p2))-1)
                 selected_spray = true;
                 changed=3
             }
-            if point_in_rectangle(other.x,other.y,x-23+24,y-23,x-23+32,y-23+8) {
+            if point_in_rectangle(other.x,other.y,x-14+24,y-32,x-14+32,y-32+8) {
                 global.pal_4[p2]=wrap_val(global.pal_4[p2]-1, 0, playerskindat(p2,"totpal"+string(p2))-1)
                 selected_spray = true;
                 changed=4
