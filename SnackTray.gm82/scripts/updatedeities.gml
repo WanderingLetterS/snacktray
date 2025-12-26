@@ -131,7 +131,9 @@ test=1
 
         flip=unreal(data[5],0)
         col=unreal(data[6],$ffffff)
-        sheet=global.master[getbiomeid(lemongrab.typeobj[drawregion.region])]
+        biome=real(data[7])
+        if biome==-1 biome=getbiomeid(lemongrab.typeobj[drawregion.region])
+        sheet=global.master[biome]
     } break
     case (terraintyler): {
         str=data[1]
@@ -153,7 +155,9 @@ test=1
 
         flip=unreal(data[5],0)
         col=unreal(data[6],$ffffff)
-        sheet=global.masterterrain[getbiomeid(lemongrab.typeobj[drawregion.region])]
+        biome=real(data[7])
+        if biome==-1 biome=getbiomeid(lemongrab.typeobj[drawregion.region])
+        sheet=global.masterterrain[biome]
     } break
 
     case (objectstyler): {
@@ -176,7 +180,10 @@ test=1
 
         flip=unreal(data[5],0)
         col=unreal(data[6],$ffffff)
-        sheet=global.masterobjects[getbiomeid(lemongrab.typeobj[drawregion.region])]
+        biome=real(data[7])
+        if biome==-1 biome=getbiomeid(lemongrab.typeobj[drawregion.region])
+
+        sheet=global.masterobjects[biome]
     } break
     case (decortyler): {
         str=data[1]
@@ -198,7 +205,10 @@ test=1
 
         flip=unreal(data[5],0)
         col=unreal(data[6],$ffffff)
-        sheet=global.masterdecor[getbiomeid(lemongrab.typeobj[drawregion.region])]
+        biome=real(data[7])
+        if biome==-1 biome=getbiomeid(lemongrab.typeobj[drawregion.region])
+
+        sheet=global.masterdecor[biome]
     } break
     case (spawncancel): {
         find=noone

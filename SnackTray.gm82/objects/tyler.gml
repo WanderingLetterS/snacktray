@@ -7,10 +7,10 @@ applies_to=self
 layer=unreal(layer,0)
 blend=unreal(blend,$ffffff)
 str=tile
-my_sheet=global.master[biome]
+
 if (bim="-1") getregion(x)
 else biome=unreal(bim,0)
-
+my_sheet=global.master[biome]
 d=assetdepth+2
 if (layer=1) d=999998
 if (layer=2) d=-1

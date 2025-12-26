@@ -76,8 +76,8 @@ drawassets(1)
 waterbiome[view_current]=getbiomeid(gamemanager.typebg[view_current])
 
 //water surface
-if (gamemanager.water[view_current]<gamemanager.ky[view_current]) for (p=(view_xview[view_current] div 32)*32;p<view_xview[view_current]+400;p+=32)
-    draw_background_part(global.master[waterbiome[view_current]],424+32*(global.frame88 mod 4),120+8*(global.frame88 div 4),32,8,p,gamemanager.water[view_current])
+if (gamemanager.water[view_current]<gamemanager.ky[view_current]) for (p=(view_xview[view_current] div 32)*32;p<view_xview[view_current]+global.screenwidth;p+=32)
+    draw_background_part(global.master[waterbiome[view_current]],88+32*(global.frame88 mod 4),312+8*(global.frame88 div 4),32,8,p,gamemanager.water[view_current])
 #define Draw_0
 /*"/*'/**//* YYD ACTION
 lib_id=1

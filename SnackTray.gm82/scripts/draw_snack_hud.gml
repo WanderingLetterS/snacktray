@@ -27,26 +27,34 @@ if global.moreplayersitis && p2==0{
         if (mpsplit*p_offset) > (global.screenwidth-p_offset) {global.mphudder[mpsplit]=1 mpsplit-=1}
 
     }
-	mpsplit+=1
+mpsplit+=1
 }
 
 
 if !(global.nohud) && !(dontdrawhudler) && !global.mphudder[p2]{
+    if global.moreplayersitis{
+        if p2==0{
+            i=0
+            repeat (4){
+                if global.mphudder[i+4]
+                draw_snack_mphud(i+4,i+4-mpsplit)
+            i+=1
+            }
 
-    if p2==0{
-        i=0
-        repeat (4){
-            if global.mphudder[i+4]
-            draw_snack_mphud(i+4,i+4-mpsplit)
-        i+=1
+            i=0+(global.moreplayersitis*4)
+            repeat (4){
+                if global.cpu[i]
+                draw_snack_mphud(i+4,i+4-mpsplit)
+            i+=1
+            }
         }
-
-		i=0+(global.moreplayersitis*4)
+    } else {
         repeat (4){
             if global.cpu[i]
-            draw_snack_mphud(i+4,i+4-mpsplit)
-        i+=1
+            draw_snack_mphud(i+4,i)
+            i+=1
         }
+
     }
 
     if !(global.legacy_skin[p2]){

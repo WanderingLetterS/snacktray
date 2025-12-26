@@ -1,5 +1,5 @@
 #define spritelist
-stand,wait,lookup,crouch,balance,pose,knock,dead,walk,run,maxrun,push,brake,jump,bonk,fall,spring,springfall,roll,climbing,flagslide,piping,pipingup,sidepiping,doorenter,doorexit,spinjump,spindash,spincharge,rampof,trickup,trickright,uncurl,dash,bouncewindup,bouncetrick,handlegrab,grindgrab,grinding
+stand,wait,lookup,crouch,balance,pose,knock,dead,walk,run,maxrun,push,brake,jump,bonk,fall,spring,springfall,roll,climbing,flagslide,piping,pipingup,sidepiping,doorenter,doorexit,spinjump,spindash,spincharge,rampof,trickup,trickright,uncurl,dash,handlegrab,grindgrab,grinding,firedash,featherdash,thunderdash
 
 
 #define soundlist
@@ -73,6 +73,8 @@ draw_snack_hud()
 #define start
 mask_set(12,12)
 dontdrawdefaulthud=true
+sonic_additive_firedash=funnytruefalse(playerskindat(p2,name+" additive firedash"))
+
 
 #define stop
 if (skidding) {soundstop(name+"skid") skidding=0}
@@ -99,13 +101,25 @@ if (feathdasheffect){
 	draw_sprite_part_ext(sheetshields,0,209+40*floor(feathdasheffect-1),129,39,39,round(feathdasheffecty_x-19.5*feathdasheffecty_xsc),round(feathdasheffecty_y-19.5+dy)+4,feathdasheffecty_xsc,1,$ffffff,alpha)
 }
 
+
 #define effectsfront
 if (firedash && !piped) {
+	if (sonic_additive_firedash==true) {draw_set_blend_mode(bm_add)}
+
     draw_sprite_part_ext(sheetshields,0,209+40*(firedash mod 4),49,39,39,round(x-19.5*xsc),round(y-19.5+dy)+4,xsc,1,$ffffff,alpha)
+	
+	/*if sonic_additive_firedash*/ draw_set_blend_mode(bm_normal)
 }
 if (insta) {
     draw_sprite_part_ext(sheetshields,0,209+(floor((20-insta)/3) mod 4)*40,9,39,39,round(x-19.5*xsc),round(y-19.5+dy+4*!size)+4,xsc,1,$ffffff,alpha)
 }
+
+if (fall==10 && is_water() && vsp>0 && !waterinsted) {
+	if (sonic_additive_firedash==true) {draw_set_blend_mode(bm_add)}
+    draw_sprite_part_ext(sheetshields,0,469,110,39,39,round(x-19.5*xsc),round(y-19.5+dy)+36-vsp*8,xsc,vsp/4,$ffffff,alpha)
+	draw_set_blend_mode(bm_normal)
+}
+
 
 if (feathdasheffect){
 draw_sprite_part_ext(sheetshields,0,209+40*floor(feathdasheffect-1),89,39,39,round(feathdasheffecty_x-19.5*feathdasheffecty_xsc),round(feathdasheffecty_y-19.5+dy)+4,feathdasheffecty_xsc,1,$ffffff,alpha)
@@ -115,10 +129,10 @@ feathdasheffecty_x+=feathdasheffecty_hsp
 feathdasheffecty_y+=feathdasheffecty_vsp
 }
 
-if homingenemy{
+/*if homingenemy{
 draw_circle_color(homingenemy.x,homingenemy.y,16,c_yellow,c_orange,2)
 }
-
+*/
 
 if (energy>=maxe-1) && size!=8 && !boost  && !dontdraw{
 sineframe= (sineframe+0.1) mod 360
@@ -223,7 +237,7 @@ else if (jump) {
 		else if (sprung|| sproinged) {sproinged=true uncurl=false sprite="spring" if (vsp>=0) sprite="springfall"}
 		else if (rampof) {sprite="rampof"  }
 		else if uncurled {sprite="uncurl"}
-		else if (fall=10) {sprite="dash"}
+		else if (fall=10) {sprite="dash" if firedash sprite="firedash"}
 		else if (bonk) sprite="bonk"
 		else if (fall=6) {sprite="knock"}
 		else {if (fall) if vsp>=0 sprite="fall" else sprite="jump" if !fall sprite="spinjump" frspd=fallspd} //frspd=fallspd
@@ -246,11 +260,14 @@ else if (jump) {
         else {sprite="stand"}
     } else {
         if (braking) sprite="brake"
+		else if (firedash) {sprite="firedash"}
 		else if ((abs(hsp)>maxspd*1.4 || (abs(hsp)>maxspd*0.95 && boost))&& !water && !finish) {sprite="maxrun" frspd=abs(hsp/3)}
         else if (abs(hsp)>maxspd*0.9 && !water && !finish) {sprite="run" frspd=abs(hsp/3)}
         else {sprite="walk" frspd=0.2+abs(hsp/4)}
     }
 }
+	if /*size==3 &&*/ vsp<-2 && sprite="dash" sprite="featherdash"
+	if elecdash sprite="thunderdash"
 
 #define controls
 com_inputstack()
@@ -376,7 +393,7 @@ if ((abut || jumpbufferdo) && (!springin)) {
         }
     } else if !peelready { //air jumps
 
-		if size==7 && water{
+		if is_water() && water{
 			jumpsnd=playsfx(name+"jump")
 			vsp=-2.2-0.2*super
 			fall=0
@@ -384,15 +401,31 @@ if ((abut || jumpbufferdo) && (!springin)) {
 		}
 
 
-        if ((!insted|| (size==7 && !waterinsted)) && !clover_climb &&(fall=0 || fall=10)) {
+        if ((!insted|| (is_water() && !waterinsted)) && !clover_climb &&(fall=0 || fall=10)) {
             if insted waterinsted=1
 			insted=1
             airdash=0
             firedash=0
             boost=0
-            
-			if size==8 && fall=0{vsp=-2 fall=10 insted=0}
-			else if size==8 && fall=10 {
+             if is_water() && fall=10 {
+				
+				 {
+					i=shoot(x,y+12,psmoke)  i.hspeed=-2 i.vspeed=2
+					i=shoot(x,y+12,psmoke)  i.hspeed=2 i.vspeed=2
+					i=shoot(x,y+12,psmoke)  i.hspeed=-2 i.vspeed=-2 i.gravity=0.5
+					i=shoot(x,y+12,psmoke)  i.hspeed=2 i.vspeed=-2 i.gravity=0.5
+					if vsp>5{
+						i=shoot(x,y+12,psmoke)  i.hspeed=-3 i.vspeed=-4 i.gravity=0.5
+						i=shoot(x,y+12,psmoke)  i.hspeed=3 i.vspeed=-4 i.gravity=0.5
+					
+					}
+				}
+				vsp=-abs(vsp)
+			 
+			 
+			 }
+			if is_ice() && fall=0{vsp=-2 fall=10 insted=0}
+			else if is_ice() && fall=10 {
 				vsp=-4.2 fall=0
 				playsfx("sonicrelease",0,0.5)  
 				proj_type="psmok"
@@ -423,7 +456,7 @@ if ((abut || jumpbufferdo) && (!springin)) {
 
 			}
 		else {insta=20+water*10 fall=0}
-		if size==6 {
+		if is_thunder() {
 			i=shoot(x,y+8)
 					i.hspeed=0 i.vspeed=2
 					i.growsize=-1 i.depth=depth-1
@@ -452,10 +485,11 @@ if ((abut || jumpbufferdo) && (!springin)) {
 				i=fire_projectile(x,y) i.hspeed=2 i.vspeed=-2
                 screenshake(x,2)
                 
-            } else if size!=8 playsfx(name+"insta")
+            } else if !is_ice() playsfx(name+"insta")
         }
 		
 		if fall && !insted {
+			playsfx(name+"trick",false,3)	
 			com_dorecurl()
 		}
 		
@@ -517,13 +551,11 @@ if (bbut) {
 				hsp=max(abs(hsp)+0.1, 1.25)*sign(xsc) //hsp=max(2,abs(hsp))*esign(hsp,xsc)
 				vsp=-2
 				fall=10
-				if is_thunder(){
-					com_starthomingattack()
-				}
+				
 
 				if is_fire(){
 					hsp=4.5*xsc
-					vsp=-1
+					vsp=-2
 					firedash=24
 					boost=1
 					playsfx(name+"firedash")
@@ -535,8 +567,8 @@ if (bbut) {
 					feathdasheffecty_x=x
 					feathdasheffecty_xsc=xsc
 					feathdasheffecty_y=y
-					feathdasheffecty_hsp=-xsc*3
-					feathdasheffecty_vsp=-1
+					feathdasheffecty_hsp=-xsc*2
+					feathdasheffecty_vsp=1
 				}
 				if (energy>=(maxe-1) || boost) && !is_ice() {
 					hyperspeed=(2-size==0)*esign(hsp,xsc)
@@ -594,7 +626,7 @@ if (bbut) {
 					i.depth=depth+2
 					i=shoot(x+16*xsc,y+8) i.hspeed=0 i.vspeed=-4
 					i.growsize=1
-					i.depth=depth-2
+					i.depth=depth-2	
 
 					i=shoot(x+16*xsc,y) i.hspeed=xsc*-2 i.vspeed=-2
 					i.growsize=-1
@@ -619,6 +651,27 @@ if (bbut) {
 					i.depth=depth-2
 					playsfx(name+"release",0,0.5)  
 				}
+				
+				
+				if is_thunder(){
+					//com_starthomingattack()
+					
+					elecdash=12
+					playsfx(name+"firedash",false,4)
+					playsfx(name+"release",false,2) 	
+					playsfx(name+"trick",false,1.5)		
+					if boost {playsfx(name+"trick",false,0.5)	energy=0}				
+					hsp=hsp+(1+!!boost*2)*esign(h,xsc)
+					if hsp>(6+!!boost) hsp=(6+!!boost)
+					if hsp<-(6+!!boost) hsp=-(6+!!boost)
+					hyperspeed=hyperspeed+(!!boost*3)*esign(h,xsc)
+					
+					boost=0 
+					vsp=0
+					
+					
+				}
+				
             }
         } else if sproinged||sprung||bouncetrick{
 			if up{
@@ -706,6 +759,9 @@ vsp=min(7+downpiped,vsp)
 calcmoving()
 
 if (!dead && !grabflagpole) {
+	
+
+
 	if fall!=69    player_horstep()
 	player_nslopforce()
 		//aerial state
@@ -718,7 +774,7 @@ if (!dead && !grabflagpole) {
         } else if fall!=69 {
 			vsp+=(0.15 - (size == 5 && vsp > 0.5) * 0.03) *wf
         }
-		
+		if elecdash vsp=0
 		peelout=0
 		vine_climbing()
         crouch=0
@@ -728,6 +784,9 @@ if (!dead && !grabflagpole) {
         push=0 spin=0
         coyote=0
 		osld=0
+		
+		
+		
 		player_vertstep()
 		if (!jump) sld=point_direction(0,0,1,slobal)
     } else {
@@ -779,7 +838,16 @@ if (!dead && !grabflagpole) {
 
         if (finish && ending="retainer" && !jump) coyote=0
         if (!collision(0,4) /*&& (y<yground-2)*/) {
+		
+			
             coyote+=1
+			if is_clover() && !ckey && energy>0.05{
+				energy-=0.1 vsp=0
+				i=shoot(x,bbox_bottom+random(3),psmoke) i.image_xscale=max(random(4)/3,0.1) 
+				if random(2)>1 i.image_xscale*=-1
+				i.image_yscale=0.5
+				if energy>0.2 coyote=0
+			}
             if (coyote=3) {
 				jump=1
 				fall=1
@@ -864,6 +932,7 @@ com_handlecloverwallrun()
 if (insta) insta-=1
 if (super) boost=1
 if (firedash) {firedash-=1 boost=1}
+if elecdash elecdash-=1
 
 
 
@@ -1114,7 +1183,7 @@ if owner.sprite!=sprite {owner.sprite=sprite with owner set_sprite(sprite)}
 
 #define enterpipe
 if (type="side") {
-	if (firedash) {set_sprite("dash") frspd=1 hspeed=xsc*3 fastpipe=1  }
+	if (firedash||elecdash) {set_sprite("dash") frspd=1 hspeed=xsc*3 fastpipe=1  }
 	if (spin||crouch) {
 		set_sprite("ball")
 		frspd=min(1,0.1+abs(hsp/4))
