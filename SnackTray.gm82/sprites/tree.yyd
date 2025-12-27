@@ -469,6 +469,7 @@
 		|spr_cflower
 		|spr_iflower
 		|spr_tflower
+		|spr_iceblock
 	+technical
 		|spr_heaven
 		|spr_drop

@@ -230,7 +230,7 @@ else if (jump) {
 		else if using_grindblock{
 			if grind_hanging sprite="grindgrab"
 			else sprite="grinding"
-		}
+		} else if using_handle{ sprite="handlegrab"}
 		else if bouncetrick sprite="bouncetrick"
 		else if (clover_climb) {sprite="maxrun" sprite_angle=90*xsc  dy=-7}
 		else if (tricking) {if tricking!=2 sprite="trickup" else sprite="trickright"}
@@ -902,6 +902,8 @@ if (firedash) is_coinexplosive=1
 
 //Special interactions
 pvp_spin=(spin&& !jump) pvp_avoid=0 pvp_stomper=0 pvp_ignore=!!insta pvp_knockaway=0 
+
+
 
 //whoputshitinyourpip
 if (piped) exit

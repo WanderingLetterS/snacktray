@@ -5,29 +5,7 @@ type=argument[1]
 switch (argument[0]) {
     case itembox: {
         if (type=1) {
-            i=show_contextmenu("Box contents:|-|Single Coin|Fire Flower|Feather|Mini Mushroom|Multiple Coins|1-Up|Poison Mushroom|Green Spring|Starman|Key|Shield|Spring|Sideways Spring|P-Switch|Shard|Nothing|Thunder Flower|Water Flower|Ice Flower|Clover Flower|Question Msuhroom",0)
-            if (!i) return argument[2]
-            if (i=1) return ""
-            if (i=2) return "item"
-            if (i=3) return "itemfeather"
-            if (i=4) return "mini"
-            if (i=5) return "coins"
-            if (i=6) return "life"
-            if (i=7) return "poison"
-            if (i=8) return "vine"
-            if (i=9) return "star"
-            if (i=10) return "key"
-            if (i=11) return "shield"
-            if (i=12) return "spring"
-            if (i=13) return "spreng"
-            if (i=14) return "pswitch"
-            if (i=15) return "shard"
-            if (i=16) return "none"
-            if (i=17) return "thunderitem"
-            if (i=18) return "wateritem"
-            if (i=19) return "iceitem"
-            if (i=20) return "cloveritem"
-            if (i=21) return "questionitem"
+            return com_editobjitemboxcontent(true,argument[2])
         }
         if (type=2) return string(!funnytruefalse(argument[2]))
         if (type=3) return string(!funnytruefalse(argument[2]))
@@ -36,61 +14,19 @@ switch (argument[0]) {
     } break
 
     case bigitembox: {
-        if (type=1) {
-            i=show_contextmenu("Box contents:|-|Single Coin|Fire Flower|Feather|Mini Mushroom|Multiple Coins|1-Up|Poison Mushroom|Green Spring|Starman|Key|Shield|Spring|Sideways Spring|P Switch|Shard|Nothing|Thunder Flower|Water Flower|Ice Flower|Clover Flower|Question Mushroom",0)
-            if (!i) return argument[2]
-            if (i=1) return ""
-            if (i=2) return "item"
-            if (i=3) return "itemfeather"
-            if (i=4) return "mini"
-            if (i=5) return "coins"
-            if (i=6) return "life"
-            if (i=7) return "poison"
-            if (i=8) return "vine"
-            if (i=9) return "star"
-            if (i=10) return "key"
-            if (i=11) return "shield"
-            if (i=12) return "spring"
-            if (i=13) return "spreng"
-            if (i=14) return "pswitch"
-            if (i=15) return "shard"
-            if (i=16) return "none"
-            if (i=17) return "thunderitem"
-            if (i=18) return "wateritem"
-            if (i=19) return "iceitem"
-            if (i=20) return "cloveritem"
-            if (i=21) return "questionitem"
+        if (type=1||type=3||type=5) {
+            return com_editobjitemboxcontent(true,argument[2])
         }
-        if (type=2) return get_string("Bonus Target's name:",argument[2])
+        if (type=2) return get_string("Center Bonus Target's name:",argument[2])
+        if (type=4) return get_string("Left Bonus Target's name:",argument[2])
+        if (type=6) return get_string("Right Bonus Target's name:",argument[2])
         if (type=0){return get_string("Alignment in pixels (x,y):",argument[2])}
     } break
 
     case noteblock: {
         if (type=0) {return get_string("Alignment in pixels (x,y):",argument[2])}
         if (type=1) {
-            i=show_contextmenu("Box contents:|-|Single Coin|Fire Flower|Feather|Mini Mushroom|Multiple Coins|1-Up|Poison Mushroom|Green Spring|Starman|Key|Shield|Spring|Sideways Spring|P Switch|Shard|Nothing|Thunder Flower|Water Flower|Ice Flower|Clover Flower|Question Msuhroom",0)
-            if (!i) return argument[2]
-            if (i=1) return ""
-            if (i=2) return "item"
-            if (i=3) return "itemfeather"
-            if (i=4) return "mini"
-            if (i=5) return "coins"
-            if (i=6) return "life"
-            if (i=7) return "poison"
-            if (i=8) return "vine"
-            if (i=9) return "star"
-            if (i=10) return "key"
-            if (i=11) return "shield"
-            if (i=12) return "spring"
-            if (i=13) return "spreng"
-            if (i=14) return "pswitch"
-            if (i=15) return "shard"
-            if (i=16) return "none"
-            if (i=17) return "itemthunder"
-            if (i=18) return "itemwater"
-            if (i=19) return "itemice"
-            if (i=20) return "itemclover"
-            if (i=21) return "itemquestion"
+            return com_editobjitemboxcontent(true,argument[2])
         }
         if (type=2) return string(!funnytruefalse(argument[2]))
         if (type=3) return string(!funnytruefalse(argument[2]))
@@ -155,34 +91,7 @@ switch (argument[0]) {
     case downpipe: case sidepipe: case pipeblock: case theothersidepipe: {
         if (type=5) return string(median(0,get_integer("Max Spawns (0-16):#> Lava Bubbles can only have one#> Limit zero makes the spawner unlimited",unreal(argument[2])),16))
         if (type=4) {
-            if (argument[0]=pipeblock) i=show_contextmenu("Contents:|-|None|Goomba|Koopa|Red Koopa|Shell|Beetle|Spiny|Blooper|Lava Bubble|-|Mushroom|1 Up|Starman|Fire Flower|Mini Mushroom|Poison Mushroom|Spring|Side Spring|Stone|Feather|Bob-omb|Lit Bob-omb",0)
-            else i=show_contextmenu("Contents:|-|None|Goomba|Koopa|Red Koopa|Shell|Beetle|Spiny|Blooper|-|Mushroom|1 Up|Starman|Fire Flower|Mini Mushroom|Poison Mushroom|Spring|Side Spring|Stone|Feather|Bob-omb|Lit Bob-omb",0)
-            if (!i) return argument[2]
-            if (i=1) return ""
-            if (i=2) return "goomba"
-            if (i=3) return "koopa"
-            if (i=4) return "redkoopa"
-            if (i=5) return "shell"
-            if (i=6) return "beetle"
-            if (i=7) return "spiny"
-            if (i=8) return "blooper"
-
-            if (argument[0]!=pipeblock) i+=1
-
-            if (i=9) return "podoboo"
-
-            if (i=10) return "mushroom"
-            if (i=11) return "1up"
-            if (i=12) return "star"
-            if (i=13) return "flower"
-            if (i=14) return "mini"
-            if (i=15) return "poison"
-            if (i=16) return "spring"
-            if (i=17) return "spreng"
-            if (i=18) return "stone"
-            if (i=19) return "feather"
-            if (i=20) return "bobomb"
-            if (i=21) return "litbobomb"
+            return com_editobjitemboxcontent(true,argument[2])
         }
         if (type=3) return string(!funnytruefalse(argument[2]))
         if (type=2) return get_string("Next level name:",argument[2])
@@ -616,20 +525,7 @@ switch (argument[0]) {
     }
     case itemlaunch: {
         if (type=1) {
-            i=show_contextmenu("Item:|-|Mushroom|Fire Flower|Feather|Mini Mushroom|1 Up|Shield Mushroom|Starman|Poison Mushroom|Star Shard|Coin|White Token|Blue Token",0)
-            if (!i) return argument[2]
-            if (i=1) return "mushroom"
-            if (i=2) return "flower"
-            if (i=3) return "feather"
-            if (i=4) return "mini"
-            if (i=5) return "1up"
-            if (i=6) return "shield"
-            if (i=7) return "star"
-            if (i=8) return "poison"
-            if (i=9) return "shard"
-            if (i=10) return "coin"
-            if (i=11) return "token"
-            if (i=12) return "tokenblue"
+            return com_editobjitemboxcontent(false,argument[2])
         }
         if type=0 return get_string("Alignment in pixels (x,y):",argument[2])
     }
@@ -1133,22 +1029,14 @@ switch (argument[0]) {
     case crate: {
         if (type=0){return get_string("Alignment in pixels (x,y):",argument[2])}
         if (type=1) {
-            i=show_contextmenu("Crate contents:|-|Single Coin|Mushroom|Fire Flower|Feather|Mini Mushroom|1-Up|Poison Mushroom|Starman|Shield Mushroom|Spring|Sideways Spring|P-Switch|Shard|Nothing",0)
-            if (!i) return argument[2]
-            if (i=1) return "coin"
-            if (i=2) return "mushroom"
-            if (i=3) return "flower"
-            if (i=4) return "feather"
-            if (i=5) return "mini"
-            if (i=6) return "1up"
-            if (i=7) return "poison"
-            if (i=8) return "star"
-            if (i=9) return "shield"
-            if (i=10) return "spring"
-            if (i=11) return "spreng"
-            if (i=12) return "pswitch"
-            if (i=13) return "shard"
-            if (i=14) return ""
+            return com_editobjitemboxcontent(true,argument[2])
+        }
+    }
+
+    case iceblock: {
+        if (type=0){return get_string("Alignment in pixels (x,y):",argument[2])}
+        if (type=1) {
+            return com_editobjitemboxcontent(true,argument[2])
         }
     }
 

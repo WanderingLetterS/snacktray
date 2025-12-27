@@ -142,11 +142,11 @@ handlegrab frames=1
 handlegrab loop=1
 handlegrab speed=0.25
 
-grindgrab frames=2
+grindgrab frames=1
 grindgrab loop=1
 grindgrab speed=0.5
 
-grinding frames=2
+grinding frames=4
 grinding loop=1
 grinding speed=0.5
 

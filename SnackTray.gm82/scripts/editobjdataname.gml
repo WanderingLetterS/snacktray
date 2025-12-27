@@ -9,24 +9,7 @@ if (string(i)="") i="[unset]"
 switch (argument[0]) {
     case itembox: {
         if (type=1) {
-            if (i="item") return "Contains: Fire Flower"
-            if (i="itemfeather") return "Contains: Feather"
-            if (i="coins") return "Contains: Multicoins"
-            if (i="life") return "Contains: 1-Up"
-            if (i="poison") return "Contains: Poison Mushroom"
-            if (i="mini") return "Contains: Mini Mushroom"
-            if (i="vine") return "Contains: Green Spring"
-            if (i="star") return "Contains: Starman"
-            if (i="key") return "Contains: Key"
-            if (i="shield") return "Contains: Shield"
-            if (i="spring") return "Contains: Spring"
-            if (i="spreng") return "Contains: Side Spring"
-            if (i="bros") return "Contains: Punch Block"
-            if (i="shard") return "Contains: Star Shard"
-            if (i="pswitch") return "Contains: P Switch"
-            if (i="shard") return "Contains: Shard"
-            if (i="none") return "Contains: Nothing"
-            return "Contains: Coin"
+            return com_editnameitemboxcontent(i)
         }
         if (type=2) {if (t) return "Brick: Yes" return "Brick: No"}
         if (type=3) {if (t) return "Invisible: Yes" return "Invisible: No"}
@@ -36,50 +19,24 @@ switch (argument[0]) {
 
     case bigitembox: {
         if (type=1) {
-            if (i="item") return "Contains: Fire Flower"
-            if (i="itemfeather") return "Contains: Feather"
-            if (i="coins") return "Contains: Multicoins"
-            if (i="life") return "Contains: 1-Up"
-            if (i="poison") return "Contains: Poison Mushroom"
-            if (i="mini") return "Contains: Mini Mushroom"
-            if (i="vine") return "Contains: Green Spring"
-            if (i="star") return "Contains: Starman"
-            if (i="key") return "Contains: Key"
-            if (i="shield") return "Contains: Shield"
-            if (i="spring") return "Contains: Spring"
-            if (i="spreng") return "Contains: Side Spring"
-            if (i="bros") return "Contains: Punch Block"
-            if (i="shard") return "Contains: Star Shard"
-            if (i="pswitch") return "Contains: P Switch"
-            if (i="shard") return "Contains: Shard"
-            if (i="none") return "Contains: Nothing"
-            return "Contains: Coin"
+            return "Center "+com_editnameitemboxcontent(i)
         }
-        if (type=2) return "Bonus Target: "+i
+        if (type=2) return "Center Bonus Target: "+i
+        if (type=3) {
+            return "Left "+com_editnameitemboxcontent(i)
+        }
+        if (type=4) return "Left Bonus Target: "+i
+        if (type=5) {
+            return "Right "+com_editnameitemboxcontent(i)
+        }
+        if (type=6) return "Right Bonus Target: "+i
         if (type=0) return "Align: "+string(i)
     }
 
     case noteblock: {
         if (type=0) {return "Align: "+string(i)}
         if (type=1) {
-            if (i="item") return "Contains: Fire Flower"
-            if (i="itemfeather") return "Contains: Feather"
-            if (i="coins") return "Contains: Multicoins"
-            if (i="life") return "Contains: 1-Up"
-            if (i="poison") return "Contains: Poison Mushroom"
-            if (i="mini") return "Contains: Mini Mushroom"
-            if (i="vine") return "Contains: Green Spring"
-            if (i="star") return "Contains: Starman"
-            if (i="key") return "Contains: Key"
-            if (i="shield") return "Contains: Shield"
-            if (i="spring") return "Contains: Spring"
-            if (i="spreng") return "Contains: Side Spring"
-            if (i="bros") return "Contains: Punch Block"
-            if (i="shard") return "Contains: Star Shard"
-            if (i="pswitch") return "Contains: P Switch"
-            if (i="shard") return "Contains: Shard"
-            if (i="none") return "Contains: Nothing"
-            return "Contains: Coin"
+            return com_editnameitemboxcontent(i)
         }
         if (type=2) {if (t) return "Hidden: Yes" return "Hidden: No"}
         if (type=3) {if (t) return "Shift Block" return "Note Block"}
@@ -104,28 +61,7 @@ switch (argument[0]) {
     case downpipe: case sidepipe: case pipeblock: case theothersidepipe: {
         if (type=5) {if (i="0") return "Max Spawns: Unlimited" return "Max Spawns: "+i}
         if (type=4) {
-            if (i="[unset]") return "Spawn: Off"
-            if (i="goomba") return "Spawn: Goomba"
-            if (i="koopa") return "Spawn: Koopa"
-            if (i="redkoopa") return "Spawn: Red Koopa"
-            if (i="shell") return "Spawn: Shell"
-            if (i="beetle") return "Spawn: Beetle"
-            if (i="spiny") return "Spawn: Spiny"
-            if (i="blooper") return "Spawn: Blooper"
-            if (i="podoboo") return "Spawn: Lava Bubble"
-
-            if (i="mushroom") return "Spawn: Mushroom"
-            if (i="1up") return "Spawn: 1-Up"
-            if (i="star") return "Spawn: Starman"
-            if (i="flower") return "Spawn: Fire Flower"
-            if (i="mini") return "Spawn: Mini Mushroom"
-            if (i="poison") return "Spawn: Poison Mushroom"
-            if (i="spring") return "Spawn: Spring"
-            if (i="spreng") return "Spawn: Side Spring"
-            if (i="stone") return "Spawn: Stone"
-            if (i="feather") return "Spawn: Feather"
-            if (i="bobomb") return "Spawn: Bob-omb"
-            if (i="litbobomb") return "Spawn: Lit Bob-omb"
+            return com_editnameitemboxcontent(i)
         }
         if (type=3) {if (t) return "Stream: Yes" return "Stream: No"}
         if (type=2) return "Next Level: "+i
@@ -507,18 +443,7 @@ switch (argument[0]) {
             return "Align: "+string(i)
         }
         if (type=1) {
-            if (i="mushroom") return "Type: Mushroom"
-            if (i="flower") return "Type: Fire Flower"
-            if (i="feather") return "Type: Feather"
-            if (i="mini") return "Type: Mini Mushroom"
-            if (i="1up") return "Type: 1-Up"
-            if (i="shield") return "Type: Shield Mushroom"
-            if (i="star") return "Type: Starman"
-            if (i="poison") return "Type: Poison Mushroom"
-            if (i="shard") return "Type: Star Shard"
-            if (i="coin") return "Type: Coin"
-            if (i="token") return "Type: White Token"
-            if (i="tokenblue") return "Type: Blue Token"
+            return com_editnameitemboxcontent(i)
         }
         if (type=2) {
             if (i="0") return "Physics: On"
@@ -1153,27 +1078,11 @@ switch (argument[0]) {
             return "Spiked: True"
         }
     }
-
+    case iceblock:
     case crate: {
         if (type=1) {
-            if (i="coin") return "Contains: Coin"
-            if (i="mushroom") return "Contains: Mushroom"
-            if (i="flower") return "Contains: Fire Flower"
-            if (i="feather") return "Contains: Feather"
-            if (i="life") return "Contains: 1-Up"
-            if (i="poison") return "Contains: Poison Mushroom"
-            if (i="mini") return "Contains: Mini Mushroom"
-            if (i="star") return "Contains: Starman"
-            if (i="shield") return "Contains: Shield Mushroom"
-            if (i="spring") return "Contains: Spring"
-            if (i="spreng") return "Contains: Side Spring"
-            if (i="pswitch") return "Contains: P-Switch"
-            if (i="shard") return "Contains: Shard"
-            return "Contains: Nothing"
+            return com_editnameitemboxcontent(i)
         }
-        if (type=2) {if (t) return "Brick: Yes" return "Brick: No"}
-        if (type=3) {if (t) return "Invisible: Yes" return "Invisible: No"}
-        if (type=4) return "Bonus Target: "+i
         if (type=0) return "Align: "+string(i)
     }
 

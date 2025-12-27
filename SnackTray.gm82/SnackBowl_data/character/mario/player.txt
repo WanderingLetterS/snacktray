@@ -35,12 +35,12 @@ snack layout=true
 max sizes=9
 
 single sheet=true
-singlesheet split width=8,623,1238,8,8,8,623,1238,623,1238
-singlesheet split height=0,0,0,527,1054,0,527,527,1054,1054
+singlesheet split width=623,8,8,8,8,8,8,8,8,8
+singlesheet split height=0,0,0,0,0,0,0,0,0,0
 
 
 
-custom sprite list=stand,wait,lookup,crouch,balance,push,pose,knock,dead,walk,run,brake,jump,bonk,fall,spring,springfall,climbing,flagslide,roll,standcarry,swimcarry,lookupcarry,crouchcarry,piping,pipingup,sidepiping,doorenter,doorexit,spinjump,doublejump,doublebonk,doublefall,runjump,wallslide,slide,fire,throw,longjump,swim,swimpaddle,dive,bellyslide,fly,walkcarry,jumpcarry,bonkcarry,fallcarry
+custom sprite list=stand,wait,lookup,crouch,balance,push,pose,knock,dead,walk,run,brake,jump,bonk,fall,spring,springfall,climbing,flagslide,roll,standcarry,swimcarry,lookupcarry,crouchcarry,handlegrab,grindgrab,grinding,piping,pipingup,sidepiping,doorenter,doorexit,spinjump,doublejump,doublebonk,doublefall,runjump,wallslide,slide,fire,throw,longjump,swim,swimpaddle,dive,bellyslide,fly,walkcarry,jumpcarry,bonkcarry,fallcarry
 sheet splits=crouchcarry
 sheet split size=312
 
@@ -69,6 +69,9 @@ connect swimpaddle=true
 connect bellyslide=true
 connect bonkcarry=true
 connect bonkfall=true
+connect trickright=true
+connect grindgrab=true
+
 
 stand frames=8
 stand speed=0.1
@@ -77,138 +80,215 @@ stand frametimes=32,2,4,1,1,1,1,1
 wait frames=8
 wait loop=5
 wait speed=0.1
-
+wait frametimes=1,1,1,1,1,1,1,1,1,1,1,2,2,2,2
 
 lookup frames=4
+lookup loop=2
+lookup speed=0.2
+lookup frametimes=1,32,1,1
+
 pose frames=6
+pose loop=6
+pose speed=0.325
+
 crouch frames=2
+crouch loop=2
+crouch speed=0.2
+
 hurt frames=1
+
+
+
 dead frames=7
-deadup frames=7
+dead speed=0.2
+dead loop=4
+dead frametimes=1.35,8,1.35,1,1,1,1
+
+
 walk frames=8
+walk speed=0.4
+
+
 run frames=8
+run loop=3
+run speed=0.5
+run frametimes=1.75,1.75,1,1,1,1,1,1
+
 brake frames=1
+brake loop=2
+brake speed=0.25
+
 jump frames=2
+jump loop=2
+jump speed=0.1
+
 bonk frames=2
+bonk loop=2
+bonk speed=0.1
+
 fall frames=3
+fall loop=3
+fall speed=0.15
+
 runjump frames=1
+
+
+
 longjump frames=5
-sideflip frames=6
+longjump speed=0.25
+longjump loop=5
+
+
 doublejump frames=2
+doublejump loop=2
+doublejump speed=0.1
+
 doublebonk frames=2 
+doublebonk loop=2
+doublebonk speed=0.1
+
 doublefall frames=3
+doublefall loop=3
+doublefall speed=0.15
+
 wallslide frames=1
+
+
+
 groundpound frames=8
+groundpound loop=8
+
+poundfall frames=2
+poundfall loop=2
+poundfall speed=0.1
+
+
 slide frames=2
+slide speed=0.25
+
+
 standcarry frames=3
+standcarry speed=0.2
+standcarry frametimes=24,1,1
+
 lookupcarry frames=4
+lookupcarry speed=0.2
+lookupcarry loop=2
+lookupcarry frametimes=1,32,1,1
+
 crouchcarry frames=4
+crouchcarry speed=0.2
+crouchcarry loop=2
+crouchcarry frametimes=1,32,1,1
+
 walkcarry frames=8
+walkcarry speed=0.5
+
+
 jumpcarry frames=2
+jumpcarry loop=2
+jumpcarry speed=0.1
+
 bonkcarry frames=1
+
+
 fallcarry frames=3
+fallcarry loop=3
+fallcarry speed=0.15
+
+swimcarry frames=4
+swimcarry speed=0.3
 
 throw frames=1
+
+
 roll frames=8
-poundfall frames=2
+
+
+
 swim frames=4
-paddle frames=4
-swimcarry frames=4
-spinjump frames=8
-fire frames=3
-push frames=4
-balance frames=4
-bellyslide frames=3
-dive frames=5
-climbing frames=4
-capeflight frames=6
-
-
-run loop=3
-pose loop=6
-brake loop=2
-lookup loop=2
-crouch loop=2
-jump loop=2
-doublejump loop=2
-longjump loop=5
-bonk loop=2
-doublebonk loop=2
-fall loop=3
-doublefall loop=3
-lookupcarry loop=2
-crouchcarry loop=2
-jumpcarry loop=2
-doublejumpcarry loop=2
-fallcarry loop=3
-groundpound loop=8
-poundfall loop=2
-dead loop=4
-dive loop=5
-fire loop=3
-
-
-standcarry speed=0.2
-
-lookup speed=0.2
-crouch speed=0.2
-lookupcarry speed=0.2
-crouchcarry speed=0.2
-brake speed=0.25
-pose speed=0.325
-dead speed=0.2
-deadup speed=0.2
-walk speed=0.4
-run speed=0.5
-jump speed=0.1
-doublejump speed=0.1
-longjump speed=0.25
-bonk speed=0.1
-doublejumpbonk speed=0.1
-fall speed=0.15
-doublejumpfall speed=0.15
-slide speed=0.25
-walkcarry speed=0.5
-jumpcarry speed=0.1
-fallcarry speed=0.15
-spinjump speed=0.75
 swim speed=0.2
+
+
+paddle frames=4
 paddle speed=0.375
-swimcarry speed=0.3
+
+
+spinjump frames=8
+spinjump speed=0.75
+
+
+fire frames=3
+fire loop=3
 fire speed=0.3
-poundfall speed=0.1
+
+
+push frames=4
 push speed=0.1
+
+
+
+balance frames=4
 balance speed=0.1
+
+
+
+bellyslide frames=3
 bellyslide speed=0.2
+bellyslide frametimes=32,1,1
+
+
+dive frames=5
+dive loop=5
 dive speed=0.8
+dive frametimes=2,2,2,24,2
+
+climbing frames=4
 climbing speed=0.125
 
 
-wait frametimes=1,1,1,1,1,1,1,1,1,1,1,2,2,2,2
-run frametimes=1.75,1.75,1,1,1,1,1,1
-lookup frametimes=1,32,1,1
-standcarry frametimes=24,1,1
-lookupcarry frametimes=1,32,1,1
-crouchcarry frametimes=1,32,1,1
-dead frametimes=1.35,8,1.35,1,1,1,1
-dive frametimes=2,2,2,24,2
-bellyslide frametimes=32,1,1
 
-grind frames=1
+capeflight frames=6
+
+
 piping frames=8
-pipingup frames=8
-sidepiping frames=8
-doorenter frames=4
-doorexit frames=1
-
 piping speed=0.5
-pipingup speed=0.5
-sidepiping speed=0.4
-doorenter speed=0.20
-doorexit speed=0.20
 
+pipingup frames=8
+pipingup speed=0.5
+
+sidepiping frames=8
+sidepiping speed=0.4
+
+doorenter frames=4
+doorenter speed=0.20
 doorenter loop=4
 doorenter framestimes=1,1,1,1
+
+doorexit frames=1
+doorexit speed=0.20
+
+
+handlegrab frames=1
+handlegrab loop=1
+handlegrab speed=0.25
+
+grindgrab frames=1
+grindgrab loop=1
+grindgrab speed=0.5
+
+grinding frames=4
+grinding loop=1
+grinding speed=0.5
+
+trickright frames=1
+trickright loop=1
+trickright speed=0.25
+
+trickup frames=1
+trickup loop=1
+trickup speed=0.25
+
 
 boll top=#E00808
 boll mid=#000000

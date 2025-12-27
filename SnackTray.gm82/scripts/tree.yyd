@@ -665,3 +665,8 @@
 	|scr_net_writepositionbuffer
 	|scr_net_hostsendbuffer
 	|scr_net_readdrawbuffer
++Object Commons
+	|com_itemboxitemspawn
+	|com_editobjitemboxcontent
+	|com_editnameitemboxcontent
+	|com_contenttoobject

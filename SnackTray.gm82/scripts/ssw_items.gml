@@ -24,9 +24,9 @@ if instance_exists(player){
         if !dead{
             if other.lastplayer!=other.lastplayer
                 other.lastplayer=id
-            if ((other.my_item=="?mushroom" && !default_questionmush) || (custom_items)){
+            if ((argument[0]=="?mushroom" && !default_questionmush) || (custom_items)){
                 itemfound=true
-                switch (other.my_item){
+                switch (argument[0]){
                     case "?mushroom": {if custom_mushrooms_idle other.hspeed=0  frx=fr fry=0 frox=8 froy=8 break}
 
                     case "mushroom": { if custom_mushrooms_idle other.hspeed=0  frx=fr fry=1 frox=8 froy=8 break}

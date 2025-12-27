@@ -441,53 +441,58 @@
 	|bobomb
 	|litbobomb
 +items
+	+Powies
+		|mushroom
+		|flower
+		|feather
+		|questionmush
+		|mushmini
+		|wflower
+		|tflower
+		|iflower
+		|cflower
+		|lifemush
+		|shield
+		|starman
+		|jumprefresh
+		|dotter
+		|undotter
+	+Collectables
+		|itemdrop
+		|coin
+		|itemring
+		|redring
+		|redcoin
+		|starshard
+		|keyitem
+		|carditem
+		|token
+		|keyfollow
+		|cardfollow
+	+Interactables
+		|axe
+		|retainer
+		|retainee
+		|flag
+		|monamie
+		|monitordead
+		|signpost
+		|checkpoint
+		|spring
+		|sprong
+		|spreng
+		|pollenflower
+		|pswitch
+		|hitswitch
+		|crystaltap
+		|clawbase
+		|claw
+	+Hazards
+		|delfruit
+		|mushpoison
 	|item
-	|itemdrop
-	|coin
-	|itemring
-	|redring
-	|redcoin
-	|starshard
-	|shield
-	|token
-	|mushroom
-	|questionmush
-	|lifemush
-	|mushpoison
-	|mushmini
-	|flower
-	|wflower
-	|tflower
-	|iflower
-	|cflower
-	|feather
-	|starman
-	|axe
-	|retainer
-	|retainee
-	|flag
-	|monitordead
-	|monamie
-	|signpost
-	|checkpoint
-	|spring
-	|sprong
-	|spreng
-	|jumprefresh
-	|delfruit
-	|crystaltap
-	|keyitem
-	|carditem
-	|keyfollow
-	|cardfollow
-	|dotter
-	|undotter
-	|pswitch
-	|hitswitch
 	|pipeitem
 	|itemlaunch
-	|clawbase
-	|claw
 +level objects
 	+collision
 		|collider
@@ -563,6 +568,7 @@
 			|crate
 			|stone
 			|cork
+			|iceblock
 			|itembox
 			|bigitembox
 			|invisibox
@@ -631,7 +637,6 @@
 		|conveyorbelt
 		|terrainspring
 		|terrainsprong
-		|pollenflower
 		|swinginghammer
 		|spikecrusher
 		|gearplatform

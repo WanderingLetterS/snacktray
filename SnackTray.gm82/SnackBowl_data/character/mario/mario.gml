@@ -1,5 +1,5 @@
 #define spritelist
-stand,wait,lookup,crouch,balance,pose,knock,dead,walk,run,maxrun,push,brake,jump,bonk,fall,spring,springfall,roll,climbing,flagslide,piping,pipingup,sidepiping,doorenter,spinjump,doorexit,doublejump,doublebonk,doublefall,runjump,wallslide,slide,fire,throw,longjump,swim,swimpaddle,dive,bellyslide,fly,standcarry,swimcarry,lookupcarry,crouchcarry,walkcarry,jumpcarry,bonkcarry,fallcarry
+stand,wait,lookup,crouch,balance,pose,knock,dead,walk,run,maxrun,push,brake,jump,bonk,fall,spring,springfall,roll,climbing,flagslide,piping,pipingup,sidepiping,doorenter,spinjump,doorexit,doublejump,doublebonk,doublefall,runjump,wallslide,slide,fire,throw,longjump,swim,swimpaddle,dive,bellyslide,fly,standcarry,swimcarry,lookupcarry,crouchcarry,walkcarry,jumpcarry,bonkcarry,fallcarry,trickup,trickright,handlegrab,grindgrab,grinding
 
 #define soundlist
 skid,swim,pound,stomp,smalljump,flip,spin,slide,kick,fireball,wallkick,smallwallkick,dive,spinjump,spinbounce,longjump
@@ -337,10 +337,15 @@ if (!carry) {
 		if (swim||h) sprite="swimpaddle"
 	}
 	else if (jump) {
-		if (onvine) {sprite="climbing" frspd=(left||right||up||down) }
+		if (onvine) {sprite="climbing" frspd=sign(left+right+up+down) }
+		else if using_grindblock{
+			if grind_hanging sprite="grindgrab"
+			else sprite="grinding"
+		} else if using_handle{ sprite="handlegrab"}
 		else if (fall=6) {sprite="knock"}
 		else if twirly>=10 {sprite="spinjump" frspd=0.9}
 		else if (flight) {sprite= "fly" frspd=0 frame=((vsp+2.5)/6.5)*(global.animdat[p2,(16+128*32)+1+min(4,size)]-1) if frame>=frn frame=frn-1}
+		else if (tricking) {if tricking!=2 sprite="trickup" else sprite="trickright"}
 		else if (spinjump) {sprite="spinjump"}
 		else if (hang && vsp>=1 && !spinjump) {sprite="wallslide"}
 		else if ((double || triplejump>=1) && !water) {sprite="roll" frspd=0.4}
@@ -554,7 +559,38 @@ canstopjump=0
 }
 
 if (bbut) {
-    if ((is_fire() || is_clover() || is_ice() || is_thunder() || is_water()) && count_projectiles()<(3-is_thunder()-is_clover()*2) && !crouch && !dive) {
+	if sproinged||sprung{
+		if up{
+			tricking=1
+			vsp=-4
+			//hsp=0
+			proj_type="pstar"
+			i=fire_projectile(x,y) i.hspeed=-2 i.vspeed=2
+			i=fire_projectile(x,y) i.hspeed=2 i.vspeed=2
+			proj_type="4star"
+			sproinged=0
+			sprung=0
+			bouncetrick=0
+			fall=1
+			i=fire_projectile(x,y+4)
+			playsfx(name+"trick")
+		}else  if h!=0{
+			playsfx(name+"trick")
+			tricking=2
+			vsp=0
+			hsp=maxspd*h*1.5
+			proj_type="pstar"
+			i=fire_projectile(x-4*xsc,y+4) i.hspeed=-2*t i.vspeed=2  i.growsize=0.25
+			i=fire_projectile(x-4*xsc,y+4) i.hspeed=-2*t i.vspeed=-2 i.growsize=-0.25 
+			proj_type="4star"
+			i=fire_projectile(x,y+4)
+			sproinged=0
+			bouncetrick=0
+			sprung=0
+			fall=1
+		} 
+
+	} else if ((is_fire() || is_clover() || is_ice() || is_thunder() || is_water()) && count_projectiles()<(3-is_thunder()-is_clover()*2) && !crouch && !dive) {
 		if is_fire()
 		proj_type="fireball"
 		else if is_clover()
@@ -1429,7 +1465,7 @@ if (pound) {
 	if (stoppounding=1 && !down) {stoppounding=0}
 	if stoppounding=0 {pound=0}     
 }
- 
+ sproinged=0 tricking=0
 
 #define death
 if (event="create"){

@@ -23,6 +23,7 @@ getregion(x)
 
 type=""
 sub="shell"
+power_lv=1
 #define Alarm_0
 /*"/*'/**//* YYD ACTION
 lib_id=1

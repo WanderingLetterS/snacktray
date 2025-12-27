@@ -79,11 +79,11 @@ with (blockcoll){
                     owner.blockc+=1
                     hit=1
                     if (object_index == bigitembox) {
-                    with (instance_create(x+8,y+8+16*go,coinup)) {vspeed=-1.5+2*other.go p2=other.owner.p2}
-                    with (instance_create(x+8+(offset*2),y+8+16*go,coinup)) {vspeed=-1.5+2*other.go p2=other.owner.p2}
-                    global.scor[owner.p2]+=200
-                    global.coins[owner.p2]+=2
-                        owner.coint+=2
+                    //with (instance_create(x+8,y+8+16*go,coinup)) {vspeed=-1.5+2*other.go p2=other.owner.p2}
+                    //with (instance_create(x+8+(offset*2),y+8+16*go,coinup)) {vspeed=-1.5+2*other.go p2=other.owner.p2}
+                    //global.scor[owner.p2]+=200
+                    //global.coins[owner.p2]+=2
+                     //   owner.coint+=2
                     }
                     sound("itemappear")
                     mush=!owner.size

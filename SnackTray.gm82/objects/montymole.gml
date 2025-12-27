@@ -11,7 +11,7 @@ enemy2=1
 sprite="montymole"
 pop=0
 
-if type=1 {instance_create(x,y,montyhole) instance_destroy()}
+if string(type)="1" {instance_create(x,y,montyhole) instance_destroy()}
 #define Step_2
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -69,4 +69,4 @@ if nearestplayer().x > x {hspeed+=0.0159} if nearestplayer().x < x {hspeed-=0.01
 if nearestplayer().x > x xsc=-1
 if nearestplayer().x < x xsc=1
 
-if type="1" {instance_create(x,y,montyhole) instance_destroy()}
+if string(type)="1" {instance_create(x,y,montyhole) instance_destroy()}

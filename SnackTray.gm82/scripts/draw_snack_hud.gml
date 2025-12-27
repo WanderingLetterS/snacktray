@@ -64,7 +64,7 @@ if !(global.nohud) && !(dontdrawhudler) && !global.mphudder[p2]{
 
     draw_sprite_part(spr,0,8,8,65,13,26+p_offset*p2,global.screenheight-24+9 ) //That's my name! :)
 
-
+    if maxe>0{
     //energy holder
     switch (maxe){
         case 1: draw_sprite_part(spr,0,8,22,4,10,27+p_offset*p2,global.screenheight-24) draw_sprite_part(spr,0,54,22,4,10,31+p_offset*p2,global.screenheight-24) break; //special cases for 1 and 2
@@ -105,6 +105,7 @@ if !(global.nohud) && !(dontdrawhudler) && !global.mphudder[p2]{
             }
         }
         break;
+    }
     }
 
     shader_reset()
