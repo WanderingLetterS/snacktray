@@ -60,7 +60,7 @@ if (pause) {
             global.valign=0
 
             draw_skintext(8,12,replacebuttonnames(global.levelname)+"#"+replacebuttonnames(global.leveldescnotags))
-            draw_skintext(8,44,"[P"+string(pauseplayer+1)+"]",playercol(global.input[pauseplayer]))
+            if global.mplay>1 draw_skintext(8,44,"[P"+string(pauseplayer+1)+"]",playercol(global.input[pauseplayer]))
         }
     }
     d3d_transform_stack_pop()

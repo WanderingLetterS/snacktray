@@ -35,7 +35,150 @@ to access new abilities!
 
 #define customhud
 dontdrawdefaulthud=true
-draw_snack_hud()
+spr=sheets[global.reroutedsizes[p2,size]]
+
+//DELUXE HUD
+if !SNACK_MODE {
+    
+	//scope: player
+	p=id
+
+	d3d_transform_stack_push()
+	d3d_transform_add_translation(hoffx,hoffy,0)
+
+	global.halign=0
+	//if dontdrawhudler=1 exit
+	p_offset=80
+
+	if !(global.nohud){
+		if usepalette scr_applyPaletteSegmentedAlpha(global.shaderPaletteSwapAlpha,global.palettesprites[p2*100],global.pal_1[p2]+1,global.pal_2[p2]+1,global.pal_3[p2]+1,global.pal_4[p2]+1,global.reroutedsizes[p2,size],other.hud_alpha[p2],totpal+1)
+
+		// apply ma shader
+		draw_sprite_part(spr,0,59,22,21,21,8+p_offset*p2,199) //grin emoji
+		
+		draw_sprite_part(spr,0,8,8,72,13,30+p_offset*p2,198) //That's my name! :)
+
+
+		//My fucking Energy!
+
+		//energy holder
+		if maxe
+		switch (maxe){
+			case 1: draw_sprite_part(spr,0,8,22,4,10,27+4+p_offset*p2,210) draw_sprite_part(spr,0,54,22,4,10,31+4+p_offset*p2,210) break; //special cases for 1 and 2
+			case 2: draw_sprite_part(spr,0,8,22,8,10,27+4+p_offset*p2,210) draw_sprite_part(spr,0,50,22,8,10,35+4+p_offset*p2,210) break;
+			default:
+			draw_sprite_part(spr,0,8,22,16,10,27+4+p_offset*p2,210) //the starter segment is guaranteed
+			tester=(maxe-2)
+			offx=0
+			while (tester>0){
+				if tester==1{draw_sprite_part(spr,0,50,22,8,10,43+4+offx+p_offset*p2,210)}
+				else if tester==2{draw_sprite_part(spr,0,42,22,16,10,43+4+offx+p_offset*p2,210)}
+				else draw_sprite_part(spr,0,25,22,16,10,43+4+offx+p_offset*p2,210)
+				offx+=16
+				tester-=2
+			}
+			break;
+		}
+		//The actual fucking energy itself
+		if maxe
+		switch (maxe){
+			case 1: if energy draw_sprite_part(spr,0,8,33,min(4,4-min(4,(0.5-energy)*8)),10,27+4+p_offset*p2,210) if energy>0.5 draw_sprite_part(spr,0,54,33,4-((0.5-(energy-0.5))*4),10,31+4+p_offset*p2,210) break; //special cases for 1 and 2
+			case 2: if energy draw_sprite_part(spr,0,8,33,min(8,8-min(8,(1-energy)*8)),10,27+4+p_offset*p2,210) if energy>1 draw_sprite_part(spr,0,50,33,8-((1-(energy-1))*8),10,35+4+p_offset*p2,210) break;
+			default:
+			if energy{
+				draw_sprite_part(spr,0,8,33,16-min(16,(2-min(2,energy))*8),10,27+4+p_offset*p2,210) //the starter segment is guaranteed
+					tester=(maxe-2)
+					offx=0
+					enercheck=(energy-2) //remaining energy
+				while (enercheck>0){
+					if tester==1{draw_sprite_part(spr,0,50,33,8-min(8,(1-enercheck)*8),10,43+4+offx+p_offset*p2,210)}
+					else if tester==2{draw_sprite_part(spr,0,42,33,16-min(16,(tester-enercheck)*8),10,43+4+offx+p_offset*p2,210)}
+					else if (enercheck>=2) draw_sprite_part(spr,0,25,33,16,10,43+4+offx+p_offset*p2,210)
+
+					else draw_sprite_part(spr,0,25,33,16-min(16,(2-(enercheck mod 2))*8),10,43+4+offx+p_offset*p2,210)
+					offx+=16
+					tester-=2
+					enercheck-=2
+				}
+			}
+			break;
+		}
+		shader_reset()
+		
+		//might be important
+		if ((global.gamemode="classic" || /*just incase*/ global.gamemode="tutorial") && !settings("cog inflives")) draw_skintext(40,208,chr(42)+drawlivestring(),c_white,gamemanager.hud_alpha[view_current])
+		
+		draw_skintext(16,8,chr(36)+chr(42)+format(global.coins[view_current],2),$ffffff)
+		maintain_ring=0
+		if global.rings[view_current]=0
+			with itemdrop if type="ringup" && p2=view_current {maintain_ring=1}
+		if global.rings[view_current]==0
+			col2=$ffffff
+			if global.frame8 col2=$ff
+		if ringxoffset!=-44 && global.rings[view_current]=0 && !maintain_ring{
+			ringxoffset-=1
+			col2=$ff
+		}else if ringxoffset!=16 && (global.rings[view_current]>0 || maintain_ring) {
+			ringxoffset+=1
+			col2=$ffffff
+		}
+		if global.rings[view_current]!=0
+			col2=$ffffff
+
+		draw_skintext(ringxoffset,24,chr(16)+chr(42)+formatdark(global.rings[view_current],3),col2)
+
+		if global.gamemode!="timeattack" {
+			//Red Rings
+			var rcol;
+			i=1
+			repeat (5) {
+				rcol=c_white
+				if !gamemanager.ringexists[i] rcol=c_gray
+				draw_skintext(328+(i*8),24,chr(19+settings("rr" + string(i) + global.levelfname)),rcol)
+				i+=1
+			}
+
+			//Score
+			draw_skintext(248,8,formatdark(global.scor[view_current],9),$ffffff)
+
+			if (global.inf_time || global.wanna) {
+				draw_skintext(336,8,chr(17)+"-:--",c_white)
+			} else {
+				col=$ffffff
+				if (gamemanager.time<=skindat("hurrytime") && global.frame8) col=$ff
+				if (skindat("mariotime"))
+					t=floor(tick/22.5)
+				else
+					t=floor(tick/60)
+
+				t_offset = ((t div 60) >= 10) + ((t div 60) >= 100) //listen if you can get 1000 minutes of time i dont wanna hear nothing about it being offcentered
+
+				draw_skintext(336 - (t_offset*8),8,chr(17)+string(t div 60)+":"+format(t mod 60,2),col)
+			}
+		} else {
+			global.inf_time=1
+			t=floor(tick/60)
+			t2=floor(tick*1.66666666)
+
+			var timestring, redstring;
+
+			timestring=chr(17)+string(t div 60)+"'"+format(t mod 60,2)+"''"+format(t2 mod 100,2)
+			redstring=" "+chr(19+ta_set("ta_win_" + global.levelfname + string_replace(global.lskins[global.levelskin+1,0], global.lbase, ""))) //i'll still find a use for this trust.
+			
+			global.halign=1
+			draw_skintext(220,8,timestring + redstring,c_white)
+			global.halign=0
+		}
+	}
+	d3d_transform_stack_pop()
+	
+}
+
+//SNACK TRAY HUD
+if SNACK_MODE {
+	execute_string("draw_snack_hud()")
+}
+
 
 #define timeattack
 //allow Spark's speed and spindash upgrade
@@ -46,8 +189,6 @@ global.emeralds=2
 #define match
 
 name=global.charname[global.option[p2]]
-
-
 
 //moddir+"character\"+global.charname[char]+"\"+"player.txt"
 moddir=global.workdir+"mods\"
@@ -268,6 +409,17 @@ draw_skintext(slide4,144," "+string(points))')
 dontdrawdefaulthud=true
 mask_set(12,12)
 overwritecam=0
+snacklayout=1
+
+//admittedly this is a bad way to tell what game we're in, buuuuutt....
+if (string_pos("Snack Tray",gametitle)) {
+	SNACK_MODE=1
+}
+
+if (string_pos("Boll Tower",gametitle)) {
+	TOWER_MODE=1
+}
+
 
 					  //spark's techical channel
 global.channel[1024]=0 //any index of the array can techically be used, up to 32000
@@ -540,7 +692,7 @@ if (type="ring") {
 
 #define effectsbehind
 
-/*
+
 if trailing {
 	ds_list_insert(trail_x,0,x)
 	ds_list_insert(trail_y,0,y+4)
@@ -599,7 +751,7 @@ if ds_list_size(trail_x)>=trail_steps || !trailing {
 
 draw_primitive_end()
 draw_set_blend_mode(bm_normal)
-*/
+
 
 if em_messagego {
 	rect(view_xview[view_current]-1,view_yview[0]-1,global.w+2,view_hview[0]+2,0,0.5) 
@@ -1367,6 +1519,12 @@ if ((abut || jumpbufferdo) && (!springin)) {
             vm=point_distance(0,0,hsp,vsp)
             hsp=lengthdir_x(vm,vd)
             vsp=lengthdir_y(vm,vd)
+			
+			if SNACK_MODE {
+				i=shoot(x,y+12,psmoke) i.hspeed=hsp i.vspeed=-2 i.growsize=-1 i.image_xscale=0.75 i.image_yscale=0.75 i.friction=0.05 i.gravity=0.05
+				i=shoot(x,y+12,psmoke) i.hspeed=2*xsc i.vspeed=-1 i.growsize=-1 i.image_xscale=0.75 i.image_yscale=0.75 i.depth=depth+2 i.gravity=0.1
+				i=shoot(x,y+12,psmoke) i.hspeed=-2*xsc i.vspeed=-2 i.growsize=1 i.image_xscale=0.75 i.image_yscale=0.75 i.gravity=0.1
+			}
 
             jump=1
             fall=0
@@ -1386,6 +1544,7 @@ if ((abut || jumpbufferdo) && (!springin)) {
                 shockerable=1
                 insted=1
 				slam=0
+				enertrail=0
                 throwsparks(x,y)
                 playsfx(name+"shockering")
 
@@ -1398,6 +1557,7 @@ if ((abut || jumpbufferdo) && (!springin)) {
 		used=1
 		slam=1
 		trailing=1
+		enertrail=1
 		playsfx(name+"release")
         }
 
@@ -1462,6 +1622,7 @@ if (shockerable) {
 				if down vsp=median(-2,vsp,4)
 				}
                 trailing=1
+				enertrail=1
 				dir=point_direction(x,y,xp,yp)-(180*(xsc=1))
 				//sprite_angle=dir
            }
@@ -1471,7 +1632,7 @@ if (shockerable) {
 			   if shockerable=40 sprite_angle=0
                shockerable=0
 			   shockfreeze=0
-			   trailing=0
+			   enertrail=0
               // boost=0
 }
 
@@ -1650,7 +1811,8 @@ else mask_set(12,24)
 
 #define movement
 
-if (trailing) {proj_type="Trail" i=fire_projectile(x,y) i.trail=1}
+if (enertrail) {proj_type="Trail" i=fire_projectile(x,y) i.trail=1}
+if (!trailing) enertrail=0
 if (piped || (size<2 || size=5) || !bkey) charge=0
 
 if (piped || outtajumped) exit
@@ -1665,7 +1827,8 @@ if (!jump) if (loose || spin || crouch) {
 }
 
 //speed cap rubberband formula		        						//yikes
-maxspd=(3.4 + !!size*0.2 + spin*2 + boost*0.8 + 0.0125*min(coint,100)*(global.emeralds>0))*wf
+maxspd=(3.4 + !!size*0.2 + spin*2 + boost*0.8 + 0.0125*min(coint,100)*(global.emeralds>0)*(!cpu_partner) + abs((x-cpu_myleader.x)/100)*cpu_partner)*wf
+if (cpu_partner && !player_controlled) {maxspd=(maxspd+cpu_myleader.maxspd)/2}
 
 if (abs(hsp)>maxspd+0.01) hsp=(abs(hsp)*2+maxspd)/3*sign(hsp)
 
@@ -1743,6 +1906,143 @@ else if (osld>180 && osld<320 && !instance_place(x-16,y+4,ground)) dy=3
     }
 
 com_finishmove()
+
+#define cpu
+{
+	cpu_support=1
+
+	up=   0 
+	down= 0
+	left= 0
+	right=0
+	akey= 0
+	bkey= 0
+	ckey= 0
+	skey= 0
+	xkey=0
+	ykey=0
+	zkey=0
+
+	if cpu_myleader.flash flash=cpu_myleader.flash
+	if !cpu_myleader.super {size=cpu_myleader.size} else {size=4}
+	super=cpu_myleader.super
+	if cpu_myleader.shielded shielded=cpu_myleader.shielded
+	cpu_myleader=cpu_myleader
+	
+	//respawn
+	if (global.mplay<2 && cpu_deadstore!=dead && alarm[7]=-1) {alarm[7]=120}
+	cpu_deadstore=dead
+
+    //if my player is standing on blockq and I'm directly below it, find a way to get to my player
+	
+	if !auto &&  (global.joynum>(global.input[p2]))||global.input[p2]<2 input_get(global.input[p2])
+	if (left||right||down||up||akey||bkey||ckey||skey||xkey||ykey||zkey)
+		&& !(right){
+		player_controlled=1
+	}
+	if !player_controlled { 
+		akey=0 
+		bkey=0 
+		ckey=0 
+		skey=0
+		left=0 
+		xkey=0 
+		ykey=0 
+		zkey=0
+		backtocputimer=0
+	} else { backtocputimer+=1 if backtocputimer>480 {player_controlled=0 backtocputimer=0} }
+	
+	if player_controlled exit
+	
+	if !instance_exists(cpu_myleader) exit
+		
+	
+	
+	//the actual bot itself
+	
+	akey=0
+	if cpu_myleader.bbox_left-cpu_myleader.hsp*3>bbox_right+(16*!jump) right=1
+	if cpu_myleader.bbox_right-cpu_myleader.hsp*3<bbox_left-(16*!jump) left=1
+	
+	//leave way for other bots
+	with (player) {
+		if (cpu_partner && x>other.x && other.x+16>x) other.right=0
+		if (cpu_partner && x<other.x && other.x-16<x) other.left=0
+		}
+
+	if cpu_myleader.y<(y-32) && cpu_myleader.jump=0 akey=1
+	//if cpu_myleader.y<(y-12)&&cpu_myleader.jump akey=1
+	if cpu_myleader.down down=1
+	if cpu_myleader.spindash&&abs(hsp)<0.5&&!jump && (size && size!=5) {xsc=cpu_myleader.xsc spindash=cpu_myleader.xsc}
+	if cpu_myleader.abut && !jump {jumpwait=abs(cpu_myleader.x-x)/max(abs(cpu_myleader.hsp),1)  }
+	
+	if !jump {if jumpwait {jumpwait-=1 if jumpwait<=1 akey=1}}
+	//Sonic characters only
+	if !right && !left && down && cpu_myleader.spindash && (size && size!=5) {akey=1 spindash=1}
+
+	if vsp>0 canstopjump=0
+	if jump && (cpu_myleader.vsp+cpu_myleader.y) <(y+16)&&canstopjump &&vsp<-1 {up=1 akey=1 cpu_akeystuck=0}
+	if is_fire() && cpu_myleader.bbut && !cpu_myleader.jump &&!jump && abs(cpu_myleader.x-x)<32 if !collision(xsc*4,0) {bkey=1}
+	
+	
+	
+	
+	////Some good pathfinding to avoid bots getting stuck in stupid ways
+	if push!=0 && !instance_place(x+8*xsc,y-32,collider) akey=1
+	if !jump
+	if collision_line(x,y,cpu_myleader.x,cpu_myleader.y,collider,0,1){
+		//Determine where the thing is.
+		
+		if abs(cpu_myleader.x-x)<32 && !push{ //Unlikely that there's something between us horizontally, let's check vertically.
+			
+	
+		} else{	//Ah shit there's something here, even worse, jumping wont fix our issues.
+			if collision_line(x,bbox_bottom,cpu_myleader.x,cpu_myleader.bbox_bottom,collider,0,1){
+				//It's not a tube... (From here characters would likely react differently)
+				
+			} else{ //Oh it's just a tube lmao (Found a small tunnel, characters will react differently.)
+				down=1 akey=1 
+			}
+			
+		}
+		
+		
+	}
+	
+	
+	//Back to general stuff
+	if akey cpu_akeystuck+=1 else cpu_akeystuck=0
+	if cpu_akeystuck>5{akey=0 cpu_akeystuck=0}
+	
+	
+    //if !inview() {x=cpu_myleader.x y=cpu_myleader.y}
+	//return animation
+	if (!inview() && !dead && !piped && !sfxdone) {cpu_return=1 playsfx(name+"spin") sfxdone=1}
+	
+	if (cpu_return) {
+		is_intangible=1
+		trailing=1
+		fall=0 
+		spin=0 
+		hsp=0 vsp=0
+		hurt=0
+		down=0 up=0
+		jump=1
+		move_lock=1
+		x=approach_val(x,cpu_myleader.x,3+(cpu_leader.hsp*4)+abs(x-cpu_myleader.x)/8)
+		y=approach_val(y,cpu_myleader.y,3+(cpu_leader.vsp*2)+abs(y-cpu_myleader.y)/8)
+	
+	}
+
+	if (cpu_return && point_distance(x,y,cpu_myleader.x-cpu_leader.hsp,cpu_myleader.y-cpu_leader.vsp)<=16) {
+		is_intangible=0
+		trailing=0
+		move_lock=0
+		throwsparks(x,y)
+		cpu_return=0
+		sfxdone=0
+	}
+}
 
 #define actions
 
@@ -1932,6 +2232,10 @@ pvp_stomper=0 //make sure to set for 0 for the mario bros when pounding
 pvp_ignore=instashieldin //For when you wanna hit the others but not yourself
 pvp_knockaway=0 //I won't hurt you, just go away
 
+if (cpu_partner) {
+	pvp_ignore=1
+	pvp_avoid=1
+}
 
 //based on the item draw-on from giana
 with monitor {

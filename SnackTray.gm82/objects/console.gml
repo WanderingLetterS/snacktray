@@ -165,7 +165,7 @@ if (keyboard_check_pressed(vk_enter) && !off) {
 
             global.charmstart=global.characters
 
-            dir=global.workdir+"mods\character\"
+            dir=global.workdir+"SnackBowl_mods\character\"
             i=0
             for (file=file_find_first(dir+"*",fa_directory);file!="";file=file_find_next()) {
                 if (directory_exists(dir+file)) if (file!="." && file!="..") {list[i]=dir+file i+=1}
@@ -198,7 +198,7 @@ if (keyboard_check_pressed(vk_enter) && !off) {
                     if (directory_exists(dir+file)) if (file!="." && file!="..") {mycharmdir=dir+file}
                 } file_find_close()
             } else{
-                dir=global.workdir+"mods\character\"
+                dir=global.workdir+"SnackBowl_mods\character\"
                 i=0
                 for (file=file_find_first(dir+global.charname[global.option[p2]],fa_directory);file!="";file=file_find_next()) {
                     if (directory_exists(dir+file)) if (file!="." && file!="..") {mycharmdir=dir+file}
