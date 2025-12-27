@@ -27,4 +27,4 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-if (view_current=p2) rect(view_xview[p2],view_yview[p2],400,224,0,a)
+if (view_current=p2) rect(view_xview[p2],view_yview[p2],global.screenwidth,global.screenheight,0,a)
