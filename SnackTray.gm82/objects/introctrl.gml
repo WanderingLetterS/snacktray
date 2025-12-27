@@ -311,7 +311,7 @@ global.halign=1
 if (year && introtape.f20=1) {
     if (classic && year) draw_systext(x,210,"Sonic Boll is "+string(year)+" years old today!")
 
-} else if introtape.f20=1 draw_systext(global.screenwidth/2,210,"Press any button to play!")
+} else if introtape.f20=1 draw_systext(global.screenwidth/2,210,"Press any button to play!",$ffffff,abs(sin(time/30)))
 
  global.halign=0
 #define KeyPress_32
