@@ -1,0 +1,9 @@
+ERROR in
+action number 1
+of Other Event: User Defined 0
+for object player:
+
+Error in code at line 34:   
+ if additive_firedash draw_set_blend_mode(bm_add)       ^at position 6: Expression expected
+
+

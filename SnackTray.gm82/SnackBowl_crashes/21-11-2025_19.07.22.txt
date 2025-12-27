@@ -1,9 +1,0 @@
-ERROR in
-action number 1
-of  Step Event
-for object obj_networkcontroller:
-
-In script scr_net_readdrawbuffer:Error in code at line 10:   
-            buffer_set_surface(buffer_copy(buffer_get_pos(global.netbuffer),buffer_get_size(global.netbuffer)),sureface("onlineplayer_"+my_id))                                                                                                                                           ^at position 138: Wrong type of arguments to +.
-
-

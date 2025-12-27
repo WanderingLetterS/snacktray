@@ -91,7 +91,7 @@ for (i=0;i<global.mplay;i+=1) {
     }
     with (instance_create(0,0,beatmanager)) {p2=i}
 }
-for (i=0;i<4;i+=1){
+for (i=0;i<4+(4*global.moreplayersitis);i+=1){
         if global.cpu[i]{
             with instance_create(spawner.x-(16*i)+8*global.mplay-8,spawner.y+2,player){
                 p2=i+4

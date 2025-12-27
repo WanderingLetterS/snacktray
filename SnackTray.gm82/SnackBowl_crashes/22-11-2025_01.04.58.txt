@@ -1,8 +1,0 @@
-ERROR in
-action number 2
-of  Step Event
-for object obj_networkcontroller:
-
-Trying to set surface(2) data from a buffer(5) that is too small.
-
-

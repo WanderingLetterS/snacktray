@@ -46,11 +46,19 @@ repeat (global.mplay) {
     i+=1
 }
 for (i=0;i<4;i+=1) {
+    if global.cpu[i] {
+        global.myoption[i]=global.option[i]
+        stats("times "+global.charname[global.option[i]]+" was used",stats("times "+global.charname[global.option[i]]+" was used")+1)
+
+        p2=i+4
+        entrypoint=global.gamemode
+        string_execute(global.charcode[global.option[p2]])
+    }
     if global.cpu[i+4] {
         global.myoption[i+4]=global.option[i+4]
         stats("times "+global.charname[global.option[i+4]]+" was used",stats("times "+global.charname[global.option[i+4]]+" was used")+1)
 
-        p2=i
+        p2=i+8
         entrypoint=global.gamemode
         string_execute(global.charcode[global.option[p2]])
     }

@@ -1,2 +1,2 @@
-COMPILATION ERROR in string to be executedError in code at line 2:   
- com_dmgr_instashield() //Ashura reuses the instashield, hence this. So, it's just nice to have.    ^at position 3: Unknown function or script: com_dmgr_instashield
+COMPILATION ERROR in string to be executedError in code at line 615:   
+   if is_clover() bkey && energy>0.05{                          ^at position 25: Assignment operator expected.

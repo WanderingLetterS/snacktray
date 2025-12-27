@@ -59,10 +59,10 @@ if (global.cpu[p2]==0) {
     }
 
     //Palette Switch
-    if within(other.x,other.y,x+13+6,y,8,12) {global.pal_1[p2+4]= (global.pal_1[p2+4]+1) mod 9 exit}
-    if within(other.x,other.y,x+21+6,y,8,12) {global.pal_2[p2+4]= (global.pal_2[p2+4]+1) mod 9 exit}
-    if within(other.x,other.y,x+29+6,y,8,12) {global.pal_3[p2+4]= (global.pal_3[p2+4]+1) mod 9 exit}
-    if within(other.x,other.y,x+37+6,y,8,12) {global.pal_4[p2+4]= (global.pal_4[p2+4]+1) mod 9 exit}
+    if within(other.x,other.y,x+13+6,y,8,12) {global.pal_1[p2+4]= (global.pal_1[p2+4]+1) mod playerskindat(p2+4,"totpal"+string(p2+4)) exit}
+    if within(other.x,other.y,x+21+6,y,8,12) {global.pal_2[p2+4]= (global.pal_2[p2+4]+1) mod playerskindat(p2+4,"totpal"+string(p2+4)) exit}
+    if within(other.x,other.y,x+29+6,y,8,12) {global.pal_3[p2+4]= (global.pal_3[p2+4]+1) mod playerskindat(p2+4,"totpal"+string(p2+4)) exit}
+    if within(other.x,other.y,x+37+6,y,8,12) {global.pal_4[p2+4]= (global.pal_4[p2+4]+1) mod playerskindat(p2+4,"totpal"+string(p2+4)) exit}
 
 
     //change character left

@@ -1,9 +1,0 @@
-ERROR in
-action number 1
-of Other Event: User Defined 0
-for object rostercpu:
-
-Error in code at line 43:   
-            if (global.charmod[global.option[p2+4]]) replaceinfo(globalmanager.charmoddir+global.charname[global.option[p2+4]]+"\"+"player.txt")                                                                                                    ^at position 99: Wrong type of arguments to +.
-
-

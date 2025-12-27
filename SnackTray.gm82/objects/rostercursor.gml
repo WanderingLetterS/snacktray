@@ -132,14 +132,14 @@ if (abut && pf10==noone && pf11==noone) {
         selchar=pf2.p2
         if (!settings("lock "+global.charname[pf2.p2]) || selchar=-1) {
             notready=0
-            if (!mybox || (keyboard_check(vk_control) && keyboard_check(vk_shift))) for (i=3;i>=0;i-=1) with (rosterbox) if (p2=i && !ready) {other.mybox=id}
+            if (!mybox || (keyboard_check(vk_control) && keyboard_check(vk_shift))) for (i=3+(4*global.moreplayersitis);i>=0;i-=1) with (rosterbox) if (p2=i && !ready) {other.mybox=id}
             if (mybox) {
                 global.input[mybox.p2]=p2
                 if (global.option[mybox.p2]!=selchar || !mybox.ready) {
                     global.playerskin[mybox.p2]=0
                     if global.option[mybox.p2]!=selchar {global.topleftplayerskin[mybox.p2]=0 mybox.vertselect=0}
                     global.option[mybox.p2]=selchar
-                    for (i=0;i<4;i+=1) if (global.playerskin[mybox.p2]=global.playerskin[i] && mybox.p2!=i && global.option[mybox.p2]=global.option[i] && global.pskins[0,selchar]>1) global.playerskin[mybox.p2]=((global.playerskin[mybox.p2] + 1) mod global.pskins[0,selchar])
+                    for (i=0;i<4+(4*global.moreplayersitis);i+=1) if (global.playerskin[mybox.p2]=global.playerskin[i] && mybox.p2!=i && global.option[mybox.p2]=global.option[i] && global.pskins[0,selchar]>1) global.playerskin[mybox.p2]=((global.playerskin[mybox.p2] + 1) mod global.pskins[0,selchar])
                     if (selchar!=-1) {
                         if (global.charmod[selchar]) replaceplayerinfo(p2,globalmanager.moddir+"character\"+global.charname[selchar]+"\"+"player.txt")
                         else replaceplayerinfo(p2,global.pbase+global.charname[selchar]+"\"+"player.txt")
@@ -177,7 +177,7 @@ if (abut && pf10==noone && pf11==noone) {
     if (pf8) {
         notready=0
 
-        if (!mybox || (keyboard_check(vk_control) && keyboard_check(vk_shift))) for (i=3;i>=0;i-=1) with (rosterbox) if (p2=i && !ready) {other.mybox=id}
+        if (!mybox || (keyboard_check(vk_control) && keyboard_check(vk_shift))) for (i=3+(4*global.moreplayersitis);i>=0;i-=1) with (rosterbox) if (p2=i && !ready) {other.mybox=id}
         if (mybox) {
             global.input[mybox.p2]=p2
             if (global.option[mybox.p2]!=-1 || !mybox.ready) {
@@ -289,22 +289,22 @@ if (bbut && !held && !pf10) {
         } else {
             var changed;
             //first spray
-            if point_in_rectangle(other.x,other.y,x-23,y-23,x-23+8,y-23+8) {
+            if point_in_rectangle(other.x,other.y,x-17,y-32,x-17+8,y-32+8) {
                 global.pal_1[p2]=wrap_val(global.pal_1[p2]-1, 0, playerskindat(p2,"totpal"+string(p2))-1)
                 selected_spray = true;
                 changed=1
             }
-            if point_in_rectangle(other.x,other.y,x-23+8,y-23,x-23+16,y-23+8) {
+            if point_in_rectangle(other.x,other.y,x-16+8,y-32,x-16+8+8,y-32+8) {
                 global.pal_2[p2]=wrap_val(global.pal_2[p2]-1, 0, playerskindat(p2,"totpal"+string(p2))-1)
                 selected_spray = true;
                 changed=2
             }
-            if point_in_rectangle(other.x,other.y,x-23+16,y-23,x-23+24,y-23+8) {
+            if point_in_rectangle(other.x,other.y,x-15+16,y-32,x-15+24,y-32+8) {
                 global.pal_3[p2]=wrap_val(global.pal_3[p2]-1, 0, playerskindat(p2,"totpal"+string(p2))-1)
                 selected_spray = true;
                 changed=3
             }
-            if point_in_rectangle(other.x,other.y,x-23+24,y-23,x-23+32,y-23+8) {
+            if point_in_rectangle(other.x,other.y,x-14+24,y-32,x-14+32,y-32+8) {
                 global.pal_4[p2]=wrap_val(global.pal_4[p2]-1, 0, playerskindat(p2,"totpal"+string(p2))-1)
                 selected_spray = true;
                 changed=4

@@ -1,0 +1,9 @@
+ERROR in
+action number 1
+of Other Event: User Defined 8
+for object drawregion:
+
+In script updatedeities:Error in code at line 156:   
+        sheet=global.masterterrain[getbiomeid(data[0])]                                      ^at position 37: Negative array index
+
+

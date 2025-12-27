@@ -1,8 +1,5 @@
-///draw_snack_hud()
-//scope: player
 if cpu_partner exit
-var t,p,spr,col,col2,n,n,s,ps,key,fsiner,maintain_ring;
-
+var i,t,p,spr,col,col2,n,n,s,ps,key,fsiner,maintain_ring;
 p=id
 
 d3d_transform_stack_push()
@@ -13,11 +10,52 @@ d3d_transform_add_translation(hoffx,hoffy,0)
 spr=sheets[drawize]
 
 //if dontdrawhudler=1 exit
-p_offset=70
+//okay at what player does the split happen
+p_offset=75
 
-if !(global.nohud) && !(dontdrawhudler){
-    if global.cpu[p2]
-    draw_snack_mphud()
+if global.moreplayersitis && p2==0{
+    mpsplit=8
+    global.mphudder[0]=0
+    global.mphudder[1]=0
+    global.mphudder[2]=0
+    global.mphudder[3]=0
+    global.mphudder[4]=0
+    global.mphudder[5]=0
+    global.mphudder[6]=0
+    global.mphudder[7]=0
+    repeat (7){
+        if (mpsplit*p_offset) > (global.screenwidth-p_offset) {global.mphudder[mpsplit]=1 mpsplit-=1}
+
+    }
+mpsplit+=1
+}
+
+
+if !(global.nohud) && !(dontdrawhudler) && !global.mphudder[p2]{
+    if global.moreplayersitis{
+        if p2==0{
+            i=0
+            repeat (4){
+                if global.mphudder[i+4]
+                draw_snack_mphud(i+4,i+4-mpsplit)
+            i+=1
+            }
+
+            i=0+(global.moreplayersitis*4)
+            repeat (4){
+                if global.cpu[i]
+                draw_snack_mphud(i+4,i+4-mpsplit)
+            i+=1
+            }
+        }
+    } else {
+        repeat (4){
+            if global.cpu[i]
+            draw_snack_mphud(i+4,i)
+            i+=1
+        }
+
+    }
 
     if !(global.legacy_skin[p2]){
     // apply ma shader

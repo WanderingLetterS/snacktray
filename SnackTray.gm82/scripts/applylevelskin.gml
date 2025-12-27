@@ -9,7 +9,7 @@ if (argument_count >= 2) loadspec=argument[1]
 for (i=0;i<global.biomes;i+=1) {
     if (loadspec && !(loadspec & (1 << i))) // skip if loadspec says this biome isn't needed
         continue
-    if (directory_exists(wskin+global.biome[i])) {
+    if (directory_exists(wskin+"biomes\"+global.biome[i])) {
             
             //avoid continuously loading the default sheet
         fn=wskin+"biomes\"+global.biome[i]+"\tiles.png"

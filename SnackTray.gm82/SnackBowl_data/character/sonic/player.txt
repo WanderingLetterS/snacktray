@@ -8,7 +8,7 @@ center x=17
 center y=15
 box width=34
 box height=34
-short small form=0.8
+short small form=1
 
 pitch spindash=yes
 jump ball animation=no
@@ -32,15 +32,16 @@ snack layout=true
 max sizes=9
 
 single sheet=true
-singlesheet split width=8,559,1109,8,8,8,559,1109,559,1109
-singlesheet split height=0,0,0,448,896,0,448,448,896,896
+singlesheet split width=559,8,8,8,8,8,8,8,8,8
+singlesheet split height=0,0,0,0,0,0,0,0,0,0
 
 sheet splits=flagslide
 sheet split size=280
 
 
+additive firedash=true
 
-custom sprite list=stand,wait,lookup,crouch,balance,push,pose,knock,dead,walk,run,maxrun,brake,jump,bonk,fall,handlegrab,grindgrab,grinding,roll,climbing,flagslide,piping,pipingup,sidepiping,doorenter,doorexit,spinjump,spindash,spincharge,rampof,trickup,trickright,uncurl,dash,bouncewindup,bouncetrick
+custom sprite list=stand,wait,lookup,crouch,balance,push,pose,knock,dead,walk,run,maxrun,brake,jump,bonk,fall,handlegrab,grindgrab,grinding,roll,climbing,flagslide,piping,pipingup,sidepiping,doorenter,doorexit,spinjump,spindash,spincharge,rampof,trickup,trickright,uncurl,dash,firedash,featherdash,thunderdash
 
 connect crouch=true
 connect push=true
@@ -53,6 +54,8 @@ connect flagslide=true
 connect doorexit=true
 connect trickright=true
 connect grindgrab=true
+connect featherdash=true
+connect thunderdash=true
 
 reroute spring=jump
 reroute springfall=fall
@@ -66,7 +69,7 @@ stand frametimes=32,1,1
 wait frames=8
 wait loop=4
 wait speed=0.15
-wait frametimes=1,1,5,1.15,1.15,1.15,1.15,3
+wait frametimes=1,1,5,1.15,1.15,1.15,1.15,1.15
 
 lookup frames=4
 lookup loop=2
@@ -219,7 +222,17 @@ bouncetrick frames=8
 bouncetrick loop=7
 bouncetrick speed=0.2
 
+firedash frames=2
+firedash loop=1
+firedash speed=0.2
 
+featherdash frames=2
+featherdash loop=1
+featherdash speed=0.2
+
+thunderdash frames=2
+thunderdash loop=1
+thunderdash speed=0.2
 
 
 
