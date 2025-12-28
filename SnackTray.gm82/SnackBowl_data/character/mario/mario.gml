@@ -2,7 +2,7 @@
 stand,wait,lookup,crouch,balance,pose,knock,dead,walk,run,maxrun,push,brake,jump,bonk,fall,spring,springfall,roll,climbing,flagslide,piping,pipingup,sidepiping,doorenter,spinjump,doorexit,doublejump,doublebonk,doublefall,runjump,wallslide,slide,fire,throw,longjump,swim,swimpaddle,dive,bellyslide,fly,standcarry,swimcarry,lookupcarry,crouchcarry,walkcarry,jumpcarry,bonkcarry,fallcarry,trickup,trickright,handlegrab,grindgrab,grinding
 
 #define soundlist
-skid,swim,pound,stomp,smalljump,flip,spin,slide,kick,fireball,wallkick,smallwallkick,dive,spinjump,spinbounce,longjump
+skid,swim,pound,stomp,smalljump,flip,spin,slide,kick,fireball,wallkick,smallwallkick,dive,spinjump,spinbounce,longjump,release
 
 
 #define movelist
@@ -364,7 +364,7 @@ if (!carry) {
 			else {sprite="stand"}
 		} else {
 			if (abs(hsp+hyperspeed)>(4)) {sprite="maxrun"}
-			if (abs(hsp+hyperspeed)>(maxspd) && runvar) {sprite="run"}
+			if ((abs(hsp+hyperspeed)>(maxspd)||(energy>=maxe)) && runvar) {sprite="run"}
 			else {
 				sprite="walk"
 				frspd=max(0.2,abs(hsp/3))
@@ -483,7 +483,7 @@ if ((abut || jumpbufferdo) && !springin) {
             else jumpsnd=playsfx(name+"jump",0,1+triplejump/2)
             
 			if (spin) {vsp=-1 instance_create(x,y+12,smoke)}
-            else {vsp=-(4.7+min(1,abs(hsp)/8)+!!poundjump+triplejump) hellothisisajump=1}
+            else {vsp=-(4.7+min(1,abs(hsp)/8)+!!poundjump+triplejump+pspeed) hellothisisajump=1}
 			grabflagpole=0
             latchedtoflagpole=0
 		   if (water) vsp=-sqrt(sqr(vsp)*wf+2)
@@ -506,7 +506,7 @@ if ((abut || jumpbufferdo) && !springin) {
             hang=0 spinjump=0 dive=0 triplejump=0 triplexsc=0
             kicked=xsc
             hsp=esign((right)+(-left),xsc)*-2.5 jumpspd=100 instance_create(x+6*xsc,y+8,kickpart)
-            xsc*=-1 vsp=-4
+            xsc*=-1 vsp=-5
             if (size) playsfx(name+"wallkick") else playsfx(name+"smallwallkick",0,1+(size==5)/3)
             wallkick=12 crouch=0
 			if is_clover() {xsc*=-1 hsp=sign(hsp) vsp=-5 canstopjump=0 triplejump=0.5 wallkick=0 shoot(x,y+8,psmoke,0,2)}
@@ -516,9 +516,12 @@ if ((abut || jumpbufferdo) && !springin) {
         }
         
 		
-		else if !flying && !fly && !twirly && fall!=6 && !dive && !spinjump && !wallkick && !collision(0,6){
+		else if !flying && !fly && !twirly && fall!=6 && !spinjump && !wallkick && !(dive && twirldived) && !collision(0,6){
 			proj_type="twirlefx"
 			fire_projectile(x,y)
+			if dive twirldived=1
+			dive=0
+			
 			twirly=20
 			vsp=-1
 			if is_thunder() {
@@ -658,7 +661,8 @@ if (cbut) {
             runvar=1.5
             playsfx(name+"dive")
             vsp=-2.7
-            hsp=3.5*(esign(right-left,xsc))
+			if !(sign(hsp)==h && abs(hsp)>4)
+            hsp=4*(esign(right-left,xsc))
 			xsc=esign(right-left,xsc)
             hellothisisajump=0
         }
@@ -716,10 +720,15 @@ if (braking) xsc=brakedir
 braking=0
 frick=0.06
 if (slipnslide) frick=0.01
+if slobal!=0 && slipnslide hsp+=sign(slobal)*0.1
+
 if !flight hsp=max(0,abs(hsp)-frick)*sign(hsp)
 }
 
-maxspd=(1.5+runvar*1.5+water+(size==5)*0.55+slipnslide+!!spin)*(wf+((carry/2)*underwater()))
+maxspd=(1.5+runvar*1.5+(energy>=maxe)+water+(size==5)*0.55+slipnslide+!!spin)*(wf+((carry/2)*underwater()))
+
+
+
 
 if (pound) {
 vsp=min(6,vsp)
@@ -872,9 +881,32 @@ if !(pound) {
 
 maxe=6
 
-if (abs(hsp)>=2 && !jump) {
-	 {energy+=1/16 }
-} else if (!jump)  {energy-=1/30}
+if (abs(hsp)>=2 && !jump && bkey) {
+	 {energy+=1/12 }
+} else if (!jump)  {energy-=1/10}
+
+if energy>=maxe{
+	if !pspeed{
+		playsfx(name+"release")
+		i=shoot(x+3*hsp,bbox_bottom,psmoke) i.depth=depth-1 i.hspeed=-hsp i.vspeed=-2 i.image_yscale=0.5 i.growsize=1 
+		i=shoot(x+3*hsp,bbox_bottom,psmoke) i.depth=depth-1 i.hspeed=-hsp*1.25 i.vspeed=-1 i.image_yscale=0.5  i.growsize=1 i.gravity=0.1
+		
+		i=shoot(x+5*hsp,bbox_bottom-5,psmoke) i.depth=depth-1 i.hspeed=-hsp*0.5 i.vspeed=1 i.growsize=-5
+		i=shoot(x+4*hsp,y,psmoke) i.depth=depth-1 i.hspeed=-hsp*0.5 i.vspeed=-1 i.growsize=-5
+		i=shoot(x+6*hsp,bbox_top+5,psmoke) i.depth=depth-1 i.hspeed=-hsp*0.5 i.vspeed=-2 i.growsize=-5
+		i=shoot(x+6*hsp,y+2,psmoke) i.depth=depth+1 i.hspeed=-hsp*0.5 i.vspeed=-1 i.growsize=-5 i.image_xscale=0.7 i.image_yscale=0.7 
+		i=shoot(x+8*hsp,bbox_top+6,psmoke) i.depth=depth+1 i.hspeed=-hsp*0.5 i.vspeed=-2 i.growsize=-5  i.image_xscale=0.7 i.image_yscale=0.7
+		
+	}
+
+	pspeed=1
+
+} else pspeed=0
+if (pspeed && !jump) {
+
+	com_handlespindashdust(-hsp/2,depth+2)		
+
+}
 
 if (pound<14) && (pound) {if !(is_intangible_timer) is_intangible_timer=10}
 
@@ -925,7 +957,25 @@ if (coll || carryid.object_index==cork) && (!coll.time) {
 	} else if !(bkey) { 
 		if (carry) {
 			updatecarry()
-			if (!down) {throw=16 instance_create(carryid.x,carryid.y,kickpart) sound("enemykick")}
+			if (!down) {throw=16 instance_create(carryid.x,carryid.y,kickpart) power_lv=1 sound("enemykick")}
+			with (carryid) event_user(0)
+			carryid=noone
+			carry=0
+		}
+    }              	
+}
+
+coll=instance_place(x+(abs(hsp)+2)*xsc,y,iceblock)
+if (coll || carryid.object_index==iceblock) && (!coll.time) {
+	if (bkey && !carry && !spin && !dive && size!=5) {
+		coll.carry=id coll.owner=id carryid=coll
+		carry=1
+		skidding=0
+		updatecarry()
+	} else if !(bkey) { 
+		if (carry) {
+			updatecarry()
+			if (!down) {throw=16 destroyonhit=1 instance_create(carryid.x,carryid.y,kickpart) sound("enemykick")}
 			with (carryid) event_user(0)
 			carryid=noone
 			carry=0
@@ -1387,7 +1437,7 @@ else {
         jumpspd=100 
         instance_create(x+6*xsc,y+8,kickpart)
         xsc*=-1 
-        vsp=-4
+        vsp=-5
         if (size) playsfx(name+"wallkick") else playsfx(name+"smallwallkick")
         wallkick=12 
         crouch=0
@@ -1418,6 +1468,7 @@ braking=0
 double=0
 flight=0
 longjump=0
+twirldived=0
 if (hellothisisajump) jumptiming=6
 hellothisisajump=0
 if spin{spin=0}

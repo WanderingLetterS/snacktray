@@ -461,9 +461,9 @@ if (spindash) {
 	com_handlespindashdust(-xsc*spindash)	
 } 
 
-/*if (sprite="maxrun" && !jump) {
+if (sprite="maxrun" && !jump) {
 	com_handlespindashdust(-hsp/2)		
-}*/ 
+}
 
 
 

@@ -31,25 +31,25 @@ terraintile=1
 
 
 if global.terrainsheettype[biome]==1{ //minimum
-    tile_bake(sheet,216,24,16,16,x-8,y-8,999998)
+    tile_bake(sheet,216,24,16,16,x-8,y-8,depth1)
 exit
 } else if global.terrainsheettype[biome]==2{ //small
-    if (!c8)tile_bake(sheet,216,40,16,16,x-8,y-8,999998)
-    else tile_bake(sheet,216,56,16,16,x-8,y-8,999998)
+    if (!c8)tile_bake(sheet,216,40,16,16,x-8,y-8,depth1)
+    else tile_bake(sheet,216,56,16,16,x-8,y-8,depth1)
 exit
 } else if global.terrainsheettype[biome]==3{ //medium/3x3
     if !c8{ //Top part
-        if !c4{tile_bake(sheet,152,56,16,16,x-8,y-8,999998)   } //left
-        else if !c6{tile_bake(sheet,184,56,16,16,x-8,y-8,999998) } //right
-        else { tile_bake(sheet,168,56,16,16,x-8,y-8,999998)} //middle
+        if !c4{tile_bake(sheet,152,56,16,16,x-8,y-8,depth1)   } //left
+        else if !c6{tile_bake(sheet,184,56,16,16,x-8,y-8,depth1) } //right
+        else { tile_bake(sheet,168,56,16,16,x-8,y-8,depth1)} //middle
     } else if !c2{ //Bottom part
-        if !c4{tile_bake(sheet,152,88,16,16,x-8,y-8,999998)   } //left
-        else if !c6{tile_bake(sheet,184,88,16,16,x-8,y-8,999998) } //right
-        else { tile_bake(sheet,168,88,16,16,x-8,y-8,999998)} //middle
+        if !c4{tile_bake(sheet,152,88,16,16,x-8,y-8,depth1)   } //left
+        else if !c6{tile_bake(sheet,184,88,16,16,x-8,y-8,depth1) } //right
+        else { tile_bake(sheet,168,88,16,16,x-8,y-8,depth1)} //middle
     } else { //Middle
-        if !c4{tile_bake(sheet,152,72,16,16,x-8,y-8,999998)   } //left
-        else if !c6{tile_bake(sheet,184,72,16,16,x-8,y-8,999998) } //right
-        else { tile_bake(sheet,168,72,16,16,x-8,y-8,999998)} //middle
+        if !c4{tile_bake(sheet,152,72,16,16,x-8,y-8,depth1)   } //left
+        else if !c6{tile_bake(sheet,184,72,16,16,x-8,y-8,depth1) } //right
+        else { tile_bake(sheet,168,72,16,16,x-8,y-8,depth1)} //middle
     }
 exit
 }

@@ -8,7 +8,12 @@ energy=median(0,energy,maxe)
 updatecarry()
 if sign(gm8exspd)!=sign(hsp) gm8exspd=0
 if pollenated && global.dustframe {instance_create(x,y,pollen)}
-if global.frame8flip if ((super || boost || dash || makeafterimages) && !dotkid) with (instance_create(x,y,afterimage)) event_user(0)
+flipperframe=!flipperframe
+
+com_frame4flipper+=1
+	if com_frame4flipper>=3 {com_frame4flipper=0 }
+
+/*if global.frame8flip*/ if !com_frame4flipper if ((super || boost || dash || makeafterimages) && !dotkid) with (instance_create(x,y,afterimage)) event_user(0)
 
 
 if abs(hsp)>=3{

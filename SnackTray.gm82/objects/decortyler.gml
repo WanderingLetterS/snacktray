@@ -12,9 +12,11 @@ str=tile
 if (bim="-1") getregion(x)
 else biome=unreal(bim,0)
 my_sheet=global.masterdecor[biome]
-d=assetdepth+2
-if (layer=1) d=999998
-if (layer=2) d=-1
+d=1000007
+if (layer=1) d=assetdepth+2
+if (layer=2) d=999998
+if (layer=3) d=999997
+if (layer=4) d=-1
 
 p=string_pos(",",str) l=unreal(string_copy(str,1,p-1),0)*8+8 str=string_delete(str,1,p)
 p=string_pos(",",str) t=unreal(string_copy(str,1,p-1),0)*8+8 str=string_delete(str,1,p)

@@ -401,7 +401,7 @@ switch (argument[0]) {
     case tyler: {
         if (type=0) return "offset: "+i
         if (type=1) return "UV: "+i
-        if (type=2) {if (t=0) return "Layer: Behind" if (t=1) return "Layer: Middle" if (t=2) return "Layer: Above Ground"  return "Layer: Front"}
+        if (type=2) {if (t=0) return "Layer: Behind Back-Ground"  if (t=1) return "Layer: Behind" if (t=2) return "Layer: Middle" if (t=3) return "Layer: Above Ground"  return "Layer: Front"}
         if (type=3) {if (i="0") return "Collision: None" if (i="1") return "Collision: Solid" if (i="2") return "Collision: Semisolid" if (i="3") return "Collision: Intangible Spike" if (i="4") return "Collision: Solid Spike"}
         if (type=4) return "Repeat: "+i
         if (type=5) {if (i="0") return "Mirror: No" if (i="1") return "Mirror: Flipped" if (i="2") return "Mirror: Upside" return "Mirror: 180"}

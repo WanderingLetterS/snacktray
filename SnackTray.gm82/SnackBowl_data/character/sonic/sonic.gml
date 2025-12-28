@@ -129,6 +129,16 @@ feathdasheffecty_x+=feathdasheffecty_hsp
 feathdasheffecty_y+=feathdasheffecty_vsp
 }
 
+if boost {
+	if !instance_exists(myafterimage) || myafterimage==0 {
+		myafterimage=(instance_create(x,y,afterimage))
+		with myafterimage  {event_user(0) depth=other.depth-8 visible=1 x=other.x+other.hsp y=other.y+other.vsp alarm[0]=2}
+	}
+
+	frame4flipper+=1
+	if frame4flipper>=3 {frame4flipper=0 }
+} 
+
 /*if homingenemy{
 draw_circle_color(homingenemy.x,homingenemy.y,16,c_yellow,c_orange,2)
 }

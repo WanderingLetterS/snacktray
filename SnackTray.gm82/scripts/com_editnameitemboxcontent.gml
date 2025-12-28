@@ -34,6 +34,7 @@ switch(i){
     case "cork": return "Contains: Cork"
 
     case "": return "Contains: Coin"
+    case "[unset]": return "Contains: Coin"
 
     default: return "Contains: "+i
 

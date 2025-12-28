@@ -2,7 +2,7 @@
 
 if (argument[0]) {
     global.coll=noone
-    if (object_index=player || object_index=cork ||object_index=stone ||object_index=objectdummy) global.coll=id
+    if (object_index=player  ||object_index=stone|| object_index=iceblock|| object_index=cork ||object_index=objectdummy) global.coll=id
     if (owner) if (owner.object_index=player) global.coll=owner
 
 

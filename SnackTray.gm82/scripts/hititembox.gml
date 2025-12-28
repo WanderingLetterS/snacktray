@@ -22,7 +22,37 @@ with (blockcoll){
             } else if (object_index=turing) {
                 if (mode=0) turingblock()
             } else if (content!="bros") {
-                if (object_index=talkbox) {
+                if object_index=bigitembox {
+                    x-=16
+                    if (left_content="coins" && left_cc) {
+                        left_cc=com_spawncoinitembox(left_cc)
+                    }
+                    x+=16
+                    if (center_content="coins" && center_cc) {
+                        center_cc=com_spawncoinitembox(center_cc)
+                    }
+                    x+=16
+                    if (right_content="coins" && right_cc) {
+                        right_cc=com_spawncoinitembox(right_cc)
+                    }
+                    x-=16
+
+
+                    if (left_content!="coins" && center_content!="coins" && right_content!="coins"){
+
+                        owner.blockc+=1
+                        hit=1
+                        sound("itemappear")
+                        mush=!owner.size
+                        if owner.name="somari" mush=0
+                        if !mush mush=owner.size==5
+                        alarm[0]=18
+
+                    }
+
+                    if (left_cc||center_cc||right_cc) hit=0
+
+                } else if (object_index=talkbox) {
                     if (string_pos("sfx",text)) {
                         sound(string_delete(text,1,4))
                     } else {
@@ -38,43 +68,7 @@ with (blockcoll){
                         }
                     }
                 } else if (content="coins") {
-                    if (picked) {
-                        with (instance_position(x+8,y+8+16*go,brick)) {insted=1 owner=other.owner event_user(0)}
-                        if (go=1) if (instance_position(x+8,y+24,collider)) {
-                            go=-1
-                            with (instance_position(x+8,y-8,brick)) {insted=1 owner=other.owner event_user(0)}
-                        }
-                        i=cc
-                        if (done || picked=2) i=1
-                        cc-=i
-                        picked=0
-                        repeat (i) with (instance_create(x+8+offset,y+8+16*go,itemdrop)) {
-                            hspeed=myrand(2)-1
-                            vspeed=(2+myrand(2))*other.go
-                            drop=0
-                            type="coinup"
-                        }
-                    } else {
-                        with (instance_create(x+8+offset,y+8+16*go,coinup)) {vspeed=-1.5+2*other.go p2=other.owner.p2}
-                            if (object_index == bigitembox) {
-                            with (instance_create(x+8,y+8+16*go,coinup)) {vspeed=-1.5+2*other.go p2=other.owner.p2}
-                            with (instance_create(x+8+(offset*2),y+8+16*go,coinup)) {vspeed=-1.5+2*other.go p2=other.owner.p2}
-                            global.coins[owner.p2]+=3
-                            owner.coint+=3
-                            global.scor[owner.p2]+=300
-                            } else {
-                            global.coins[owner.p2]+=1
-                                    owner.coint+=1
-                            global.scor[owner.p2]+=100
-                            }
-                        cc-=1
-                    }
-                    if (done || cc=0) {
-                        owner.blockc+=1
-                        hit=1
-                    }
-                    if (alarm[1]=-1) alarm[1]=256
-                    tpos=0
+                    cc=com_spawncoinitembox(cc)
                 } else {
                     owner.blockc+=1
                     hit=1

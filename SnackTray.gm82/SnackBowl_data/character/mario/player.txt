@@ -25,7 +25,7 @@ pipe squish=20
 skin offset=44
 use paletting=true
 defaultspray 1=5
-defaultspray 2=5
+defaultspray 2=6
 defaultspray 3=2
 defaultspray 4=10
 
@@ -41,7 +41,7 @@ singlesheet split height=0,0,0,0,0,0,0,0,0,0
 
 
 custom sprite list=stand,wait,lookup,crouch,balance,push,pose,knock,dead,walk,run,brake,jump,bonk,fall,spring,springfall,climbing,flagslide,roll,standcarry,swimcarry,lookupcarry,crouchcarry,handlegrab,grindgrab,grinding,piping,pipingup,sidepiping,doorenter,doorexit,spinjump,doublejump,doublebonk,doublefall,runjump,wallslide,slide,fire,throw,longjump,swim,swimpaddle,dive,bellyslide,fly,walkcarry,jumpcarry,bonkcarry,fallcarry
-sheet splits=crouchcarry
+sheet splits=grinding
 sheet split size=312
 
 reroute maxrun=run

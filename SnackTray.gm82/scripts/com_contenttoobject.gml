@@ -52,6 +52,8 @@ switch content {
     case "cork": content=cork sprite="cork" object=1 break
     case "key": content=keyitem sprite="key"  break
     case "card": content=carditem sprite="card" break
+    case "none": content=coin sprite="coin" instance_destroy() break
+    case "": content=coin sprite="coin" break;
 
     default: //if behaviour is not specified, then check randomly to see if you find something.
     check=object_find(content)

@@ -2389,3 +2389,4 @@ com_itemboxitemspawn
 com_editobjitemboxcontent
 com_editnameitemboxcontent
 com_contenttoobject
+com_spawncoinitembox

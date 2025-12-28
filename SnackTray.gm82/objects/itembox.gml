@@ -24,7 +24,24 @@ with (phaser) y=ystart
 var iid;
 iid=noone
 
-com_itemboxitemspawn(owner,mush,go,content,picked)
+
+if object_index==bigitembox{
+    target=left_target
+    com_itemboxitemspawn(owner,mush,go,left_content,picked)
+    x+=16
+    target=center_target
+    com_itemboxitemspawn(owner,mush,go,center_content,picked)
+    x+=16
+    target=right_target
+    com_itemboxitemspawn(owner,mush,go,right_content,picked)
+    x-=32
+
+    //make it so that multi-coin itemboxes dont keep spawning more powies and there's only the one.
+    if left_content!="coins" left_content="coins"
+    if right_content!="coins" right_content="coins"
+    if center_content!="coins" center_content="coins"
+
+}else com_itemboxitemspawn(owner,mush,go,content,picked)
 
 picked=0
 #define Alarm_1
@@ -129,9 +146,32 @@ if (settings("randblock") && string(target)="0") {
 if ((content="life" || content="shard") && spentblock()) content=""
 
 cc=16
+left_cc=16
+right_cc=16
+center_cc=16
 if (content="") {
     content="coins"
     cc=1
+}
+if object_index=bigitembox{
+    if (left_content="") {
+        left_content="coins"
+        left_cc=1
+    }
+
+    if (right_content="") {
+        right_content="coins"
+        right_cc=1
+    }
+
+    if (center_content="") {
+        center_content="coins"
+        center_cc=1
+    }
+
+    if left_content!="coins" left_cc=0
+    if right_content!="coins" right_cc=0
+    if center_content!="coins" cener_cc=0
 }
 
 if (content="none") {

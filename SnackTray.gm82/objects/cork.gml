@@ -212,15 +212,6 @@ y+=owner.carryoffy
 ssw_objects("cork")
 x-=owner.carryoffx*owner.xsc
 y-=owner.carryoffy
-#define Other_12
-/*"/*'/**//* YYD ACTION
-lib_id=1
-action_id=603
-applies_to=self
-*/
-event=code_compile(createcode)
-if !code_destroyed && __gm82core_compiler_exists[event]
-code_execute(event)
 #define Draw_0
 /*"/*'/**//* YYD ACTION
 lib_id=1

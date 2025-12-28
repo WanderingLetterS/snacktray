@@ -21,9 +21,9 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-k=(k+1) mod 8
+//k=(k+1) mod 8
 
-visible=k<2
+//visible=k<2
 #define Other_10
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -58,8 +58,8 @@ action_id=603
 applies_to=self
 */
 draw_set_blend_mode(bm_add)
-if owner.usepalette scr_applyPaletteSegmented(global.shaderPaletteSwap,global.palettesprites[owner.p2*100],global.pal_1[owner.p2]+1,global.pal_2[owner.p2]+1,global.pal_3[owner.p2]+1,global.pal_4[owner.p2]+1,size,totpal+1)
-
+if usepalette scr_applyPaletteSegmented(global.shaderPaletteSwap,global.palettesprites[owner.p2*100],global.pal_1[owner.p2]+1,global.pal_2[owner.p2]+1,global.pal_3[owner.p2]+1,global.pal_4[owner.p2]+1,size,totpal+1)
+usepalette=0
 spriteswitch(0)
-shader_reset()
+if usepalette shader_reset()
 draw_set_blend_mode(0)

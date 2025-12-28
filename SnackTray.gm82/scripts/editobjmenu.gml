@@ -398,7 +398,7 @@ switch (argument[0]) {
         if (type=0) return get_string("Offset: ",argument[2])
         if (type=1) return tylerpicker(argument[2],0)
         if (type=2) {
-            i=show_contextmenu("Layer:|-|Behind|Middle|OverTerrain|Front",0)
+            i=show_contextmenu("Layer:|-|Behind Back-ground|Behind|Middle|Over-Terrain|Over Player",0)
             if (!i) return argument[2]
             return string(i-1)
         }
@@ -421,7 +421,7 @@ switch (argument[0]) {
         if (type=0) return get_string("Offset: ",argument[2])
         if (type=1) return tylerpicker(argument[2],1)
         if (type=2) {
-            i=show_contextmenu("Layer:|-|Behind|Middle|Front",0)
+            i=show_contextmenu("Layer:|-|Behind Back-ground|Behind|Middle|Over-Terrain|Over Player",0)
             if (!i) return argument[2]
             return string(i-1)
         }
@@ -444,7 +444,7 @@ switch (argument[0]) {
         if (type=0) return get_string("Offset: ",argument[2])
         if (type=1) return tylerpicker(argument[2],2)
         if (type=2) {
-            i=show_contextmenu("Layer:|-|Behind|Middle|Front",0)
+            i=show_contextmenu("Layer:|-|Behind Back-ground|Behind|Middle|Over-Terrain|Over Player",0)
             if (!i) return argument[2]
             return string(i-1)
         }
@@ -467,7 +467,7 @@ switch (argument[0]) {
         if (type=0) return get_string("Offset: ",argument[2])
         if (type=1) return tylerpicker(argument[2],3)
         if (type=2) {
-            i=show_contextmenu("Layer:|-|Behind|Middle|Front",0)
+            i=show_contextmenu("Layer:|-|Behind Back-ground|Behind|Middle|Over-Terrain|Over Player",0)
             if (!i) return argument[2]
             return string(i-1)
         }

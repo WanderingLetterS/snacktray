@@ -12,16 +12,7 @@ phase=0
 carryid=noone
 getregion(x)
 content=""
-#define Destroy_0
-/*"/*'/**//* YYD ACTION
-lib_id=1
-action_id=603
-applies_to=self
-*/
-if (__gm82core_compiler_exists[event]) {
-    code_destroy(event)
-    code_destroyed=1
-}
+destroyonhit=0
 #define Alarm_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -67,9 +58,9 @@ var kek,yes,coll,dir,ohsp;
 time=max(0,time-1)
 
 if (carry) {
-mycoll.y=-verybignumber
+    mycoll.y=-verybignumber
 
-exit;
+    exit;
 }else
 
 {
@@ -96,8 +87,8 @@ exit;
             }
             vsp = 0;
             if (vsp<-1) {
-                with (instance_create(x-8,y+4,smoke)) {friction=0.1 hspeed=-2 vspeed=-1}
-                with (instance_create(x+8,y+4,smoke)) {friction=0.1 hspeed=2 vspeed=-1}
+                with (instance_create(x-8,y+4,smoke)) {friction=0.01 hspeed=-2 vspeed=-1}
+                with (instance_create(x+8,y+4,smoke)) {friction=0.01 hspeed=2 vspeed=-1}
                 with (instance_place(x,y-8,hittable)) {notplayer=1
                     go=-1 insted=1 stonebump=1 event_user(0) stonebump=0 insted=0
                 }
@@ -111,8 +102,8 @@ exit;
         if (coll && y>coll.y && !(coll.object_index=phaser && coll.dir!=2)) {
             y=coll.bbox_bottom+9
             if (vsp<-1) {
-                with (instance_create(x-8,y+4,smoke)) {friction=0.1 hspeed=-2 vspeed=-1}
-                with (instance_create(x+8,y+4,smoke)) {friction=0.1 hspeed=2 vspeed=-1}
+                with (instance_create(x-8,y+4,smoke)) {friction=0.01 hspeed=-2 vspeed=-1}
+                with (instance_create(x+8,y+4,smoke)) {friction=0.01 hspeed=2 vspeed=-1}
                 with (instance_place(x,y-8,hittable)) {notplayer=1
                     go=-1 insted=1 stonebump=1 event_user(0) stonebump=0 insted=0
                 }
@@ -133,8 +124,8 @@ exit;
     }
 
     if collision(0,1) {
-        hsp=lerp(hsp,0,0.5)
-        hspeed=lerp(hspeed,0,0.5)
+        hsp=lerp(hsp,0,0.01)
+        hspeed=lerp(hspeed,0,0.01)
     }
 
     if (y>=yg) {
@@ -149,8 +140,8 @@ exit;
         pl.x+=fhsp
 
         if (vsp>1) {
-            with (instance_create(x-8,y+4,smoke)) {friction=0.1 hspeed=-2 vspeed=-1}
-            with (instance_create(x+8,y+4,smoke)) {friction=0.1 hspeed=2 vspeed=-1}
+            with (instance_create(x-8,y+4,smoke)) {friction=0.01 hspeed=-2 vspeed=-1}
+            with (instance_create(x+8,y+4,smoke)) {friction=0.01 hspeed=2 vspeed=-1}
             global.coll=nearestplayer()
         }
         vsp=0
@@ -245,22 +236,13 @@ applies_to=self
 */
 x+=owner.carryoffx*owner.xsc
 y+=owner.carryoffy
-ssw_objects("cork")
+ssw_objects("iceblock")
 x-=owner.carryoffx*owner.xsc
 y-=owner.carryoffy
-#define Other_12
-/*"/*'/**//* YYD ACTION
-lib_id=1
-action_id=603
-applies_to=self
-*/
-event=code_compile(createcode)
-if !code_destroyed && __gm82core_compiler_exists[event]
-code_execute(event)
 #define Draw_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
 applies_to=self
 */
-if (!carry) ssw_objects("cork")
+if (!carry) ssw_objects("iceblock")

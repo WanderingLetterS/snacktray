@@ -61,9 +61,10 @@ if (object_index=player) {
         }
     }
 }
-if power_lv>0
+
     with iceblock {
-        mycoll.y-=verybignumber
+        if other.object_index==player { if other.carry if other.carry=id y-=verybignumber mycoll.y-=verybignumber}
+        if power_lv>0 mycoll.y-=verybignumber
     }
 yp=y
 y=-verybignumber
@@ -96,9 +97,10 @@ with (pswitch) y=p
 if (disallow) disallow.y+=verybignumber
 if (posed) with (finalwall) if (object_index=finalwall) y+=verybignumber
 if (object_index=bowserboss) with (moving) y+=verybignumber
-if power_lv>0
+
 with iceblock {
-    mycoll.y+=verybignumber
+    if other.object_index==player { if other.carry if other.carry=id y+=verybignumber mycoll.y+=verybignumber}
+    if power_lv>0 mycoll.y+=verybignumber
 }
 
 

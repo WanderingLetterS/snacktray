@@ -166,15 +166,18 @@ with iid {
 }
 
 if (picked && iid) {
-    i=instance_create(x+8+offset,y+8,gravitymanager)
-    i.vsp=go*4-1
-    i.carry=iid
-    i.phase=4
-    i.drop=1
-    iid.c=0
-    iid.drop=0
-    iid.speed=0
-    iid.aaa=0
-    iid.bbb=0
-    iid.alarm[0]=-1
+    if !iid.enem{
+        i=instance_create(x+8+offset,y+8,gravitymanager)
+        i.vsp=go*4-1
+        i.carry=iid
+        i.phase=4
+        i.drop=1
+        iid.c=0
+        iid.drop=0
+        iid.speed=0
+        iid.aaa=0
+        iid.bbb=0
+        iid.mygrav=i
+        iid.alarm[0]=16
+    } else iid.alarm[0]=1
 }

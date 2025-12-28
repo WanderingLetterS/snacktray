@@ -1,2 +1,2 @@
-COMPILATION ERROR in string to be executedError in code at line 615:   
-   if is_clover() bkey && energy>0.05{                          ^at position 25: Assignment operator expected.
+COMPILATION ERROR in string to be executedError in code at line 59:   
+ if !frame4flipper    ^at position 3: Assignment operator expected.

@@ -1,0 +1,18 @@
+ERROR in
+action number 1
+of Other Event: User Defined 2
+for object iceblock:
+
+In extension function code_compile:Error in code at line 41:   
+    object_event_add(__gm82core_compiler,ev_other,__gm82core_compiler_index,__code+argument0)                                                                                      ^at position 85: Wrong type of arguments to +.
+
+
+ERROR in
+action number 1
+of Other Event: User Defined 2
+for object iceblock:
+
+In extension function code_compile:Error in code at line 41:   
+    object_event_add(__gm82core_compiler,ev_other,__gm82core_compiler_index,__code+argument0)                                                                                      ^at position 85: Wrong type of arguments to +.
+
+

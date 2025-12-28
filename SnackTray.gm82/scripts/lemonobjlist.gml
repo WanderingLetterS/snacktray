@@ -45,7 +45,7 @@ listobj(coral           ,0,spr_coral        ,4,coral)
 listobj(treeblock       ,0,spr_treeblock    ,5,groundblock)
     listdoc("Tree","Trees will tile down until they hit the bottom of the region.")
 
-listobj(mushblock       ,0,spr_mushblock    ,6,groundblock)
+listobj(mushblock       ,0,spr_mushblock    ,6,mushblock)
     listdoc("Mushroom Tree","Mushroom Trees will tile down until the bottom of the region.")
 
 listobj(bridgetile      ,0,spr_bridgetile   ,7,bridgetile)
@@ -71,8 +71,8 @@ listobj(itembox         ,0,spr_box          ,10,itembox)
 
 listobj(bigitembox         ,0,spr_bigbox          ,141,itembox)
     listdoc("Long Item Box","Thrice the size, acts like a regular box but spits out 2 coins on the side.")
-    listargs("align","content","target")
-    listdata("0",""     ,""      )
+    listargs("align","center_content","center_target","left_content","left_target","right_content","right_target")
+    listdata("0",""     ,""      ,""     ,""      ,""     ,""      )
 
 listobj(slopel1         ,0,spr_slopel1      ,11,slopel1)
     listdoc("Slope","Somethin' buggin ya?")
@@ -724,9 +724,9 @@ listobj(fakesemiplat             ,0,spr_semiplat      ,137,groundsemi)
     listargs("align","width","height","color")
     listdata("0","1","1","0")
 
-listobj(mushblock2       ,0,spr_mushblock2    ,138,groundblock)
+listobj(mushblock2       ,0,spr_mushblock2    ,138,mushblock)
     listdoc("Mushroom Tree 2","If it's so good, why doesn't it have a sequel? Same function, different look")
-listobj(mushblock3       ,0,spr_mushblock3    ,139,groundblock)
+listobj(mushblock3       ,0,spr_mushblock3    ,139,mushblock)
     listdoc("Mushroom Tree 3","Same function, different look")
 
 listobj(wigglerhead             ,1,spr_semiplat      ,139,wigglerhead)
