@@ -664,6 +664,7 @@
 		|automator
 		|guile
 	+technical
+		|customobject
 		|staticdummy
 		|objectdummy
 		|enemydummy

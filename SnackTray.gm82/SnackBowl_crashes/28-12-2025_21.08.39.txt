@@ -1,0 +1,16 @@
+ERROR in
+action number 1
+of Alarm Event for alarm 0
+for object customobject:
+
+In function code_execute: Cannot execute code point 0, only 0 total code points initialized.
+
+
+ERROR in
+action number 1
+of  Step Event
+for object customobject:
+
+In function code_execute: Cannot execute code point 0, only 0 total code points initialized.
+
+

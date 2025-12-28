@@ -1,0 +1,18 @@
+ERROR in
+action number 1
+of Alarm Event for alarm 0
+for object customobject:
+
+Error in code at line 3:   
+if !code_exists(global.cobject[string(mytype)]){ //i hope that this doesnt just... default to 0, too...                                  ^at position 33: Wrong type of array index
+
+
+ERROR in
+action number 1
+of  Step Event
+for object customobject:
+
+Error in code at line 2:   
+code_execute(global.cobject[mytype])                               ^at position 30: Wrong type of array index
+
+

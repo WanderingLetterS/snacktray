@@ -14,6 +14,11 @@ listobj(lemon_tile     ,0,spr_ground       ,0,lemon_tile)
                     //0 is level
                     //1 is deco
                     //2 is warp
+listobj(customobject    ,0,spr_anchor       ,0,customobject)
+    listdoc("Custom Object","")
+    listargs("mytype")
+    listdata("sayhi")
+
 listobj(groundblock     ,0,spr_ground       ,0,groundblock)
     listdoc("Ground","")
 

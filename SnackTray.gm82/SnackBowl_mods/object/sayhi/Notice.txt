@@ -1,0 +1,1 @@
+lemon.png will be there to let lemon use a png of some kind for you, so you can always tell if your custom object works or not... This hasn't been added yet. Of course.
