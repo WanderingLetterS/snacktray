@@ -32,10 +32,21 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-hotbar.obj[1]=obj
-hotbar.picked[1]=0
+
+
+for (looping_istuff=0;looping_istuff<=12;looping_istuff+=1){
+hotbar.prevobj[hotbar.cur,looping_istuff]= hotbar.famobj[hotbar.cur,looping_istuff]
+}
+hotbar.obj[hotbar.cur]=obj
+
 if !(settings("nolemonsound")) sound("lemonclick")
 lemonhotbarfamily()
+for (looping_istuff=0;looping_istuff<=12;looping_istuff+=1){
+if hotbar.prevobj[hotbar.cur,looping_istuff]!= hotbar.famobj[hotbar.cur,looping_istuff]
+hotbar.picked[hotbar.cur,hotbar.curfam]=0
+}
+
+
 
 hotbar.cur+=editcursor.shift
 if (editcursor.tool!=0 && editcursor.tool!=2) editcursor.tool=0

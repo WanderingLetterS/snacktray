@@ -348,23 +348,27 @@ if (within(editcursor.x,editcursor.y,mmx+100-mmw/2,mmy+72-mmh/2,mmw,mmh)) {
                 drawy=-1
                 if (editcursor.ctrl) {
                     with (instance_position(curx,cury,watercontainer)) {
-                        hotbar.obj[1]=editobjfind(obj)
+                        hotbar.obj[hotbar.cur]=editobjfind(obj)
                         lemonhotbarfamily()
                         sound("systemin")
                     }
                     with (instance_position(curx,cury,backcontainer)) {
-                        hotbar.obj[1]=editobjfind(obj)
+                        hotbar.obj[hotbar.cur]=editobjfind(obj)
                         lemonhotbarfamily()
                         sound("systemin")
                     }
                     with (instance_position(curx,cury,semicontainer)) {
-                        hotbar.obj[1]=editobjfind(obj)
+                        hotbar.obj[hotbar.cur]=editobjfind(obj)
                         lemonhotbarfamily()
                         sound("systemin")
                     }
                     with (instance_position(curx,cury,deity)) {
-                        hotbar.obj[1]=editobjfind(obj)
+                        hotbar.obj[hotbar.cur]=editobjfind(obj)
                         lemonhotbarfamily()
+                        hotbar.picked[hotbar.cur,hotbar.curfam[hotbar.cur]]=true
+                        for (i=0; i<12;i+=1){
+                            hotbar.data[hotbar.cur*100+hotbar.curfam[hotbar.cur],i]=data[i]
+                        }
                         sound("systemin")
                     }
 
@@ -384,7 +388,7 @@ if (within(editcursor.x,editcursor.y,mmx+100-mmw/2,mmy+72-mmh/2,mmw,mmh)) {
                         lemonhotbarfamily()
                         sound("systemin")
 
-                        for (k=0;k<8;k+=1) hotbar.data[10,k]=data[k]
+                        for (k=0;k<12;k+=1) hotbar.data[10,k]=data[k]
                         hotbar.pickeddata=1
                         hotbar.picked[10]=1
                         hotbar.cur=10
@@ -619,7 +623,7 @@ if (drawing) {
                 i.obj=lemongrab.objlist[j,0]
                 i.spr=lemongrab.objlist[j,1]
                 i.off=lemongrab.objlist[j,2]
-                if (hotbar.picked[hotbar.cur]) for (k=0;k<12;k+=1) i.data[k]=hotbar.data[hotbar.cur,k]
+                if (hotbar.picked[hotbar.cur,hotbar.curfam[hotbar.cur]]) for (k=0;k<12;k+=1) i.data[k]=hotbar.data[hotbar.cur*100+hotbar.curfam[hotbar.cur],k]
                 else for (k=0;k<12;k+=1) i.data[k]=lemongrab.objlist[j,k+101]
                 if (lemongrab.objlist[j,5]="align") unpack_align(i)
                 with i {updatedeities() drawdeities()}
@@ -894,7 +898,7 @@ if (selecting) {
                             i.obj=lemongrab.objlist[j,0]
                             i.spr=lemongrab.objlist[j,1]
                             i.off=lemongrab.objlist[j,2]
-                            if (hotbar.picked[hotbar.cur]) for (k=0;k<12;k+=1) i.data[k]=hotbar.data[hotbar.cur,k]
+                            if (hotbar.picked[hotbar.cur,hotbar.curfam[hotbar.cur]]) for (k=0;k<12;k+=1) i.data[k]=hotbar.data[hotbar.cur*100+hotbar.curfam[hotbar.cur],k]
                             else for (k=0;k<12;k+=1) i.data[k]=lemongrab.objlist[j,k+101]
                             if (lemongrab.objlist[j,5]="align") unpack_align(i)
                             with i updatedeities()

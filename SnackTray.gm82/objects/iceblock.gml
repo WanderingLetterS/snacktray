@@ -5,9 +5,6 @@ action_id=603
 applies_to=self
 */
 vsp=0
-mycoll=instance_create(x,y,moving)
-mycoll.mask_index=spr_16
-mycoll.owner=id
 phase=0
 carryid=noone
 getregion(x)
@@ -58,12 +55,10 @@ var kek,yes,coll,dir,ohsp;
 time=max(0,time-1)
 
 if (carry) {
-    mycoll.y=-verybignumber
+
 
     exit;
-}else
-
-{
+}else{
     dir=sign(hsp)
     var watr, lava;
 
@@ -75,8 +70,7 @@ if (carry) {
     yp=y
     y+=vsp
     x+=hsp
-    mycoll.x=x-8
-    mycoll.y=-verybignumber
+
 
     //cant believe i have to do this
     _Platform = instance_place(x, y + vsp, phaser);

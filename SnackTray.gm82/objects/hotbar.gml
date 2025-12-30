@@ -7,16 +7,24 @@ applies_to=self
 cur=1
 obj=0
 obj[1]=editobjfind(groundblock)
-obj[2]=editobjfind(hardblock)
+lemonhotbarfamily() curfam[cur]=1
+obj[2]=editobjfind(itembox)
+cur+=1 lemonhotbarfamily() curfam[cur]=1
 obj[3]=editobjfind(brick)
+cur+=1 lemonhotbarfamily()curfam[cur]=1
 obj[4]=editobjfind(coin)
+cur+=1 lemonhotbarfamily()curfam[cur]=1
 obj[5]=editobjfind(goomba)
+cur+=1 lemonhotbarfamily()curfam[cur]=1
 obj[6]=editobjfind(koopa)
+cur+=1 lemonhotbarfamily()curfam[cur]=1
 obj[7]=editobjfind(spring)
+cur+=1 lemonhotbarfamily()curfam[cur]=1
 obj[8]=editobjfind(pipeblock)
+cur+=1 lemonhotbarfamily()curfam[cur]=1
 obj[9]=editobjfind(treeblock)
-obj[10]=editobjfind(spikenemy)
-pickeddata=0
+cur+=1 lemonhotbarfamily()curfam[cur]=1
+cur=1
 
 alpha=1
 alpha2=0
@@ -43,7 +51,37 @@ applies_to=self
 */
 if (!drawregion.flooding) {
     curp=cur
-    if (!editcursor.ctrl) {savecur=cur cur=modulo(cur+editcursor.scrw,1,10+pickeddata)  if savecur!=cur {if !(settings("nolemonsound")) sound("systemselect") /*while lemonobjname(lemongrab.objlist[obj[cur],0])="0" {cur=modulo(cur+editcursor.scrw,1,10)}*/}}
+    if (!editcursor.ctrl) {
+        if keyboard_check(vk_shift){
+            savecur=cur cur=modulo(cur+rightbut-leftbut,1,10)
+            if savecur!=cur {
+                if !(settings("nolemonsound")) sound("systemselect")
+            } else{
+                savecur=curfam[cur]
+                curfam[cur]=modulo(curfam[cur]+editcursor.scrw+downbut-upbut,1,famsize[cur])
+
+                if savecur!=curfam[cur] {
+                    obj[cur]=famobj[cur,curfam[cur]]
+                    if !(settings("nolemonsound")) sound("systemselect")
+                }
+            }
+
+        }else
+        {
+            savecur=cur cur=modulo(cur+editcursor.scrw+rightbut-leftbut,1,10)
+            if savecur!=cur {
+                if !(settings("nolemonsound")) sound("systemselect")
+            } else{
+                savecur=curfam[cur]
+                curfam[cur]=modulo(curfam[cur]+downbut-upbut,1,famsize[cur])
+
+                if savecur!=curfam[cur] {
+                    obj[cur]=famobj[cur,curfam[cur]]
+                    if !(settings("nolemonsound")) sound("systemselect")
+                }
+            }
+        }
+    }
     for (i=0;i<10;i+=1) {
         if (keyboard_check_pressed(ord("0")+i)) {
             if (pickeddata || i) {
@@ -74,13 +112,16 @@ action_id=603
 applies_to=self
 */
 t+=1
-for (i=0;i<9+pickeddata;i+=1) {
-    xx=x-159+40*i+(i=9)*20
-    so = t + (i*6)+(i=9)*3
+for (i=0;i<9;i+=1) {
+    xx=x-159+40*i
+    so = t + (i*6);
 
     if (cur == i+1) {
+
         yraise[i]=approach_val(yraise[i],-8,1)
-        why = 0;
+
+        why=0
+
     } else {
         yraise[i]=approach_val(yraise[i],0,1)
         why = sin(so*pi*freq/room_speed)*amp;
@@ -91,21 +132,39 @@ for (i=0;i<9+pickeddata;i+=1) {
     else
     yy=y+yraise[i]
 
-    draw_sprite_ext(spr_editorbuttonshadow,0,xx,yy,1,1,0,c_black,0.5)
-    if (editcursor.tool=2 && cur=i+1) draw_sprite_ext(spr_editorbutton,2+!editcanflood(lemongrab.objlist[obj[cur],0]),xx,yy,1,1,0,$ffffff,alpha)
-    else if i=9 draw_sprite_ext(spr_editorbutton,(4-(cur=i+1)*3),xx,yy,1,1,0,$ffffff,alpha)
-    else draw_sprite_ext(spr_editorbutton,(cur=i+1),xx,yy,1,1,0,$ffffff,alpha)
+    if (editcursor.tool=2 && cur=i+1) draw_sprite_ext(spr_editorbutton,1+!editcanflood(lemongrab.objlist[obj[cur],0]),xx,yy,1,1,0,$ffffff,alpha)
+    else draw_sprite_ext(spr_editorbuttonshadow,0,xx,yy,1,1,0,c_black,0.5) draw_sprite_ext(spr_editorbutton,(cur=i+1),xx,yy,1,1,0,$ffffff,alpha)
 
     if (cur=i+1) draw_sprite_ext(spr_editsel,0,xx,yy,1,1,0,$ffffff,alpha)
 
     if (obj[i+1]) draw_sprite_ext(spr_editpal,lemongrab.objlist[obj[i+1],25],xx,yy,1,1,0,c_black,0.5) draw_sprite_ext(spr_editpal,lemongrab.objlist[obj[i+1],25],xx-1,yy-1,1,1,0,$ffffff,alpha)
-    if (picked[i+1]) draw_sprite_ext(spr_editsel,1,xx,yy,1,1,0,$ffffff,alpha)
+    if cur=i+1 if famsize[i+1]>1{
+
+        { //Draw previous.
+            draw_sprite_ext(spr_editorbutton,0,xx+3,yy-32,0.75,0.75,0,$ffffff,alpha*0.5)
+
+
+                                                                                      //v it's an extra -1 because it needs to get normalized for the mod
+            draw_sprite_ext(spr_editpal,lemongrab.objlist[famobj[i+1,modulo(curfam[i+1]-1,1,famsize[i+1])],25],xx+3,yy+1-32,0.75,0.75,0,c_black,0.25) 
+            draw_sprite_ext(spr_editpal,lemongrab.objlist[famobj[i+1,modulo(curfam[i+1]-1,1,famsize[i+1])],25],xx-1+3,yy-32,0.75,0.75,0,$ffffff,alpha*0.5)
+        }
+        
+        { //Draw next
+            draw_sprite_ext(spr_editorbutton,0,xx+3,yy+32+6,0.75,0.75,0,$ffffff,alpha*0.5)
+            
+            draw_sprite_ext(spr_editpal,lemongrab.objlist[famobj[i+1,modulo(curfam[i+1]+1,1,famsize[i+1])],25],xx+3,yy+1+32+4,0.75,0.75,0,c_black,0.25) 
+            draw_sprite_ext(spr_editpal,lemongrab.objlist[famobj[i+1,modulo(curfam[i+1]+1,1,famsize[i+1])],25],xx-1+3,yy+32+4,0.75,0.75,0,$ffffff,alpha*0.5)
+        }
+    }
+    
+
+    if (picked[i+1,curfam[i+1]]) draw_sprite_ext(spr_editsel,1,xx,yy,1,1,0,$ffffff,alpha)
 }
 
 global.tscale=2
 global.halign=1
 global.valign=2
-draw_systext(x+16,y-18,wordwrap(str,45),$ffffff,alpha2)
+draw_systext(x+16,y-18-32,wordwrap(str,45),$ffffff,alpha2)
 global.valign=0
 draw_systext(x+16,97,wordwrap(str2,45),$ffffff,alpha3)
 global.tscale=1

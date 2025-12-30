@@ -1,0 +1,9 @@
+ERROR in
+action number 1
+of End Step Event
+for object drawregion:
+
+In script editobjdataname:Error in code at line 436:   
+            if (i="1") return "Cracked"                     ^at position 20: Cannot compare arguments.
+
+
