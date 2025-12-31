@@ -1,0 +1,272 @@
+[tails]
+name=Metal Sonic
+
+icon speed=6
+icon loop=yes
+animation speed=1.0
+center x=20
+center y=14
+box width=39
+box height=34
+short small form=0.8
+
+pitch spindash=yes
+jump ball animation=no
+fire duration=2.75
+victory duration=50
+time until wait=300
+pipe squish=20
+pole center offset=8
+mini sheet=0
+
+movement tails offset x=0
+movement tails offset y=4
+spindash tails offset x=0
+spindash tails offset y=10
+
+
+skin offset=44
+use paletting=true
+defaultspray 1=6
+defaultspray 2=0
+defaultspray 3=5
+defaultspray 4=0
+
+snack layout=true
+
+
+max sizes=9
+
+single sheet=true
+singlesheet split width=8,8,8,8,8,8,8,8,8,8
+singlesheet split height=0,0,0,0,0,0,0,0,0,0
+
+sheet splits=tail_idle
+sheet split size=320
+
+
+custom sprite list=stand,wait,lookup,crouch,balance,push,pose,knock,dead,walk,run,maxrun,brake,jump,bonk,fall,handlegrab,grindgrab,grinding,roll,climbing,flagslide,tail_idle,piping,pipingup,sidepiping,doorenter,doorexit,spinjump,spindash,spincharge,rampof,trickup,trickright,fired,fly_up,fly,fly_down,fly_tired,swim,tail_movement
+
+connect crouch=true
+connect push=true
+connect knock=true
+connect dead=true
+connect brake=true
+connect bonk=true
+connect fall=true
+connect flagslide=true
+connect doorexit=true
+connect trickright=true
+connect fly=true
+connect fly_tired=true
+connect grindgrab=true
+
+reroute spring=jump
+reroute springfall=fall
+
+
+stand frames=3
+stand loop=1
+stand speed=0.2
+stand frametimes=32,1,1
+
+wait frames=6
+wait loop=3
+wait speed=0.15
+
+lookup frames=4
+lookup loop=2
+lookup speed=0.22
+lookup frametimes=1,32,1,1
+
+crouch frames=2
+crouch loop=2
+crouch speed=0.22
+
+balance frames=4
+balance loop=1
+balance speed=0.16
+
+push frames=4
+push loop=1
+push speed=0.05
+
+pose frames=4
+pose loop=4
+pose speed=0.25
+
+knock frames=1
+knock loop=1
+knock speed=0.25
+
+dead frames=1
+dead loop=1
+dead speed=0.5
+
+walk frames=8
+walk loop=1
+walk speed=0.4
+
+run frames=4
+run loop=1
+run speed=0.4
+run offset x=-4
+run offset y=3
+
+maxrun frames=4
+maxrun loop=1
+maxrun speed=0.2
+maxrun offset y=2
+
+brake frames=4
+brake loop=4
+brake speed=0.3
+brake frametimes= 1,1,2,10
+
+jump frames=3
+jump loop=2
+jump speed=0.5
+
+bonk frames=2
+bonk loop=2
+bonk speed=0.1
+
+fall frames=3
+fall loop=2
+fall speed=0.25
+fall frametimes= 0.5,1,1
+
+spring frames=2
+spring loop=1
+spring speed=0.25
+
+springfall frames=8
+springfall loop=1
+springfall speed=0.5
+
+handlegrab frames=1
+handlegrab loop=1
+handlegrab speed=0.25
+
+grindgrab frames=2
+grindgrab loop=1
+grindgrab speed=0.5
+
+grinding frames=2
+grinding loop=1
+grinding speed=0.5
+
+
+tail_idle frames=6
+tail_idle loop=1
+tail_idle speed=0.1
+tail_idle offset x=-3
+
+tail_movement frames=8
+tail_movement loop=1
+tail_movement speed=0.5
+tail_movement offset x=-6
+tail_movement offset y=0
+
+roll frames=4
+roll loop=1
+roll speed=0.5
+roll offset y=0
+
+climbing frames=4
+climbing loop=1
+climbing speed=0.125
+
+flagslide frames=1
+flagslide loop=1
+flagslide speed=0.5
+
+piping frames=8
+piping loop=1
+piping speed=0.50
+
+pipingup frames=8
+pipingup loop=1
+pipingup speed=0.50
+
+sidepiping frames=8
+sidepiping loop=1
+sidepiping speed=0.5
+
+doorenter frames=4
+doorenter loop=4
+doorenter speed=0.15
+
+doorexit frames=2
+doorexit loop=2
+doorexit speed=0.1
+
+spinjump frames=4
+spinjump loop=1
+spinjump speed=0.5
+
+spindash frames=4
+spindash loop=1
+spindash speed=0.45
+
+spincharge frames=6
+spincharge loop=3
+spincharge speed=0.45
+
+rampof frames=8
+rampof loop=7
+rampof speed=0.5
+
+
+trickup frames=2
+trickup loop=1
+trickup speed=0.25
+
+trickright frames=4
+trickright loop=1
+trickright speed=0.5
+
+
+fired frames=3
+fired loop=3
+fired speed=0.25
+
+fly_up frames=4
+fly_up loop=1
+fly_up speed=0.45
+
+fly frames=4
+fly loop=1
+fly speed=0.45
+
+fly_down frames=4
+fly_down loop=1
+fly_down speed=0.45
+
+fly_tired frames=4
+fly_tired loop=1
+fly_tired speed=0.25
+
+swim frames=4
+swim loop=1
+swim speed=0.2
+
+
+
+
+
+
+boll top=#0077FF
+boll mid=#000000
+boll bot=#ff0000
+
+[lang]
+winspecial=Sonic got a Chaos Emerald
+allspecial=Sonic got all Chaos Emeralds
+princess=our Princess
+savetext1=Peace is Paved
+savetext2=With Kingdom Saved
+savetext3=Hurrah to Sonic
+savetext4=Our Only Hero 
+savetext5=This Ends Your Trip
+savetext6=Of a Long Friendship

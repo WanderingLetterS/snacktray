@@ -56,7 +56,15 @@ else {
         else vspeed=min(3,vspeed+0.25)
         if (hspeed!=0) {
             coll=collision(hspeed,0)
+            if object_index!=(mushrotten){
+
             if (coll && !player_climbstep(coll,hsp)) hspeed=abs(hspeed)*sign(x-mean(coll.bbox_left,coll.bbox_right))
+            } else {
+                if (coll && !player_climbstep(coll,hsp)) {hspeed=0 vspeed-=1}
+            }
+        } else if object_index==(mushrotten){
+            if !collision(sign(nearestplayer.x-x)*2,0)
+            hspeed=sign(nearestplayer.x-x)*2
         }
     }
 }

@@ -2,8 +2,8 @@
 //tasks for preparation of a match
 var i,j,t;
 
-//global.rand=irandom(65535)
-global.rand=0
+global.rand=irandom(65535)
+//global.rand=0
 global.spd=60
 global.cheater=0
 if global.tasing global.wastasing=1

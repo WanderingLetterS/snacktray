@@ -1,6 +1,6 @@
 ///(has_enemies,default)
 var i,j;
-questionstring="Box contents:|-|Nothing|Single Coin|Multiple Coins|Fire Flower|Feather|Mini Mushroom|Question Msuhroom|Water Flower|Thunder Flower|Ice Flower|Clover Flower|1-Up|Shield|Starman|Poison Mushroom|Key|Card|Spring|Sideways Spring|Green Spring|Shard|P-Switch|Shell|Red Shell|Yellow Shell|Blue Shell|Stone|Cork"
+questionstring="Box contents:|-|Nothing|Single Coin|Multiple Coins|Fire Flower|Feather|Mini Mushroom|Question Msuhroom|Water Flower|Thunder Flower|Ice Flower|Clover Flower|1-Up|Shield|Starman|Poison Mushroom|Rotten Mushroom|Key|Card|Spring|Sideways Spring|Green Spring|Shard|P-Switch|Shell|Red Shell|Yellow Shell|Blue Shell|Stone|Cork"
 
 if argument[0]==true {
 
@@ -31,6 +31,7 @@ if (i=j) return "life" j+=1
 if (i=j) return "shield" j+=1
 if (i=j) return "star" j+=1
 if (i=j) return "poison" j+=1
+if (i=j) return "rotten" j+=1
 if (i=j) return "key" j+=1
 if (i=j) return "card" j+=1
 if (i=j) return "spring" j+=1

@@ -27,10 +27,12 @@ Noloop_Y= Tag that makes it so that this specific part only renders once and nev
 Clamp_Y= Tag that makes it so that this specific image will never be offscreen.
 
 Offset_Y_[]= Offset (Y Axis) this moves the background to be offset to any value, very useful for noloop_y.
-Regionedge_Y[]= (Y Axis), can go from 0-100, this percentage will autoamtically offset the x position of the background depending on the current region's size. Only really useful if the noloop_y tag is present. 
+Regionedge_Y_[]= (Y Axis), can go from 0-100, this percentage will autoamtically offset the x position of the background depending on the current region's size. Only really useful if the noloop_y tag is present. 
 
 Scroll_Y_[]= Scroll (Y Axis) how many pixels to the left this background will move per frame.
 
 Animated_Y_[]= how many animated frames are present on the horizontal axis.
 
 Designed_Region_Y_[]= The Region Height this background elemnt is designed for. When applied, this background piece will adapt to whatever region size really is, makign sure it's movements are equal to how they would be on the specified region size.
+
+NoBelowAdjustment= A new tag that makes it so that the background wont move up when the below biome appears.

@@ -45,6 +45,7 @@ switch content {
     case "iceitem": case "iflower": content=iflower sprite="iflower" break
     case "questionitem": case "questionmush": content=questionmush sprite="?mushroom" break
     case "poison": content=mushpoison sprite="mushpoison" break
+    case "rotten": content=mushrotten sprite="mushrotten" break
     case "spring": content=spring sprite="spring" object=1 break
     case "spreng": content=spreng sprite="spreng" object=1 break
     case "vine": content=sprong sprite="sprong" object=1 break

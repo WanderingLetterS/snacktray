@@ -118,6 +118,7 @@ if lastregion[view_current]!=gamemanager.players[view_current].region || forceme
         sky_intentedheight[i]=skindat("Intended_Height_"+name)
         sky_bm[i]=skindat("bm_"+name)
         sky_foreground[i]=skindat("Foreground_"+name)
+        sky_nobelowadjustment[i]=skindat("NoBelowAdjustment_"+name)
 
         //truesky_width[i]=sky_width[i] sky_width[i]=sky_width[i]/sky_animated_x[i]
 

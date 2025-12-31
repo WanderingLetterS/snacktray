@@ -47,6 +47,9 @@ while (f!="") {
     blend=0
     foreground=0
 
+    if argument[2] == "sky"
+    nobelowadjustment=0
+
     str=filename_change_ext(string_replace(filename_fixname(f),argument[0],""),"-")
     do {
         p=string_pos("-",str)
@@ -86,6 +89,8 @@ while (f!="") {
         if (s="bm_add") {blend=1}
         if (s="bm_sub") {blend=2}
 
+        if (s="NoBelowAdjustment") {nobelowadjustment=1}
+
 
     } until str=""
 
@@ -118,6 +123,8 @@ while (f!="") {
 
     skindat("Intended_Width_"+name+slot,intentedwidth)
     skindat("Intended_Height_"+name+slot,intentedheight)
+    if argument[2] == "sky"
+    skindat("NoBelowAdjustment_"+name+slot,nobelowadjustment)
 
 
     skindat("texw_"+name+slot,sprite_get_width(spr))

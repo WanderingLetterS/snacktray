@@ -16,10 +16,10 @@ with (bgmanager) {
     if (instance_exists(moranboll)) {horizon=0 water=0 bgname="specialsky" dy=0 yv=0}
     else bgname=gamemanager.players[curr].region.typebg+"sky"
 
-    if settings("removeassets") maxslot=0
+    if settings("removeassets") maxslot=2
     //if (horizon+316<view_yview[curr]) maxslot=-1 //Commented this out 'cause it keeps making the below bg disappear lol -moster
     
-    ky=gamemanager.playesr[view_current].region.ky
+    ky=gamemanager.players[view_current].region.ky
 
     
     
@@ -63,6 +63,9 @@ with (bgmanager) {
                 }
 
             }
+            if sky_nobelowadjustment[i]{
+                horizon=ky //dont adjust for horizon... so assume that horizon is always at the bottom!
+            }
             y_view=min(view_yview[curr],horizon-global.screenheight)
             {
                 if sky_intentedheight[i]!=0{
@@ -78,9 +81,10 @@ with (bgmanager) {
                 draw_y+=sky_offset_y[i]
                 
                 if sky_clamp_y[i] {
-                    draw_y= median( 
-                        y_view-(sky_height[i]-global.screenheight),
+                    draw_y= clamp( 
                         draw_y,
+                        y_view-(sky_height[i]-global.screenheight),
+                        
                         y_view+(sky_height[i]-global.screenheight)
                     )
                     
@@ -106,8 +110,13 @@ with (bgmanager) {
             if !(sky_noloop_y[i] && (draw_y+sky_height[i])<y_view) && !(sky_noloop_x[i] && (draw_x+sky_width[i])<x_view)
             repeat (vrepeats){ 
                 repeat (repeats) {
-
-                    draw_sprite(spr,0,used_draw_x,draw_y)
+                    
+                    if sky_foreground[i] && (draw_y+sky_height[i])>horizon{
+                        
+                        
+                        draw_sprite_part(spr,0,0,0,sky_width[i],min(abs(horizon-draw_y),sky_height[i]),used_draw_x,draw_y)
+                    
+                    } else draw_sprite(spr,0,used_draw_x,draw_y)
                     used_draw_x+=sky_width[i]
                 }
                 draw_y+=sky_height[i]

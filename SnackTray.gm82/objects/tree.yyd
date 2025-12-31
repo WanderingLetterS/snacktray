@@ -490,6 +490,7 @@
 	+Hazards
 		|delfruit
 		|mushpoison
+		|mushrotten
 	|item
 	|pipeitem
 	|itemlaunch

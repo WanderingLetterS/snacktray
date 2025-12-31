@@ -51,6 +51,7 @@ applies_to=self
 */
 if (!drawregion.flooding) {
     curp=cur
+    famcurp=curfam[cur]
     if (!editcursor.ctrl) {
         if keyboard_check(vk_shift){
             savecur=cur cur=modulo(cur+rightbut-leftbut,1,10)
@@ -90,7 +91,7 @@ if (!drawregion.flooding) {
             if !(settings("nolemonsound")) sound("systemselect")
         }
     }
-    if (cur!=curp) {
+    if (cur!=curp || famcurp!=curfam[cur]) {
         str=lemonobjname(lemongrab.objlist[obj[cur],0])
         alpha2=3
 
