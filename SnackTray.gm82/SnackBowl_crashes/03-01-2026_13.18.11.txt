@@ -1,0 +1,17 @@
+ERROR in
+action number 1
+of Other Event: Outside Room
+for object __newobject1189:
+
+Error in code at line 75:   
+			global.custom_sprite_npc_S=sprite_add(globalmanager.moddir+"object\"+mytype+"\snacktraydude.png",0,1,0,0,0)                                                                           ^at position 74: Wrong type of arguments to +.
+
+
+ERROR in
+action number 1
+of Other Event: User Defined 8
+for object drawregion:
+
+In function code_execute: Cannot execute code point -4, only 1 total code points initialized.
+
+

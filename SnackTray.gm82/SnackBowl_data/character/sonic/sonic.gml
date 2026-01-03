@@ -132,8 +132,9 @@ feathdasheffecty_y+=feathdasheffecty_vsp
 if boost {
 	if !instance_exists(myafterimage) || myafterimage==0 {
 		myafterimage=(instance_create(x,y,afterimage))
-		with myafterimage  {event_user(0) depth=other.depth-8 visible=1 x=other.x+other.hsp y=other.y+other.vsp alarm[0]=2}
+		with myafterimage  {event_user(0) depth=other.depth-8 visible=0 x=other.x+other.hsp y=other.y+other.vsp alarm[0]=2}
 	}
+	with myafterimage  {depth=other.depth-8 visible=1 x=other.x y=other.y+other.dy frame=other.frame sprite=other.sprite ypos=other.ypos sid=other.sid fry=other.fry frx=other.frx xsc=other.xsc alarm[0]=2}
 
 	frame4flipper+=1
 	if frame4flipper>=3 {frame4flipper=0 }

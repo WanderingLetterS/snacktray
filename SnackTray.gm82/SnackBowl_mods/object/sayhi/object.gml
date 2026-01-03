@@ -2,7 +2,7 @@ switch(global.cobjectentrypoint){
 
 	case "create":
 		x+=17 //Center the npc around the graphic so turnign around works.
-		y-=13
+		y+=2
 		depth=2
 		frame=0
 		if !sprite_exists(global.custom_sprite_npc_S) ||global.custom_sprite_npc_S==0{
@@ -11,17 +11,10 @@ switch(global.cobjectentrypoint){
 		sheet=global.custom_sprite_npc_S
 		xsc=1
 		diag=0
-		maxdiag=8
+		maxdiag=0
 
 		text[0]="Heya."
-		text[1]="You may be wondering..."
-		text[2]="Is this some elaborate codeblock shenanigans?"
-		text[3]="Nope!"
-		text[4]="I'm actually a custom object, but not the usual kind."
-		text[5]="This custom object is a new lemon object."
-		text[6]="You can specify it's type, which corresponds to..."
-		text[7]="The name of the folder its placed in!"
-		text[8]="That's right, you can now load in custom objects as you see fit!"
+
 	break;
 	case "step":
 
@@ -66,4 +59,27 @@ switch(global.cobjectentrypoint){
 		}
 
 	break;
+	
+	
+	case "lemon_display":
+		xsc=1
+		ysc=1
+		if !sprite_exists(global.custom_sprite_npc_S) ||global.custom_sprite_npc_S==0{
+			global.custom_sprite_npc_S=sprite_add(globalmanager.moddir+"object\"+data[0]+"\snacktraydude.png",0,1,0,0,0)
+		}
+		sheet=global.custom_sprite_npc_S
+
+
+		draw_sprite_part_ext(sheet,0,8+34*frame,7,33,46,((x+1)*16)-17*xsc,y*16+2,xsc,1,c_white,1)
+
+	break;
+	case "deloaded":
+		if !sprite_exists(global.custom_sprite_npc_S) ||global.custom_sprite_npc_S==0{
+			//no need to deload anything.	
+		}else {
+			sprite_delete(global.custom_sprite_npc_S) global.custom_sprite_npc_S=0
+		}
+	
+	break;
+
 }

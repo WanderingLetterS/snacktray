@@ -23,10 +23,10 @@ switch (argument[0]) {
             case (3): {frx=5 fry=0+frame} break; //right
 
 
-            case (4): {frx=43 fry=2.5+1.5*frame w=1.5 h=1.5 frox=8 froy=8                   } break; //up left
-            case (5): {frx=41.5 fry=2.5+1.5*frame w=1.5 h=1.5 froy=8                        } break; //up right
-            case (6): {frx=40 fry=2.5+1.5*frame w=1.5 h=1.5 frox=8                        } break; //down left
-            case (7): {frx=38.5 fry=2.5+1.5*frame w=1.5 h=1.5                                 } break; //down right
+            case (4): {frx=41.5 fry=19.5+1.5*frame w=1.5 h=1.5 frox=8 froy=8                   } break; //up left
+            case (5): {frx=37 fry=19.5+1.5*frame w=1.5 h=1.5 froy=8                        } break; //up right
+            case (6): {frx=40 fry=19.5+1.5*frame w=1.5 h=1.5 frox=8                       } break; //down left
+            case (7): {frx=38.5 fry=19.5+1.5*frame w=1.5 h=1.5                                 } break; //down right
 
         }
     break
@@ -42,10 +42,10 @@ switch (argument[0]) {
             case (2): {frx=0 fry=0+frame+4} break; //left
             case (3): {frx=5 fry=0+frame+4} break; //right
 
-            case (4): {frx=49 fry=2.5+1.5*frame w=1.5 h=1.5 frox=8 froy=8                   } break; //up left
-            case (5): {frx=47.5 fry=2.5+1.5*frame w=1.5 h=1.5 froy=8                        } break; //up right
-            case (6): {frx=46 fry=2.5+1.5*frame w=1.5 h=1.5 frox=8                        } break; //down left
-            case (7): {frx=44.5 fry=2.5+1.5*frame w=1.5 h=1.5                                 } break; //down right
+            case (4): {frx=41.5+6 fry=19.5+1.5*frame w=1.5 h=1.5 frox=8 froy=8                   } break; //up left
+            case (5): {frx=37+6 fry=19.5+1.5*frame w=1.5 h=1.5 froy=8                        } break; //up right
+            case (6): {frx=40+6 fry=19.5+1.5*frame w=1.5 h=1.5 frox=8                        } break; //down left
+            case (7): {frx=38.5+6 fry=19.5+1.5*frame w=1.5 h=1.5                                 } break; //down right
         }
     break
     }

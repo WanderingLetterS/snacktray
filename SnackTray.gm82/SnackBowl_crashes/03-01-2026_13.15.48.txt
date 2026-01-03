@@ -1,0 +1,9 @@
+ERROR in
+action number 1
+of End Step Event
+for object drawregion:
+
+In script drawdeities:Error in code at line 7:   
+        if !variable_global_get("cobject_code_"+mytype) {                                                   ^at position 50: Wrong type of arguments to +.
+
+

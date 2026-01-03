@@ -96,6 +96,30 @@ if (keyboard_check_pressed(vk_enter) && !off) {
         break;
 
 
+
+
+
+        case "reloadobject":
+        case "deloadobject":
+        case "delobj":
+        case "objdel":
+            mytype=arg
+
+
+
+            if variable_global_get("cobject_code_"+mytype)  {
+                global.cobjectentrypoint="deloaded"
+                code_execute(variable_global_get("cobject_code_"+mytype)) //let the object deload itself and whatever else is in there.
+
+                code_destroy(variable_global_get("cobject_code_"+mytype)) //destroy the object's code to prevent any funny leakage.
+                variable_global_set("cobject_code_"+mytype,0)             //and finally, set the global variable's code to 0.
+
+            }
+
+            //p simple, huh?
+
+         break;
+
         case "reloadworld":
         case "worldreload":
         case "reload_world":

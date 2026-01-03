@@ -3,7 +3,25 @@ draw_sprite_ext(spr,frame,x*16+off+off2x,y*16+off+off2y,1,1,0,c_white,draw_get_a
 
 switch(obj) {
 
+    case (customobject):{
+        if !variable_global_get("cobject_code_"+string(data[0])) {
+            if !file_exists(globalmanager.moddir+"object\"+string(data[0])+"\object.gml") {break}
+            else {
+                variable_global_set("cobject_code_"+string(data[0]),code_compile(file_text_read_all(globalmanager.moddir+"object\"+string(data[0])+"\object.gml")))
+                my_code=variable_global_get("cobject_code_"+string(data[0]))
+            }
+        } else {
+            my_code=variable_global_get("cobject_code_"+string(data[0]))
 
+        }
+        global.cobjectentrypoint="lemon_display"
+
+        code_execute(my_code)
+
+
+
+
+    } break
 
     case (tyler):
     case (objectstyler):

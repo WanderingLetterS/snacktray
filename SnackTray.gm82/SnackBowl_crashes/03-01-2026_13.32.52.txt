@@ -1,0 +1,8 @@
+ERROR in
+action number 1
+of  Step Event
+for object customobject:
+
+In function code_execute: Cannot execute code point 2, it has been deleted.
+
+
