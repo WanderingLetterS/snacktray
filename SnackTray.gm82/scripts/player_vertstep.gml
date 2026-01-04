@@ -73,7 +73,7 @@ if (coll.object_index=monitor && jump && vsp>0 && (fall=0 || fall=5) && !hurt) {
     
 }
 if coll.object_index=bouncymush {
-    vsp=-5
+    vsp=-(4+2*akey)
     canstopjump=1
 }
 

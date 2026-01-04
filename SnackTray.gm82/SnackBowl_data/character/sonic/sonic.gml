@@ -242,13 +242,12 @@ else if (jump) {
 			if grind_hanging sprite="grindgrab"
 			else sprite="grinding"
 		} else if using_handle{ sprite="handlegrab"}
-		else if bouncetrick sprite="bouncetrick"
 		else if (clover_climb) {sprite="maxrun" sprite_angle=90*xsc  dy=-7}
 		else if (tricking) {if tricking!=2 sprite="trickup" else sprite="trickright"}
 		else if (sprung|| sproinged) {sproinged=true uncurl=false sprite="spring" if (vsp>=0) sprite="springfall"}
 		else if (rampof) {sprite="rampof"  }
 		else if uncurled {sprite="uncurl"}
-		else if (fall=10) {sprite="dash" if firedash sprite="firedash"}
+		else if (fall=10) {sprite="dash" if firedash sprite="firedash" if (dodashtrick && !is_thunder() && boost) sprite="trickright" }
 		else if (bonk) sprite="bonk"
 		else if (fall=6) {sprite="knock"}
 		else {if (fall) if vsp>=0 sprite="fall" else sprite="jump" if !fall sprite="spinjump" frspd=fallspd} //frspd=fallspd
@@ -697,6 +696,7 @@ if (bbut) {
 				sprung=0
 				bouncetrick=0
 				fall=1
+				dodashtrick=1
 				i=fire_projectile(x,y+4)
 				playsfx(name+"trick")
 			}else  if h!=0{
@@ -712,6 +712,7 @@ if (bbut) {
 				i=fire_projectile(x,y+4)
 				sproinged=0
 				bouncetrick=0
+				dodashtrick=1
 				sprung=0
 				fall=1
 			} 
@@ -804,6 +805,7 @@ if (!dead && !grabflagpole) {
 		//grounded state
 		sproinged=0 uncurled=0 tricking=0 rampof=0 
 		bouncetrick=0
+		dodashtrick=0
 		if vsp>0 vsp=0
 		//sprite angle and offsetting visually into sloped ground.
 		sprite_angle=0

@@ -344,6 +344,11 @@
 		|spr_spikecrusher
 		|spr_ziptrack
 		|spr_triangleblock
+		|spr_cheeseblock
+		|spr_pizzablock
+		|spr_metalbock
+		|spr_metalblockparticle
+		|spr_bigpizzablock
 	+enemies
 		|spr_goomba
 		|spr_spikenemy

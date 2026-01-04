@@ -24,16 +24,7 @@ maxsizes=playerskindat(slot,"maxsizes"+string(slot))
 for (i=0;i<c;i+=1) {
     k=16+128*i //1d array :P
 
-    /*
-        k value table
-        k+0 name
-        k+size+1 frames for size //I EXPLODE WHOEVER HARDCODED SPRITE FRAME SIZES
-        k+size+7 speed
-        k+size+8 loop
-        k+size+9 offset x
-        k+size+10 offset y
-        k+size+11... frame times
-    */
+
 
     spr=tokens[i]
     global.animdat[slot,k]=spr
@@ -49,12 +40,17 @@ for (i=0;i<c;i+=1) {
         j+=1
     } until (!p) repeat (maxsizes+1-j) {global.animdat[slot,k+1+j]=global.animdat[slot,k+j] j+=1}
 
-    t=unreal(playerskindat(slot,name+" "+spr+" speed"),1) if (t=0) t=1 global.animdat[slot,k+maxsizes+7]=t
+    t=unreal(playerskindat(slot,name+" "+spr+" speed"),1) if (t=0) t=1 global.animdat[slot,k+maxsizes+DAT_SPEED]=t
     global.animdat[slot,k+maxsizes+8]=max(1,unreal(playerskindat(slot,name+" "+spr+" loop"),1))
-    if !unreal(playerskindat(slot,name+" "+spr+" loop")) global.animdat[slot,k+maxsizes+8]=1
+    if !unreal(playerskindat(slot,name+" "+spr+" loop")) global.animdat[slot,k+maxsizes+DAT_LOOP]=1
 
-    global.animdat[slot,k+maxsizes+9]=unreal(playerskindat(slot,name+" "+spr+" offset x"), 0)
-    global.animdat[slot,k+maxsizes+10]=unreal(playerskindat(slot,name+" "+spr+" offset y"), 0)
+    global.animdat[slot,k+maxsizes+DAT_OFFX]=unreal(playerskindat(slot,name+" "+spr+" offset x"), 0)
+    global.animdat[slot,k+maxsizes+DAT_OFFY]=unreal(playerskindat(slot,name+" "+spr+" offset y"), 0)
+
+    global.animdat[slot,k+maxsizes+DAT_BOXWIDTH]=unreal(playerskindat(slot,name+" "+spr+" boxwidth"), 0)
+
+    global.animdat[slot,k+maxsizes+DAT_BOXHEIGHT]=unreal(playerskindat(slot,name+" "+spr+" boxheight"), 0)
+
 
     list=string(playerskindat(slot,name+" "+spr+" frametimes"))
 
@@ -70,11 +66,11 @@ for (i=0;i<c;i+=1) {
 
     if (list="0") {
         for (j=0;j<global.animdat[slot,k+1];j+=1) {
-            global.animdat[slot,k+maxsizes+11+j]=1
+            global.animdat[slot,k+maxsizes+DAT_FRAMETIMES+j]=1
         }
     } else {
         for (j=0;j<global.animdat[slot,k+1];j+=1) {
-            global.animdat[slot,k+maxsizes+11+j]=max(1,unreal(tokens2[j],1))
+            global.animdat[slot,k+maxsizes+DAT_FRAMETIMES+j]=max(1,unreal(tokens2[j],1))
         }
     }
 }
@@ -94,6 +90,10 @@ repeat (maxsizes) {
     global.skincentery[slot,loopey]=global.skincentery[slot,0]
     loopey+=1
 }
+
+
+
+
 
 if funnytruefalse(playerskindat(slot,name+" multiple box sizes")){
 

@@ -198,9 +198,11 @@ rampof frames=8
 rampof loop=7
 rampof speed=0.5
 
-trickright frames=2
+trickright frames=4
 trickright loop=1
-trickright speed=0.25
+trickright speed=0.5
+trickright boxwidth=47
+trickright offset x=-5
 
 trickup frames=2
 trickup loop=1
