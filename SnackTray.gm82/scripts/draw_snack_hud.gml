@@ -111,25 +111,57 @@ if !(global.nohud) && !(dontdrawhudler) && !global.mphudder[p2]{
     shader_reset()
 
 
+	draw_sprite(spr_coinholder,0,0,0)
+	num=global.coins[view_current]
+	
+	draw_sprite(spr_mainuitext,real(string_char_at(string(num), 1)),28,9)
+	if num>9 draw_sprite(spr_mainuitext,real(string_char_at(string(num), 2)),38,7)
+	if num>99 draw_sprite(spr_mainuitext,real(string_char_at(string(num), 3)),48,5)
+		
+	
+	draw_sprite(spr_scoreholder,0,view_wview[view_current]-94,0)
+	num=global.scor[view_current]
+	strnum="0000000"
+	if global.scor[view_current]>9999999 num=9999999
+		strnum= string_insert(string(num),strnum,8-string_length(string(num)))
+	
+	
 
-    draw_skintext(16,8,chr(36)+chr(42)+format(global.coins[view_current],2),$ffffff)
+	
+	
+	draw_sprite(spr_mainuitext,real(string_char_at(strnum, 1)),view_wview[view_current]-77,5)
+	draw_sprite(spr_mainuitext,real(string_char_at(strnum, 2)),view_wview[view_current]-67,6)
+	draw_sprite(spr_mainuitext,real(string_char_at(strnum, 3)),view_wview[view_current]-57,7)
+	draw_sprite(spr_mainuitext,real(string_char_at(strnum, 4)),view_wview[view_current]-47,8)
+	draw_sprite(spr_mainuitext,real(string_char_at(strnum, 5)),view_wview[view_current]-37,9)
+	draw_sprite(spr_mainuitext,real(string_char_at(strnum, 6)),view_wview[view_current]-27,10)
+	draw_sprite(spr_mainuitext,real(string_char_at(strnum, 7)),view_wview[view_current]-17,11)	
+	
+    //draw_skintext(16,8,chr(36)+chr(42)+format(global.coins[view_current],2),$ffffff)
     maintain_ring=0
     if global.rings[view_current]=0
         with itemdrop if type="ringup" && p2=view_current {maintain_ring=1}
     if global.rings[view_current]==0
         col2=$ffffff
         if global.frame8 col2=$ff
-    if ringxoffset!=-44 && global.rings[view_current]=0 && !maintain_ring{
-        ringxoffset-=1
+    if ringxoffset!=-62 && global.rings[view_current]=0 && !maintain_ring{
+        ringxoffset-=2
         col2=$ff
-    }else if ringxoffset!=16 && (global.rings[view_current]>0 || maintain_ring) {
-        ringxoffset+=1
+    }else if ringxoffset<0 && (global.rings[view_current]>0 || maintain_ring) {
+        ringxoffset+=2
         col2=$ffffff
     }
     if global.rings[view_current]!=0
         col2=$ffffff
 
-    draw_skintext(ringxoffset,24,chr(16)+chr(42)+formatdark(global.rings[view_current],3),col2)
+    //draw_skintext(ringxoffset,24,chr(16)+chr(42)+formatdark(global.rings[view_current],3),col2)
+
+	draw_sprite(spr_ringholder,0,3+ringxoffset,36)
+	num=global.rings[view_current]
+	draw_sprite(spr_mainuitextsmall,real(string_char_at(string(num), 1)),24+ringxoffset,42)
+	if num>9 draw_sprite(spr_mainuitextsmall,real(string_char_at(string(num), 2)),32+ringxoffset,41)
+	if num>99 draw_sprite(spr_mainuitextsmall,real(string_char_at(string(num), 3)),39+ringxoffset,40)
+
 
     // min is -44 max is 16
     // so in total it's 60
@@ -140,24 +172,15 @@ if !(global.nohud) && !(dontdrawhudler) && !global.mphudder[p2]{
 
     if global.gamemode!="timeattack" {
     //Red Rings
-        //if !instance_exists(redring)
+		draw_sprite(spr_redringholder,0,view_wview[view_current]/2,0)
+
         for (i=0;i<5;i+=1) {
-            draw_skintext(global.screenwidth-(400-336)+(i*8),24,chr(19+settings("rr" + string(i+1) + global.levelfname)),c_white)
+		
+			if settings_savefile("rr" + string(i+1) + global.levelfname)
+				draw_sprite(spr_redringholder,i,view_wview[view_current]/2,0)
+		
+            
         }
     }
 }
 d3d_transform_stack_pop()
-/*
-with p if star with other{
-    d3d_set_fog(true, c_white, 0, 1)
-    //emblem
-    draw_sprite_part_ext(spr,0,78,10,18,18,14,199,1,1, c_white, (-(cos((tick / 6)))) * 0.6)
-    //name tag
-    draw_sprite_part_ext(spr, 0, 10,10,65,9,32,global.screenheight-24+(settings("cog inflives")*4),1,1, c_white, (-(cos((tick / 6)))) * 0.6)
-    d3d_set_fog(false, c_black, 0, 0)
-    if tick mod 8{
-        i=instance_create(16+random_range(0,80),196+random_range(0,20),playerstars)
-        i.setview=view_current
-        i.myp2=p2
-    }
-}*/

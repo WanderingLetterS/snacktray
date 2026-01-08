@@ -5,6 +5,7 @@
 //if powerup isnt specified, it assumes that that player is not getting the points off a powerup
 //if powerup is specified, it does not allow the player to get a 1up off a regular powerup
 
+
 var v;
 if (unfresh) {unfresh=0 exit}
 if (argument_count) v=argument[0]

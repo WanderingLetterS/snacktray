@@ -1,0 +1,25 @@
+COMPILATION ERROR in string to be executedError in code at line 134:   
+   if settings("rr" + string(i+1) + global.levelfname))                                                         ^at position 56: Unexpected symbol in expression.
+
+
+COMPILATION ERROR in string to be executedError in code at line 134:   
+   if settings("rr" + string(i+1) + global.levelfname))                                                         ^at position 56: Unexpected symbol in expression.
+
+
+COMPILATION ERROR in string to be executedError in code at line 134:   
+   if settings("rr" + string(i+1) + global.levelfname))                                                         ^at position 56: Unexpected symbol in expression.
+
+
+COMPILATION ERROR in string to be executedError in code at line 134:   
+   if settings("rr" + string(i+1) + global.levelfname))                                                         ^at position 56: Unexpected symbol in expression.
+
+
+ERROR in
+action number 1
+of Other Event: User Defined 0
+for object player:
+
+Error in code at line 106:   
+ strnum= strnum-string_length(num)+string(num)                   ^at position 18: Wrong type of arguments to -.
+
+
