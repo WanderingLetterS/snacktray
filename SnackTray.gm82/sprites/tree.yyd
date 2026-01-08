@@ -188,6 +188,12 @@
 	|spr_msgbg
 	|spr_loader
 	|spr_configbox
+	|spr_coinholder
+	|spr_redringholder
+	|spr_scoreholder
+	|spr_mainuitext
+	|spr_mainuitextsmall
+	|spr_ringholder
 +borders
 	|spr_introborder
 	|spr_border
