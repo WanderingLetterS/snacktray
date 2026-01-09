@@ -384,7 +384,7 @@ if (!carry) {
 		if (hsp=0) {
 			if (lookup) {sprite="lookupcarry"}
 			
-			{sprite="standcarry"}
+			else {sprite="standcarry"}
 		} else {
 			sprite="walkcarry"
 			frspd=median(0.5,1,0.3+abs(hsp/4))
@@ -618,7 +618,7 @@ if (bkey) {
     if (carry) {
         updatecarry()
         if (!down) {throw=16 instance_create(carryid.x,carryid.y,kickpart) sound("enemykick")}
-        with (carryid) event_user(0)
+        with (carryid) if object_index!=iceblock event_user(0) else event_user(5)
         carryid=noone
         carry=0
     }
@@ -976,7 +976,7 @@ if (coll || carryid.object_index==iceblock) && (!coll.time) {
 		if (carry) {
 			updatecarry()
 			if (!down) {throw=16 destroyonhit=1 instance_create(carryid.x,carryid.y,kickpart) sound("enemykick")}
-			with (carryid) event_user(0)
+			with (carryid) event_user(5)
 			carryid=noone
 			carry=0
 		}

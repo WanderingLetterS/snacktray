@@ -56,7 +56,6 @@ connect springfall=true
 connect climbing=true
 connect flagslide=true
 connect swimcarry=true
-connect lookupcarry=true
 connect crouchcarry=true
 connect doorexit=true
 connect doublebonk=true
@@ -68,7 +67,7 @@ connect throw=true
 connect swimpaddle=true
 connect bellyslide=true
 connect bonkcarry=true
-connect bonkfall=true
+connect fallcarry=true
 connect trickright=true
 connect grindgrab=true
 
@@ -189,7 +188,9 @@ jumpcarry frames=2
 jumpcarry loop=2
 jumpcarry speed=0.1
 
-bonkcarry frames=1
+bonkcarry frames=2
+bonkcarry loop=2
+bonkcarry speed=0.1
 
 
 fallcarry frames=3

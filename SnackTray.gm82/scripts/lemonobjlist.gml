@@ -1081,7 +1081,7 @@ listobj(bouncymush             ,0,spr_bouncymush     ,235,bouncymush)
     listdata("0")
 
 listobj(iceblock       ,0,spr_iceblock        ,236,itembox)
-    listdoc("Item Box","Item Boxes can be invisible or look like bricks, and the bonus target is for green springs contained inside.")
+    listdoc("Ice Block","Ice blocks can contain anything, the bonus target is for green springs contained inside.")
     listargs("align","content")
     listdata("0","")
 

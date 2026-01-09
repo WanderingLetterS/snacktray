@@ -10,7 +10,7 @@ ifr=global.itemframe
 ffr4=global.fastframe4
 fr88=global.frame88
 
-
+if framefrozen {fr=0 ifr=0 ffr4=0 fr88=0} //if the object's framefrozen is 1, then just... don't!
 my_item=argument[0]
 //A new option for skins has been added that lets the character skin over the items.
 //Oh yeah and the ?Mush has an option to NOT do it.

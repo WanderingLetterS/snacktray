@@ -10,28 +10,17 @@ carryid=noone
 getregion(x)
 content=""
 destroyonhit=0
+x-=8
+y-=8
 #define Alarm_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
 applies_to=self
 */
-with (phaser) y=-verybignumber
-if (go=1) {if (position_meeting(x+8,y+24,collider)) go=-1}
-else {if (position_meeting(x+8,y-8,collider)) go=1}
-with (phaser) y=ystart
-
-var iid;
-iid=noone
-if owner==noone ||!owner
-if global.mplay<=1 owner=gamemanager.players[0]
 
 
-com_itemboxitemspawn(owner,false,-1,content,1)
-
-picked=0
-
-event_user(3)
+event_user(6)
 #define Alarm_2
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -52,21 +41,54 @@ action_id=603
 applies_to=self
 */
 var kek,yes,coll,dir,ohsp;
+
+
 time=max(0,time-1)
-
+xsc=1
 if (carry) {
-
-
+    if !carry.carry carry=noone
+    unbreakable=10
     exit;
 }else{
     dir=sign(hsp)
     var watr, lava;
-
+    if unbreakable unbreakable-=1
     watr=instance_place(x,y,waterblock)
     if (underwater()) {vsp=max(-1,vsp-0.2) if (watr) {y=max(watr.bbox_top+4,y)} else if y>=region.water {y=max(region.water+4,y)}}
     if (place_meeting(x,y,lavablock)) {vsp=max(1,vsp-0.04)}
-    else vsp+=0.15
+    else {
+        if vsp>0 && collision(0,vsp){
+        vsp=0
+        y+=vsp
+        while collision(0,-1) y-=1 //it's 0, -1 because that way it wony hover extra up and hten get sutck in a falling loop like an idiot
+        
+        }
+        if !collision(0,vsp) vsp+=0.15 
+    }
+    
+    if abs(hsp)>0{
+        coll=collision(hsp,-1)
+        if coll{
+            hitside=sign(hsp)
+            x+=hsp
+            if abs(hsp)>2{
+            sound("itemblockbump")
+            if (object_is_ancestor(coll.object_index,hittable)) {
+                global.coll=owner
+                with (coll) {insted=1 go=-1 event_user(0) insted=0}
+            }
+            //hittables broken, collisions unspoken i've even forgotten my buuuuuummmppp
+            global.coll=owner
+            insted=1 go=-1 alarm[0]=1
+            }
 
+            hsp=0 //i mean this doesnt really matter since the next frame i'm dying but
+            
+            
+        }
+    }
+    
+    
     yp=y
     y+=vsp
     x+=hsp
@@ -81,8 +103,8 @@ if (carry) {
             }
             vsp = 0;
             if (vsp<-1) {
-                with (instance_create(x-8,y+4,smoke)) {friction=0.01 hspeed=-2 vspeed=-1}
-                with (instance_create(x+8,y+4,smoke)) {friction=0.01 hspeed=2 vspeed=-1}
+                with (instance_create(x-8,y+4,smoke)) {friction=0.01 hsp=-2 vspeed=-1}
+                with (instance_create(x+8,y+4,smoke)) {friction=0.01 hsp=2 vspeed=-1}
                 with (instance_place(x,y-8,hittable)) {notplayer=1
                     go=-1 insted=1 stonebump=1 event_user(0) stonebump=0 insted=0
                 }
@@ -96,8 +118,8 @@ if (carry) {
         if (coll && y>coll.y && !(coll.object_index=phaser && coll.dir!=2)) {
             y=coll.bbox_bottom+9
             if (vsp<-1) {
-                with (instance_create(x-8,y+4,smoke)) {friction=0.01 hspeed=-2 vspeed=-1}
-                with (instance_create(x+8,y+4,smoke)) {friction=0.01 hspeed=2 vspeed=-1}
+                with (instance_create(x-8,y+4,smoke)) {friction=0.01 hsp=-2 vspeed=-1}
+                with (instance_create(x+8,y+4,smoke)) {friction=0.01 hsp=2 vspeed=-1}
                 with (instance_place(x,y-8,hittable)) {notplayer=1
                     go=-1 insted=1 stonebump=1 event_user(0) stonebump=0 insted=0
                 }
@@ -119,7 +141,7 @@ if (carry) {
 
     if collision(0,1) {
         hsp=lerp(hsp,0,0.01)
-        hspeed=lerp(hspeed,0,0.01)
+        hsp=lerp(hsp,0,0.01)
     }
 
     if (y>=yg) {
@@ -134,8 +156,8 @@ if (carry) {
         pl.x+=fhsp
 
         if (vsp>1) {
-            with (instance_create(x-8,y+4,smoke)) {friction=0.01 hspeed=-2 vspeed=-1}
-            with (instance_create(x+8,y+4,smoke)) {friction=0.01 hspeed=2 vspeed=-1}
+            with (instance_create(x-8,y+4,smoke)) {friction=0.01 hsp=-2 vspeed=-1}
+            with (instance_create(x+8,y+4,smoke)) {friction=0.01 hsp=2 vspeed=-1}
             global.coll=nearestplayer()
         }
         vsp=0
@@ -169,21 +191,6 @@ if (carry) {
         }
         if (!phase) {mycoll.vsp=y-yp mycoll.y=y-8}
     }
-    else {
-        coll=collision(hsp,0)
-        if (coll) {
-            ohsp=hsp
-            hsp=0
-            x=floor(x-abs(ohsp)*dir)
-            repeat (ceil(abs(ohsp))) {
-                x+=dir
-                if (collision(0,0)) {
-                    x-=dir
-                    break
-                }
-            }
-        }
-    }
     visible=1
 } if (inview()) {visible=1} else visible=0
 #define Other_5
@@ -197,6 +204,40 @@ if (__gm82core_compiler_exists[event]) {
     code_destroyed=1
 }
 #define Other_10
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+if (lock||unbreakable) exit
+
+alarm[0]=1
+if (global.coll=noone) owner=instance_nearest(x,y,player)
+else owner=global.coll
+owner.typeblockhit=0
+owner.blockcoll=id
+with (owner){
+charm_run("hitblocks")}
+#define Other_11
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+x+=owner.carryoffx*owner.xsc
+y+=owner.carryoffy
+ssw_objects("iceblock")
+x-=owner.carryoffx*owner.xsc
+y-=owner.carryoffy
+#define Other_12
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+y-=8
+x-=8
+#define Other_15
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
@@ -217,26 +258,74 @@ else spd=3
 
 vsp=1
 
-if (owner.up) {vsp=-6 spd=abs(owner.hsp*0.75) hspeed=spd*esign(owner.hsp,owner.xsc) stop=1}
-else if (owner.down) {stop=1 vsp=owner.vsp+2.25 x+=2*owner.xsc spd=abs(owner.hsp)+0.1 hspeed=spd*owner.xsc}
-else {hspeed=spd*owner.xsc vsp=-1}
+if (owner.up) {vsp=-6 spd=abs(owner.hsp*0.75) hsp=spd*esign(owner.hsp,owner.xsc) stop=1}
+else if (owner.down) {stop=1 vsp=owner.vsp+2.25 x+=2*owner.xsc spd=abs(owner.hsp)+0.1 hsp=spd*owner.xsc}
+else {hsp=spd*owner.xsc vsp=-1}
 
 if collision(0,0) {x=owner.x y=owner.y}
-#define Other_11
+
+
+
+carry=noone
+#define Other_16
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
 applies_to=self
 */
-x+=owner.carryoffx*owner.xsc
-y+=owner.carryoffy
-ssw_objects("iceblock")
-x-=owner.carryoffx*owner.xsc
-y-=owner.carryoffy
+with (phaser) y=-verybignumber
+if (go=1) {if (position_meeting(x+8,y+24,collider)) go=-1}
+else {if (position_meeting(x+8,y-8,collider)) go=1}
+with (phaser) y=ystart
+
+var iid;
+iid=noone
+if owner==noone ||!owner
+if global.mplay<=1 owner=gamemanager.players[0]
+
+
+com_itemboxitemspawn(owner,false,-1,content,1)
+
+picked=0
+
+i=instance_create(x+4,y+12+(16*biggie),part) i.type=(6*biggie) i.hspeed=-1 i.vspeed=-1+2*go i.type=7
+i=instance_create(x+12+(16*biggie),y+12+(16*biggie),part) i.type=(6*biggie) i.hspeed=1 i.vspeed=-1+2*go i.type=7
+i=instance_create(x+4,y+4,part) i.type=(6*biggie) i.hspeed=-1 i.vspeed=-3+2*go i.type=7
+i=instance_create(x+12+(16*biggie),y+4,part) i.type=(6*biggie) i.hspeed=1 i.vspeed=-3+2*go i.type=7
+
+
+instance_destroy()
 #define Draw_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
 applies_to=self
 */
-if (!carry) ssw_objects("iceblock")
+//if we dont have the sprite, go get it!!!!!
+if !checkedcontentsprite{
+
+    checkedcontentsprite=1
+    realcontents=content
+    com_contenttoobject()
+    content=realcontents //we need the string for when we break, so for now we restore it instead of using the object.
+
+
+}
+
+
+x+=8
+y+=8
+frame=0
+framefrozen=1
+if (enem){
+    enemy_spritechange()
+
+    ssw_enemy(sprite)
+}
+else if object{
+    ssw_objects(sprite)
+} else
+    ssw_items(sprite)
+x-=8
+y-=8
+ssw_objects("iceblock")

@@ -1,0 +1,9 @@
+ERROR in
+action number 1
+of Other Event: User Defined 0
+for object player:
+
+In script com_breakblocks:Error in code at line 12:   
+if (stoned="1") with (instance_create(x,y+8,stone)) phase=1              ^at position 13: Cannot compare arguments.
+
+

@@ -37,7 +37,9 @@ if (object_index=player) {
             else {if (other.hsp<0 || other.bbox_right>x+1+other.hsp) y-=verybignumber}
         }
     }
-
+    if carry if carryid with carryid {
+        y-=verybignumber
+    }
 
 } else {
     if (object_index=bowserboss) with (moving) y-=verybignumber
@@ -62,16 +64,35 @@ if (object_index=player) {
     }
 }
 
-    with iceblock {
-        if other.object_index==player { if other.carry if other.carry=id y-=verybignumber mycoll.y-=verybignumber}
-        if power_lv>0 mycoll.y-=verybignumber
-    }
+
 yp=y
 y=-verybignumber
 
 
 count=0
 o=instance_place(x+argument[0],yp+argument[1],collider)
+if !o.unbreakable{
+    if vsp<0{ //these are the instabreakers that you can jump through.
+        if y-vsp>o.bbox_bottom //check that makes sure you are actually below the object in question
+        while o.object_index==iceblock { //This way you can break throug many iceblocks at once and wont ever be stopped by them.
+           with o  event_user(6)
+           myice=o
+           myice.y-=verybignumber
+           o=instance_place(x+argument[0],yp+argument[1],collider)
+           myice.y+=verybignumber
+        }
+    }
+    if power_lv>0{ //these are the instabreakers based on your power level.
+        while o.object_index==iceblock { //This way you can break throug many iceblocks at once and wont ever be stopped by them.
+           with o event_user(6)
+           myice=o
+           myice.y-=verybignumber
+           o=instance_place(x+argument[0],yp+argument[1],collider)
+           myice.y+=verybignumber
+        }
+    }
+}
+
 if object_index=player && o=noone
 o=instance_place(x+argument[0],yp+argument[1],grateblock)
 if object_index!=player && o=noone
@@ -91,15 +112,18 @@ if (object_is_ancestor(o.object_index,moving)&& mustabovemoving)
 }
 
 with (phaser) y=ystart
-if (object_index=player)
-with (movingphaser) y=ycollcheckstart
+if (object_index=player){
+    with (movingphaser) y=ycollcheckstart
+    if carry if carryid with carryid {
+            y-=verybignumber
+        }
+}
 with (pswitch) y=p
 if (disallow) disallow.y+=verybignumber
 if (posed) with (finalwall) if (object_index=finalwall) y+=verybignumber
 if (object_index=bowserboss) with (moving) y+=verybignumber
 
 with iceblock {
-    if other.object_index==player { if other.carry if other.carry=id y+=verybignumber mycoll.y+=verybignumber}
     if power_lv>0 mycoll.y+=verybignumber
 }
 
@@ -109,6 +133,8 @@ if (panic && object_index=bowserboss) if o.object_index=lavablock  return noone
 if returnnobody return noone
 
 if (!o && (object_index=player||object_index=charmdeath)) {
+
+
     if (name="kid") o=instance_place(x+argument[0],y+argument[1],kidground)
     if (!o && (jesus || jeezus || jesus_mercy)) {
         o=instance_place(x+argument[0],y+argument[1],waterblock)

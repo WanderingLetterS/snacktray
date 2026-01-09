@@ -1,0 +1,24 @@
+ERROR in
+action number 1
+of Draw Event
+for object iceblock:
+
+Error in code at line 1:   if content!=""||content!="none"{              ^at position 13: Cannot compare arguments.
+
+
+ERROR in
+action number 1
+of Draw Event
+for object iceblock:
+
+Error in code at line 1:   if content!=""||content!="none"{              ^at position 13: Cannot compare arguments.
+
+
+ERROR in
+action number 1
+of Draw Event
+for object iceblock:
+
+Error in code at line 1:   if content!=""||content!="none"{              ^at position 13: Cannot compare arguments.
+
+

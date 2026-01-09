@@ -71,7 +71,7 @@ switch (argument[0]) {
     //GRINDER TYPE BEAT
     
 
-    case "iceblock": {frx=9 fry=24.5 frox=8 froy=8 break}
+    case "iceblock": {frx=9 fry=24.5 frox=0 froy=0 break}
 
     case "cork": {frx=27 fry=20 frox=8 froy=8 break}
     case "stone": {frx=28 fry=20 frox=8 froy=8 break}
