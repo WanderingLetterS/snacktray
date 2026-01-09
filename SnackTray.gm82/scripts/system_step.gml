@@ -38,7 +38,7 @@ if (fadekill) {
 if (input_esc() && !instance_exists(console)) menu_cancel()
 if (keyboard_check_pressed(vk_tab)) if (!instance_exists(console)) {
     if (instance_exists(gamemanager)) {
-        if (!gamemanager.pause) instance_create(0,0,console)
+        /*if (!gamemanager.pause)*/ instance_create(0,0,console)
     } else instance_create(0,0,console)
 }
 

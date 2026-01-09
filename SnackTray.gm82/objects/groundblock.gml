@@ -14,6 +14,13 @@ c1=position_meeting(x-8,y+24,groundblock) || position_meeting(x-8,y+24,slopegrou
 c3=position_meeting(x+24,y+24,groundblock) || position_meeting(x+24,y+21,slopeground) || position_meeting(x+24,y+21,uslopeground) || position_meeting(x+24,y+24,groundblock) || x=region.x-16 || y=region.ky-16
 c8=position_meeting(x+8,y-8,groundblock) || position_meeting(x+8,y-8,slopeground) || y=0
 c2=position_meeting(x+8,y+24,groundblock) || position_meeting(x+24,y-8,uslopeground) || y=region.ky-16
+
+if y<=8{ //its an 8 just in case there's some dumb bullshit dumb shit thats DUMB and BULLSHIT
+    c8=true // c5 is literally myself, c'mon
+    c7=c4
+    c9=c6
+
+}
 #define Other_11
 /*"/*'/**//* YYD ACTION
 lib_id=1

@@ -1,0 +1,27 @@
+ERROR in
+action number 1
+of Draw Event
+for object bgmanager:
+
+Error in code at line 11:   
+    bgname=gamemanager.players[view_current].region.typebg+"sky"                                                              ^at position 61: Wrong type of arguments to +.
+
+
+ERROR in
+action number 1
+of Other Event: User Defined 0
+for object bgmanager:
+
+In script drawlayeredbackground:Error in code at line 17:   
+    else bgname=gamemanager.players[curr].region.typebg+"sky"                                                           ^at position 58: Wrong type of arguments to +.
+
+
+ERROR in
+action number 1
+of Other Event: User Defined 0
+for object gamemanager:
+
+In script drawskinnablehud:Error in code at line 26:   
+draw_sprite_part_ext(spr,0,10,10,65,9,32,200+((settings("cog inflives") && global.gamemode!="timeattack" && global.gamemode!="battle" && p.name != "kid")*4),1,1,c_white,hud_alpha[view_current])                                                                                                                                                      ^at position 149: Cannot compare arguments.
+
+
