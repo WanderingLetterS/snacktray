@@ -5,6 +5,8 @@ var p, p2, spr,size,totpal;
     p2=p.p2
     size=p.size
     totpal=p.totpal
+    if p.hudoff_mp {charm_run("hudmp") exit}
+
     // apply ma shader
     scr_applyPaletteSegmented(global.shaderPaletteSwap,global.palettesprites[p2*100],global.pal_1[p2]+1,global.pal_2[p2]+1,global.pal_3[p2]+1,global.pal_4[p2]+1,size,totpal+1)
     draw_sprite_part(spr,0,59,22,21,21,6+8+p_offset*(argument[1]),global.screenheight-36) //grin emoji

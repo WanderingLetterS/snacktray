@@ -1,6 +1,6 @@
 var esc,pinc;
 esc=input_esc() && !instance_exists(console)
-
+if instance_exists(console) exit
 if (global.playback) {
     if (pause) {
         if (keyboard_check_pressed(vk_left)) {framestep=1 game_unpause() exit}
@@ -34,138 +34,152 @@ if (pausequit) exit
 if (pause) {
     input_get(pauseinput)
     input_keystates()
-    if (quitask) {
-        if (up || down) {if (!udlok) {udlok=1 pausel=down sound("systemselect")}} else udlok=0
-        if (abut || sbut || esc)&&!reset&&!settings("kidresetbuf") {
-            sound("systemreturn")
-            if (pausel && !esc) {
-                quitask=0
-                pausel=2
-            } else {
-                pausequit=1
-                savemovie()
-                room_speed=60
-                instance_create(0,0,pausefade)
-                if (global.gamemode="battle") pausefade.goto=results
-            }
-        }
-    } else if (retryask) {
-        if (up || down) {
-            if (!udlok) {
-                udlok=1
-                pausel=modulo(pausel+down-up,0,3)
-                sound("systemselect")
-            }
-        } else udlok=0
-        if (abut || sbut || esc)&&!reset&&!settings("kidresetbuf") {
+    if pauseinput<0 pauseinput=0 if pauseinput>global.mplay pauseinput=0
 
-            if (pausel=2 || esc) {
-                retryask=0
-                pausel=1
+    instance_activate_object(player)
+    with players[pauseinput] {
+
+        charm_run("pausecontrol")
+        other.pauseoff_controls=pauseoff_controls
+    }
+    if pause instance_deactivate_object(player)
+
+
+
+    if !pauseoff_controls{
+        if (quitask) {
+            if (up || down) {if (!udlok) {udlok=1 pausel=down sound("systemselect")}} else udlok=0
+            if (abut || sbut || esc)&&!reset&&!settings("kidresetbuf") {
                 sound("systemreturn")
-            } else  if (!pausel && global.check="") {
-                sound("systemreturn")
-            } else if !instance_exists(pausefade) {
-                sound("systemstart")
-                global.respawn=1
-                if pausel global.check=""
-                with (gamemanager) {
-                    for (i=0;i<global.mplay;i+=1) {
-                        if pausel {
-                            global.size[i]=global.startsize[i]
-                            global.shielded[i]=global.startshielded[i]
-                        } else {
-                            global.size[i]=0
-                            global.shielded[i]=0
-                        }
-                    }
-                    if (global.gamemode=="classic" && !settings("cog inflives")) global.lifes-=1
-                    with instance_create(0,0,pausefade) goto=change
+                if (pausel && !esc) {
+                    quitask=0
+                    pausel=2
+                } else {
+                    pausequit=1
+                    savemovie()
+                    room_speed=60
+                    instance_create(0,0,pausefade)
+                    if (global.gamemode="battle") pausefade.goto=results
                 }
             }
-        }
-    } else {
-        if ((up || down) && !(abut || sbut)) {
-            if (!udlok) {
-                udlok=1
-                pausel=modulo(pausel+down-up,0,6)
-                sound("systemselect")
-            }
-        } else udlok=0
-        if (pausel=1 && (abut || sbut) && !esc && !quitask) {
-            if (global.lifes<=1 && global.gamemode=="classic" && !settings("cog inflives") && global.charname[global.option[pauseplayer]]!="kid") sound("systemreturn")
-            else {
-                sound("systemselect")
-                retryask=1
-                pausel=2
-            }
-        }
-        if ((abut || sbut || esc) && !retryask) {
-            if (pausel=2 || esc) {
-                sound("systemselect")
-                quitask=1
-                pausel=1
-            }
-        }
+        } else if (retryask) {
+            if (up || down) {
+                if (!udlok) {
+                    udlok=1
+                    pausel=modulo(pausel+down-up,0,3)
+                    sound("systemselect")
+                }
+            } else udlok=0
+            if (abut || sbut || esc)&&!reset&&!settings("kidresetbuf") {
 
-        if (pausel=0 && (arel || sbut) && !esc) {
-            if (settings("musbalance")=0) {
-                FMODAllStop()
-                pl=-1
+                if (pausel=2 || esc) {
+                    retryask=0
+                    pausel=1
+                    sound("systemreturn")
+                } else  if (!pausel && global.check="") {
+                    sound("systemreturn")
+                } else if !instance_exists(pausefade) {
+                    sound("systemstart")
+                    global.respawn=1
+                    if pausel global.check=""
+                    with (gamemanager) {
+                        for (i=0;i<global.mplay;i+=1) {
+                            if pausel {
+                                global.size[i]=global.startsize[i]
+                                global.shielded[i]=global.startshielded[i]
+                            } else {
+                                global.size[i]=0
+                                global.shielded[i]=0
+                            }
+                        }
+                        if (global.gamemode=="classic" && !settings("cog inflives")) global.lifes-=1
+                        with instance_create(0,0,pausefade) goto=change
+                    }
+                }
             }
-            game_unpause()
-            sound("systempause")
-        }
-        if (pausel=3) {
-            handle=0
-            if (left || right) {if (!lrlok) {
-                if (left) {
-                    if (settings("fullscreen")) {
-                        settings("fullscreen",0)
-                        settings("zoom",3)
-                        handle=1
+        } else {
+            if ((up || down) && !(abut || sbut)) {
+                if (!udlok) {
+                    udlok=1
+                    pausel=modulo(pausel+down-up,0,6)
+                    sound("systemselect")
+                }
+            } else udlok=0
+            if (pausel=1 && (abut || sbut) && !esc && !quitask) {
+                if (global.lifes<=1 && global.gamemode=="classic" && !settings("cog inflives") && global.charname[global.option[pauseplayer]]!="kid") sound("systemreturn")
+                else {
+                    sound("systemselect")
+                    retryask=1
+                    pausel=2
+                }
+            }
+            if ((abut || sbut || esc) && !retryask) {
+                if (pausel=2 || esc) {
+                    sound("systemselect")
+                    quitask=1
+                    pausel=1
+                }
+            }
+
+            if (pausel=0 && (arel || sbut) && !esc) {
+                if (settings("musbalance")=0) {
+                    FMODAllStop()
+                    pl=-1
+                }
+                game_unpause()
+                sound("systempause")
+            }
+            if (pausel=3) {
+                handle=0
+                if (left || right) {if (!lrlok) {
+                    if (left) {
+                        if (settings("fullscreen")) {
+                            settings("fullscreen",0)
+                            settings("zoom",3)
+                            handle=1
+                        } else {
+                            if (settings("zoom")>1) {
+                                settings("zoom",settings("zoom")-1)
+                                handle=1
+                            }
+                        }
                     } else {
-                        if (settings("zoom")>1) {
-                            settings("zoom",settings("zoom")-1)
+                        if (settings("zoom")<3) {
+                            settings("zoom",settings("zoom")+1)
+                            handle=1
+                        } else if (!settings("fullscreen")) {
+                            settings("fullscreen",1)
                             handle=1
                         }
                     }
-                } else {
-                    if (settings("zoom")<3) {
-                        settings("zoom",settings("zoom")+1)
-                        handle=1
-                    } else if (!settings("fullscreen")) {
-                        settings("fullscreen",1)
-                        handle=1
-                    }
+                } lrlok=1} else lrlok=0
+                if (handle) {
+                    sound("systemselect")
+                    windowhandler()
                 }
-            } lrlok=1} else lrlok=0
-            if (handle) {
-                sound("systemselect")
-                windowhandler()
             }
-        }
-        if (pausel=5) {
-            if (left || right) {if (!lrlok) {
-                settings("volbalance",median(0,settings("volbalance")+(right-left)*0.125,1))
-                mus_volume(1)
-                volumehandler()
-                //if (settings("volbalance")=1) FMODAllStop()
-                sound("systemselect")
-            } lrlok=1} else lrlok=0
-        }
-        if (pausel=4) {
-            if (left || right) {if (!lrlok) {
-                settings("musbalance",median(0,settings("musbalance")+(right-left)*0.125,1))
-                mus_volume(1)
-                volumehandler()
-                if (pl!=0 && settings("musbalance") != 0) {if (pl=-1) updatemusic() pl=0 playmusic=1 global.music=""}
-                sound("systemselect")
-            } lrlok=1} else lrlok=0
-        }
+            if (pausel=5) {
+                if (left || right) {if (!lrlok) {
+                    settings("volbalance",median(0,settings("volbalance")+(right-left)*0.125,1))
+                    mus_volume(1)
+                    volumehandler()
+                    //if (settings("volbalance")=1) FMODAllStop()
+                    sound("systemselect")
+                } lrlok=1} else lrlok=0
+            }
+            if (pausel=4) {
+                if (left || right) {if (!lrlok) {
+                    settings("musbalance",median(0,settings("musbalance")+(right-left)*0.125,1))
+                    mus_volume(1)
+                    volumehandler()
+                    if (pl!=0 && settings("musbalance") != 0) {if (pl=-1) updatemusic() pl=0 playmusic=1 global.music=""}
+                    sound("systemselect")
+                } lrlok=1} else lrlok=0
+            }
 
-        if (cbut) {
-            pausepage+=1
+            if (cbut) {
+                pausepage+=1
+            }
         }
     }
 } else if (!global.playback && !global.kill) {

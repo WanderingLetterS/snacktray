@@ -1,0 +1,9 @@
+ERROR in
+action number 1
+of End Step Event
+for object drawregion:
+
+Error in code at line 206:   
+                for (i=0;i<lemongrab.objlist[j,3];i+=1) str+="|"+editobjdataname(obj,i,data[i])                                                                    ^at position 67: Wrong type of arguments to +.
+
+

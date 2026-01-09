@@ -1,4 +1,4 @@
-///ssw_item(name)
+///ssw_items(name)
 //This handles sprite switching for the items of the game
 
 if (!inview()) exit

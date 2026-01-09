@@ -7,6 +7,13 @@ t=funnytruefalse(i)
 if (string(i)="") i="[unset]"
 
 switch (argument[0]) {
+    case customobject:
+        if type>0{
+            lemon_get_lemoninfo("editobjdataname",type,argument[2])
+        return global.cobjectlemonreturnvalue
+        }else return "Custom Object's name:" + string(i)
+    break;
+
     case itembox: {
         if (type=1) {
             return com_editnameitemboxcontent(i)

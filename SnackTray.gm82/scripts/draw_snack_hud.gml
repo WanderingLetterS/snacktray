@@ -60,84 +60,90 @@ if !(global.nohud) && !(dontdrawhudler) && !global.mphudder[p2]{
     if !(global.legacy_skin[p2]){
     // apply ma shader
     scr_applyPaletteSegmented(global.shaderPaletteSwap,global.palettesprites[p2*100],global.pal_1[p2]+1,global.pal_2[p2]+1,global.pal_3[p2]+1,global.pal_4[p2]+1,size,totpal+1)
-    draw_sprite_part(spr,0,59,22,21,21,6+p_offset*p2,global.screenheight-24) //grin emoji
 
-    draw_sprite_part(spr,0,8,8,65,13,26+p_offset*p2,global.screenheight-24+9 ) //That's my name! :)
-
-    if maxe>0{
-    //energy holder
-    switch (maxe){
-        case 1: draw_sprite_part(spr,0,8,22,4,10,27+p_offset*p2,global.screenheight-24) draw_sprite_part(spr,0,54,22,4,10,31+p_offset*p2,global.screenheight-24) break; //special cases for 1 and 2
-        case 2: draw_sprite_part(spr,0,8,22,8,10,27+p_offset*p2,global.screenheight-24) draw_sprite_part(spr,0,50,22,8,10,35+p_offset*p2,global.screenheight-24) break;
-        default:
-        draw_sprite_part(spr,0,8,22,16,10,27+p_offset*p2,global.screenheight-24) //the starter segment is guaranteed
-        tester=(maxe-2)
-        offx=0
-        while (tester>0){
-            if tester==1{draw_sprite_part(spr,0,50,22,8,10,43+offx+p_offset*p2,global.screenheight-24)}
-            else if tester==2{draw_sprite_part(spr,0,42,22,16,10,43+offx+p_offset*p2,global.screenheight-24)}
-            else draw_sprite_part(spr,0,25,22,16,10,43+offx+p_offset*p2,global.screenheight-24)
-            offx+=16
-            tester-=2
-        }
-        break;
+    if !hudoff_emblem{
+        draw_sprite_part(spr,0,59,22,21,21,6+p_offset*p2,global.screenheight-24) //grin emoji
     }
-    //The actual fucking energy itself
-
-    switch (maxe){
-        case 1: if energy draw_sprite_part(spr,0,8,33,min(4,4-min(4,(0.5-energy)*8)),10,27+p_offset*p2,global.screenheight-24) if energy>0.5 draw_sprite_part(spr,0,54,33,4-((0.5-(energy-0.5))*4),10,31+p_offset*p2,global.screenheight-24) break; //special cases for 1 and 2
-        case 2: if energy draw_sprite_part(spr,0,8,33,min(8,8-min(8,(1-energy)*8)),10,27+p_offset*p2,global.screenheight-24) if energy>1 draw_sprite_part(spr,0,50,33,8-((1-(energy-1))*8),10,35+p_offset*p2,global.screenheight-24) break;
-        default:
-        if energy{
-            draw_sprite_part(spr,0,8,33,16-min(16,(2-min(2,energy))*8),10,27+p_offset*p2,global.screenheight-24) //the starter segment is guaranteed
+    if !hudoff_name{
+        draw_sprite_part(spr,0,8,8,65,13,26+p_offset*p2,global.screenheight-24+9 ) //That's my name! :)
+    }
+    if !hudoff_energy{
+        if maxe>0{
+            //energy holder
+            switch (maxe){
+                case 1: draw_sprite_part(spr,0,8,22,4,10,27+p_offset*p2,global.screenheight-24) draw_sprite_part(spr,0,54,22,4,10,31+p_offset*p2,global.screenheight-24) break; //special cases for 1 and 2
+                case 2: draw_sprite_part(spr,0,8,22,8,10,27+p_offset*p2,global.screenheight-24) draw_sprite_part(spr,0,50,22,8,10,35+p_offset*p2,global.screenheight-24) break;
+                default:
+                draw_sprite_part(spr,0,8,22,16,10,27+p_offset*p2,global.screenheight-24) //the starter segment is guaranteed
                 tester=(maxe-2)
                 offx=0
-                enercheck=(energy-2) //remaining energy
-            while (enercheck>0){
-                if tester==1{draw_sprite_part(spr,0,50,33,8-min(8,(1-enercheck)*8),10,43+offx+p_offset*p2,global.screenheight-24)}
-                else if tester==2{draw_sprite_part(spr,0,42,33,16-min(16,(tester-enercheck)*8),10,43+offx+p_offset*p2,global.screenheight-24)}
-                else if (enercheck>=2) draw_sprite_part(spr,0,25,33,16,10,43+offx+p_offset*p2,global.screenheight-24)
-
-                else draw_sprite_part(spr,0,25,33,16-min(16,(2-(enercheck mod 2))*8),10,43+offx+p_offset*p2,global.screenheight-24)
-                offx+=16
-                tester-=2
-                enercheck-=2
+                while (tester>0){
+                    if tester==1{draw_sprite_part(spr,0,50,22,8,10,43+offx+p_offset*p2,global.screenheight-24)}
+                    else if tester==2{draw_sprite_part(spr,0,42,22,16,10,43+offx+p_offset*p2,global.screenheight-24)}
+                    else draw_sprite_part(spr,0,25,22,16,10,43+offx+p_offset*p2,global.screenheight-24)
+                    offx+=16
+                    tester-=2
+                }
+                break;
+            }
+            //The actual fucking energy itself
+        
+            switch (maxe){
+                case 1: if energy draw_sprite_part(spr,0,8,33,min(4,4-min(4,(0.5-energy)*8)),10,27+p_offset*p2,global.screenheight-24) if energy>0.5 draw_sprite_part(spr,0,54,33,4-((0.5-(energy-0.5))*4),10,31+p_offset*p2,global.screenheight-24) break; //special cases for 1 and 2
+                case 2: if energy draw_sprite_part(spr,0,8,33,min(8,8-min(8,(1-energy)*8)),10,27+p_offset*p2,global.screenheight-24) if energy>1 draw_sprite_part(spr,0,50,33,8-((1-(energy-1))*8),10,35+p_offset*p2,global.screenheight-24) break;
+                default:
+                if energy{
+                    draw_sprite_part(spr,0,8,33,16-min(16,(2-min(2,energy))*8),10,27+p_offset*p2,global.screenheight-24) //the starter segment is guaranteed
+                        tester=(maxe-2)
+                        offx=0
+                        enercheck=(energy-2) //remaining energy
+                    while (enercheck>0){
+                        if tester==1{draw_sprite_part(spr,0,50,33,8-min(8,(1-enercheck)*8),10,43+offx+p_offset*p2,global.screenheight-24)}
+                        else if tester==2{draw_sprite_part(spr,0,42,33,16-min(16,(tester-enercheck)*8),10,43+offx+p_offset*p2,global.screenheight-24)}
+                        else if (enercheck>=2) draw_sprite_part(spr,0,25,33,16,10,43+offx+p_offset*p2,global.screenheight-24)
+        
+                        else draw_sprite_part(spr,0,25,33,16-min(16,(2-(enercheck mod 2))*8),10,43+offx+p_offset*p2,global.screenheight-24)
+                        offx+=16
+                        tester-=2
+                        enercheck-=2
+                    }
+                }
+                break;
             }
         }
-        break;
-    }
     }
 
     shader_reset()
 
-
-	draw_sprite(spr_coinholder,0,0,0)
-	num=global.coins[view_current]
-	
-	draw_sprite(spr_mainuitext,real(string_char_at(string(num), 1)),28,9)
-	if num>9 draw_sprite(spr_mainuitext,real(string_char_at(string(num), 2)),38,7)
-	if num>99 draw_sprite(spr_mainuitext,real(string_char_at(string(num), 3)),48,5)
-		
-	
-	draw_sprite(spr_scoreholder,0,view_wview[view_current]-94,0)
-	num=global.scor[view_current]
-	strnum="0000000"
-	if global.scor[view_current]>9999999 num=9999999
-		strnum= string_insert(string(num),strnum,8-string_length(string(num)))
-	
-	
-
-	
-	
-	draw_sprite(spr_mainuitext,real(string_char_at(strnum, 1)),view_wview[view_current]-77,5)
-	draw_sprite(spr_mainuitext,real(string_char_at(strnum, 2)),view_wview[view_current]-67,6)
-	draw_sprite(spr_mainuitext,real(string_char_at(strnum, 3)),view_wview[view_current]-57,7)
-	draw_sprite(spr_mainuitext,real(string_char_at(strnum, 4)),view_wview[view_current]-47,8)
-	draw_sprite(spr_mainuitext,real(string_char_at(strnum, 5)),view_wview[view_current]-37,9)
-	draw_sprite(spr_mainuitext,real(string_char_at(strnum, 6)),view_wview[view_current]-27,10)
-	draw_sprite(spr_mainuitext,real(string_char_at(strnum, 7)),view_wview[view_current]-17,11)	
-	
+    if !hudoff_coins{
+        draw_sprite(spr_coinholder,0,0,0)
+        num=global.coins[view_current]
+        
+        draw_sprite(spr_mainuitext,real(string_char_at(string(num), 1)),28,9)
+        if num>9 draw_sprite(spr_mainuitext,real(string_char_at(string(num), 2)),38,7)
+        if num>99 draw_sprite(spr_mainuitext,real(string_char_at(string(num), 3)),48,5)
+    }
+    if !hudoff_score{
+        draw_sprite(spr_scoreholder,0,view_wview[view_current]-94,0)
+        num=global.scor[view_current]
+        strnum="0000000"
+        if global.scor[view_current]>9999999 num=9999999
+        strnum= string_insert(string(num),strnum,8-string_length(string(num)))
+        
+        
+        
+        
+        
+        draw_sprite(spr_mainuitext,real(string_char_at(strnum, 1)),view_wview[view_current]-77,5)
+        draw_sprite(spr_mainuitext,real(string_char_at(strnum, 2)),view_wview[view_current]-67,6)
+        draw_sprite(spr_mainuitext,real(string_char_at(strnum, 3)),view_wview[view_current]-57,7)
+        draw_sprite(spr_mainuitext,real(string_char_at(strnum, 4)),view_wview[view_current]-47,8)
+        draw_sprite(spr_mainuitext,real(string_char_at(strnum, 5)),view_wview[view_current]-37,9)
+        draw_sprite(spr_mainuitext,real(string_char_at(strnum, 6)),view_wview[view_current]-27,10)
+        draw_sprite(spr_mainuitext,real(string_char_at(strnum, 7)),view_wview[view_current]-17,11)
+    }
     //draw_skintext(16,8,chr(36)+chr(42)+format(global.coins[view_current],2),$ffffff)
+    if !hudoff_rings{
     maintain_ring=0
     if global.rings[view_current]=0
         with itemdrop if type="ringup" && p2=view_current {maintain_ring=1}
@@ -156,30 +162,31 @@ if !(global.nohud) && !(dontdrawhudler) && !global.mphudder[p2]{
 
     //draw_skintext(ringxoffset,24,chr(16)+chr(42)+formatdark(global.rings[view_current],3),col2)
 
-	draw_sprite(spr_ringholder,0,3+ringxoffset,36)
-	num=global.rings[view_current]
-	draw_sprite(spr_mainuitextsmall,real(string_char_at(string(num), 1)),24+ringxoffset,42)
-	if num>9 draw_sprite(spr_mainuitextsmall,real(string_char_at(string(num), 2)),32+ringxoffset,41)
-	if num>99 draw_sprite(spr_mainuitextsmall,real(string_char_at(string(num), 3)),39+ringxoffset,40)
+    draw_sprite(spr_ringholder,0,3+ringxoffset,36)
+    num=global.rings[view_current]
+    draw_sprite(spr_mainuitextsmall,real(string_char_at(string(num), 1)),24+ringxoffset,42)
+    if num>9 draw_sprite(spr_mainuitextsmall,real(string_char_at(string(num), 2)),32+ringxoffset,41)
+    if num>99 draw_sprite(spr_mainuitextsmall,real(string_char_at(string(num), 3)),39+ringxoffset,40)
 
-
+    }
     // min is -44 max is 16
     // so in total it's 60
     // the vertical bar wants to offset by 24, so...
     // it's y position is offset by (((ringxoffset+44)/60)*24)
 
     }
-
-    if global.gamemode!="timeattack" {
-    //Red Rings
-		draw_sprite(spr_redringholder,0,view_wview[view_current]/2,0)
-
-        for (i=0;i<5;i+=1) {
-		
-			if settings_savefile("rr" + string(i+1) + global.levelfname)
-				draw_sprite(spr_redringholder,i,view_wview[view_current]/2,0)
-		
+    if !hudoff_redrings{
+        if global.gamemode!="timeattack" {
+            //Red Rings
+            draw_sprite(spr_redringholder,0,view_wview[view_current]/2,1)
             
+            for (i=0;i<5;i+=1) {
+            
+                if settings_savefile("rr" + string(i+1) + global.levelfname)
+                draw_sprite(spr_redringholder,i,view_wview[view_current]/2,1)
+    
+                
+            }
         }
     }
 }

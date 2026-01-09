@@ -336,23 +336,30 @@ if (skindat("left")) {
     d3d_transform_add_translation(x+400,y,0)
 } else d3d_transform_add_translation(x,y,0)
 
-//Charm plugin
-if global.gamemode!="sscreencoop"{
-if !players[view_current].dontdrawdefaulthud
-    drawskinnablehud()
-} else {
-    for (i=0;i<global.mplay;i+=1) {with (players[i]) if !dontdrawdefaulthud
-    with other drawskinnablehud()}
+if !pause{
+    if global.gamemode!="sscreencoop"{
+    if !players[view_current].dontdrawdefaulthud
+        drawskinnablehud()
+    } else {
+        for (i=0;i<global.mplay;i+=1) {with (players[i]) if !dontdrawdefaulthud
+        with other drawskinnablehud()}
 
+    }
+}
+if !pause && !players[view_current].hudoff_custom{
+    with customobject {
+        global.cobjectentrypoint="draw_hud"
+        code_execute(my_code)
+
+    }
 }
 
-
-
 //moved red rings to drawskinnablehud because they're a part of the hud :) -moster
-if global.gamemode!="sscreencoop"{
-with (players[view_current]) charm_run("customhud") 
-}else for (i=0;i<global.mplay;i+=1) {with (players[i]) charm_run("customhud") }
-
+if !pause{
+    if global.gamemode!="sscreencoop"{
+    with (players[view_current]) charm_run("customhud") 
+    }else for (i=0;i<global.mplay;i+=1) {with (players[i]) charm_run("customhud") }
+}
 d3d_transform_set_identity()
 
 if ((global.mplay>1 || global.playback) && !global.hidereplayui) {

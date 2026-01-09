@@ -16,8 +16,8 @@ listobj(lemon_tile     ,0,spr_ground       ,0,lemon_tile)
                     //2 is warp
 listobj(customobject    ,0,spr_anchor       ,0,customobject)
     listdoc("Custom Object","")
-    listargs("mytype")
-    listdata("sayhi")
+    listargs("mytype","data_1","data_2","data_3","data_4","data_5","data_6","data_7","data_8","data_9","data_10","data_11")
+    listdata("sayhi" ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""      ,""       ,""       )
 
 listobj(groundblock     ,0,spr_ground       ,0,groundblock)
     listdoc("Ground","")

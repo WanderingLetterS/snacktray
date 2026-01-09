@@ -1,2 +1,2 @@
-COMPILATION ERROR in string to be executedError in code at line 134:   
-   if settings("rr" + string(i+1) + global.levelfname))                                                         ^at position 56: Unexpected symbol in expression.
+COMPILATION ERROR in string to be executedError in code at line 17:   
+/*"/**/return 0}          ^at position 9: Symbol , or ) expected.

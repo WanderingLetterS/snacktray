@@ -1,0 +1,16 @@
+ERROR in
+action number 1
+of Other Event: Game Start
+for object __newobject1191:
+
+Trying to draw non-existing sprite.
+
+
+ERROR in
+action number 1
+of Other Event: Game Start
+for object __newobject1191:
+
+Trying to draw non-existing sprite.
+
+

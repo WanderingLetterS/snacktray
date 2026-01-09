@@ -154,6 +154,7 @@
 		|discord_update_presence
 		|discord_free_app
 		|discord_free_dll
+	|betshow_message
 +Language
 	|langdefault
 	|addlang
@@ -671,3 +672,4 @@
 	|com_editnameitemboxcontent
 	|com_contenttoobject
 	|com_spawncoinitembox
+	|lemon_get_lemoninfo
