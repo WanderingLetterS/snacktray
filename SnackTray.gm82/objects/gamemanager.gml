@@ -346,7 +346,13 @@ if !pause{
 
     }
 }
+if !pause && !players[view_current].hudoff_custom{
+    with customobject {
+        global.cobjectentrypoint="draw_hud"
+        code_execute(my_code)
 
+    }
+}
 
 //moved red rings to drawskinnablehud because they're a part of the hud :) -moster
 if !pause{
