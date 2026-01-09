@@ -5,8 +5,9 @@ type=argument[1]
 switch (argument[0]) {
     case customobject:
         if type>0{
+            global.cobjectlemonreturnvalue="[NO DATA]"
             lemon_get_lemoninfo("editobjmenu",type,argument[2])
-            return global.cobjectlemonreturnvalue
+            return string(global.cobjectlemonreturnvalue)
         }else return get_string("Custom Object's name:",argument[2])
     break;
 

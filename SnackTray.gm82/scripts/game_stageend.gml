@@ -3,7 +3,7 @@
 var i;
 
 with (gamemanager) {
-    for (i=0;i<4;i+=1) {
+    for (i=0;i<12;i+=1) {
         global.size[i]=players[i].size
         global.energy[i]=players[i].energy
         global.shielded[i]=players[i].shielded

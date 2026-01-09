@@ -1,4 +1,4 @@
-
+if obj!=customobject
 draw_sprite_ext(spr,frame,x*16+off+off2x,y*16+off+off2y,1,1,0,c_white,draw_get_alpha())
 
 switch(obj) {
