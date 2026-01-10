@@ -2,7 +2,8 @@ switch(global.cobjectentrypoint){
 
 	case "create":
 	
-		
+		x+=unreal(data_2,0)
+		y+=unreal(data_3,0)
 	
 		if !sprite_exists(global.custom_sprite_collectibles) ||global.custom_sprite_collectibles==0{
 			global.custom_sprite_collectibles=sprite_add(globalmanager.moddir+"object\"+mytype+"\collectibles.png",0,1,0,0,0)
@@ -43,7 +44,7 @@ switch(global.cobjectentrypoint){
 		
 		}
 		
-		if global.lemontest || global.visualstagecount==1{
+		if global.lemontest || global.visualstagecount==1||type==2{
 			global.collectiblecollected[realtype,0]=0
 			global.collectiblecollected[realtype,1]=0
 			global.collectiblecollected[realtype,2]=0
@@ -189,7 +190,7 @@ switch(global.cobjectentrypoint){
 		
 		off_y=realtype	
 		
-		draw_sprite_part_ext(sheet,0,190,7+28*off_y,16,16,x*16,y*16,1,1,c_white,1)
+		draw_sprite_part_ext(sheet,0,190,7+28*off_y,16,16,x*16+unreal(data_2,0),y*16+unreal(data_3,0),1,1,c_white,1)
 
 	break;
 	
@@ -198,7 +199,18 @@ switch(global.cobjectentrypoint){
 	
 	case "editobjmenu":
 		
-		if global.cobjectlemontype>1 {global.cobjectlemonreturnvalue=  "----"}
+		if global.cobjectlemontype>3 {global.cobjectlemonreturnvalue=  "----"}
+		
+		else if (global.cobjectlemontype=2) {
+            global.cobjectlemonreturnvalue=  get_string("Object's X Offset",global.cobjectlemondefault)
+		
+		
+		}
+		else if (global.cobjectlemontype=3) {
+            global.cobjectlemonreturnvalue=  get_string("Object's Y Offset",global.cobjectlemondefault)
+		
+		
+		}
 		else if (global.cobjectlemontype=1) {
             i=show_contextmenu("Collectible Type:|-|Purple Coin|Green Coin|Triangle|Note|Letter B|Letter O|Letter W|Letter L",0)
             if (!i) global.cobjectlemonreturnvalue=  global.cobjectlemondefault
@@ -210,9 +222,13 @@ switch(global.cobjectentrypoint){
 	break;
 	case "editobjdataname":
 		i=global.cobjectlemondefault
-		
-		if global.cobjectlemontype>1 {global.cobjectlemonreturnvalue= "[NO DATA]"}
-		else {
+		type=global.cobjectlemontype
+		if global.cobjectlemontype>3 {global.cobjectlemonreturnvalue= "[NO DATA]"}
+		else if type==2{
+			global.cobjectlemonreturnvalue="Offset X: " + string(i)
+		}else if type==3{
+			global.cobjectlemonreturnvalue="Offset Y: " + string(i)
+		}else if type==1{
 			if i=="0" global.cobjectlemonreturnvalue= "Purple Coin";
 			if i=="1" global.cobjectlemonreturnvalue=  "Green Coin";
 			if i=="2" global.cobjectlemonreturnvalue=  "Triangle";
@@ -221,7 +237,7 @@ switch(global.cobjectentrypoint){
 			if i=="5" global.cobjectlemonreturnvalue=  "Letter O";
 			if i=="6" global.cobjectlemonreturnvalue=  "Letter W";
 			if i=="7" global.cobjectlemonreturnvalue=  "Letter L";
-		
+			else global.cobjectlemonreturnvalue= "Purple Coin";
 		
 		}
 		
